@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "The Open Mathematics Project: Finite Magmas E677 -> E255"
+message: "If you use this repository, please cite it as open research material."
+type: software
+authors:
+  - family-names: "Pochuev"
+    given-names: "Grisha"
+abstract: "Open reproducible research on whether the finite-magma identity E677 implies E255."
+license: MIT
+repository-code: "https://github.com/Grisha-Pochuev/finite-magma-e677-to-e255-"
+keywords:
+  - finite magmas
+  - universal algebra
+  - equational logic
+  - open mathematics
+  - reproducible research
+
