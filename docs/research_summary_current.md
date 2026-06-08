@@ -18,9 +18,10 @@ finite magma.  The approach is structural rather than brute force:
 The public package records the following closed regions:
 
 ```text
-sizes 5, 6, 7, 8
-size 9, cases 1-33
-case45 branch 7*0=4
+sizes 5, 6, 7, 8: recorded closed
+size 9, cases 1-33: recorded closed
+case45 branch 7*0=4: recorded closed
+normalized size-9 role u=b_3: recorded closed
 ```
 
 The strongest reproducible checkpoint included in the public folder is the
@@ -43,28 +44,45 @@ E255.
 This is not yet a complete proof.  It is the organizing target for the next
 research phase.
 
-## Latest structural refinement
+## Latest proved mechanism
 
-The latest refinement is the **double interval pressure** obstruction.
-
-If `r_2=t` is nonzero, then `t` becomes the common pivot of two forced
-intervals:
+Several source rows may share the forced edge
 
 ```text
-row b_2:
-  u_2 -> 0 -> t
-
-row b_3:
-  c_{-1} -> t -> b_4
+q*0=P
+q*P=T
+T*q=h.
 ```
 
-The next step is to prove that both predecessors cannot remain fresh while the
-forced row-`t` and row-`b_4` pressure is avoided.
+Every source then produces a bridge:
+
+```text
+w=(q*T)*q
+T*w=P.
+```
+
+Every bridge also produces a backward zipper return.  If
+
+```text
+V=T*P,
+```
+
+then
+
+```text
+V*T=pred_P(w)
+P*(V*T)=w.
+```
+
+The terminal source of the original bad cycle is anchored to the old bad tail
+`r_{m-2}`.  These are general proved statements, recorded in the bridge,
+zipper, and terminal-anchor lemma files.
 
 ## What remains open
 
 The full theorem remains open in this repository.
 
-The next mathematical task is not a large computation.  It is to turn the
-double interval pressure pattern into a general lemma.
-
+The current candidate is the three-source good-six pressure lemma.  The next
+mathematical task is to classify the first intersections of its three bridge
+paths with the sources, fan tips, good six-cycle, and terminal bad-cycle
+anchor.  This is a symbolic task, not a new broad computation.

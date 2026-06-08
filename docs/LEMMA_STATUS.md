@@ -1,151 +1,94 @@
 # Lemma Status
 
-Date: 2026-06-05.
+Date: 2026-06-08.
 
-This file separates proved or repeatedly verified structural facts from active
-candidate lemmas.  The project is still active research and does not yet claim
-a complete proof of `E677 -> E255` for all finite magmas.
+The project is active research.  This file distinguishes proved general
+lemmas, bounded computational closures, and unproved candidates.
 
-## Main candidate
-
-File:
+## Latest general proved lemmas
 
 ```text
+lemmas/fan_tip_bridge_expansion_lemma.md
+lemmas/fan_bridge_zipper_extension_lemma.md
+lemmas/terminal_source_anchored_fan_lemma.md
+```
+
+They prove:
+
+```text
+each common-edge source produces a bridge;
+each bridge produces a zipper return;
+bridge collisions produce a new common-edge fan;
+the terminal source is anchored to the old bad tail r_{m-2}.
+```
+
+## Fan-spine proved layer
+
+```text
+lemmas/two_sided_common_edge_fan_lemma.md
+lemmas/fixed_source_zero_descent_lemma.md
+lemmas/self_containing_fan_spine_lemma.md
+lemmas/fan_spine_four_cycle_descent_lemma.md
+lemmas/tip_source_collision_zero_tooth_lemma.md
+lemmas/fan_tip_bad_cycle_alignment_lemma.md
+lemmas/zero_tooth_bad_cycle_return_lemma.md
+lemmas/fan_source_tip_graph_lemma.md
+lemmas/minimal_bad_short_cycle_reduction.md
+lemmas/fan_spine_fourth_predecessor_test.md
+lemmas/fan_spine_length_five_badness_lemma.md
+lemmas/good_p_occupied_tip_pressure_lemma.md
+```
+
+This layer proves two-sided fan pressure, several explicit descents, exclusion
+of short harmless closures, and the exact boundary before a good six-cycle.
+
+## Reconstruction and overlap layer
+
+```text
+lemmas/two_step_source_reconstruction_lemma.md
+lemmas/paired_chain_aligned_overlap_lemma.md
+lemmas/shared_edge_divergence_lemma.md
+lemmas/common_edge_fan_lemma.md
+lemmas/bad_cycle_shared_edge_descent_lemma.md
+```
+
+Important consequence:
+
+```text
+an ordered two-step interval determines its source row;
+distinct source rows cannot share two aligned consecutive edges.
+```
+
+## Bounded computational closure
+
+The normalized size-9 role
+
+```text
+u=b_3
+```
+
+is recorded as closed.  Its final two occupied tip roles closed in the recorded
+diagnostics:
+
+```text
+C=b_7 -> status none, 46.31s, 640 nodes
+C=b_6 -> status none, 28.37s, 410 nodes
+```
+
+This is finite evidence and must not be promoted to a general theorem.
+
+## Current candidates, not proved
+
+```text
+lemmas/three_source_good_six_pressure_candidate.md
+lemmas/fan_spine_termination_candidate.md
 lemmas/main_bad_cycle_no_free_tail_lemma.md
 ```
 
-Status:
+The full statement `E677 => E255` remains unproved.
 
-```text
-main candidate / not fully proved
-```
+## Next valid step
 
-Statement:
-
-```text
-In a finite E677 magma, a bad element 0 cannot have r_2=b_2*0 != 0.
-Thus r_2=0, which is E255 for 0.
-```
-
-## Proved or stable structural ingredients
-
-The following ingredients are treated as stable working facts in the current
-research record:
-
-```text
-inverse edge chain
-bad-cycle predecessor ladder
-source-orbit ladder
-source-row zero trap
-edge-predecessor triangle expansion
-```
-
-Core files:
-
-```text
-lemmas/inverse_edge_chain.md
-lemmas/source_orbit_ladder_lemma.md
-lemmas/source_orbit_zipper_lemma.md
-lemmas/edge_predecessor_triangle_lemma.md
-```
-
-## Bridge-orbit split
-
-File:
-
-```text
-lemmas/offset_bridge_orbit_dichotomy_lemma.md
-```
-
-Status:
-
-```text
-structural progress / used by the current frontier
-```
-
-For `r_2=b_t`, set
-
-```text
-p = (b_3*b_4)*b_3.
-```
-
-If a bridge row exists with
-
-```text
-a*b_t=b_4
-a*b_4=b_3
-```
-
-then
-
-```text
-b_3*a=p.
-```
-
-There is at most one bridge row.  This splits the proof attempt into a bridge
-branch and a no-bridge orbit branch.
-
-## No-bridge orbit frontier
-
-Files:
-
-```text
-lemmas/no_bridge_orbit_tail_candidate.md
-lemmas/offset_source_orbit_first_return_lemma.md
-lemmas/first_return_row_pressure_lemma.md
-lemmas/source_orbit_zipper_lemma.md
-lemmas/edge_predecessor_triangle_lemma.md
-```
-
-Status:
-
-```text
-active structural proof target
-```
-
-The target is to show that a zero-avoiding orbit cannot keep creating a fresh
-tail forever in a finite E677 magma.
-
-## Pressure-diamond frontier
-
-Files:
-
-```text
-lemmas/two_sided_offset_orbit_lemma.md
-lemmas/r2_row_pressure_lemma.md
-lemmas/offset_pressure_diamond_lemma.md
-lemmas/double_interval_pressure_lemma.md
-```
-
-Status:
-
-```text
-current strongest frontier
-```
-
-This package turns the nonzero value `r_2=t` into a double interval pressure
-configuration.  The next candidate lemma is that the two fresh predecessors
-cannot both survive while row-`t` and row-`b_4` pressure is avoided.
-
-## Closed computational regions
-
-See:
-
-```text
-docs/CLOSED_CASES.md
-```
-
-Current public summary:
-
-```text
-sizes 5, 6, 7, 8: closed
-size 8: reproducible script and recorded log included
-size 9, cases 1-33: recorded closed
-case45, branch 7*0=4: recorded closed
-```
-
-## Caveat
-
-Files whose name contains `candidate`, `progress`, `plan`, or `audit` should be
-read as working material unless this status file says otherwise.
+Classify the first intersection of the three bridge paths with sources, fan
+tips, the good six-cycle, and the terminal bad-cycle anchor.
 

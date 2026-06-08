@@ -1,109 +1,160 @@
 # Current Frontier
 
-Date: 2026-06-05.
+Date: 2026-06-08.
 
-This file is the current public continuation point for the finite-magma problem
+The project studies whether
 
 ```text
 E677: x = y * (x * ((y * x) * y))
-E255: x = ((x * x) * x) * x.
 ```
 
-The project is trying to prove that every finite magma satisfying `E677` also
-satisfies `E255`.
+implies
+
+```text
+E255: x = ((x*x)*x)*x
+```
+
+in every finite magma.
+
+The full implication is not yet proved.
+
+## Latest proved mechanism
+
+Suppose several source rows share an edge
+
+```text
+q*0=P
+q*P=T
+T*q=h.
+```
+
+Each source `q` forces a bridge
+
+```text
+w=(q*T)*q
+T*w=P.
+```
+
+The bridge itself extends by a zipper step.  If
+
+```text
+V=T*P,
+```
+
+then
+
+```text
+V*T=pred_P(w)
+P*(V*T)=w.
+```
+
+These statements are proved in:
+
+```text
+lemmas/fan_tip_bridge_expansion_lemma.md
+lemmas/fan_bridge_zipper_extension_lemma.md
+```
+
+Thus a bridge is not a free endpoint.  It extends the forward orbit while also
+returning one step backward in row `P`.
+
+## Anchor to the original bad cycle
+
+Let
+
+```text
+A=0*0=b_{m-1}.
+```
+
+The terminal element of the original bad cycle is itself a source:
+
+```text
+A*0=P.
+```
+
+Its backward fan foot is the old bad tail:
+
+```text
+A*r_{m-2}=0
+0*(P*A)=r_{m-2}.
+```
+
+This is proved in:
+
+```text
+lemmas/terminal_source_anchored_fan_lemma.md
+```
+
+Therefore the recursive fan is not external to the old bad cycle.  One branch
+is rigidly anchored to it.
 
 ## Current main candidate
 
-The current main candidate is the **No-Free-Tail Lemma**.
-
-In the bad-cycle notation used in the project, let `0` be a hypothetical bad
-element for which `E255` fails.  Define
+The remaining candidate is:
 
 ```text
-b_j = L_0^{-j}(0)
-r_j = b_j * 0.
+lemmas/three_source_good_six_pressure_candidate.md
 ```
 
-The target statement is:
+Finite size-9 diagnostics show that three sources of the same edge produce
+enough pressure to close the normalized good-six-cycle role.  This is evidence,
+not a general proof.
+
+The global candidates remain:
 
 ```text
-No-Free-Tail Lemma:
-In a finite E677 magma, a bad element 0 cannot have r_2=b_2*0 != 0.
-Therefore r_2=0, which is exactly E255 for 0.
+lemmas/fan_spine_termination_candidate.md
+lemmas/main_bad_cycle_no_free_tail_lemma.md
 ```
 
-## Strongest recorded obstruction
+## Exact next question
 
-The current sharp obstruction is recorded in:
+Do not begin a new broad finite search.
+
+The next structural task is:
 
 ```text
-lemmas/double_interval_pressure_lemma.md
+Classify the first intersection of the three bridge paths
+with:
+  their sources;
+  existing fan tips;
+  points of the good six-cycle;
+  the old bad tail r_{m-2}.
 ```
 
-The key observation is that a nonzero `r_2=t` is not merely part of one
-two-sided row-`b_3` interval.  It becomes the common pivot of two forced
-adjacent intervals:
+For every bridge intersection, immediately use:
 
 ```text
-row b_2:
-  u_2 -> 0 -> t
-
-row b_3:
-  c_{-1} -> t -> b_4
+T*w=P
+V*T=pred_P(w).
 ```
 
-where
+The goal is either:
 
 ```text
-u_2 = 0*(t*b_2)
-c_{-1} = t*(b_4*b_3).
+return to an occupied bad tail;
+an already forbidden aligned overlap;
+an occupied-row pressure collision;
+or a proof that the branching creates new distinct elements.
 ```
 
-This combines with pressure in two additional rows:
+## Current status boundary
+
+Proved:
 
 ```text
-row t:
-  z_t -> 0
-  b_4*b_3 -> c_{-1}
-
-row b_4:
-  p -> t
-  r_3 -> b_5
+bridge from every common-edge source;
+zipper extension from every bridge;
+new common-edge fan when bridges collide;
+terminal-source anchoring to r_{m-2};
+short-cycle and aligned-return reductions recorded in the fan-spine lemmas.
 ```
 
-## Next mathematical question
-
-The next meaningful step is not another broad finite search.
-
-The next question is:
+Not proved:
 
 ```text
-Can the two forced intervals keep both predecessors fresh while avoiding
-the row-t zero pressure and the row-b_4 occupied-row pressure?
+arbitrary three-source fan termination;
+the No-Free-Tail Lemma;
+E677 => E255 for all finite magmas.
 ```
-
-The candidate answer is no.
-
-## Immediate role split
-
-The next work should split only by the role of `u_2`.
-
-```text
-u_2=t      -> origin self-swap 0 <-> t in row b_2
-u_2=b_j    -> occupied bad-cycle row pressure/descent
-u_2 fresh  -> track a second fresh interval together with c_{-1}
-```
-
-Any computation from this point should test one of these roles, not the whole
-search space.
-
-## Read next
-
-Recommended reading order:
-
-1. `docs/LEMMA_STATUS.md`
-2. `lemmas/main_bad_cycle_no_free_tail_lemma.md`
-3. `lemmas/offset_pressure_diamond_lemma.md`
-4. `lemmas/double_interval_pressure_lemma.md`
-5. `docs/CLOSED_CASES.md`
 

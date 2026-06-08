@@ -7,7 +7,7 @@ This guide is for manually uploading the prepared public package to GitHub.
 Target repository:
 
 ```text
-https://github.com/Grisha-Pochuev/finite-magma-e677-to-e255-
+https://github.com/Grisha-Pochuev/finite-magma-e677-to-e255
 ```
 
 ## What to upload
@@ -24,6 +24,7 @@ The GitHub repository root should contain:
 
 ```text
 README.md
+CHANGELOG.md
 LICENSE
 docs/
 lemmas/
@@ -54,7 +55,9 @@ Make sure these files are present after upload:
 
 ```text
 README.md
+CHANGELOG.md
 docs/CLOSED_CASES.md
+docs/RESEARCH_UPDATE_2026-06-08.md
 docs/REPRODUCIBILITY.md
 docs/OPENAI_OSS_APPLICATION_NOTE.md
 logs/size8_verified_split_log.txt

@@ -62,6 +62,13 @@ Start from:
 
 ```text
 docs/CURRENT_FRONTIER.md
-lemmas/double_interval_pressure_lemma.md
+docs/RESEARCH_UPDATE_2026-06-08.md
+lemmas/fan_tip_bridge_expansion_lemma.md
+lemmas/fan_bridge_zipper_extension_lemma.md
+lemmas/terminal_source_anchored_fan_lemma.md
+lemmas/three_source_good_six_pressure_candidate.md
 ```
 
+The No-Free-Tail Lemma remains unproved.  Do not start another broad search.
+The next task is a symbolic classification of the first intersection among
+the three bridge paths.

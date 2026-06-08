@@ -194,5 +194,267 @@ Classify the occupied roles of u_2:
   u_2 fresh  -> a second fresh interval must be tracked together with c_{-1}.
 ```
 
+Progress:
+
+```text
+occupied_u2_lift_lemma.md
+```
+
+If:
+
+```text
+u_2=b_j,
+```
+
+then:
+
+```text
+t*b_2=b_{j+1}.
+```
+
+So the occupied `u_2` case lifts immediately into row `t`, where it combines
+with:
+
+```text
+t*z_t=0
+t*(b_4*b_3)=c_{-1}
+t*r_{k-1}=b_{k+1}    when t=b_k.
+```
+
+Therefore the hard branch is not all occupied `u_2`; it is specifically the
+case where this row-`t` lift avoids zero collision, predecessor coupling, and
+bad-cycle descent.
+
+## Cross-Source Progress 2026-06-07
+
+The file:
+
+```text
+two_step_source_reconstruction_lemma.md
+```
+
+proves that an ordered interval:
+
+```text
+a -> b -> c
+```
+
+uniquely determines its source row.
+
+Applied to the paired predecessor cycles, this gives:
+
+```text
+paired_chain_aligned_overlap_lemma.md
+```
+
+The row-`b_2` and row-`b_3` cycles cannot share two aligned consecutive edges.
+At the initial common pivot `t`, the roles:
+
+```text
+c_{-1}=0
+b_2*t=b_4
+```
+
+cannot occur together.
+
+This does not yet prove the candidate lemma, but it replaces the vague need for
+"some coupling" with an exact forbidden overlap.  The remaining task is to
+force that overlap, or an unequal-neighbor pressure role, from the row-`t` and
+row-`b_4` fans.
+
+## Fan-Spine Upgrade 2026-06-08
+
+The strongest bad-tail occupied role now produces:
+
+```text
+self_containing_fan_spine_lemma.md
+```
+
+When the pressure network forces:
+
+```text
+P*0=P,
+```
+
+the common-edge fan above `0 -> P` creates a row-`P` spine:
+
+```text
+e -> h -> 0 -> P -> C,
+```
+
+and every additional fan tip returns to the same backward hub `h`.
+
+Thus the double-interval candidate has acquired a concrete multi-row
+termination object:
+
+```text
+one five-point active interval;
+several pairwise distinct return tips;
+one common hub.
+```
+
+The next general target is to prove that this fan spine cannot close inside a
+finite bad-cycle block without an aligned overlap, row-`0` shared-edge descent,
+or zero-column fixed point.
+
+The common-edge object is now two-sided:
+
+```text
+two_sided_common_edge_fan_lemma.md
+```
+
+For every source `q*0=P`, row `q` contains:
+
+```text
+alpha_q -> 0 -> P -> T_q,
+```
+
+where all backward feet `alpha_q` are distinct and all forward tips `T_q` are
+distinct.
+
+The shortest row-`P` closure:
+
+```text
+e=C
+```
+
+is no longer open. It is a row-`0` shared-edge descent and creates a bad
+four-cycle at `P`. After choosing a minimal bad element with cycle length
+greater than four, this closure is impossible.
+
+The aligned occupied-tip role is also closed:
+
+```text
+C=b_j
+T_q=b_{j-2}
+=>
+q=r_{j-3}.
+```
+
+Therefore the double-interval frontier has narrowed to non-aligned occupied
+tips, zero-tooth continuation after a tip-source collision, and longer
+row-`P` cycle closure.
+
+For the zero-tooth continuation, the aligned occupied return is now closed:
+
+```text
+v*q=0
+q=b_k
+v*0=q
+=>
+v=r_{k-1}.
+```
+
+Only fresh returns and returns to a different bad-cycle index remain.
+
+The longer row-`P` closure is also no longer an undifferentiated cycle event.
+For the fourth and fifth predecessors:
+
+```text
+f=L_P^{-4}(P)
+g=L_P^{-5}(P),
+```
+
+the exact split is:
+
+```text
+f*f=g <=> h*P=P <=> E255 at P;
+f*f!=g <=> P is bad.
+```
+
+Under minimal bad-cycle selection, every shorter closure must take the first
+role.
+
+For exact closure length five, even that first role is impossible:
+
+```text
+fan_spine_length_five_badness_lemma.md
+```
+
+The forced good-P equations collide in row `h`. Thus the first unresolved
+good shorter closure is length six.
+
+The fan recursion itself has now been made explicit:
+
+```text
+fan_tip_bridge_expansion_lemma.md
+```
+
+Every original source `q` produces:
+
+```text
+row q:   0 -> P -> T_q
+row T_q: q -> h and w_q -> P,
+```
+
+where:
+
+```text
+w_q=(q*T_q)*q.
+```
+
+A bridge collision creates a second-generation common-edge fan; otherwise all
+bridges are distinct. This is the concrete recursive pressure process whose
+finite termination is still required.
+
+The fan is anchored back to the original bad tail by:
+
+```text
+terminal_source_anchored_fan_lemma.md
+```
+
+The universal source:
+
+```text
+A=0*0=b_{m-1}
+```
+
+has:
+
+```text
+A*r_{m-2}=0
+A*0=P.
+```
+
+So the self source and terminal source provide:
+
+```text
+row P: h       -> 0 -> P
+row A: r_{m-2} -> 0 -> P.
+```
+
+A third source adds a third distinct backward foot. This is the direct return
+from bridge expansion to double-interval pressure.
+
+Further progress:
+
+```text
+double_interval_backward_extension_lemma.md
+```
+
+If `u_2` and `c_{-1}` are fresh, the double interval still cannot stay static.
+The edge-triangle rule extends both intervals one step backward:
+
+```text
+e_2=u_2*b_1
+b_2*e_2=u_2
+
+e_3=c_{-1}*(t*b_3)
+b_3*e_3=c_{-1}.
+```
+
+So the fresh branch contains:
+
+```text
+row b_2:
+  e_2 -> u_2 -> 0 -> t
+
+row b_3:
+  e_3 -> c_{-1} -> t -> b_4
+```
+
+The hard branch is therefore a growing double predecessor chain, not a fixed
+local configuration.
+
 The first computational check, if needed later, should test only a fixed role,
 not the full open search.
