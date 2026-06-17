@@ -1,17 +1,50 @@
 # Results Index
 
-Date: 2026-06-08.
+Date: 2026-06-17.
 
 ## Start here
 
 ```text
 README.md
-docs/RESEARCH_UPDATE_2026-06-08.md
+docs/RESEARCH_UPDATE_2026-06-17.md
 docs/PROJECT_STATUS.md
 docs/LEMMA_STATUS.md
 docs/CURRENT_FRONTIER.md
 docs/CLOSED_CASES.md
 docs/REPRODUCIBILITY.md
+```
+
+## Latest update: 2026-06-17
+
+```text
+docs/RESEARCH_UPDATE_2026-06-17.md
+verify_sizes_5_6_7_closed.ps1
+verify_sizes_5_6_7_closed.cmd
+logs/sizes_5_6_7_rerun_20260617_143540.txt
+```
+
+The sizes `5`, `6`, and `7` closure is now publicly rerunnable from the
+repository.  The script checks `38` normalized row-0 representatives.
+
+## Branch-closure layer
+
+```text
+lemmas/double_interval_edge_certificate_lemma.md
+lemmas/general_target_bridge_orbit_lemma.md
+lemmas/labeled_right_translation_graph_lemma.md
+lemmas/right_p_orbit_bridge_recursion_lemma.md
+lemmas/right_p_orbit_collision_duality_lemma.md
+lemmas/cycle_entry_two_sided_fan_lemma.md
+lemmas/cycle_entry_hub_transport_lemma.md
+lemmas/good_p_unique_reverse_edge_lemma.md
+lemmas/target_swap_fan_duality_lemma.md
+lemmas/right_fixed_point_uniqueness_lemma.md
+lemmas/right_fixer_to_balanced_witness_lemma.md
+lemmas/bicyclic_component_branch_fan_lemma.md
+lemmas/bad_target_core_fan_lemma.md
+lemmas/bicyclic_core_junction_lemma.md
+lemmas/branch_closure_no_free_tail_candidate.md
+lemmas/crossed_double_fan_pressure_candidate.md
 ```
 
 ## Latest bridge and fan results
@@ -58,6 +91,8 @@ lemmas/bad_cycle_shared_edge_descent_lemma.md
 
 ```text
 lemmas/main_bad_cycle_no_free_tail_lemma.md
+lemmas/branch_closure_no_free_tail_candidate.md
+lemmas/crossed_double_fan_pressure_candidate.md
 lemmas/three_source_good_six_pressure_candidate.md
 ```
 
@@ -68,9 +103,11 @@ Neither candidate is a completed proof.
 ```text
 verify_smoke.ps1
 verify_smoke.cmd
+verify_sizes_5_6_7_closed.ps1
+verify_sizes_5_6_7_closed.cmd
 verify_size8_closed.ps1
 verify_size8_closed.cmd
 tools/search_counterexample_strong.js
+logs/sizes_5_6_7_rerun_20260617_143540.txt
 logs/size8_verified_split_log.txt
 ```
-

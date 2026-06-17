@@ -7,11 +7,51 @@ computational claims reproducible.
 
 For the included scripts:
 
-- Windows PowerShell, for `verify_size8_closed.ps1`;
+- Windows PowerShell, for `verify_sizes_5_6_7_closed.ps1` and
+  `verify_size8_closed.ps1`;
 - Node.js, for the JavaScript search tools in `tools/`.
 
-No large solver toolchain is required for the included size-8 verification
-script.
+No large solver toolchain is required for the included finite-size verification
+scripts.
+
+## Reproduce the sizes 5, 6, and 7 closure
+
+Run:
+
+```powershell
+.\verify_sizes_5_6_7_closed.ps1
+```
+
+If Windows blocks direct PowerShell script execution, use either:
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File .\verify_sizes_5_6_7_closed.ps1
+```
+
+or double-click:
+
+```text
+verify_sizes_5_6_7_closed.cmd
+```
+
+Expected behavior:
+
+- the script checks every normalized row-0 representative for sizes `5`, `6`,
+  and `7`;
+- the expected case counts are `7`, `12`, and `19`, for `38` total cases;
+- each case should end with `status: none`;
+- the script writes a new timestamped log such as
+  `logs/sizes_5_6_7_rerun_20260617_143540.txt`;
+- if a case does not close, the script stops and points to the rerun log.
+
+The recorded output from the successful preparation run is kept at:
+
+```text
+logs/sizes_5_6_7_rerun_20260617_143540.txt
+```
+
+The recorded 2026-06-17 run took about 30 seconds in the preparation
+environment.
 
 ## Reproduce the size-8 closure
 
@@ -82,7 +122,7 @@ logs/size8_verified_split_log.txt
 
 The recorded log is not overwritten by reruns.
 
-## Expected full runtime
+## Expected size-8 full runtime
 
 The recorded successful size-8 run took about 7 minutes on the original
 machine.  Runtime can vary by hardware and Node.js version.  The script has a
@@ -149,5 +189,5 @@ size 8, row-0 case 1: status none
 size 8, split case 24 with extra 4:0:1: status none
 ```
 
-The full PowerShell script should still be rerun on a normal local clone before
-claiming a fresh reproduction.
+The full PowerShell scripts should still be rerun on a normal local clone
+before claiming a fresh independent reproduction.

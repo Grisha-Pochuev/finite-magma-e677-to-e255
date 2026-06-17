@@ -62,13 +62,16 @@ This is active research, not a finished proof.
 Current recorded status:
 
 - finite sizes `5`, `6`, `7`, and `8` are closed;
-- size `8` has a reproducibility script and a recorded verification log;
+- sizes `5`, `6`, and `7` now have a public rerun script and recorded
+  verification log;
+- size `8` has a separate reproducibility script and a recorded verification
+  log;
 - in size `9`, cases `1-33` are recorded as closed;
 - in `case45`, the branch `7*0=4` is recorded as fully closed;
 - the normalized size-9 role `u=b_3` is now recorded as closed;
-- the latest general progress proves recursive common-edge fan, bridge, and
-  zipper mechanisms;
-- the active frontier is the three-source pressure problem described in
+- the latest general progress recasts the bridge recursion for arbitrary
+  target edges and reduces the open proof frontier to branch-closure pressure;
+- the active frontier is the branch-closure No-Free-Tail candidate described in
   `docs/CURRENT_FRONTIER.md`.
 
 See:
@@ -78,7 +81,7 @@ See:
 - `docs/RESULTS_INDEX.md` for navigation through the research files;
 - `docs/CURRENT_FRONTIER.md` for where the next proof attempt starts.
 - `docs/METHOD.md` for the research method.
-- `docs/RESEARCH_UPDATE_2026-06-08.md` for the latest research update.
+- `docs/RESEARCH_UPDATE_2026-06-17.md` for the latest research update.
 
 ### What is in this repository
 
@@ -96,12 +99,19 @@ with `docs/CURRENT_FRONTIER.md` and `docs/LEMMA_STATUS.md`.
 
 ### Reproducibility
 
-The main reproducible computational checkpoint included here is the size-8
-closure:
+The first reproducible computational checkpoint is the size-5/6/7 closure:
 
 ```powershell
 .\verify_smoke.ps1
 ```
+
+then:
+
+```powershell
+.\verify_sizes_5_6_7_closed.ps1
+```
+
+The larger reproducible checkpoint is the size-8 closure:
 
 then:
 
@@ -114,16 +124,17 @@ execution:
 
 ```text
 verify_smoke.cmd
+verify_sizes_5_6_7_closed.cmd
 verify_size8_closed.cmd
 ```
 
-On a normal machine with Node.js installed, this script reruns the structural
-split used for the size-8 result and writes
-`logs/size8_rerun_<timestamp>.txt`.
+On a normal machine with Node.js installed, these scripts rerun the packaged
+finite checks and write timestamped logs in `logs/`.
 
 The repository also includes the recorded verification output:
 
 ```text
+logs/sizes_5_6_7_rerun_20260617_143540.txt
 logs/size8_verified_split_log.txt
 ```
 

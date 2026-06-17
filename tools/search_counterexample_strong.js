@@ -49,9 +49,13 @@ function partitions(n, maxPart = n) {
   return out;
 }
 
-function row0Representatives(n) {
+function row0Representatives(n, minZeroCycleLength = 2) {
   const reps = [];
-  for (let zeroCycleLength = 2; zeroCycleLength <= n; zeroCycleLength++) {
+  for (
+    let zeroCycleLength = minZeroCycleLength;
+    zeroCycleLength <= n;
+    zeroCycleLength++
+  ) {
     for (const tailPartition of partitions(n - zeroCycleLength)) {
       const cycles = [Array.from({ length: zeroCycleLength }, (_, i) => i)];
       let next = zeroCycleLength;
@@ -137,7 +141,20 @@ function makeSearcher(n, options) {
   const bad = 0;
   const maxMs = (options.maxSeconds ?? 60) * 1000;
   const start = Date.now();
-  const avoidBadColumn = options.mode !== "nonidempotent";
+  const arbitraryModelMode =
+    options.mode === "arbitrarymodel" ||
+    options.mode === "modeldiagnoseall" ||
+    options.mode === "rawmodel" ||
+    options.mode === "rawmodeldiagnose";
+  const rawRow0Mode =
+    options.mode === "rawmodel" ||
+    options.mode === "rawmodeldiagnose" ||
+    options.mode === "rawcounterexample" ||
+    options.mode === "rawdiagnose";
+  const avoidBadColumn =
+    options.mode !== "nonidempotent" &&
+    options.mode !== "modeldiagnose" &&
+    !arbitraryModelMode;
   const allValues = permutations(n).filter(
     (value) => !avoidBadColumn || value.p[bad] !== bad
   );
@@ -150,9 +167,13 @@ function makeSearcher(n, options) {
       valuesByCell[col][value.p[col]].push(value);
     }
   }
-  const allRow0 = row0Representatives(n);
+  const allRow0 = row0Representatives(n, arbitraryModelMode ? 1 : 2);
   const row0Values =
-    options.row0Index === undefined ? allRow0 : [allRow0[options.row0Index]];
+    rawRow0Mode
+      ? allValues
+      : options.row0Index === undefined
+        ? allRow0
+        : [allRow0[options.row0Index]];
   const extraReqs = options.extraReqs || [];
   const extraForbidPairs = options.extraForbidPairs || [];
   const stats = {
@@ -922,7 +943,7 @@ function makeSearcher(n, options) {
 
   function closeState(state) {
     while (true) {
-      if (!propagate(state)) return { ok: false };
+      if (!propagate(state)) return { ok: false, reason: "propagation" };
 
       let allAssigned = true;
       const domains = Array(n).fill(null);
@@ -932,7 +953,9 @@ function makeSearcher(n, options) {
         if (state.assign[row]) continue;
         allAssigned = false;
         const domain = domainFor(state, row);
-        if (domain.length === 0) return { ok: false };
+        if (domain.length === 0) {
+          return { ok: false, reason: "empty-domain", row };
+        }
         domains[row] = domain;
         if (domain.length === 1 && singletonRow === -1) singletonRow = row;
       }
@@ -1018,11 +1041,18 @@ function makeSearcher(n, options) {
 
   function run() {
     const initial = freshState();
-    if (!initial) return { status: "none", ms: Date.now() - start, stats, row0Count: allRow0.length };
+    if (!initial) {
+      return {
+        status: "none",
+        ms: Date.now() - start,
+        stats,
+        row0Count: row0Values.length,
+      };
+    }
     const result = rec(initial, 0);
     result.ms = Date.now() - start;
     result.stats = stats;
-    result.row0Count = allRow0.length;
+    result.row0Count = row0Values.length;
     return result;
   }
 
@@ -1030,9 +1060,7 @@ function makeSearcher(n, options) {
     const initial = freshState();
     if (!initial) return { ok: false, stats };
     const closed = closeState(initial);
-    if (!closed.ok) {
-      return { ok: false, stats };
-    }
+    if (!closed.ok) return { ok: false, ...closed, stats };
     const rows = [];
     for (let row = 0; row < n; row++) {
       const assigned = initial.assign[row];
@@ -1396,8 +1424,20 @@ const searcher = makeSearcher(n, {
   extraReqs,
   extraForbidPairs,
 });
-if (mode === "diagnose") {
-  console.log(`Strong diagnostic for E677 counterexample search, size ${n}.`);
+if (
+  mode === "diagnose" ||
+  mode === "modeldiagnose" ||
+  mode === "modeldiagnoseall" ||
+  mode === "rawdiagnose" ||
+  mode === "rawmodeldiagnose"
+) {
+  console.log(
+    mode === "modeldiagnose" ||
+      mode === "modeldiagnoseall" ||
+      mode === "rawmodeldiagnose"
+      ? `Strong diagnostic for an arbitrary E677 model, size ${n}.`
+      : `Strong diagnostic for E677 counterexample search, size ${n}.`
+  );
   if (row0Index !== undefined) {
     const rep = searcher.allRow0[row0Index];
     console.log(`row-0 case ${row0Index + 1}/${searcher.allRow0.length}: ${rep.label}`);
@@ -1405,6 +1445,12 @@ if (mode === "diagnose") {
   }
   const diagnostic = searcher.diagnoseInitial();
   console.log(`status: ${diagnostic.ok ? "ok" : "contradiction"}`);
+  if (!diagnostic.ok && diagnostic.reason) {
+    console.log(
+      `reason: ${diagnostic.reason}` +
+        (diagnostic.row === undefined ? "" : ` in row ${diagnostic.row}`)
+    );
+  }
   for (const row of diagnostic.rows || []) {
     const reqText = row.req
       .map((value, col) => (value === -1 ? null : `${col}->${value}`))
@@ -1577,6 +1623,16 @@ if (mode === "rowhist") {
 if (mode === "nonidempotent") {
   console.log(`Strong search for non-idempotent E677 model, size ${n}.`);
   console.log("Element 0 is normalized so 0*0 != 0.");
+} else if (mode === "arbitrarymodel") {
+  console.log(`Strong search for an arbitrary E677 model, size ${n}.`);
+} else if (mode === "rawmodel") {
+  console.log(
+    `Strong raw-label search for an arbitrary E677 model, size ${n}.`
+  );
+} else if (mode === "rawcounterexample") {
+  console.log(
+    `Strong raw-label search for an E677 counterexample, size ${n}.`
+  );
 } else {
   console.log(`Strong search for E677 counterexample to E255, size ${n}.`);
   console.log("Bad element is normalized to 0.");

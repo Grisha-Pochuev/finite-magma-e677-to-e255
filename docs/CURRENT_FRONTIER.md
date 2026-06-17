@@ -1,6 +1,6 @@
 # Current Frontier
 
-Date: 2026-06-08.
+Date: 2026-06-17.
 
 The project studies whether
 
@@ -20,122 +20,69 @@ The full implication is not yet proved.
 
 ## Latest proved mechanism
 
-Suppose several source rows share an edge
+For a fixed target `b`, define:
 
 ```text
-q*0=P
-q*P=T
-T*q=h.
+A_b(q) = the unique a such that q*a=b
+R_b(q) = q*b.
 ```
 
-Each source `q` forces a bridge
+Every row `q` gives a two-step interval:
 
 ```text
-w=(q*T)*q
-T*w=P.
+A_b(q) -> b -> R_b(q).
 ```
 
-The bridge itself extends by a zipper step.  If
+For a target edge:
 
 ```text
-V=T*P,
+q*a=b
+q*b=c,
 ```
 
-then
+the current proof layer gives a full local certificate:
 
 ```text
-V*T=pred_P(w)
-P*(V*T)=w.
+row q: beta -> a -> b -> c
+row c: q -> pred_b(a), A_b(c) -> b
+row b: pred_b(a) -> a.
 ```
 
-These statements are proved in:
+This generalizes the earlier common-edge fan and bridge recursion.
+
+## Current reduction
+
+The active frontier is the **branch-closure No-Free-Tail** candidate.
+
+The proved branch layer reduces a hypothetical bad target to one of:
 
 ```text
-lemmas/fan_tip_bridge_expansion_lemma.md
-lemmas/fan_bridge_zipper_extension_lemma.md
+triple core fan;
+mixed 2+1 core junction.
 ```
 
-Thus a bridge is not a free endpoint.  It extends the forward orbit while also
-returning one step backward in row `P`.
+The current candidate says that these branch-closure configurations cannot
+remain fresh indefinitely in a finite E677 magma.
 
-## Anchor to the original bad cycle
-
-Let
+See:
 
 ```text
-A=0*0=b_{m-1}.
-```
-
-The terminal element of the original bad cycle is itself a source:
-
-```text
-A*0=P.
-```
-
-Its backward fan foot is the old bad tail:
-
-```text
-A*r_{m-2}=0
-0*(P*A)=r_{m-2}.
-```
-
-This is proved in:
-
-```text
-lemmas/terminal_source_anchored_fan_lemma.md
-```
-
-Therefore the recursive fan is not external to the old bad cycle.  One branch
-is rigidly anchored to it.
-
-## Current main candidate
-
-The remaining candidate is:
-
-```text
-lemmas/three_source_good_six_pressure_candidate.md
-```
-
-Finite size-9 diagnostics show that three sources of the same edge produce
-enough pressure to close the normalized good-six-cycle role.  This is evidence,
-not a general proof.
-
-The global candidates remain:
-
-```text
-lemmas/fan_spine_termination_candidate.md
-lemmas/main_bad_cycle_no_free_tail_lemma.md
+lemmas/branch_closure_no_free_tail_candidate.md
+lemmas/crossed_double_fan_pressure_candidate.md
+lemmas/bicyclic_core_junction_lemma.md
+lemmas/bad_target_core_fan_lemma.md
 ```
 
 ## Exact next question
 
-Do not begin a new broad finite search.
+Do not begin a broad finite search.
 
 The next structural task is:
 
 ```text
-Classify the first intersection of the three bridge paths
-with:
-  their sources;
-  existing fan tips;
-  points of the good six-cycle;
-  the old bad tail r_{m-2}.
-```
-
-For every bridge intersection, immediately use:
-
-```text
-T*w=P
-V*T=pred_P(w).
-```
-
-The goal is either:
-
-```text
-return to an occupied bad tail;
-an already forbidden aligned overlap;
-an occupied-row pressure collision;
-or a proof that the branching creates new distinct elements.
+Transport the full edge certificates along the two or three forced branches.
+Classify the first merge, cycle closure, or aligned two-step overlap.
+Show that every remaining closure forces a forbidden fan pressure collision.
 ```
 
 ## Current status boundary
@@ -143,18 +90,18 @@ or a proof that the branching creates new distinct elements.
 Proved:
 
 ```text
-bridge from every common-edge source;
-zipper extension from every bridge;
-new common-edge fan when bridges collide;
-terminal-source anchoring to r_{m-2};
-short-cycle and aligned-return reductions recorded in the fan-spine lemmas.
+complete target-edge certificate;
+right-target bridge recursion;
+cycle-entry fan creation;
+target-swap fan duality;
+bicyclic core reduction to triple-fan or mixed 2+1 branch pressure;
+sizes 5, 6, 7, and 8 computational closures.
 ```
 
 Not proved:
 
 ```text
-arbitrary three-source fan termination;
-the No-Free-Tail Lemma;
+branch-closure No-Free-Tail Lemma;
+crossed double-fan exclusion as a general lemma;
 E677 => E255 for all finite magmas.
 ```
-

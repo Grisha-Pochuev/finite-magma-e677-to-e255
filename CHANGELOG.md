@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-06-17
+
+- Added a public rerun script for the complete normalized sizes `5`, `6`, and
+  `7` checks.
+- Added the recorded successful sizes `5`-`7` rerun log with 38 normalized
+  row-0 cases.
+- Updated `tools/search_counterexample_strong.js` to the current search tool
+  used by the working project.
+- Added the 2026-06-09 branch-closure lemma layer and current candidate files.
+- Updated the public status documents to separate reproducible closures,
+  recorded size-9 closures, candidates, and withdrawn finite-evidence claims.
+
 ## 2026-06-08
 
 - Added the common-edge fan bridge expansion.
@@ -12,4 +24,3 @@
   candidate.
 
 The global No-Free-Tail Lemma and `E677 => E255` remain open.
-
