@@ -196,23 +196,38 @@ R5. genuinely fresh beta-layer extension:
 
 This is strictly sharper than the previous residual list F/G/H.
 
+By:
+
+```text
+fresh_reversible_square_beta_anchor_lemma.md
+```
+
+R4 is not independent from R5.  Every fresh reversible square contains the
+ported interval:
+
+```text
+(A_j, Beta_j, b),
+```
+
+so if `Beta_j` does not route by the beta first-hit split, it is a fresh
+beta-layer anchor.
+
+The compressed residual list is therefore:
+
+```text
+S1. same-row recurrence boundaries;
+S2. row-b independent predecessor cycle with beta pressure;
+S3. beta-coupled fresh same-target pair;
+S4. fresh beta-layer extension, possibly carrying a reversible square.
+```
+
 ## Next Useful Target
 
 The next proof step should not re-route G from scratch.
 
-The useful target is to compare:
+The useful target is now to attack the fresh beta-layer extension itself.
 
-```text
-fresh reversible squares
-```
-
-with:
-
-```text
-fresh beta-layer extensions.
-```
-
-The desired new lemma would say that a minimal clean residual cannot contain
-both indefinitely disjoint from the visible crossed-fan footprint; it must
+The desired new lemma would say that a minimal clean beta extension cannot
+stay indefinitely disjoint from the visible crossed-fan footprint; it must
 produce either a watched-layer hit, an outgoing fan in some H-target, or a
 cross-role full ported interval collision.

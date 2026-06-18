@@ -259,6 +259,7 @@ beta_layer_reduction_lemma.md
 x_layer_two_target_bridge_reduction_lemma.md
 same_input_split_target_lift_lemma.md
 clean_external_bridge_second_stage_reduction_lemma.md
+fresh_reversible_square_beta_anchor_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -403,6 +404,21 @@ R4. fresh reversible two-target square from G or Beta_i=x_j;
 R5. genuinely fresh beta-layer extension in row x_i.
 ```
 
+The reversible-square residual is not independent:
+
+```text
+fresh_reversible_square_beta_anchor_lemma.md
+```
+
+shows that every fresh square contains the beta interval:
+
+```text
+(A_j,Beta_j,b).
+```
+
+So, after beta first-hit routing, a fresh square is a structured subcase of a
+fresh beta-layer extension.
+
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:
 
@@ -500,8 +516,8 @@ either:
 4. produce an A-repeat / X-repeat / A-X hit as classified above;
 5. or reduce to the clean two-layer matching residual and then classify the
    first nonfresh row-b predecessor-layer hit;
-6. compare the remaining fresh reversible squares with fresh beta-layer
-   extensions.
+6. attack the fresh beta-layer extension; fresh reversible squares are
+   beta-anchored subcases.
 ```
 
 This is narrower and safer than saying “the right-b orbit repeat returns to

@@ -76,6 +76,7 @@ beta_layer_reduction_lemma.md
 x_layer_two_target_bridge_reduction_lemma.md
 same_input_split_target_lift_lemma.md
 clean_external_bridge_second_stage_reduction_lemma.md
+fresh_reversible_square_beta_anchor_lemma.md
 clean_ported_matching_predecessor_layer_boundary.md
 row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
@@ -125,8 +126,9 @@ F/H: row-b independent cycle boundary;
 G: X-layer two-target bridge boundary.
 ```
 
-Next target: compare the fresh reversible-square residuals with the fresh
-beta-layer extension residual.  Do not route G from scratch again.
+Next target: attack the fresh beta-layer extension directly.  Fresh reversible
+squares are beta-anchored, so do not treat R4 as an independent tower and do
+not route G from scratch again.
 
 Additional beta-layer progress:
 
@@ -145,6 +147,13 @@ R2. row-b independent predecessor cycle with beta pressure at every A_i;
 R3. beta-coupled fresh same-target pair in H_{A_j};
 R4. fresh reversible two-target square from G or Beta_i=x_j;
 R5. genuinely fresh beta-layer extension in row x_i.
+```
+
+Compression:
+
+```text
+R4 is beta-anchored: every fresh reversible square contains (A_j,Beta_j,b).
+So after beta first-hit routing, R4 is a structured subcase of R5.
 ```
 
 ## Do Not Repeat

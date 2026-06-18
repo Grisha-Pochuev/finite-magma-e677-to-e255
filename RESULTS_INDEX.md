@@ -37,6 +37,7 @@ right file without scanning old summaries.
 | `x_layer_two_target_bridge_reduction_lemma.md` | proved reduction | Routes G to hits, row-b swap, beta-coupled same-input lift, recurrence, or reversible square. |
 | `same_input_split_target_lift_lemma.md` | proved transport | Converts same-input split into a same-target pair in `H_z`; couples X/beta residuals. |
 | `clean_external_bridge_second_stage_reduction_lemma.md` | proved reduction | Replaces F/G/H by exact second-stage residuals R1-R5. |
+| `fresh_reversible_square_beta_anchor_lemma.md` | proved reduction | Shows fresh reversible squares are anchored at `Beta_j`, hence part of fresh beta extension. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 
