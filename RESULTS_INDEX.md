@@ -49,6 +49,13 @@ right file without scanning old summaries.
 | `beta_coupled_same_target_pair_advance_lemma.md` | proved reduction | U3 clean same-target pair advances back to `H_{A_i}` and generated `H_b` edge. |
 | `same_input_lift_target_advance_lemma.md` | proved transport | Any clean lifted same-input pair advances back to a two-target bridge sharing the original input. |
 | `clean_external_bridge_fourth_stage_reduction_lemma.md` | proved reduction | Removes clean same-target matching; leaves V1-V4 two-target/square residuals. |
+| `beta_anchor_row_b_partner_reduction_lemma.md` | proved reduction | V4 beta anchor has row-b same-target partner and folds into V3-type bridge. |
+| `clean_external_bridge_fifth_stage_reduction_lemma.md` | proved reduction | Folds V4 into W3; leaves W1-W3 residuals. |
+| `generated_input_three_source_bridge_expansion_lemma.md` | proved expansion | W3 at generated `A_j` expands to three edges in `H_{A_j}`. |
+| `row_b_generated_input_bridge_lemma.md` | proved bridge | Every generated `A_j` has row-b/generated same-input bridge via `D_j=b*A_j`. |
+| `row_b_successor_eventual_h_hit_lemma.md` | proved reduction | Fresh `D_j=b*A_j` successor chain must eventually hit `H_j`. |
+| `row_b_successor_h_hit_role_lemma.md` | proved reduction | First row-b successor H-hit immediately advances to generated `A_k`. |
+| `clean_external_bridge_sixth_stage_reduction_lemma.md` | proved reduction | Removes base W3 bridge; leaves X1-X3 residuals. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 

@@ -103,10 +103,43 @@ clean disjoint same-target matching.
 
 ## Next Useful Target
 
-The next useful step is to compare V3 and V4.
+V4 is further sharpened by:
 
-Both are two-row, two-target configurations.  V3 is a lift/advance square from
-a shared input.  V4 is a target-swap reversible square anchored at a beta foot.
+```text
+beta_anchor_row_b_partner_reduction_lemma.md
+```
+
+Every beta anchor:
+
+```text
+Beta_j -> b in H_{A_j}
+```
+
+has the row-`b` same-target partner:
+
+```text
+H_j -> b*A_j in H_{A_j}.
+```
+
+After local same-target collisions are routed, a clean V4 advances to a
+same-input two-target bridge involving the generated edge:
+
+```text
+H_b: A_j -> x_{j+1}.
+```
+
+Therefore V4 folds into the V3-type bridge frontier.
+
+## Next Useful Target
+
+The next useful step is to attack the common V3/V4 bridge form:
+
+```text
+clean same-input two-target bridge sharing a generated input A_j.
+```
+
+V3 is a lift/advance square from a shared input.  V4 reduces to the same kind
+of bridge after comparison with its row-`b` partner.
 
 A future reduction should show that a minimal clean residual cannot keep both
 faces disjoint from the generated A/X/H layers and the visible crossed-fan

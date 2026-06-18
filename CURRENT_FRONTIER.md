@@ -271,6 +271,13 @@ same_target_pair_collision_trichotomy_lemma.md
 beta_coupled_same_target_pair_advance_lemma.md
 same_input_lift_target_advance_lemma.md
 clean_external_bridge_fourth_stage_reduction_lemma.md
+beta_anchor_row_b_partner_reduction_lemma.md
+clean_external_bridge_fifth_stage_reduction_lemma.md
+generated_input_three_source_bridge_expansion_lemma.md
+row_b_generated_input_bridge_lemma.md
+row_b_successor_eventual_h_hit_lemma.md
+row_b_successor_h_hit_role_lemma.md
+clean_external_bridge_sixth_stage_reduction_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -491,22 +498,22 @@ So the fresh beta extension is no longer independent: it returns to watched
 hits, row-`x_i` recurrence, beta first-hit routing, or beta-anchored reversible
 square.
 
-The third-stage U-list is superseded by:
+After routing the U/V/W bridge layers, the current clean external bridge
+frontier is summarized in:
 
 ```text
-clean_external_bridge_fourth_stage_reduction_lemma.md
+clean_external_bridge_sixth_stage_reduction_lemma.md
 ```
 
-The current residuals are:
+Current residuals:
 
 ```text
-V1. same-row recurrence boundaries;
-V2. shared-edge divergence Beta_i=H_i;
-V3. clean same-input two-target bridge;
-V4. beta-anchored reversible square.
+X1. same-row recurrence boundaries;
+X2. shared-edge divergence Beta_i=H_i;
+X3. extra-source clean three-edge matching at generated A_j.
 ```
 
-Next target: compare V3 and V4 as two-row/two-target square boundaries.
+Next target: attack X3 and its three target-advanced edges.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

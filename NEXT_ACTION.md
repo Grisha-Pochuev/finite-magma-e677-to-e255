@@ -88,6 +88,13 @@ same_target_pair_collision_trichotomy_lemma.md
 beta_coupled_same_target_pair_advance_lemma.md
 same_input_lift_target_advance_lemma.md
 clean_external_bridge_fourth_stage_reduction_lemma.md
+beta_anchor_row_b_partner_reduction_lemma.md
+clean_external_bridge_fifth_stage_reduction_lemma.md
+generated_input_three_source_bridge_expansion_lemma.md
+row_b_generated_input_bridge_lemma.md
+row_b_successor_eventual_h_hit_lemma.md
+row_b_successor_h_hit_role_lemma.md
+clean_external_bridge_sixth_stage_reduction_lemma.md
 clean_ported_matching_predecessor_layer_boundary.md
 row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
@@ -131,20 +138,20 @@ H_i=A_i -> row-b fixed point boundary.
 Current exact residual split:
 
 ```text
-clean_external_bridge_fourth_stage_reduction_lemma.md
+clean_external_bridge_sixth_stage_reduction_lemma.md
 ```
 
-After routing G, beta-X, fresh beta extension, deeper beta-X hits, and clean
-same-target matchings, the current residuals are:
+After routing G, beta-X, fresh beta extension, clean same-target matchings,
+V4 beta anchors, and the base row-b/generated bridge, the current residuals
+are:
 
 ```text
-V1. same-row recurrence boundaries;
-V2. shared-edge divergence Beta_i=H_i;
-V3. clean same-input two-target bridge;
-V4. beta-anchored reversible square.
+X1. same-row recurrence boundaries;
+X2. shared-edge divergence Beta_i=H_i;
+X3. extra-source clean three-edge matching at generated A_j.
 ```
 
-Next target: compare V3 and V4 as two-row/two-target square boundaries.
+Next target: attack X3 and its three target-advanced edges.
 
 Use:
 
@@ -152,6 +159,13 @@ Use:
 same_input_lift_target_advance_lemma.md
 same_target_pair_collision_trichotomy_lemma.md
 beta_coupled_same_target_pair_advance_lemma.md
+beta_anchor_row_b_partner_reduction_lemma.md
+clean_external_bridge_fifth_stage_reduction_lemma.md
+generated_input_three_source_bridge_expansion_lemma.md
+row_b_generated_input_bridge_lemma.md
+row_b_successor_eventual_h_hit_lemma.md
+row_b_successor_h_hit_role_lemma.md
+clean_external_bridge_sixth_stage_reduction_lemma.md
 ```
 
 only as already-proved transports.  Do not route G, beta-X, fresh beta
