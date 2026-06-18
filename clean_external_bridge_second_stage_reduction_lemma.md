@@ -227,7 +227,14 @@ The next proof step should not re-route G from scratch.
 
 The useful target is now to attack the fresh beta-layer extension itself.
 
-The desired new lemma would say that a minimal clean beta extension cannot
-stay indefinitely disjoint from the visible crossed-fan footprint; it must
-produce either a watched-layer hit, an outgoing fan in some H-target, or a
-cross-role full ported interval collision.
+The fresh beta extension is now sharpened further:
+
+```text
+fresh_beta_extension_eventual_x_hit_lemma.md
+deep_beta_x_hit_reduction_lemma.md
+```
+
+It cannot stay indefinitely disjoint from the watched layers.  If no earlier
+watched hit occurs, it must hit a generated X vertex and that deeper X-hit
+routes to a watched hit, row-`x_i` recurrence, beta first-hit routing, or a
+beta-anchored reversible square.

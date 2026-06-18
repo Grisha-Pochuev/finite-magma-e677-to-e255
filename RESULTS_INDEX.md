@@ -38,6 +38,13 @@ right file without scanning old summaries.
 | `same_input_split_target_lift_lemma.md` | proved transport | Converts same-input split into a same-target pair in `H_z`; couples X/beta residuals. |
 | `clean_external_bridge_second_stage_reduction_lemma.md` | proved reduction | Replaces F/G/H by exact second-stage residuals R1-R5. |
 | `fresh_reversible_square_beta_anchor_lemma.md` | proved reduction | Shows fresh reversible squares are anchored at `Beta_j`, hence part of fresh beta extension. |
+| `beta_fresh_predecessor_zipper_ladder_lemma.md` | proved zipper tool | Expands a fresh beta predecessor chain into row-x_i chain plus side edges. |
+| `beta_fresh_extension_first_hit_boundary.md` | boundary | Splits fresh beta extension by watched hits, Z-chain repeats, and shifted-column repeats. |
+| `beta_zipper_shifted_repeat_split_lemma.md` | proved reduction | First shifted-column repeat before Z-repeat is a proper same-input split lifted to `H_T`. |
+| `beta_zipper_clean_cycle_boundary.md` | corrected boundary | Pure disjoint Z-cycle is superseded by eventual generated X-hit. |
+| `fresh_beta_extension_eventual_x_hit_lemma.md` | proved reduction | Fresh beta predecessor chain must eventually hit generated X-layer. |
+| `deep_beta_x_hit_reduction_lemma.md` | proved reduction | Any deeper beta zipper X-hit routes to recurrence, beta routing, or beta-anchored square. |
+| `clean_external_bridge_third_stage_reduction_lemma.md` | proved reduction | Removes fresh beta extension; leaves U1-U5 cross-role residuals. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 

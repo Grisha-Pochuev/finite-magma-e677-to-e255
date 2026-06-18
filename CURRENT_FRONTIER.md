@@ -260,6 +260,13 @@ x_layer_two_target_bridge_reduction_lemma.md
 same_input_split_target_lift_lemma.md
 clean_external_bridge_second_stage_reduction_lemma.md
 fresh_reversible_square_beta_anchor_lemma.md
+beta_fresh_predecessor_zipper_ladder_lemma.md
+beta_fresh_extension_first_hit_boundary.md
+beta_zipper_shifted_repeat_split_lemma.md
+beta_zipper_clean_cycle_boundary.md
+fresh_beta_extension_eventual_x_hit_lemma.md
+deep_beta_x_hit_reduction_lemma.md
+clean_external_bridge_third_stage_reduction_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -418,6 +425,86 @@ shows that every fresh square contains the beta interval:
 
 So, after beta first-hit routing, a fresh square is a structured subcase of a
 fresh beta-layer extension.
+
+The fresh beta-layer extension itself is now sharpened by:
+
+```text
+beta_fresh_predecessor_zipper_ladder_lemma.md
+beta_fresh_extension_first_hit_boundary.md
+```
+
+Use:
+
+```text
+Z_i^{-2}=x_{i+1}, Z_i^{-1}=b, Z_i^0=A_i, Z_i^1=Beta_i,
+Z_i^{m+1}=pred_{x_i}(Z_i^m)=Z_i^m*(Z_i^{m-1}*x_i).
+```
+
+Every step also forces the side edge:
+
+```text
+row Z_i^{m-1}: (Z_i^{m-2}*x_i) -> Z_i^m.
+```
+
+So the next exact target is not just the first repeat of `Z_i^m`; it is the
+comparison between the first repeat of `Z_i^m` and the first repeat of the
+shifted side columns:
+
+```text
+T_i^m=Z_i^{m-2}*x_i.
+```
+
+If the first shifted-column repeat happens before the first `Z` repeat, then:
+
+```text
+beta_zipper_shifted_repeat_split_lemma.md
+```
+
+turns it into a proper same-input split and lifts it to `H_T`.
+
+If instead the first event is the main `Z` repeat, then:
+
+```text
+fresh_beta_extension_eventual_x_hit_lemma.md
+```
+
+shows the beta chain cannot stay disjoint.  It must return through the known
+row-`x_i` segment and hit the generated X-layer, at worst `x_{i+1}`.
+
+The next exact target is therefore:
+
+```text
+route a deeper beta-X hit Z_i^m=x_j.
+```
+
+This route is recorded in:
+
+```text
+deep_beta_x_hit_reduction_lemma.md
+```
+
+So the fresh beta extension is no longer independent: it returns to watched
+hits, row-`x_i` recurrence, beta first-hit routing, or beta-anchored reversible
+square.
+
+This is summarized in:
+
+```text
+clean_external_bridge_third_stage_reduction_lemma.md
+```
+
+The updated exact residuals are:
+
+```text
+U1. same-row recurrence boundaries;
+U2. shared-edge divergence Beta_i=H_i;
+U3. beta-coupled same-target pair;
+U4. shifted-repeat same-input split lifted to H_T;
+U5. beta-anchored reversible square.
+```
+
+The next mathematical target is to compare U3/U4/U5 and force a ported
+interval collision or visible/core return.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

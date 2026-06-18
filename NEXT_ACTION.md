@@ -77,6 +77,13 @@ x_layer_two_target_bridge_reduction_lemma.md
 same_input_split_target_lift_lemma.md
 clean_external_bridge_second_stage_reduction_lemma.md
 fresh_reversible_square_beta_anchor_lemma.md
+beta_fresh_predecessor_zipper_ladder_lemma.md
+beta_fresh_extension_first_hit_boundary.md
+beta_zipper_shifted_repeat_split_lemma.md
+beta_zipper_clean_cycle_boundary.md
+fresh_beta_extension_eventual_x_hit_lemma.md
+deep_beta_x_hit_reduction_lemma.md
+clean_external_bridge_third_stage_reduction_lemma.md
 clean_ported_matching_predecessor_layer_boundary.md
 row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
@@ -120,15 +127,28 @@ H_i=A_i -> row-b fixed point boundary.
 Current exact residual split:
 
 ```text
-A-D: generated H_b fan/path or visible core attachment;
-E: row-b fixed point boundary;
-F/H: row-b independent cycle boundary;
-G: X-layer two-target bridge boundary.
+clean_external_bridge_third_stage_reduction_lemma.md
 ```
 
-Next target: attack the fresh beta-layer extension directly.  Fresh reversible
-squares are beta-anchored, so do not treat R4 as an independent tower and do
-not route G from scratch again.
+After routing G, beta-X, fresh beta extension, and deeper beta-X hits, the
+active residuals are:
+
+```text
+U1. same-row recurrence boundaries;
+U2. shared-edge divergence Beta_i=H_i;
+U3. beta-coupled same-target pair;
+U4. shifted-repeat same-input split lifted to H_T;
+U5. beta-anchored reversible square.
+```
+
+Current next target:
+
+```text
+compare U3/U4/U5 as cross-role configurations and look for a ported interval
+collision or return to the visible/core footprint.
+```
+
+Do not route G, beta-X, or fresh beta extension from scratch again.
 
 Additional beta-layer progress:
 
@@ -137,23 +157,6 @@ Beta_i=H_i -> shared-edge divergence of rows b and x_i at H_i -> A_i.
 Beta_i=A_j -> same-input split lifted into H_{A_j}: E_{i,j}->A_i and Beta_j->b.
 Beta_i=x_j -> reversible square: (A_i,x_j,b)<->(x_j,delta,A_i) and (b,A_j,x_{j+1})<->(A_j,Beta_j,b).
 alpha=A_j -> G same-input split couples to Beta_j in H_{A_j}.
-```
-
-Second-stage exact residuals:
-
-```text
-R1. same-row recurrence: row-b fixed point or row-b swap boundary;
-R2. row-b independent predecessor cycle with beta pressure at every A_i;
-R3. beta-coupled fresh same-target pair in H_{A_j};
-R4. fresh reversible two-target square from G or Beta_i=x_j;
-R5. genuinely fresh beta-layer extension in row x_i.
-```
-
-Compression:
-
-```text
-R4 is beta-anchored: every fresh reversible square contains (A_j,Beta_j,b).
-So after beta first-hit routing, R4 is a structured subcase of R5.
 ```
 
 ## Do Not Repeat
