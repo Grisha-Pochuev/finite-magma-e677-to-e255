@@ -1,0 +1,350 @@
+# Current Frontier: E677 -> E255
+
+Date: 2026-06-18.
+
+Read this file first at the start of a new run.  Do not start from
+`research_log.md`, `PROJECT_STATUS.md`, or old stop checkpoints unless a
+specific derivation needs auditing.
+
+## Problem
+
+For a finite magma satisfying:
+
+```text
+E677: x = y*(x*((y*x)*y))
+```
+
+prove:
+
+```text
+E255: x = ((x*x)*x)*x.
+```
+
+No associativity is assumed.
+
+## Standing Core Facts
+
+In every finite E677 magma, each left row:
+
+```text
+L_y(x)=y*x
+```
+
+is a permutation.  Thus left cancellation and row-predecessors are available.
+
+For a fixed target `b`, define:
+
+```text
+A_b(q)=the unique a with q*a=b,
+R_b(q)=q*b.
+```
+
+Row `q` gives an oriented edge in `H_b`:
+
+```text
+A_b(q) -> R_b(q)
+```
+
+and a full ported interval:
+
+```text
+(target,input,output) = (b,A_b(q),R_b(q)).
+```
+
+The full ported interval determines the source row.  Bridge pairs alone are
+too weak.  Use:
+
+```text
+ported_interval_state_lemma.md
+ported_interval_recurrence_boundary.md
+target_advance_row_orbit_lemma.md
+```
+
+## Bad Target Reduction
+
+If `b` is a bad E255 target, then:
+
+```text
+q*b != b
+```
+
+for every row `q`.  Therefore no edge of `H_b` uses `b` as output, and the
+usual bad-target core argument gives:
+
+```text
+bad target
+=> bicyclic component of H_b
+=> core junction
+=> triple fan or mixed 2+1 junction.
+```
+
+Reference files:
+
+```text
+bicyclic_component_branch_fan_lemma.md
+bad_target_core_fan_lemma.md
+bicyclic_core_junction_lemma.md
+```
+
+## Local Relay Reductions Already Proved
+
+The local branch-closure shapes are no longer independent terminal cases.
+They relay back to triple fan / mixed `2+1`, except for the global termination
+problem.
+
+Use:
+
+```text
+target_swap_fan_duality_lemma.md
+mixed_junction_target_swap_bridge_square.md
+first_merge_certificate_separation_lemma.md
+first_merge_target_swap_junction_dichotomy.md
+pure_incoming_merge_target_swap_fan_lemma.md
+binary_sink_core_escape_lemma.md
+earliest_side_attachment_mixed_junction_lemma.md
+side_attachment_orientation_reduction_lemma.md
+minority_core_return_relay_lemma.md
+strict_clean_theta_exclusion_lemma.md
+```
+
+Current global relay frontier:
+
+```text
+relay_termination_frontier.md
+minimal_relay_cycle_dichotomy_candidate.md
+```
+
+Important: strict clean theta is excluded.  The remaining issue is not local
+classification; it is recurrence/termination of the relay chain.
+
+## Warning: Avoid The Circular Witness Route
+
+Do not rely on the old directed two-edge right-fixer candidate:
+
+```text
+Y=(b*c)*(u*k)
+```
+
+Diagnostics show this candidate collapses to the canonical E255 term
+`((b*b)*b)` in known samples.  Proving `Y*b=b` after that is just the original
+target again.
+
+Reference:
+
+```text
+directed_two_edge_canonical_collapse_boundary.md
+```
+
+## Active Crossed-Fan Frontier
+
+For a bad target `b`, a figure-eight closure would create a crossed fan:
+
+```text
+p*a=b,  q*a=b,
+p*b=c,  q*b=d,
+
+r*b=a,  s*b=a,
+r*a=u,  s*a=v.
+```
+
+with:
+
+```text
+c*p=d*q=h=pred_b(a),
+u*r=v*s=k=pred_a(b),
+b*h=a,
+a*k=b.
+```
+
+The broad crossed-fan target is:
+
+```text
+bad_target_crossed_fan_boundary.md
+crossed_double_fan_pressure_candidate.md
+figure_eight_closure_crossed_fan_boundary.md
+```
+
+Do not restart from the broad statement unless needed.  The useful current
+object is the proper bad-target clean residual.
+
+## Routed Crossed-Fan Cases
+
+Already routed:
+
+```text
+crossed_fan_swap_row_degeneracy_lemma.md
+swap_row_target_advance_loop_lemma.md
+crossed_fan_cross_tip_hub_separation_lemma.md
+crossed_fan_equal_hub_side_incidence_lemma.md
+cross_tip_collision_target_advance_lemma.md
+proper_crossed_fan_target_swap_self_duality_lemma.md
+bad_target_crossed_fan_row_a_edge_lemma.md
+bad_target_no_predecessor_output_lemma.md
+bad_target_row_a_output_avoids_b_hub_lemma.md
+row_a_bridge_edge_attachment_cases.md
+row_a_bridge_loop_recurrence_boundary.md
+row_a_bridge_second_certificate_lemma.md
+row_a_second_bridge_visible_hit_cases.md
+clean_external_bridge_row_b_predecessor_fan_lemma.md
+clean_external_bridge_three_source_predecessor_fan_lemma.md
+clean_external_bridge_new_source_row_lemma.md
+```
+
+Important routed facts:
+
+```text
+h=k       -> cross tips are disjoint, plus row-a bridge edge;
+{c,d}∩{u,v} != empty -> target-advance relay;
+t=a*b=h   -> impossible for bad b;
+t=a*b=k   -> same-row recurrence loop;
+k or t hitting visible footprints -> routed attachment.
+```
+
+## Clean External-Bridge Residual
+
+After routing, the clean crossed-fan residual may assume:
+
+```text
+h!=k,
+{c,d} ∩ {u,v}=empty,
+t=a*b,
+k -> t is a real H_b edge,
+k,t not in {a,c,d,u,v},
+t not in {b,h,k}.
+```
+
+The second certificate gives:
+
+```text
+ell=t*a=pred_b(k),
+b*ell=k,
+ell!=h.
+```
+
+So row `b` contains a predecessor fan:
+
+```text
+b*h=a,
+b*ell=k,
+h!=ell,
+a!=k.
+```
+
+Active files:
+
+```text
+proper_crossed_fan_clean_external_bridge_boundary.md
+clean_external_bridge_predecessor_chain_candidate.md
+bad_target_right_b_orbit_predecessor_recursion_lemma.md
+right_b_orbit_local_repeat_roles.md
+right_b_orbit_second_successor_boundary.md
+right_b_orbit_first_repeat_boundary.md
+right_b_orbit_first_repeat_fan_lemma.md
+right_b_orbit_repeat_core_attachment_gap.md
+right_b_orbit_ported_transition_lemma.md
+```
+
+## Right-b Orbit Status
+
+Start:
+
+```text
+x_0=a,
+x_1=t=a*b,
+x_{i+1}=x_i*b,
+A_i=pred_{x_i}(b),
+x_i*A_i=b.
+```
+
+Each row `x_i` gives an `H_b` edge:
+
+```text
+A_i -> x_{i+1}.
+```
+
+But the right-`b` orbit itself is not an `H_b` path: the next edge starts at
+`A_{i+1}`, not at `x_{i+1}`.  This is the connector gap:
+
+```text
+right_b_orbit_repeat_core_attachment_gap.md
+```
+
+The stronger correct state is the ported interval:
+
+```text
+E_i=(b,A_i,x_{i+1})
+```
+
+and these states have a canonical transition because the output/source row
+advances:
+
+```text
+right_b_orbit_ported_transition_lemma.md
+```
+
+First repeat of the right-`b` orbit creates an incoming fan in `H_b`, but it
+is not yet proved to be attached to the original cyclic core.
+
+## Second-Successor Boundary
+
+For `t=a*b`, the following are routed:
+
+```text
+t*b=b                  -> impossible by badness of b;
+t*b=a                  -> t joins F(b,a), right-b two-cycle a->t->a;
+t*b=t                  -> right-b fixed orbit boundary;
+t*b in {c,d,u,v,h,k}   -> visible footprint / bridge-hub hit.
+```
+
+Depth-3 bounded closure in `tools/crossed_double_fan_saturation.js` did not
+turn `t*b=a`, `t*b=t`, `t*b=h`, or `t*b=k` into a short bad-target
+contradiction.  So do not waste a run expecting a one-step local hit to close
+the clean residual.
+
+The script now supports flags:
+
+```text
+tb=a, tb=b, tb=c, tb=d, tb=u, tb=v, tb=h, tb=k, tb=ab, tb=ta
+```
+
+where `tb=(a*b)*b`.
+
+## Exact Next Mathematical Target
+
+Prove the connector:
+
+```text
+A closed ported-transition cycle born from the clean external bridge must
+either:
+
+1. hit the visible crossed-fan/core footprint;
+2. produce a full ported interval collision in independent branch roles;
+3. become core-attached and hence return to ordinary branch relay;
+4. or reduce to the same-row/predecessor-chain recurrence boundary.
+```
+
+This is narrower and safer than saying “the right-b orbit repeat returns to
+branch relay”.  Fan regeneration is proved; core attachment is not yet proved.
+
+## Computation Rules For The Next Run
+
+Use computation only for targeted checks with clear interpretation.  The user
+approved assistant-run local checks up to 8 minutes when sharply bounded.
+
+Avoid:
+
+```text
+old size-8 crossed-fan broad timeouts;
+old invalid row-0 normalized diagnostics;
+searches that only ask "what happens".
+```
+
+Prefer:
+
+```text
+tools/crossed_double_fan_saturation.js
+tools/search_counterexample_strong.js raw* modes
+```
+
+only after formulating one precise connector hypothesis.
+

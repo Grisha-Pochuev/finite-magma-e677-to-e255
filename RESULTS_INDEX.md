@@ -1,0 +1,124 @@
+# Results Index
+
+Date: 2026-06-18.
+
+This is a compact navigation map, not a research log.  Use it to find the
+right file without scanning old summaries.
+
+## Start Here
+
+| File | Status | Use |
+|---|---|---|
+| `NEXT_ACTION.md` | active | First file to read at startup. |
+| `CURRENT_FRONTIER.md` | active compact frontier | Main current context after `NEXT_ACTION.md`. |
+| `AGENTS.md` | project rules | Workflow, computation limits, long-run mode, Git note. |
+
+## Current Active Frontier
+
+| File | Status | Use |
+|---|---|---|
+| `proper_crossed_fan_clean_external_bridge_boundary.md` | active residual | Clean bad-target crossed-fan residual. |
+| `right_b_orbit_repeat_core_attachment_gap.md` | active gap | Records why right-`b` orbit repeat is not automatically core-attached. |
+| `right_b_orbit_ported_transition_lemma.md` | proved connector in state space | Shows right-`b` orbit is a path in full ported-interval states. |
+| `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
+| `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
+
+## Core Bad-Target Reduction
+
+| File | Status | Use |
+|---|---|---|
+| `bicyclic_component_branch_fan_lemma.md` | proved | Bad target forces bicyclic component pressure. |
+| `bad_target_core_fan_lemma.md` | proved | Core gives triple fan or mixed `2+1`. |
+| `bicyclic_core_junction_lemma.md` | proved | Graph junction extraction. |
+| `right_fixer_to_balanced_witness_lemma.md` | proved | Right fixer gives E255 for the target. |
+
+## Full Interval And Relay State
+
+| File | Status | Use |
+|---|---|---|
+| `two_step_source_reconstruction_lemma.md` | proved | Same ordered two-step interval reconstructs source row. |
+| `ported_interval_state_lemma.md` | proved | Full `(target,input,output)` state determines source row. |
+| `ported_interval_recurrence_boundary.md` | boundary | Cross-role interval repeat contradicts; same-row repeat does not. |
+| `target_advance_row_orbit_lemma.md` | proved | Target advance for one row is a sliding row-orbit window. |
+
+## Local Relay Reductions
+
+| File | Status | Use |
+|---|---|---|
+| `target_swap_fan_duality_lemma.md` | proved | Target swap for fan orientation. |
+| `mixed_junction_target_swap_bridge_square.md` | proved | Mixed `2+1` target-swap bridge square. |
+| `first_merge_certificate_separation_lemma.md` | proved | Separates last certificates at first merge. |
+| `first_merge_target_swap_junction_dichotomy.md` | proved | First merge plus continuation relays to mixed/triple. |
+| `pure_incoming_merge_target_swap_fan_lemma.md` | proved | Pure incoming degree >= 3 relays to triple fan. |
+| `binary_sink_core_escape_lemma.md` | proved graph step | Binary sink forces side attachment in bicyclic core. |
+| `earliest_side_attachment_mixed_junction_lemma.md` | proved graph step | Internal side attachment gives mixed `2+1`. |
+| `side_attachment_orientation_reduction_lemma.md` | proved | Incoming side attachment already first-merge relay. |
+| `minority_core_return_relay_lemma.md` | proved graph step | Mixed theta minority edge must return to corridor. |
+| `strict_clean_theta_exclusion_lemma.md` | proved | Strict clean mixed theta impossible in core. |
+
+## Crossed-Fan Route
+
+| File | Status | Use |
+|---|---|---|
+| `bad_target_crossed_fan_boundary.md` | active subproblem | Bad-target crossed-fan overview and routed cases. |
+| `figure_eight_closure_crossed_fan_boundary.md` | reduction | Figure-eight closure becomes crossed fan or same-row recurrence. |
+| `crossed_double_fan_pressure_candidate.md` | candidate | Broad crossed double-fan pressure; not proved. |
+| `crossed_fan_swap_row_degeneracy_lemma.md` | proved | Swap-row crossed fan degenerates to same-row recurrence. |
+| `swap_row_target_advance_loop_lemma.md` | proved | Swap row gives two-state target-advance loop. |
+| `crossed_fan_cross_tip_hub_separation_lemma.md` | proved | Equal hubs imply cross-tip disjointness. |
+| `cross_tip_collision_target_advance_lemma.md` | proved routing | Cross-tip collision advances to common new target. |
+| `proper_crossed_fan_target_swap_self_duality_lemma.md` | proved | Proper crossed-fan skeleton is self-dual on `{a,b}`. |
+
+## Row-a Bridge Layer
+
+| File | Status | Use |
+|---|---|---|
+| `bad_target_crossed_fan_row_a_edge_lemma.md` | proved | Badness gives row-a edge `k -> t` in `H_b`. |
+| `bad_target_no_predecessor_output_lemma.md` | proved | For bad `b`, `x*b != pred_b(x)`. |
+| `bad_target_row_a_output_avoids_b_hub_lemma.md` | proved | Special case `a*b != h`. |
+| `row_a_bridge_edge_attachment_cases.md` | routed cases | Local hit classification for `k -> t`. |
+| `row_a_bridge_loop_recurrence_boundary.md` | boundary | `t=k` gives same-row recurrence. |
+| `row_a_bridge_second_certificate_lemma.md` | proved | `ell=t*a=pred_b(k)`, `b*ell=k`. |
+| `row_a_second_bridge_visible_hit_cases.md` | routed cases | Visible hits of `ell`. |
+| `clean_external_bridge_row_b_predecessor_fan_lemma.md` | proved | Row `b` has predecessor fan `h -> a`, `ell -> k`. |
+| `clean_external_bridge_three_source_predecessor_fan_lemma.md` | proved | Rows `p,q,a` form cross-source predecessor fan. |
+| `clean_external_bridge_new_source_row_lemma.md` | proved | Row `a` is new, not one of `p,q,r,s`. |
+
+## Right-b Orbit Layer
+
+| File | Status | Use |
+|---|---|---|
+| `bad_target_right_b_orbit_predecessor_recursion_lemma.md` | proved | Recursion for `x_{i+1}=x_i*b`, `A_i`, `H_i`. |
+| `right_b_orbit_local_repeat_roles.md` | proved roles | Classifies local equalities such as `A_i=x_{i+1}`. |
+| `first_right_b_successor_fan_attachment_lemma.md` | proved routing | Routes `ell=b` and `t*b=a`. |
+| `right_b_orbit_first_repeat_boundary.md` | boundary | First repeat form and routed hit list. |
+| `right_b_orbit_first_repeat_fan_lemma.md` | proved | Internal repeat creates incoming fan in `H_b`. |
+| `clean_external_bridge_returns_to_branch_relay_lemma.md` | corrected boundary | Fan-regeneration step; core attachment still missing. |
+
+## Global Termination
+
+| File | Status | Use |
+|---|---|---|
+| `relay_termination_frontier.md` | active global frontier | Recursive relay termination statement. |
+| `minimal_relay_cycle_dichotomy_candidate.md` | candidate | Minimal closed relay-cycle split. |
+| `corridor_side_attachment_shortening_lemma.md` | graph observation | Side attachment gives smaller old-corridor footprint. |
+| `branch_closure_no_free_tail_candidate.md` | older candidate | Use only for historical branch-closure context. |
+
+## Warnings And Retired Paths
+
+| File | Status | Use |
+|---|---|---|
+| `directed_two_edge_canonical_collapse_boundary.md` | warning | Do not use canonical two-edge witness as black-box stopper. |
+| `mixed_row_lift_sufficient_candidate.md` | rejected/too strong | Do not rely on it. |
+| `STOP_CHECKPOINT_2026-06-08.md` | historical | Old checkpoint, not current start. |
+| `STOP_CHECKPOINT_2026-06-09.md` | historical | Old checkpoint, not current start. |
+| `research_log.md` | historical log | Read only for exact provenance of a past step. |
+
+## Scripts
+
+| File | Status | Use |
+|---|---|---|
+| `tools/crossed_double_fan_saturation.js` | active diagnostic | Shallow closure checks for crossed-fan equalities; supports `tb=*` flags. |
+| `tools/search_counterexample_strong.js` | active search tool | Use raw modes only for precise bounded hypotheses. |
+| `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |
+
