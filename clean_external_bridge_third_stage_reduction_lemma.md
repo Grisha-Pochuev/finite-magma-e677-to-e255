@@ -165,3 +165,29 @@ is compared with another edge of the same target.  If such a pair has a common
 input, common output, full interval repeat, or input-output cross hit, it
 routes to a fan, source collision, or path concatenation.  Only a clean
 disjoint same-target matching remains.
+
+For U3 specifically, the clean-disjoint matching is further sharpened by:
+
+```text
+beta_coupled_same_target_pair_advance_lemma.md
+```
+
+Target advance returns it to:
+
+```text
+H_{A_i}: A_j -> b,
+H_b:     A_j -> x_{j+1}.
+```
+
+So U3 is a two-target bridge back to the generated matching, not a new
+independent target layer.
+
+For U4, the corresponding general transport is:
+
+```text
+same_input_lift_target_advance_lemma.md
+```
+
+It says that a clean lifted same-input pair in `H_T` target-advances back to a
+two-target bridge sharing the original input `T`.  Thus U4 also is not a free
+same-target matching.

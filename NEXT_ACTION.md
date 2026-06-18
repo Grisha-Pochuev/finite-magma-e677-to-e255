@@ -85,6 +85,9 @@ fresh_beta_extension_eventual_x_hit_lemma.md
 deep_beta_x_hit_reduction_lemma.md
 clean_external_bridge_third_stage_reduction_lemma.md
 same_target_pair_collision_trichotomy_lemma.md
+beta_coupled_same_target_pair_advance_lemma.md
+same_input_lift_target_advance_lemma.md
+clean_external_bridge_fourth_stage_reduction_lemma.md
 clean_ported_matching_predecessor_layer_boundary.md
 row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
@@ -128,40 +131,31 @@ H_i=A_i -> row-b fixed point boundary.
 Current exact residual split:
 
 ```text
-clean_external_bridge_third_stage_reduction_lemma.md
+clean_external_bridge_fourth_stage_reduction_lemma.md
 ```
 
-After routing G, beta-X, fresh beta extension, and deeper beta-X hits, the
-active residuals are:
+After routing G, beta-X, fresh beta extension, deeper beta-X hits, and clean
+same-target matchings, the current residuals are:
 
 ```text
-U1. same-row recurrence boundaries;
-U2. shared-edge divergence Beta_i=H_i;
-U3. beta-coupled same-target pair;
-U4. shifted-repeat same-input split lifted to H_T;
-U5. beta-anchored reversible square.
+V1. same-row recurrence boundaries;
+V2. shared-edge divergence Beta_i=H_i;
+V3. clean same-input two-target bridge;
+V4. beta-anchored reversible square.
 ```
 
-Current next target:
-
-```text
-compare U3/U4/U5 as cross-role configurations and look for a ported interval
-collision or return to the visible/core footprint.
-```
+Next target: compare V3 and V4 as two-row/two-target square boundaries.
 
 Use:
 
 ```text
+same_input_lift_target_advance_lemma.md
 same_target_pair_collision_trichotomy_lemma.md
+beta_coupled_same_target_pair_advance_lemma.md
 ```
 
-for same-target pairs inside U3/U4, and for U5 when its beta-anchored edge
-`Beta_j->b` is compared with another edge in `H_{A_j}`.  Common
-input/output/full interval or cross-hit routes to fan, source collision, or
-path concatenation.  The next residual is the clean disjoint same-target
-matching case.
-
-Do not route G, beta-X, or fresh beta extension from scratch again.
+only as already-proved transports.  Do not route G, beta-X, fresh beta
+extension, or clean same-target matching from scratch again.
 
 Additional beta-layer progress:
 

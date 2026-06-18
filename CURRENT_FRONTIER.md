@@ -268,6 +268,9 @@ fresh_beta_extension_eventual_x_hit_lemma.md
 deep_beta_x_hit_reduction_lemma.md
 clean_external_bridge_third_stage_reduction_lemma.md
 same_target_pair_collision_trichotomy_lemma.md
+beta_coupled_same_target_pair_advance_lemma.md
+same_input_lift_target_advance_lemma.md
+clean_external_bridge_fourth_stage_reduction_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -488,34 +491,22 @@ So the fresh beta extension is no longer independent: it returns to watched
 hits, row-`x_i` recurrence, beta first-hit routing, or beta-anchored reversible
 square.
 
-This is summarized in:
+The third-stage U-list is superseded by:
 
 ```text
-clean_external_bridge_third_stage_reduction_lemma.md
+clean_external_bridge_fourth_stage_reduction_lemma.md
 ```
 
-The updated exact residuals are:
+The current residuals are:
 
 ```text
-U1. same-row recurrence boundaries;
-U2. shared-edge divergence Beta_i=H_i;
-U3. beta-coupled same-target pair;
-U4. shifted-repeat same-input split lifted to H_T;
-U5. beta-anchored reversible square.
+V1. same-row recurrence boundaries;
+V2. shared-edge divergence Beta_i=H_i;
+V3. clean same-input two-target bridge;
+V4. beta-anchored reversible square.
 ```
 
-The next mathematical target is to compare U3/U4/U5 and force a ported
-interval collision or visible/core return.
-
-The shared local tool is:
-
-```text
-same_target_pair_collision_trichotomy_lemma.md
-```
-
-It routes common input/output/full interval/cross-hit in the same-target pairs
-inside U3/U4, and in U5 when the beta-anchored edge is compared with another
-edge in `H_{A_j}`.  The remaining case is clean disjoint same-target matching.
+Next target: compare V3 and V4 as two-row/two-target square boundaries.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:
