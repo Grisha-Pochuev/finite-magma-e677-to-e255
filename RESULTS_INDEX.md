@@ -31,6 +31,12 @@ right file without scanning old summaries.
 | `beta_layer_first_hit_boundary.md` | boundary | Splits `Beta_i` hits into H/A/X/visible/fresh cases. |
 | `beta_equals_h_shared_edge_divergence_lemma.md` | proved routing | `Beta_i=H_i` is shared-edge divergence for rows `b` and `x_i`. |
 | `beta_a_hit_same_input_split_boundary.md` | boundary correction | `Beta_i=A_j` is same-input two-target split, not common-edge fan. |
+| `beta_x_hit_target_bridge_boundary.md` | boundary | `Beta_i=x_j` becomes a target bridge with fresh `delta` split. |
+| `beta_x_bridge_pair_reversible_square_lemma.md` | proved reduction | Shows beta-X fresh target bridge is a reversible two-target square with `Beta_j`. |
+| `beta_layer_reduction_lemma.md` | proved reduction | Packages beta hits to shared-edge divergence, beta-coupled same-target pair, reversible square, visible hit, or fresh beta. |
+| `x_layer_two_target_bridge_reduction_lemma.md` | proved reduction | Routes G to hits, row-b swap, beta-coupled same-input lift, recurrence, or reversible square. |
+| `same_input_split_target_lift_lemma.md` | proved transport | Converts same-input split into a same-target pair in `H_z`; couples X/beta residuals. |
+| `clean_external_bridge_second_stage_reduction_lemma.md` | proved reduction | Replaces F/G/H by exact second-stage residuals R1-R5. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 

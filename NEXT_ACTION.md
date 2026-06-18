@@ -70,6 +70,12 @@ generated_input_cross_source_pressure_lemma.md
 beta_layer_first_hit_boundary.md
 beta_equals_h_shared_edge_divergence_lemma.md
 beta_a_hit_same_input_split_boundary.md
+beta_x_hit_target_bridge_boundary.md
+beta_x_bridge_pair_reversible_square_lemma.md
+beta_layer_reduction_lemma.md
+x_layer_two_target_bridge_reduction_lemma.md
+same_input_split_target_lift_lemma.md
+clean_external_bridge_second_stage_reduction_lemma.md
 clean_ported_matching_predecessor_layer_boundary.md
 row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
@@ -119,13 +125,26 @@ F/H: row-b independent cycle boundary;
 G: X-layer two-target bridge boundary.
 ```
 
-Next target: route G.
+Next target: compare the fresh reversible-square residuals with the fresh
+beta-layer extension residual.  Do not route G from scratch again.
 
 Additional beta-layer progress:
 
 ```text
 Beta_i=H_i -> shared-edge divergence of rows b and x_i at H_i -> A_i.
-Beta_i=A_j -> same-input two-target split, not common-edge fan.
+Beta_i=A_j -> same-input split lifted into H_{A_j}: E_{i,j}->A_i and Beta_j->b.
+Beta_i=x_j -> reversible square: (A_i,x_j,b)<->(x_j,delta,A_i) and (b,A_j,x_{j+1})<->(A_j,Beta_j,b).
+alpha=A_j -> G same-input split couples to Beta_j in H_{A_j}.
+```
+
+Second-stage exact residuals:
+
+```text
+R1. same-row recurrence: row-b fixed point or row-b swap boundary;
+R2. row-b independent predecessor cycle with beta pressure at every A_i;
+R3. beta-coupled fresh same-target pair in H_{A_j};
+R4. fresh reversible two-target square from G or Beta_i=x_j;
+R5. genuinely fresh beta-layer extension in row x_i.
 ```
 
 ## Do Not Repeat

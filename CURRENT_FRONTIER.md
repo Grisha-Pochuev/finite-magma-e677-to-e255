@@ -253,6 +253,12 @@ generated_input_cross_source_pressure_lemma.md
 beta_layer_first_hit_boundary.md
 beta_equals_h_shared_edge_divergence_lemma.md
 beta_a_hit_same_input_split_boundary.md
+beta_x_hit_target_bridge_boundary.md
+beta_x_bridge_pair_reversible_square_lemma.md
+beta_layer_reduction_lemma.md
+x_layer_two_target_bridge_reduction_lemma.md
+same_input_split_target_lift_lemma.md
+clean_external_bridge_second_stage_reduction_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -362,7 +368,7 @@ row_b_x_layer_hit_target_bridge_boundary.md
 clean_external_bridge_first_hit_reduction_lemma.md
 ```
 
-The clean external bridge first-hit reduction now leaves exact alternatives:
+The clean external bridge first-hit reduction left exact alternatives:
 
 ```text
 A-D: generated H_b fan/path or visible core attachment;
@@ -372,7 +378,30 @@ G: X-layer two-target bridge boundary;
 H: independent row-b predecessor cycle disjoint from the watched set.
 ```
 
-The next active target is to route G.
+The old active target was to route G.
+
+G has now been routed by:
+
+```text
+x_layer_two_target_bridge_reduction_lemma.md
+same_input_split_target_lift_lemma.md
+```
+
+The sharper second-stage split is:
+
+```text
+clean_external_bridge_second_stage_reduction_lemma.md
+```
+
+After visible/generated hits are routed, the remaining exact residuals are:
+
+```text
+R1. same-row recurrence: row-b fixed point or row-b swap boundary;
+R2. row-b independent predecessor cycle, now with beta pressure at every A_i;
+R3. beta-coupled fresh same-target pair in H_{A_j};
+R4. fresh reversible two-target square from G or Beta_i=x_j;
+R5. genuinely fresh beta-layer extension in row x_i.
+```
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:
@@ -413,6 +442,26 @@ row x_i: A_j -> A_i
 row x_j: A_j -> b
 ```
 
+and then lifted by:
+
+```text
+same_input_split_target_lift_lemma.md
+```
+
+to:
+
+```text
+H_{A_j}: E_{i,j}->A_i and Beta_j->b.
+```
+
+The `Beta_i=x_j` branch is routed by:
+
+```text
+beta_x_bridge_pair_reversible_square_lemma.md
+```
+
+to a reversible two-target square, not an unbounded target-swap tower.
+
 ## Second-Successor Boundary
 
 For `t=a*b`, the following are routed:
@@ -451,7 +500,8 @@ either:
 4. produce an A-repeat / X-repeat / A-X hit as classified above;
 5. or reduce to the clean two-layer matching residual and then classify the
    first nonfresh row-b predecessor-layer hit;
-6. route the X-layer two-target bridge boundary.
+6. compare the remaining fresh reversible squares with fresh beta-layer
+   extensions.
 ```
 
 This is narrower and safer than saying “the right-b orbit repeat returns to
@@ -460,7 +510,7 @@ branch relay”.  Fan regeneration is proved; core attachment is not yet proved.
 ## Computation Rules For The Next Run
 
 Use computation only for targeted checks with clear interpretation.  The user
-approved assistant-run local checks up to 8 minutes when sharply bounded.
+approved assistant-run local CPU checks up to 10 minutes when sharply bounded.
 
 Avoid:
 
