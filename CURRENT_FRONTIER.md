@@ -242,6 +242,17 @@ right_b_orbit_first_repeat_boundary.md
 right_b_orbit_first_repeat_fan_lemma.md
 right_b_orbit_repeat_core_attachment_gap.md
 right_b_orbit_ported_transition_lemma.md
+ported_cycle_hb_footprint_trichotomy_lemma.md
+clean_ported_matching_predecessor_layer_boundary.md
+row_b_predecessor_tower_dichotomy_boundary.md
+row_b_tower_first_hit_role_map.md
+row_b_a_layer_cycle_boundary.md
+row_b_x_layer_hit_target_bridge_boundary.md
+clean_external_bridge_first_hit_reduction_lemma.md
+generated_input_cross_source_pressure_lemma.md
+beta_layer_first_hit_boundary.md
+beta_equals_h_shared_edge_divergence_lemma.md
+beta_a_hit_same_input_split_boundary.md
 ```
 
 ## Right-b Orbit Status
@@ -285,6 +296,123 @@ right_b_orbit_ported_transition_lemma.md
 First repeat of the right-`b` orbit creates an incoming fan in `H_b`, but it
 is not yet proved to be attached to the original cyclic core.
 
+The generated `H_b` footprint now has a proved trichotomy:
+
+```text
+A_i=A_j          -> outgoing fan in H_b;
+x_{i+1}=x_{j+1}  -> incoming fan in H_b;
+A_i=x_{j+1}      -> actual H_b path concatenation.
+```
+
+Reference:
+
+```text
+ported_cycle_hb_footprint_trichotomy_lemma.md
+```
+
+If none of these routed/generated incidences occurs, the remaining footprint
+is a clean matching:
+
+```text
+A_i -> x_{i+1}
+```
+
+plus the row-`b` predecessor arrows:
+
+```text
+b*H_i=A_i.
+```
+
+This clean two-layer residual is recorded in:
+
+```text
+clean_ported_matching_predecessor_layer_boundary.md
+```
+
+It gives:
+
+```text
+H_i=H_j <=> A_i=A_j.
+```
+
+So once the `A_i` are pairwise distinct, the predecessor labels `H_i` are
+pairwise distinct too.  The next hit to classify is:
+
+```text
+H_i in X, H_i in A, H_i in visible footprint, or H_i=A_i.
+```
+
+The first-hit role map is:
+
+```text
+H_i=A_j       -> row-b tower cross-hit H_j -> A_j -> A_i;
+H_i=x_j       -> two-target bridge involving rows b and x_j;
+H_i visible   -> core attachment;
+H_i=A_i       -> row-b fixed point boundary;
+no hit        -> extend the row-b predecessor tower backward.
+```
+
+References:
+
+```text
+row_b_predecessor_tower_dichotomy_boundary.md
+row_b_tower_first_hit_role_map.md
+row_b_a_layer_cycle_boundary.md
+row_b_x_layer_hit_target_bridge_boundary.md
+clean_external_bridge_first_hit_reduction_lemma.md
+```
+
+The clean external bridge first-hit reduction now leaves exact alternatives:
+
+```text
+A-D: generated H_b fan/path or visible core attachment;
+E: row-b fixed point boundary;
+F: row-b A-layer cycle boundary;
+G: X-layer two-target bridge boundary;
+H: independent row-b predecessor cycle disjoint from the watched set.
+```
+
+The next active target is to route G.
+
+For independent row-b cycle boundaries, each generated input `A_i` also has
+cross-source pressure between rows `b` and `x_i`:
+
+```text
+generated_input_cross_source_pressure_lemma.md
+beta_layer_first_hit_boundary.md
+```
+
+The important equality branch is routed:
+
+```text
+Beta_i=H_i
+```
+
+becomes a shared-edge divergence of rows `b` and `x_i` at:
+
+```text
+H_i -> A_i.
+```
+
+Reference:
+
+```text
+beta_equals_h_shared_edge_divergence_lemma.md
+```
+
+The `Beta_i=A_j` branch is separated as:
+
+```text
+beta_a_hit_same_input_split_boundary.md
+```
+
+It is not a common-edge fan; it is a same-input split across targets:
+
+```text
+row x_i: A_j -> A_i
+row x_j: A_j -> b
+```
+
 ## Second-Successor Boundary
 
 For `t=a*b`, the following are routed:
@@ -320,7 +448,10 @@ either:
 1. hit the visible crossed-fan/core footprint;
 2. produce a full ported interval collision in independent branch roles;
 3. become core-attached and hence return to ordinary branch relay;
-4. or reduce to the same-row/predecessor-chain recurrence boundary.
+4. produce an A-repeat / X-repeat / A-X hit as classified above;
+5. or reduce to the clean two-layer matching residual and then classify the
+   first nonfresh row-b predecessor-layer hit;
+6. route the X-layer two-target bridge boundary.
 ```
 
 This is narrower and safer than saying “the right-b orbit repeat returns to
@@ -347,4 +478,3 @@ tools/search_counterexample_strong.js raw* modes
 ```
 
 only after formulating one precise connector hypothesis.
-

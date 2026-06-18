@@ -65,9 +65,67 @@ collision, become core-attached, or reduce to same-row recurrence.
 Start from:
 
 ```text
+clean_external_bridge_first_hit_reduction_lemma.md
+generated_input_cross_source_pressure_lemma.md
+beta_layer_first_hit_boundary.md
+beta_equals_h_shared_edge_divergence_lemma.md
+beta_a_hit_same_input_split_boundary.md
+clean_ported_matching_predecessor_layer_boundary.md
+row_b_predecessor_tower_dichotomy_boundary.md
+row_b_tower_first_hit_role_map.md
+ported_cycle_hb_footprint_trichotomy_lemma.md
 right_b_orbit_repeat_core_attachment_gap.md
 right_b_orbit_ported_transition_lemma.md
 proper_crossed_fan_clean_external_bridge_boundary.md
+```
+
+New split to use:
+
+```text
+A-repeat    -> outgoing fan in H_b;
+X-repeat    -> incoming fan in H_b;
+A-X hit     -> actual H_b path concatenation;
+no such hit -> clean two-layer matching residual.
+```
+
+In the clean residual, use:
+
+```text
+H_i --row b--> A_i --H_b edge/source x_i--> x_{i+1}.
+```
+
+Next split:
+
+```text
+H_i hits X, A, visible footprint, or H_i=A_i;
+otherwise the row-b predecessor layer extends backward.
+```
+
+First-hit role map:
+
+```text
+H_i=A_j -> row-b tower cross-hit H_j -> A_j -> A_i;
+H_i=x_j -> two-target bridge with rows b and x_j;
+H_i visible -> core attachment;
+H_i=A_i -> row-b fixed point boundary.
+```
+
+Current exact residual split:
+
+```text
+A-D: generated H_b fan/path or visible core attachment;
+E: row-b fixed point boundary;
+F/H: row-b independent cycle boundary;
+G: X-layer two-target bridge boundary.
+```
+
+Next target: route G.
+
+Additional beta-layer progress:
+
+```text
+Beta_i=H_i -> shared-edge divergence of rows b and x_i at H_i -> A_i.
+Beta_i=A_j -> same-input two-target split, not common-edge fan.
 ```
 
 ## Do Not Repeat
@@ -80,4 +138,3 @@ were checked and routed in:
 ```text
 right_b_orbit_second_successor_boundary.md
 ```
-

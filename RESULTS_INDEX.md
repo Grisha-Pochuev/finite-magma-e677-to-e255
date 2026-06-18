@@ -20,6 +20,17 @@ right file without scanning old summaries.
 | `proper_crossed_fan_clean_external_bridge_boundary.md` | active residual | Clean bad-target crossed-fan residual. |
 | `right_b_orbit_repeat_core_attachment_gap.md` | active gap | Records why right-`b` orbit repeat is not automatically core-attached. |
 | `right_b_orbit_ported_transition_lemma.md` | proved connector in state space | Shows right-`b` orbit is a path in full ported-interval states. |
+| `ported_cycle_hb_footprint_trichotomy_lemma.md` | proved connector criteria | Classifies A-repeat, X-repeat, and A-X hit inside generated `H_b` footprint. |
+| `clean_ported_matching_predecessor_layer_boundary.md` | proved normal form | Two-layer matching residual `H_i -> A_i -> x_{i+1}` and next hit types. |
+| `row_b_predecessor_tower_dichotomy_boundary.md` | proved finite dichotomy | Row-b predecessor tower first-hit vs independent row-b cycle. |
+| `row_b_tower_first_hit_role_map.md` | proved role map | Splits `H_i=A_j`, `H_i=x_j`, visible hit, fixed point, fresh extension. |
+| `row_b_a_layer_cycle_boundary.md` | proved boundary | A-layer-only hits close as row-b cycle on generated inputs. |
+| `row_b_x_layer_hit_target_bridge_boundary.md` | boundary | X-layer hit becomes a two-target bridge involving rows `b` and `x_j`. |
+| `clean_external_bridge_first_hit_reduction_lemma.md` | proved reduction | Combines footprint/tower hits into exact residual alternatives A-H. |
+| `generated_input_cross_source_pressure_lemma.md` | proved pressure tool | At each `A_i`, compares row `b` predecessor `H_i` with row `x_i` predecessor `Beta_i`. |
+| `beta_layer_first_hit_boundary.md` | boundary | Splits `Beta_i` hits into H/A/X/visible/fresh cases. |
+| `beta_equals_h_shared_edge_divergence_lemma.md` | proved routing | `Beta_i=H_i` is shared-edge divergence for rows `b` and `x_i`. |
+| `beta_a_hit_same_input_split_boundary.md` | boundary correction | `Beta_i=A_j` is same-input two-target split, not common-edge fan. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 
@@ -94,6 +105,9 @@ right file without scanning old summaries.
 | `right_b_orbit_first_repeat_boundary.md` | boundary | First repeat form and routed hit list. |
 | `right_b_orbit_first_repeat_fan_lemma.md` | proved | Internal repeat creates incoming fan in `H_b`. |
 | `clean_external_bridge_returns_to_branch_relay_lemma.md` | corrected boundary | Fan-regeneration step; core attachment still missing. |
+| `ported_cycle_hb_footprint_trichotomy_lemma.md` | proved | Converts ported-cycle equalities into actual `H_b` fan/path incidences. |
+| `clean_ported_matching_predecessor_layer_boundary.md` | proved | Sharp residual after no generated `H_b` incidence: row-b predecessor layer remains. |
+| `clean_external_bridge_first_hit_reduction_lemma.md` | proved | Current major reduction for clean external bridge; leaves exact residuals F/G/H. |
 
 ## Global Termination
 
@@ -121,4 +135,3 @@ right file without scanning old summaries.
 | `tools/crossed_double_fan_saturation.js` | active diagnostic | Shallow closure checks for crossed-fan equalities; supports `tb=*` flags. |
 | `tools/search_counterexample_strong.js` | active search tool | Use raw modes only for precise bounded hypotheses. |
 | `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |
-

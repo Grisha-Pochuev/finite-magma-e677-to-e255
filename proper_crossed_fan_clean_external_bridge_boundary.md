@@ -165,6 +165,9 @@ right_b_orbit_second_successor_boundary.md
 right_b_orbit_first_repeat_boundary.md
 right_b_orbit_first_repeat_fan_lemma.md
 right_b_orbit_repeat_core_attachment_gap.md
+right_b_orbit_ported_transition_lemma.md
+ported_cycle_hb_footprint_trichotomy_lemma.md
+clean_ported_matching_predecessor_layer_boundary.md
 clean_external_bridge_returns_to_branch_relay_lemma.md
 ```
 
@@ -307,6 +310,43 @@ at the first repeat of its right-`b` orbit.  The correction in
 orbit is not itself an `H_b` path, so the regenerated fan is not yet proved to
 lie in the original cyclic core component.  A core-attachment connector is
 still needed before this can be used as an ordinary No-Free-Tail branch relay.
+
+The generated `H_b` footprint is now split in:
+
+```text
+ported_cycle_hb_footprint_trichotomy_lemma.md
+```
+
+It gives the exact connector criteria:
+
+```text
+A-repeat -> outgoing fan;
+X-repeat -> incoming fan;
+A-X hit  -> actual H_b concatenation;
+none     -> clean matching residual.
+```
+
+The clean matching residual is sharpened in:
+
+```text
+clean_ported_matching_predecessor_layer_boundary.md
+```
+
+It leaves the two-layer structure:
+
+```text
+H_i --row b--> A_i --H_b edge/source x_i--> x_{i+1}.
+```
+
+The next split is the first nonfresh predecessor-layer hit:
+
+```text
+H_i in X,
+H_i in A,
+H_i in visible footprint,
+H_i=A_i,
+or fresh extension backward in row b.
+```
 
 Current candidate for the next step:
 

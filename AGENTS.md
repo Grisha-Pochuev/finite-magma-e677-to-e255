@@ -101,12 +101,21 @@ As of 2026-06-18, the user approved long research runs in this chat:
 - do not stop after the first solved subtask or first local lemma;
 - continue until a large mathematical milestone, a real blocker, or a clearly
   needed bounded computation is reached;
-- assistant-run targeted local checks may run up to 8 minutes when the
-  hypothesis is precise and the result has a clear interpretation;
+- assistant-run targeted local CPU checks may run up to 10 minutes when the
+  hypothesis is precise, the run is not blind brute force, and the result has
+  a clear interpretation;
 - keep interim summaries and status rewrites sparse, so they do not consume the
   session budget;
 - edit project files when it helps preserve reusable lemmas, scripts, or the
   next continuation point.
+
+User wording to preserve the intended mode:
+
+```text
+Делай один длинный заход: не останавливайся после первой леммы, продолжай до
+крупного рубежа. Можно делать целевые локальные проверки до 10 минут и
+сохранять промежуточные леммы в файлы.
+```
 
 Infrastructure note: Git for Windows is installed at
 `C:\Program Files\Git\cmd\git.exe`.  If plain `git` is not visible in the
