@@ -45,6 +45,7 @@ right file without scanning old summaries.
 | `fresh_beta_extension_eventual_x_hit_lemma.md` | proved reduction | Fresh beta predecessor chain must eventually hit generated X-layer. |
 | `deep_beta_x_hit_reduction_lemma.md` | proved reduction | Any deeper beta zipper X-hit routes to recurrence, beta routing, or beta-anchored square. |
 | `clean_external_bridge_third_stage_reduction_lemma.md` | proved reduction | Removes fresh beta extension; leaves U1-U5 cross-role residuals. |
+| `same_target_pair_collision_trichotomy_lemma.md` | proved connector | Classifies common input/output/full interval/cross-hit for two edges in one `H_T`. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 

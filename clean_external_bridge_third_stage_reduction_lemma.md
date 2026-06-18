@@ -147,3 +147,21 @@ beta-anchored reversible squares.
 
 The next useful lemma should compare U3/U4/U5 and look for a common ported
 interval collision or a return to the visible crossed-fan/core footprint.
+
+The common local collision tool is:
+
+```text
+same_target_pair_collision_trichotomy_lemma.md
+```
+
+It applies to the same-target pairs inside U3 and U4, and to U5 whenever its
+beta-anchored edge:
+
+```text
+Beta_j -> b in H_{A_j}
+```
+
+is compared with another edge of the same target.  If such a pair has a common
+input, common output, full interval repeat, or input-output cross hit, it
+routes to a fan, source collision, or path concatenation.  Only a clean
+disjoint same-target matching remains.

@@ -267,6 +267,7 @@ beta_zipper_clean_cycle_boundary.md
 fresh_beta_extension_eventual_x_hit_lemma.md
 deep_beta_x_hit_reduction_lemma.md
 clean_external_bridge_third_stage_reduction_lemma.md
+same_target_pair_collision_trichotomy_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -505,6 +506,16 @@ U5. beta-anchored reversible square.
 
 The next mathematical target is to compare U3/U4/U5 and force a ported
 interval collision or visible/core return.
+
+The shared local tool is:
+
+```text
+same_target_pair_collision_trichotomy_lemma.md
+```
+
+It routes common input/output/full interval/cross-hit in the same-target pairs
+inside U3/U4, and in U5 when the beta-anchored edge is compared with another
+edge in `H_{A_j}`.  The remaining case is clean disjoint same-target matching.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

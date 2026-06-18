@@ -84,6 +84,7 @@ beta_zipper_clean_cycle_boundary.md
 fresh_beta_extension_eventual_x_hit_lemma.md
 deep_beta_x_hit_reduction_lemma.md
 clean_external_bridge_third_stage_reduction_lemma.md
+same_target_pair_collision_trichotomy_lemma.md
 clean_ported_matching_predecessor_layer_boundary.md
 row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
@@ -147,6 +148,18 @@ Current next target:
 compare U3/U4/U5 as cross-role configurations and look for a ported interval
 collision or return to the visible/core footprint.
 ```
+
+Use:
+
+```text
+same_target_pair_collision_trichotomy_lemma.md
+```
+
+for same-target pairs inside U3/U4, and for U5 when its beta-anchored edge
+`Beta_j->b` is compared with another edge in `H_{A_j}`.  Common
+input/output/full interval or cross-hit routes to fan, source collision, or
+path concatenation.  The next residual is the clean disjoint same-target
+matching case.
 
 Do not route G, beta-X, or fresh beta extension from scratch again.
 
