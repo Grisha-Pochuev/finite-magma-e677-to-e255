@@ -170,6 +170,8 @@ row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
 rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
+rb5_start_return_a_cycle_beta_pair_boundary.md
+rb5_beta_necklace_reduction_candidate.md
 ```
 
 Form:
@@ -190,6 +192,18 @@ fresh recurrence unrelated to the clean external bridge reductions.
 An internal first repeat in the A-layer gives a smaller A-cycle footprint.
 Only the start-return minimal A-cycle remains as a genuine recurrence
 boundary.
+
+The start-return minimal A-cycle carries a cyclic necklace of lifted
+beta-anchor pairs:
+
+```text
+H_i -> next A,
+Beta_i -> b.
+```
+
+The current candidate is that this necklace folds into the already proved
+beta/Z3 reductions; the missing step is a finite first-hit coverage argument
+around the A-cycle.
 
 ### R-x. Row-x_i beta-chain recurrence
 

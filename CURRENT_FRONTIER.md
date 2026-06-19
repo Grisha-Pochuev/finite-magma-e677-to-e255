@@ -305,6 +305,8 @@ rb4_first_repeat_target_swap_relay_lemma.md
 rb4_internal_repeat_right_b_footprint_descent_lemma.md
 rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
+rb5_start_return_a_cycle_beta_pair_boundary.md
+rb5_beta_necklace_reduction_candidate.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
@@ -638,6 +640,16 @@ So the local footprint descent is identified.  The remaining work is the
 global minimality/descent step: start-return minimal cycles and regenerated
 relay objects must either shrink the global relay measure, hit the visible
 core, or repeat a full ported interval in an independent role.
+
+Current narrow subtarget:
+
+```text
+rb5_beta_necklace_reduction_candidate.md
+```
+
+The start-return R-b5 A-cycle carries a cyclic necklace of lifted beta-anchor
+pairs.  Prove that its first beta/X/Z hit is covered by existing beta/Z3
+reductions or by the global same-row recurrence inventory.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

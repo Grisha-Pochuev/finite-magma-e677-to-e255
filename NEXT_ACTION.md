@@ -198,6 +198,8 @@ rb4_first_repeat_target_swap_relay_lemma.md
 rb4_internal_repeat_right_b_footprint_descent_lemma.md
 rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
+rb5_start_return_a_cycle_beta_pair_boundary.md
+rb5_beta_necklace_reduction_candidate.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
@@ -215,6 +217,16 @@ have smaller A-layer footprint.  Next target: integrate these local footprint
 measures with the global minimal relay-cycle measure.  The remaining hard
 cases are start-return minimal cycles, visible core hit, or repeated full
 ported interval in an independent branch role.
+
+Current narrow subtarget:
+
+```text
+rb5_beta_necklace_reduction_candidate.md
+```
+
+Prove the finite first-hit coverage around a minimal R-b5 A-cycle: each lifted
+beta-anchor pair should route to existing beta/Z3 reductions, visible hit,
+independent full interval collision, or same-row recurrence.
 
 Use the global relay framing:
 
@@ -266,6 +278,8 @@ rb4_first_repeat_target_swap_relay_lemma.md
 rb4_internal_repeat_right_b_footprint_descent_lemma.md
 rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
+rb5_start_return_a_cycle_beta_pair_boundary.md
+rb5_beta_necklace_reduction_candidate.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 

@@ -83,7 +83,10 @@ right file without scanning old summaries.
 | `rb4_internal_repeat_right_b_footprint_descent_lemma.md` | proved conditional descent | Internal R-b4 repeat gives smaller right-b footprint; return to start is visible/original fan attachment. |
 | `rb5_a_layer_cycle_base_bridge_relay_lemma.md` | proved reduction | R-b5 A-layer cycle is a chain of base row-b/generated bridge A-hits. |
 | `rb5_a_layer_footprint_descent_boundary.md` | boundary | Internal R-b5 A-layer repeat gives smaller A-cycle footprint; start-return cycle remains. |
+| `rb5_start_return_a_cycle_beta_pair_boundary.md` | boundary | Exact lifted beta-pair necklace on the remaining start-return R-b5 A-cycle. |
+| `rb5_beta_necklace_reduction_candidate.md` | candidate | R-b5 beta necklace should fold into existing beta/Z3 reductions by first-hit coverage. |
 | `clean_external_bridge_eleventh_stage_reduction_lemma.md` | proved reduction | Removes R-b4/R-b5 as independent fresh recurrence cases; leaves minimal relay descent. |
+| `relay_minimality_measure_candidate.md` | candidate | Lexicographic global measure combining old corridor, right-b footprint, A-layer footprint, and relay period. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 
