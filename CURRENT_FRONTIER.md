@@ -278,6 +278,9 @@ row_b_generated_input_bridge_lemma.md
 row_b_successor_eventual_h_hit_lemma.md
 row_b_successor_h_hit_role_lemma.md
 clean_external_bridge_sixth_stage_reduction_lemma.md
+x3_three_edge_matching_advance_boundary.md
+x3_advanced_edge_triangle_pressure_lemma.md
+x3_self_renewal_boundary.md
 ```
 
 ## Right-b Orbit Status
@@ -514,6 +517,48 @@ X3. extra-source clean three-edge matching at generated A_j.
 ```
 
 Next target: attack X3 and its three target-advanced edges.
+
+Use:
+
+```text
+x3_three_edge_matching_advance_boundary.md
+```
+
+X3 target-advances to:
+
+```text
+H_S:     A_j -> p*S,
+H_b:     A_j -> x_{j+1},
+H_{D_j}: A_j -> b*D_j.
+```
+
+Next split: equality or watched-layer hit among `p*S`, `x_{j+1}`, `b*D_j`;
+otherwise the exact residual is a clean three-target same-input bridge.
+
+Then use:
+
+```text
+x3_advanced_edge_triangle_pressure_lemma.md
+```
+
+The three advanced edges force second-triangle edges back into target `A_j`,
+involving rows `S`, `b`, and `D_j`.  The row `b` edge is the already tracked
+`H_j -> D_j`.
+
+This self-renewal is recorded in:
+
+```text
+x3_self_renewal_boundary.md
+```
+
+If no hit/collision occurs, X3 creates a second coupled triangle layer:
+
+```text
+(p, x_j, b) -> triangle rows (S, b, D_j).
+```
+
+Next target: route collisions/hits involving rows `S` or `D_j`, or record the
+clean coupled triangle-layer residual.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:
