@@ -24,6 +24,7 @@ rb4_first_repeat_target_swap_relay_lemma.md
 rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb4_internal_repeat_right_b_footprint_descent_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
+rb5_beta_necklace_first_hit_reduction_lemma.md
 ```
 
 ## Tenth-Stage Residual
@@ -128,6 +129,23 @@ An internal first repeat in the A-layer gives a smaller A-layer footprint.
 Only the start-return closed A-cycle remains as a minimal R-b5 recurrence
 boundary.
 
+The start-return A-cycle is not fresh either.  It carries a cyclic necklace of
+lifted beta-anchor pairs:
+
+```text
+H_i -> next A,
+Beta_i -> b.
+```
+
+By:
+
+```text
+rb5_beta_necklace_first_hit_reduction_lemma.md
+```
+
+the first beta-necklace hit routes to existing beta/Z3 reductions, visible
+attachment, full-interval collision, or same-row recurrence.
+
 ## Eleventh-Stage Residual
 
 After removing the row-b recurrence subtypes R-b4/R-b5 as independent fresh
@@ -146,9 +164,10 @@ it hits the visible core or repeats a full ported interval in an independent
 branch role.
 ```
 
-The row-b part now has explicit local descent measures.  What remains is to
-integrate those measures with the global relay-cycle minimality.  This is the
-same obstruction as:
+The row-b part now has explicit local descent measures, and the start-return
+R-b5 beta necklace has no independent fresh residual.  What remains is to
+integrate the surviving same-row recurrence cases with the global relay-cycle
+minimality.  This is the same obstruction as:
 
 ```text
 minimal_relay_cycle_dichotomy_candidate.md

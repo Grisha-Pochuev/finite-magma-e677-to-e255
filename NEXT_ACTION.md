@@ -187,7 +187,8 @@ clean_external_bridge_tenth_stage_reduction_lemma.md
 y3_shell_saturation_diagnostic.md
 ```
 
-Next target: attack the unified same-row recurrence inventory.
+Next target: attack the remaining global same-row recurrence / minimal relay
+descent.
 
 Use:
 
@@ -200,6 +201,7 @@ rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
 rb5_start_return_a_cycle_beta_pair_boundary.md
 rb5_beta_necklace_reduction_candidate.md
+rb5_beta_necklace_first_hit_reduction_lemma.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
@@ -213,20 +215,24 @@ R-b4 is a first-merge target-swap relay.  R-b5 is a closed chain of base
 row-b/generated bridge A-hits.
 
 R-b4 internal repeats have smaller right-`b` footprint; R-b5 internal repeats
-have smaller A-layer footprint.  Next target: integrate these local footprint
-measures with the global minimal relay-cycle measure.  The remaining hard
-cases are start-return minimal cycles, visible core hit, or repeated full
-ported interval in an independent branch role.
+have smaller A-layer footprint; the R-b5 start-return beta necklace is routed.
+Next target: integrate these local footprint measures with the global minimal
+relay-cycle measure.  The remaining hard cases are visible core hit, repeated
+full ported interval in an independent branch role, or same-source recurrence
+outside the row-b R-b4/R-b5 subtypes.
 
-Current narrow subtarget:
+Latest narrow result:
 
 ```text
-rb5_beta_necklace_reduction_candidate.md
+rb5_beta_necklace_first_hit_reduction_lemma.md
 ```
 
-Prove the finite first-hit coverage around a minimal R-b5 A-cycle: each lifted
-beta-anchor pair should route to existing beta/Z3 reductions, visible hit,
-independent full interval collision, or same-row recurrence.
+The finite first-hit coverage around a minimal R-b5 A-cycle is routed to
+existing beta/Z3 reductions, visible hit, independent full interval collision,
+or same-row recurrence.
+
+Next target: return to the global minimal relay descent for the surviving
+same-row recurrence cases outside row-b R-b4/R-b5.
 
 Use the global relay framing:
 
@@ -280,6 +286,7 @@ rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
 rb5_start_return_a_cycle_beta_pair_boundary.md
 rb5_beta_necklace_reduction_candidate.md
+rb5_beta_necklace_first_hit_reduction_lemma.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 

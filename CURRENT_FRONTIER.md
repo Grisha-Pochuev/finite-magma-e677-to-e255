@@ -307,6 +307,7 @@ rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
 rb5_start_return_a_cycle_beta_pair_boundary.md
 rb5_beta_necklace_reduction_candidate.md
+rb5_beta_necklace_first_hit_reduction_lemma.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
@@ -641,15 +642,18 @@ global minimality/descent step: start-return minimal cycles and regenerated
 relay objects must either shrink the global relay measure, hit the visible
 core, or repeat a full ported interval in an independent role.
 
-Current narrow subtarget:
+Latest narrow result:
 
 ```text
-rb5_beta_necklace_reduction_candidate.md
+rb5_beta_necklace_first_hit_reduction_lemma.md
 ```
 
 The start-return R-b5 A-cycle carries a cyclic necklace of lifted beta-anchor
-pairs.  Prove that its first beta/X/Z hit is covered by existing beta/Z3
-reductions or by the global same-row recurrence inventory.
+pairs, and its first beta/X/Z hit is covered by existing beta/Z3 reductions or
+by the global same-row recurrence inventory.
+
+Next target: global minimal relay descent for the remaining same-row
+recurrence cases outside row-b R-b4/R-b5.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

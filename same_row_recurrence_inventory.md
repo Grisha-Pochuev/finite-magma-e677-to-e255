@@ -172,6 +172,7 @@ rb5_a_layer_cycle_base_bridge_relay_lemma.md
 rb5_a_layer_footprint_descent_boundary.md
 rb5_start_return_a_cycle_beta_pair_boundary.md
 rb5_beta_necklace_reduction_candidate.md
+rb5_beta_necklace_first_hit_reduction_lemma.md
 ```
 
 Form:
@@ -204,6 +205,16 @@ Beta_i -> b.
 The current candidate is that this necklace folds into the already proved
 beta/Z3 reductions; the missing step is a finite first-hit coverage argument
 around the A-cycle.
+
+Sharper status: the first-hit coverage is now recorded in:
+
+```text
+rb5_beta_necklace_first_hit_reduction_lemma.md
+```
+
+So the start-return R-b5 A-cycle has no independent fresh residual beyond
+visible hits, beta/Z3 routes, full-interval collisions, or same-row
+recurrence.
 
 ### R-x. Row-x_i beta-chain recurrence
 
