@@ -46,6 +46,7 @@ Reference:
 
 ```text
 row_a_bridge_loop_recurrence_boundary.md
+local_swap_fixed_recurrence_classification.md
 ```
 
 Form:
@@ -67,12 +68,16 @@ Ported recurrence:
 (b,k,k) -> (k,b,b) -> (b,k,k).
 ```
 
+Sharper status: R-a is a visible target-swap loop because `k` is part of the
+original crossed-fan data.
+
 ### R-b1. Generated row swap in H_b
 
 Reference:
 
 ```text
 right_b_orbit_local_repeat_roles.md
+local_swap_fixed_recurrence_classification.md
 ```
 
 Form:
@@ -93,12 +98,16 @@ The `H_b` edge is a loop:
 x_{i+1} -> x_{i+1}.
 ```
 
+Sharper status: R-b1 is a generated target-swap loop at the X-layer vertex
+`x_{i+1}`.
+
 ### R-b2. Right-b fixed orbit point
 
 Reference:
 
 ```text
 right_b_orbit_local_repeat_roles.md
+local_swap_fixed_recurrence_classification.md
 ```
 
 Form:
@@ -111,12 +120,22 @@ x_i!=b.
 This is a closed right-`b` orbit boundary, not a right fixer for the target
 `b`.
 
+Sharper status: R-b2 gives an A-X hit in the generated `H_b` footprint:
+
+```text
+A_i -> x_i.
+```
+
+It is routed by the generated footprint trichotomy, not by a fresh recurrence
+branch.
+
 ### R-b3. Row-b fixed point
 
 Reference:
 
 ```text
 right_b_orbit_local_repeat_roles.md
+local_swap_fixed_recurrence_classification.md
 ```
 
 Form:
@@ -127,6 +146,17 @@ b*A_i=A_i.
 ```
 
 This is a row-`b` fixed point at `A_i`, again not a right fixer for `b`.
+
+Sharper status: R-b3 is the fixed-point branch of the unavoidable
+row-b/generated bridge at `A_i`:
+
+```text
+row b:   A_i -> A_i,
+row x_i: A_i -> b.
+```
+
+It is one-sided because `bad_target_no_predecessor_output_lemma.md` gives
+`A_i*b != A_i`.
 
 ### R-b4. Closed right-b cycle
 
@@ -296,8 +326,8 @@ is the global minimality/descent step: prove that the relayed fan or A-hit
 chain is visible-attached, smaller in the global relay measure, or repeats a
 full ported interval in an independent role.
 
-After the R-b, R-x, and R-Z updates, the only local recurrence forms not yet
-sharpened in this inventory are:
+After the R-b, R-x, R-Z, and local swap/fixed updates, no listed recurrence
+type remains as an independent fresh local branch.
 
 ```text
 R-a  row-a bridge swap,
@@ -306,6 +336,12 @@ R-b2 right-b fixed orbit point,
 R-b3 row-b fixed point.
 ```
 
-These are small local swap/fixed cases.  The next useful step is to decide
-whether each is visible-attached, a target-swap relay loop, or a right-fixer
-candidate.
+These are small local swap/fixed cases and are classified by:
+
+```text
+local_swap_fixed_recurrence_classification.md
+```
+
+The remaining obstruction is global: target-swap loops and same-source
+recurrences must be handled by the minimal relay-cycle measure or by an
+independent full ported-interval collision.

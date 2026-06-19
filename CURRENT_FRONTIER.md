@@ -310,7 +310,9 @@ rb5_beta_necklace_reduction_candidate.md
 rb5_beta_necklace_first_hit_reduction_lemma.md
 rx_beta_chain_recurrence_absorption_lemma.md
 rz_source_ladder_recurrence_absorption_lemma.md
+local_swap_fixed_recurrence_classification.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
+clean_external_bridge_twelfth_stage_reduction_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -535,13 +537,13 @@ After routing the U/V/W/X/Y/Z bridge layers, the current clean external bridge
 frontier is summarized in:
 
 ```text
-clean_external_bridge_eleventh_stage_reduction_lemma.md
+clean_external_bridge_twelfth_stage_reduction_lemma.md
 ```
 
 Current residuals:
 
 ```text
-E11. global same-row recurrence / minimal relay descent.
+G12. global minimal relay-cycle descent.
 ```
 
 Removed:
@@ -657,20 +659,41 @@ by the global same-row recurrence inventory.
 Next target: global minimal relay descent for the remaining same-row
 recurrence cases outside row-b R-b4/R-b5.
 
-R-x and R-Z are now absorbed by:
+R-x and R-Z are absorbed by:
 
 ```text
 rx_beta_chain_recurrence_absorption_lemma.md
 rz_source_ladder_recurrence_absorption_lemma.md
 ```
 
-The next local recurrence target is:
+The small local swap/fixed cases:
 
 ```text
 R-a, R-b1, R-b2, R-b3
 ```
 
-the small swap/fixed cases.
+are classified by:
+
+```text
+local_swap_fixed_recurrence_classification.md
+```
+
+So the local recurrence inventory has no independent fresh branch left.  The
+remaining target is the global minimal relay-cycle descent.
+
+The clean external bridge case tree is now exhausted locally:
+
+```text
+clean_external_bridge_twelfth_stage_reduction_lemma.md
+```
+
+Continue with:
+
+```text
+relay_minimality_measure_candidate.md
+minimal_relay_cycle_dichotomy_candidate.md
+relay_termination_frontier.md
+```
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

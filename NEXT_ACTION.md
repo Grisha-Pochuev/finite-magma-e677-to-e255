@@ -143,17 +143,18 @@ H_i=A_i -> row-b fixed point boundary.
 Current exact residual split:
 
 ```text
-clean_external_bridge_eleventh_stage_reduction_lemma.md
+clean_external_bridge_twelfth_stage_reduction_lemma.md
 ```
 
 After routing G, beta-X, fresh beta extension, clean same-target matchings,
 V4 beta anchors, base row-b/generated bridge, and X3 target-advance layers,
 then removing the Y2 shared-edge branch and routing the Z3 paired source
 ladder to its first finite merge/repeat, then routing R-b4/R-b5 row-b
-recurrence to standard relay forms, the current residual is:
+recurrence to standard relay forms and exhausting the local recurrence
+inventory, the current residual is:
 
 ```text
-E11. global same-row recurrence / minimal relay descent.
+G12. global minimal relay-cycle descent.
 ```
 
 The old Y2 branch:
@@ -204,7 +205,9 @@ rb5_beta_necklace_reduction_candidate.md
 rb5_beta_necklace_first_hit_reduction_lemma.md
 rx_beta_chain_recurrence_absorption_lemma.md
 rz_source_ladder_recurrence_absorption_lemma.md
+local_swap_fixed_recurrence_classification.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
+clean_external_bridge_twelfth_stage_reduction_lemma.md
 ```
 
 The row-b target has been sharpened:
@@ -236,15 +239,26 @@ or same-row recurrence.
 Next target: return to the global minimal relay descent for the surviving
 same-row recurrence cases outside row-b R-b4/R-b5.
 
-After R-x and R-Z are absorbed, the next local target is the small swap/fixed
-list:
+After R-x and R-Z are absorbed, the small swap/fixed list is classified by:
 
 ```text
-R-a, R-b1, R-b2, R-b3.
+local_swap_fixed_recurrence_classification.md
 ```
 
-Decide whether each is visible-attached, a target-swap relay loop, or a
-right-fixer candidate.
+The local recurrence inventory now has no independent fresh branch.  The
+remaining target is purely global: prove the minimal relay-cycle descent or
+force an independent full ported-interval collision/right fixer.
+
+Current exact target:
+
+```text
+relay_minimality_measure_candidate.md
+minimal_relay_cycle_dichotomy_candidate.md
+relay_termination_frontier.md
+```
+
+Prove the global admissibility/descent sentence for regenerated relay objects
+under the lexicographic measure M0-M4.
 
 Use the global relay framing:
 
@@ -301,7 +315,9 @@ rb5_beta_necklace_reduction_candidate.md
 rb5_beta_necklace_first_hit_reduction_lemma.md
 rx_beta_chain_recurrence_absorption_lemma.md
 rz_source_ladder_recurrence_absorption_lemma.md
+local_swap_fixed_recurrence_classification.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
+clean_external_bridge_twelfth_stage_reduction_lemma.md
 ```
 
 only as already-proved transports.  Do not route G, beta-X, fresh beta
