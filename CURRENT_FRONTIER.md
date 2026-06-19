@@ -301,6 +301,11 @@ z3_paired_source_ladder_eventual_merge_lemma.md
 clean_external_bridge_tenth_stage_reduction_lemma.md
 same_row_recurrence_inventory.md
 clean_external_bridge_to_relay_recurrence_frontier.md
+rb4_first_repeat_target_swap_relay_lemma.md
+rb4_internal_repeat_right_b_footprint_descent_lemma.md
+rb5_a_layer_cycle_base_bridge_relay_lemma.md
+rb5_a_layer_footprint_descent_boundary.md
+clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -525,13 +530,13 @@ After routing the U/V/W/X/Y/Z bridge layers, the current clean external bridge
 frontier is summarized in:
 
 ```text
-clean_external_bridge_tenth_stage_reduction_lemma.md
+clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
 Current residuals:
 
 ```text
-T1. same-row recurrence boundaries.
+E11. global same-row recurrence / minimal relay descent.
 ```
 
 Removed:
@@ -619,6 +624,20 @@ The next target is a minimality/descent statement for `R-b4/R-b5` row-b
 recurrence: a regenerated fan must have a smaller old-corridor footprint,
 unless it hits the visible core or repeats a full ported interval in an
 independent branch role.
+
+R-b4 and R-b5 are now locally reduced:
+
+```text
+rb4_first_repeat_target_swap_relay_lemma.md
+rb4_internal_repeat_right_b_footprint_descent_lemma.md
+rb5_a_layer_cycle_base_bridge_relay_lemma.md
+rb5_a_layer_footprint_descent_boundary.md
+```
+
+So the local footprint descent is identified.  The remaining work is the
+global minimality/descent step: start-return minimal cycles and regenerated
+relay objects must either shrink the global relay measure, hit the visible
+core, or repeat a full ported interval in an independent role.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

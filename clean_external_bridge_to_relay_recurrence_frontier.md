@@ -81,6 +81,30 @@ is disjoint from the old visible footprint, the clean external bridge
 reductions apply again.  If it is not disjoint, it is a core/visible
 attachment.
 
+This is sharpened in:
+
+```text
+rb4_first_repeat_target_swap_relay_lemma.md
+rb4_internal_repeat_right_b_footprint_descent_lemma.md
+```
+
+The repeated right-`b` vertex has an automatic outgoing continuation, so R-b4
+is a first-merge target-swap relay to a mixed `2+1` junction or outgoing
+triple fan.  If the repeat is internal, it also has a strictly smaller
+right-`b` footprint; if it returns to `x_0=a`, it is a visible/original fan
+attachment.
+
+The row-b A-layer cycle case R-b5 is sharpened in:
+
+```text
+rb5_a_layer_cycle_base_bridge_relay_lemma.md
+rb5_a_layer_footprint_descent_boundary.md
+```
+
+Every A-layer cycle edge is a base row-b/generated bridge whose row-`b` output
+hits the generated A-layer.  Internal A-layer repeats give smaller A-cycle
+footprints; only start-return minimal A-cycles remain.
+
 ## Why This Is Not Yet A Proof
 
 This still requires a minimality or descent argument.
@@ -113,11 +137,11 @@ and prove the descent statement for row-b recurrence:
 
 ```text
 In a minimal clean external-bridge relay loop, an R-b4/R-b5 row-b recurrence
-regenerates a fan whose old-corridor footprint is strictly smaller, unless it
-repeats a full ported interval in an independent branch role or hits the
-visible core.
+regenerates a standard relay junction or base-bridge A-hit chain whose
+local footprint is strictly smaller, unless it is a start-return minimal
+cycle, repeats a full ported interval in an independent branch role, or hits
+the visible core.
 ```
 
 This would merge the clean external bridge route into the global
 No-Free-Tail proof rather than leaving it as a separate case tree.
-

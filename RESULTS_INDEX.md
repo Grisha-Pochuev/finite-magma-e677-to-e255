@@ -79,6 +79,11 @@ right file without scanning old summaries.
 | `clean_external_bridge_tenth_stage_reduction_lemma.md` | proved reduction | Reduces paired Z3 shell to collision routes or same-row recurrence. |
 | `same_row_recurrence_inventory.md` | active inventory | Collects remaining recurrence boundaries after the clean bridge reductions. |
 | `clean_external_bridge_to_relay_recurrence_frontier.md` | active frontier alignment | Connects clean external bridge T1 to the global minimal relay recurrence gap. |
+| `rb4_first_repeat_target_swap_relay_lemma.md` | proved reduction | R-b4 right-b first repeat relays by first-merge target swap. |
+| `rb4_internal_repeat_right_b_footprint_descent_lemma.md` | proved conditional descent | Internal R-b4 repeat gives smaller right-b footprint; return to start is visible/original fan attachment. |
+| `rb5_a_layer_cycle_base_bridge_relay_lemma.md` | proved reduction | R-b5 A-layer cycle is a chain of base row-b/generated bridge A-hits. |
+| `rb5_a_layer_footprint_descent_boundary.md` | boundary | Internal R-b5 A-layer repeat gives smaller A-cycle footprint; start-return cycle remains. |
+| `clean_external_bridge_eleventh_stage_reduction_lemma.md` | proved reduction | Removes R-b4/R-b5 as independent fresh recurrence cases; leaves minimal relay descent. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 

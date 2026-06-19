@@ -143,16 +143,17 @@ H_i=A_i -> row-b fixed point boundary.
 Current exact residual split:
 
 ```text
-clean_external_bridge_tenth_stage_reduction_lemma.md
+clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
 After routing G, beta-X, fresh beta extension, clean same-target matchings,
 V4 beta anchors, base row-b/generated bridge, and X3 target-advance layers,
 then removing the Y2 shared-edge branch and routing the Z3 paired source
-ladder to its first finite merge/repeat, the current residual is:
+ladder to its first finite merge/repeat, then routing R-b4/R-b5 row-b
+recurrence to standard relay forms, the current residual is:
 
 ```text
-T1. same-row recurrence boundaries.
+E11. global same-row recurrence / minimal relay descent.
 ```
 
 The old Y2 branch:
@@ -193,18 +194,27 @@ Use:
 ```text
 same_row_recurrence_inventory.md
 clean_external_bridge_to_relay_recurrence_frontier.md
+rb4_first_repeat_target_swap_relay_lemma.md
+rb4_internal_repeat_right_b_footprint_descent_lemma.md
+rb5_a_layer_cycle_base_bridge_relay_lemma.md
+rb5_a_layer_footprint_descent_boundary.md
+clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
-The most promising first target is:
+The row-b target has been sharpened:
 
 ```text
 R-b4/R-b5: closed right-b and row-b A/predecessor cycles.
 ```
 
-Try to show that these row-b recurrences attach to the visible crossed-fan
-predecessor fan, repeat a full ported interval in an independent role, or
-regenerate a smaller clean external bridge already covered by the tenth-stage
-reduction.
+R-b4 is a first-merge target-swap relay.  R-b5 is a closed chain of base
+row-b/generated bridge A-hits.
+
+R-b4 internal repeats have smaller right-`b` footprint; R-b5 internal repeats
+have smaller A-layer footprint.  Next target: integrate these local footprint
+measures with the global minimal relay-cycle measure.  The remaining hard
+cases are start-return minimal cycles, visible core hit, or repeated full
+ported interval in an independent branch role.
 
 Use the global relay framing:
 
@@ -252,6 +262,11 @@ clean_external_bridge_eighth_stage_reduction_lemma.md
 clean_external_bridge_tenth_stage_reduction_lemma.md
 same_row_recurrence_inventory.md
 clean_external_bridge_to_relay_recurrence_frontier.md
+rb4_first_repeat_target_swap_relay_lemma.md
+rb4_internal_repeat_right_b_footprint_descent_lemma.md
+rb5_a_layer_cycle_base_bridge_relay_lemma.md
+rb5_a_layer_footprint_descent_boundary.md
+clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
 only as already-proved transports.  Do not route G, beta-X, fresh beta

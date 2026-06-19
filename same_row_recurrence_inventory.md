@@ -135,6 +135,8 @@ Reference:
 ```text
 right_b_orbit_first_repeat_boundary.md
 right_b_orbit_first_repeat_fan_lemma.md
+rb4_first_repeat_target_swap_relay_lemma.md
+rb4_internal_repeat_right_b_footprint_descent_lemma.md
 ```
 
 Form:
@@ -149,6 +151,15 @@ This creates an incoming fan in `H_b` at the first repeated vertex, so it is
 not neutral.  The remaining gap is to attach that fan back to the visible core
 or to another independent branch role.
 
+Sharper status: the repeated vertex has an automatic outgoing continuation
+because `A_i=pred_{x_i}(b)` gives `x_i -> A_i*b` in `H_b`.  Thus R-b4 is a
+first-merge target-swap relay: after swapping target from `b` to the repeated
+vertex, it becomes a mixed `2+1` junction or an outgoing triple fan.
+
+If the repeat is internal (`i>0`), the closed right-`b` cycle has strictly
+smaller footprint than the old right-`b` segment up to first repeat.  If it
+returns to `x_0=a`, it is a visible/original fan attachment.
+
 ### R-b5. Row-b A-layer/predecessor cycle
 
 References:
@@ -157,6 +168,8 @@ References:
 row_b_a_layer_cycle_boundary.md
 row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
+rb5_a_layer_cycle_base_bridge_relay_lemma.md
+rb5_a_layer_footprint_descent_boundary.md
 ```
 
 Form:
@@ -168,6 +181,15 @@ H_i -> A_i
 continues through a row-`b` predecessor or successor cycle without a watched
 hit.  Later beta and Z3 pressure reduce the independent fresh cases, but a
 pure row-`b` same-row recurrence remains a boundary.
+
+Sharper status: every A-layer cycle edge `b*A_j=A_i` is the unavoidable base
+row-b/generated bridge at `A_j`, with row-`b` output `D_j=A_i` hitting the
+generated A-layer.  So R-b5 is a closed chain of base-bridge A-hits, not a
+fresh recurrence unrelated to the clean external bridge reductions.
+
+An internal first repeat in the A-layer gives a smaller A-cycle footprint.
+Only the start-return minimal A-cycle remains as a genuine recurrence
+boundary.
 
 ### R-x. Row-x_i beta-chain recurrence
 
@@ -225,7 +247,7 @@ Show that every same-row recurrence above either:
 4. or forces a right fixer/E255 witness for the bad target.
 ```
 
-The most promising first target is `R-b4/R-b5`: row-b cycles are shared by the
+The first target `R-b4/R-b5` has now been sharpened: row-b cycles are shared by the
 original clean external bridge and by the Z3 generated side:
 
 ```text
@@ -233,6 +255,9 @@ x_j -> b -> D_j -> ...
 H_j -> A_j -> D_j -> ...
 ```
 
-If those cycles cannot stay independent, the Z3 recurrence boundary folds
-back into the original row-b predecessor fan.
-
+R-b4 relays by target swap at the first repeated right-`b` vertex.  R-b5 is a
+closed chain of base-bridge A-layer hits.  Both have explicit local footprint
+descent except for the start-return minimal cycle cases.  The remaining task
+is the global minimality/descent step: prove that the relayed fan or A-hit
+chain is visible-attached, smaller in the global relay measure, or repeats a
+full ported interval in an independent role.
