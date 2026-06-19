@@ -138,3 +138,18 @@ The next useful split is:
 2. a return to the row-b A-layer cycle through H_j -> A_j -> D_j;
 3. or a clean coupled triangle-layer residual.
 ```
+
+The forward-return mechanism for the extra source row is recorded in:
+
+```text
+source_successor_eventual_predecessor_hit_lemma.md
+```
+
+Applied to:
+
+```text
+p*P=A_j,
+p*A_j=S,
+```
+
+it says that the row-`p` successor chain from `A_j` eventually hits `P`.

@@ -98,6 +98,8 @@ clean_external_bridge_sixth_stage_reduction_lemma.md
 x3_three_edge_matching_advance_boundary.md
 x3_advanced_edge_triangle_pressure_lemma.md
 x3_self_renewal_boundary.md
+source_successor_eventual_predecessor_hit_lemma.md
+clean_external_bridge_seventh_stage_reduction_lemma.md
 clean_ported_matching_predecessor_layer_boundary.md
 row_b_predecessor_tower_dichotomy_boundary.md
 row_b_tower_first_hit_role_map.md
@@ -141,62 +143,21 @@ H_i=A_i -> row-b fixed point boundary.
 Current exact residual split:
 
 ```text
-clean_external_bridge_sixth_stage_reduction_lemma.md
+clean_external_bridge_seventh_stage_reduction_lemma.md
 ```
 
 After routing G, beta-X, fresh beta extension, clean same-target matchings,
-V4 beta anchors, and the base row-b/generated bridge, the current residuals
-are:
+V4 beta anchors, base row-b/generated bridge, and X3 target-advance layers,
+the current residuals are:
 
 ```text
-X1. same-row recurrence boundaries;
-X2. shared-edge divergence Beta_i=H_i;
-X3. extra-source clean three-edge matching at generated A_j.
+Y1. same-row recurrence boundaries;
+Y2. shared-edge divergence Beta_i=H_i;
+Y3. clean three-row cycle comparison at generated A_j.
 ```
 
-Next target: attack X3 and its three target-advanced edges.
-
-Use:
-
-```text
-x3_three_edge_matching_advance_boundary.md
-```
-
-X3 target-advances to:
-
-```text
-H_S:     A_j -> p*S,
-H_b:     A_j -> x_{j+1},
-H_{D_j}: A_j -> b*D_j.
-```
-
-Next split: equality or watched-layer hit among `p*S`, `x_{j+1}`, `b*D_j`;
-otherwise the exact residual is a clean three-target same-input bridge.
-
-Use:
-
-```text
-x3_advanced_edge_triangle_pressure_lemma.md
-```
-
-The three advanced edges force second-triangle edges back into target `A_j`,
-involving rows `S`, `b`, and `D_j`.  The row `b` edge is the already tracked
-`H_j -> D_j`.
-
-This self-renewal is recorded in:
-
-```text
-x3_self_renewal_boundary.md
-```
-
-If no hit/collision occurs, X3 creates a second coupled triangle layer:
-
-```text
-(p, x_j, b) -> triangle rows (S, b, D_j).
-```
-
-Next target: route collisions/hits involving rows `S` or `D_j`, or record the
-clean coupled triangle-layer residual.
+Next target: attack the first return among the three source-row cycles
+`p`, `x_j`, and `b`.
 
 Use:
 
@@ -214,6 +175,8 @@ clean_external_bridge_sixth_stage_reduction_lemma.md
 x3_three_edge_matching_advance_boundary.md
 x3_advanced_edge_triangle_pressure_lemma.md
 x3_self_renewal_boundary.md
+source_successor_eventual_predecessor_hit_lemma.md
+clean_external_bridge_seventh_stage_reduction_lemma.md
 ```
 
 only as already-proved transports.  Do not route G, beta-X, fresh beta

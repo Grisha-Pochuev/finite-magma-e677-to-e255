@@ -59,6 +59,8 @@ right file without scanning old summaries.
 | `x3_three_edge_matching_advance_boundary.md` | boundary | X3 advances to clean three-target same-input bridge at `A_j`. |
 | `x3_advanced_edge_triangle_pressure_lemma.md` | proved pressure | Advanced X3 edges force a second triangle layer coupled to row-b edge. |
 | `x3_self_renewal_boundary.md` | corrected boundary | Clean X3 creates a coupled triangle layer, not a free source-triple successor. |
+| `source_successor_eventual_predecessor_hit_lemma.md` | general proved | Any forward row-r chain from `a` eventually hits `pred_r(a)`. |
+| `clean_external_bridge_seventh_stage_reduction_lemma.md` | proved reduction | X3 becomes clean three-row cycle comparison at generated `A_j`. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 
