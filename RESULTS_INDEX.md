@@ -78,6 +78,7 @@ right file without scanning old summaries.
 | `z3_paired_source_ladder_eventual_merge_lemma.md` | proved reduction | Finite paired source ladders must reach fan/path/collision or same-row recurrence. |
 | `clean_external_bridge_tenth_stage_reduction_lemma.md` | proved reduction | Reduces paired Z3 shell to collision routes or same-row recurrence. |
 | `same_row_recurrence_inventory.md` | active inventory | Collects remaining recurrence boundaries after the clean bridge reductions. |
+| `clean_external_bridge_to_relay_recurrence_frontier.md` | active frontier alignment | Connects clean external bridge T1 to the global minimal relay recurrence gap. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 

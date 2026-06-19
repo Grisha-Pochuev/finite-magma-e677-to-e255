@@ -300,6 +300,7 @@ fixed_target_source_orbit_ladder_lemma.md
 z3_paired_source_ladder_eventual_merge_lemma.md
 clean_external_bridge_tenth_stage_reduction_lemma.md
 same_row_recurrence_inventory.md
+clean_external_bridge_to_relay_recurrence_frontier.md
 ```
 
 ## Right-b Orbit Status
@@ -606,6 +607,18 @@ same-row/source recurrence boundary, now collected in:
 ```text
 same_row_recurrence_inventory.md
 ```
+
+This aligns the clean external bridge route with the global No-Free-Tail
+frontier:
+
+```text
+clean_external_bridge_to_relay_recurrence_frontier.md
+```
+
+The next target is a minimality/descent statement for `R-b4/R-b5` row-b
+recurrence: a regenerated fan must have a smaller old-corridor footprint,
+unless it hits the visible core or repeats a full ported interval in an
+independent branch role.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

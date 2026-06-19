@@ -192,6 +192,7 @@ Use:
 
 ```text
 same_row_recurrence_inventory.md
+clean_external_bridge_to_relay_recurrence_frontier.md
 ```
 
 The most promising first target is:
@@ -204,6 +205,14 @@ Try to show that these row-b recurrences attach to the visible crossed-fan
 predecessor fan, repeat a full ported interval in an independent role, or
 regenerate a smaller clean external bridge already covered by the tenth-stage
 reduction.
+
+Use the global relay framing:
+
+```text
+clean_external_bridge_to_relay_recurrence_frontier.md
+minimal_relay_cycle_dichotomy_candidate.md
+relay_termination_frontier.md
+```
 
 Do not restart X3/Z3 from the old three-edge matching or shared-successor
 square.
@@ -242,6 +251,7 @@ z3_paired_source_ladder_eventual_merge_lemma.md
 clean_external_bridge_eighth_stage_reduction_lemma.md
 clean_external_bridge_tenth_stage_reduction_lemma.md
 same_row_recurrence_inventory.md
+clean_external_bridge_to_relay_recurrence_frontier.md
 ```
 
 only as already-proved transports.  Do not route G, beta-X, fresh beta
