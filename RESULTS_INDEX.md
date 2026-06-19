@@ -61,6 +61,14 @@ right file without scanning old summaries.
 | `x3_self_renewal_boundary.md` | corrected boundary | Clean X3 creates a coupled triangle layer, not a free source-triple successor. |
 | `source_successor_eventual_predecessor_hit_lemma.md` | general proved | Any forward row-r chain from `a` eventually hits `pred_r(a)`. |
 | `clean_external_bridge_seventh_stage_reduction_lemma.md` | proved reduction | X3 becomes clean three-row cycle comparison at generated `A_j`. |
+| `y2_shared_edge_divergence_folds_to_base_bridge_lemma.md` | proved reduction | Removes Y2 by folding `Beta_i=H_i` into the base row-b/generated bridge. |
+| `y3_three_cycle_first_intersection_boundary.md` | boundary | Routes early cross-hits among the three Y3 source-row cycles. |
+| `fixed_target_source_successor_lemma.md` | general proved | Any `H_T` edge forces the next source-row edge in the same `H_T`. |
+| `y3_fixed_target_source_orbit_boundary.md` | boundary | Shows Y3 source rows reduce to two right-`A_j` source orbits. |
+| `clean_external_bridge_eighth_stage_reduction_lemma.md` | proved reduction | Removes Y2 and sharpens Y3 to the coupled Z3 clean cycle shell. |
+| `y3_shell_saturation_diagnostic.md` | diagnostic | Shallow Y3/Z3 congruence check found no forced named collapse. |
+| `y3_shared_successor_square_boundary.md` | boundary | Defines the next Z3 square: `p*A_j=S`, `U=p*S`, `V=S*A_j`. |
+| `y3_commuting_second_step_reduction_lemma.md` | proved reduction | Routes `U=V` to a same-target pair in `H_U`. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 
@@ -163,5 +171,6 @@ right file without scanning old summaries.
 | File | Status | Use |
 |---|---|---|
 | `tools/crossed_double_fan_saturation.js` | active diagnostic | Shallow closure checks for crossed-fan equalities; supports `tb=*` flags. |
+| `tools/y3_shell_saturation.py` | active diagnostic | Bounded local congruence check for the Y3/Z3 shell; needs a real Python executable. |
 | `tools/search_counterexample_strong.js` | active search tool | Use raw modes only for precise bounded hypotheses. |
 | `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |

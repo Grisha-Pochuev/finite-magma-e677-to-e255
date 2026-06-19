@@ -143,21 +143,63 @@ H_i=A_i -> row-b fixed point boundary.
 Current exact residual split:
 
 ```text
-clean_external_bridge_seventh_stage_reduction_lemma.md
+clean_external_bridge_eighth_stage_reduction_lemma.md
 ```
 
 After routing G, beta-X, fresh beta extension, clean same-target matchings,
 V4 beta anchors, base row-b/generated bridge, and X3 target-advance layers,
-the current residuals are:
+then removing the Y2 shared-edge branch, the current residuals are:
 
 ```text
-Y1. same-row recurrence boundaries;
-Y2. shared-edge divergence Beta_i=H_i;
-Y3. clean three-row cycle comparison at generated A_j.
+Z1. same-row recurrence boundaries;
+Z3. coupled clean cycle shell at generated A_j.
 ```
 
-Next target: attack the first return among the three source-row cycles
-`p`, `x_j`, and `b`.
+The old Y2 branch:
+
+```text
+Beta_i=H_i
+```
+
+folds into the already routed base row-b/generated bridge by:
+
+```text
+y2_shared_edge_divergence_folds_to_base_bridge_lemma.md
+```
+
+The old Y3 branch is sharpened by:
+
+```text
+y3_three_cycle_first_intersection_boundary.md
+fixed_target_source_successor_lemma.md
+y3_fixed_target_source_orbit_boundary.md
+y3_shared_successor_square_boundary.md
+y3_commuting_second_step_reduction_lemma.md
+y3_shell_saturation_diagnostic.md
+```
+
+Next target: attack the shared-successor square inside Z3.
+
+Use:
+
+```text
+p*A_j=S,
+U=p*S,
+V=S*A_j,
+S*(U*p)=A_j.
+```
+
+The immediate split is:
+
+```text
+1. U or V hits the watched generated/visible layer;
+2. U=V, which becomes a same-target pair in H_U;
+3. U hits the generated source orbit x_j -> b -> D_j -> ...;
+4. V hits the left row-p cycle A_j -> S -> U -> ...;
+5. U,V fresh and distinct: clean shared-successor square residual.
+```
+
+Do not restart X3 from the old three-edge matching.
 
 Use:
 
@@ -177,6 +219,13 @@ x3_advanced_edge_triangle_pressure_lemma.md
 x3_self_renewal_boundary.md
 source_successor_eventual_predecessor_hit_lemma.md
 clean_external_bridge_seventh_stage_reduction_lemma.md
+y2_shared_edge_divergence_folds_to_base_bridge_lemma.md
+y3_three_cycle_first_intersection_boundary.md
+fixed_target_source_successor_lemma.md
+y3_fixed_target_source_orbit_boundary.md
+y3_shared_successor_square_boundary.md
+y3_commuting_second_step_reduction_lemma.md
+clean_external_bridge_eighth_stage_reduction_lemma.md
 ```
 
 only as already-proved transports.  Do not route G, beta-X, fresh beta
@@ -185,7 +234,8 @@ extension, or clean same-target matching from scratch again.
 Additional beta-layer progress:
 
 ```text
-Beta_i=H_i -> shared-edge divergence of rows b and x_i at H_i -> A_i.
+Beta_i=H_i -> shared-edge divergence of rows b and x_i at H_i -> A_i,
+              then folds into the base row-b/generated bridge.
 Beta_i=A_j -> same-input split lifted into H_{A_j}: E_{i,j}->A_i and Beta_j->b.
 Beta_i=x_j -> reversible square: (A_i,x_j,b)<->(x_j,delta,A_i) and (b,A_j,x_{j+1})<->(A_j,Beta_j,b).
 alpha=A_j -> G same-input split couples to Beta_j in H_{A_j}.

@@ -283,6 +283,14 @@ x3_advanced_edge_triangle_pressure_lemma.md
 x3_self_renewal_boundary.md
 source_successor_eventual_predecessor_hit_lemma.md
 clean_external_bridge_seventh_stage_reduction_lemma.md
+y2_shared_edge_divergence_folds_to_base_bridge_lemma.md
+y3_three_cycle_first_intersection_boundary.md
+fixed_target_source_successor_lemma.md
+y3_fixed_target_source_orbit_boundary.md
+clean_external_bridge_eighth_stage_reduction_lemma.md
+y3_shell_saturation_diagnostic.md
+y3_shared_successor_square_boundary.md
+y3_commuting_second_step_reduction_lemma.md
 ```
 
 ## Right-b Orbit Status
@@ -503,23 +511,71 @@ So the fresh beta extension is no longer independent: it returns to watched
 hits, row-`x_i` recurrence, beta first-hit routing, or beta-anchored reversible
 square.
 
-After routing the U/V/W/X bridge layers, the current clean external bridge
+After routing the U/V/W/X/Y bridge layers, the current clean external bridge
 frontier is summarized in:
 
 ```text
-clean_external_bridge_seventh_stage_reduction_lemma.md
+clean_external_bridge_eighth_stage_reduction_lemma.md
 ```
 
 Current residuals:
 
 ```text
-Y1. same-row recurrence boundaries;
-Y2. shared-edge divergence Beta_i=H_i;
-Y3. clean three-row cycle comparison at generated A_j.
+Z1. same-row recurrence boundaries;
+Z3. coupled clean cycle shell at generated A_j.
 ```
 
-Next target: attack the first return among the three source-row cycles
-`p`, `x_j`, and `b`.
+Removed:
+
+```text
+Y2. Beta_i=H_i shared-edge divergence.
+```
+
+It folds into the base row-b/generated bridge by:
+
+```text
+y2_shared_edge_divergence_folds_to_base_bridge_lemma.md
+```
+
+Sharpened:
+
+```text
+Y3 -> Z3 coupled clean cycle shell.
+```
+
+The old three-row comparison at `A_j` is now:
+
+```text
+left-row cycles through A_j:
+  row p, row x_j, row b;
+
+fixed-target source orbits in H_{A_j}:
+  p -> S -> S*A_j -> ...
+  x_j -> b -> D_j -> D_j*A_j -> ...
+```
+
+The next exact target is the shared-successor square:
+
+```text
+p*A_j=S,
+U=p*S,
+V=S*A_j,
+S*(U*p)=A_j.
+```
+
+The branch `U=V` has been reduced to a same-target pair in `H_U` by:
+
+```text
+y3_commuting_second_step_reduction_lemma.md
+```
+
+The shallow local diagnostic:
+
+```text
+y3_shell_saturation_diagnostic.md
+```
+
+found no forced named collapse at the tested bounded level.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:
@@ -545,7 +601,11 @@ Reference:
 
 ```text
 beta_equals_h_shared_edge_divergence_lemma.md
+y2_shared_edge_divergence_folds_to_base_bridge_lemma.md
 ```
+
+It is no longer an independent residual: after the shared edge, the next step
+is the already routed base row-b/generated bridge at `A_i`.
 
 The `Beta_i=A_j` branch is separated as:
 
