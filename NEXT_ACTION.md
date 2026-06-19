@@ -202,6 +202,8 @@ rb5_a_layer_footprint_descent_boundary.md
 rb5_start_return_a_cycle_beta_pair_boundary.md
 rb5_beta_necklace_reduction_candidate.md
 rb5_beta_necklace_first_hit_reduction_lemma.md
+rx_beta_chain_recurrence_absorption_lemma.md
+rz_source_ladder_recurrence_absorption_lemma.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
@@ -233,6 +235,16 @@ or same-row recurrence.
 
 Next target: return to the global minimal relay descent for the surviving
 same-row recurrence cases outside row-b R-b4/R-b5.
+
+After R-x and R-Z are absorbed, the next local target is the small swap/fixed
+list:
+
+```text
+R-a, R-b1, R-b2, R-b3.
+```
+
+Decide whether each is visible-attached, a target-swap relay loop, or a
+right-fixer candidate.
 
 Use the global relay framing:
 
@@ -287,6 +299,8 @@ rb5_a_layer_footprint_descent_boundary.md
 rb5_start_return_a_cycle_beta_pair_boundary.md
 rb5_beta_necklace_reduction_candidate.md
 rb5_beta_necklace_first_hit_reduction_lemma.md
+rx_beta_chain_recurrence_absorption_lemma.md
+rz_source_ladder_recurrence_absorption_lemma.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 

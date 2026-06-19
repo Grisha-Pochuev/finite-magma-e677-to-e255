@@ -224,12 +224,16 @@ References:
 beta_fresh_extension_first_hit_boundary.md
 fresh_beta_extension_eventual_x_hit_lemma.md
 deep_beta_x_hit_reduction_lemma.md
+rx_beta_chain_recurrence_absorption_lemma.md
 ```
 
 The genuinely fresh beta-chain no longer remains independent: if it does not
 hit earlier watched layers, it eventually hits the generated X-layer.  Any
 same-row row-`x_i` recurrence that appears during this route is therefore
 already coupled to a beta/X hit or a beta-anchored square.
+
+Sharper status: R-x is absorbed by the beta-X route and existing recurrence
+inventory.  It is not a separate clean E11 branch.
 
 ### R-Z. Fixed-target source-ladder recurrence
 
@@ -239,6 +243,7 @@ References:
 fixed_target_source_orbit_first_merge_boundary.md
 fixed_target_source_orbit_ladder_lemma.md
 z3_paired_source_ladder_eventual_merge_lemma.md
+rz_source_ladder_recurrence_absorption_lemma.md
 ```
 
 Form:
@@ -257,6 +262,10 @@ This is not a left-row orbit cycle.  It is a repeat of a source row in the
 fixed target graph `H_{A_j}`.  If it is cross-ladder, it is routed as a
 ported-interval collision.  If it is same-ladder, it is the remaining Z3
 same-row/source recurrence boundary.
+
+Sharper status: R-Z is exactly the Z3 contribution to E11, already isolated
+by the tenth-stage reduction.  It should be handled only through the global
+minimal relay-cycle measure, not as a new local branch.
 
 ## Current Unified Recurrence Frontier
 
@@ -286,3 +295,17 @@ descent except for the start-return minimal cycle cases.  The remaining task
 is the global minimality/descent step: prove that the relayed fan or A-hit
 chain is visible-attached, smaller in the global relay measure, or repeats a
 full ported interval in an independent role.
+
+After the R-b, R-x, and R-Z updates, the only local recurrence forms not yet
+sharpened in this inventory are:
+
+```text
+R-a  row-a bridge swap,
+R-b1 generated row swap in H_b,
+R-b2 right-b fixed orbit point,
+R-b3 row-b fixed point.
+```
+
+These are small local swap/fixed cases.  The next useful step is to decide
+whether each is visible-attached, a target-swap relay loop, or a right-fixer
+candidate.

@@ -86,6 +86,8 @@ right file without scanning old summaries.
 | `rb5_start_return_a_cycle_beta_pair_boundary.md` | boundary | Exact lifted beta-pair necklace on the remaining start-return R-b5 A-cycle. |
 | `rb5_beta_necklace_reduction_candidate.md` | candidate | R-b5 beta necklace should fold into existing beta/Z3 reductions by first-hit coverage. |
 | `rb5_beta_necklace_first_hit_reduction_lemma.md` | proved reduction | First-hit coverage routes the R-b5 beta necklace to existing beta/Z3 routes or recurrence. |
+| `rx_beta_chain_recurrence_absorption_lemma.md` | proved reduction | R-x beta-chain recurrence is absorbed by beta-X and existing recurrence routes. |
+| `rz_source_ladder_recurrence_absorption_lemma.md` | proved reduction | R-Z source-ladder recurrence is exactly the Z3 contribution to E11, not a new local branch. |
 | `clean_external_bridge_eleventh_stage_reduction_lemma.md` | proved reduction | Removes R-b4/R-b5 as independent fresh recurrence cases; leaves minimal relay descent. |
 | `relay_minimality_measure_candidate.md` | candidate | Lexicographic global measure combining old corridor, right-b footprint, A-layer footprint, and relay period. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |

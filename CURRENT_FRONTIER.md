@@ -308,6 +308,8 @@ rb5_a_layer_footprint_descent_boundary.md
 rb5_start_return_a_cycle_beta_pair_boundary.md
 rb5_beta_necklace_reduction_candidate.md
 rb5_beta_necklace_first_hit_reduction_lemma.md
+rx_beta_chain_recurrence_absorption_lemma.md
+rz_source_ladder_recurrence_absorption_lemma.md
 clean_external_bridge_eleventh_stage_reduction_lemma.md
 ```
 
@@ -654,6 +656,21 @@ by the global same-row recurrence inventory.
 
 Next target: global minimal relay descent for the remaining same-row
 recurrence cases outside row-b R-b4/R-b5.
+
+R-x and R-Z are now absorbed by:
+
+```text
+rx_beta_chain_recurrence_absorption_lemma.md
+rz_source_ladder_recurrence_absorption_lemma.md
+```
+
+The next local recurrence target is:
+
+```text
+R-a, R-b1, R-b2, R-b3
+```
+
+the small swap/fixed cases.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:
