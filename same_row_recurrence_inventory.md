@@ -1,0 +1,238 @@
+# Same-Row Recurrence Inventory
+
+Date: 2026-06-19.
+
+Status:
+
+```text
+active inventory / remaining recurrence frontier after clean bridge reductions
+```
+
+## Purpose
+
+After:
+
+```text
+clean_external_bridge_tenth_stage_reduction_lemma.md
+```
+
+the clean external bridge route no longer has an independent fresh bridge
+residual.  The remaining obstruction is a family of same-row or same-ladder
+recurrence boundaries.
+
+This file collects them so the next proof step can merge them instead of
+reopening old bridge cases.
+
+## General Warning
+
+A same-row recurrence is not by itself a contradiction.
+
+Reference:
+
+```text
+ported_interval_recurrence_boundary.md
+target_advance_row_orbit_lemma.md
+```
+
+It becomes decisive only if the repeated full ported interval occurs in two
+independent branch roles, or if the row cycle attaches back to the visible
+crossed-fan/core footprint.
+
+## Recurrence Types Already Present
+
+### R-a. Row-a bridge swap
+
+Reference:
+
+```text
+row_a_bridge_loop_recurrence_boundary.md
+```
+
+Form:
+
+```text
+a*k=b,
+a*b=k.
+```
+
+So row `a` swaps:
+
+```text
+b <-> k.
+```
+
+Ported recurrence:
+
+```text
+(b,k,k) -> (k,b,b) -> (b,k,k).
+```
+
+### R-b1. Generated row swap in H_b
+
+Reference:
+
+```text
+right_b_orbit_local_repeat_roles.md
+```
+
+Form:
+
+```text
+A_i=x_{i+1}.
+```
+
+Then row `x_i` swaps:
+
+```text
+b <-> x_{i+1}.
+```
+
+The `H_b` edge is a loop:
+
+```text
+x_{i+1} -> x_{i+1}.
+```
+
+### R-b2. Right-b fixed orbit point
+
+Reference:
+
+```text
+right_b_orbit_local_repeat_roles.md
+```
+
+Form:
+
+```text
+x_i*b=x_i,
+x_i!=b.
+```
+
+This is a closed right-`b` orbit boundary, not a right fixer for the target
+`b`.
+
+### R-b3. Row-b fixed point
+
+Reference:
+
+```text
+right_b_orbit_local_repeat_roles.md
+```
+
+Form:
+
+```text
+H_i=A_i,
+b*A_i=A_i.
+```
+
+This is a row-`b` fixed point at `A_i`, again not a right fixer for `b`.
+
+### R-b4. Closed right-b cycle
+
+Reference:
+
+```text
+right_b_orbit_first_repeat_boundary.md
+right_b_orbit_first_repeat_fan_lemma.md
+```
+
+Form:
+
+```text
+x_i -> x_{i+1} -> ... -> x_j=x_i
+```
+
+under right multiplication by `b`.
+
+This creates an incoming fan in `H_b` at the first repeated vertex, so it is
+not neutral.  The remaining gap is to attach that fan back to the visible core
+or to another independent branch role.
+
+### R-b5. Row-b A-layer/predecessor cycle
+
+References:
+
+```text
+row_b_a_layer_cycle_boundary.md
+row_b_predecessor_tower_dichotomy_boundary.md
+row_b_tower_first_hit_role_map.md
+```
+
+Form:
+
+```text
+H_i -> A_i
+```
+
+continues through a row-`b` predecessor or successor cycle without a watched
+hit.  Later beta and Z3 pressure reduce the independent fresh cases, but a
+pure row-`b` same-row recurrence remains a boundary.
+
+### R-x. Row-x_i beta-chain recurrence
+
+References:
+
+```text
+beta_fresh_extension_first_hit_boundary.md
+fresh_beta_extension_eventual_x_hit_lemma.md
+deep_beta_x_hit_reduction_lemma.md
+```
+
+The genuinely fresh beta-chain no longer remains independent: if it does not
+hit earlier watched layers, it eventually hits the generated X-layer.  Any
+same-row row-`x_i` recurrence that appears during this route is therefore
+already coupled to a beta/X hit or a beta-anchored square.
+
+### R-Z. Fixed-target source-ladder recurrence
+
+References:
+
+```text
+fixed_target_source_orbit_first_merge_boundary.md
+fixed_target_source_orbit_ladder_lemma.md
+z3_paired_source_ladder_eventual_merge_lemma.md
+```
+
+Form:
+
+```text
+r_n=r_m
+```
+
+inside a source-successor ladder:
+
+```text
+r_{n+1}=r_n*A_j.
+```
+
+This is not a left-row orbit cycle.  It is a repeat of a source row in the
+fixed target graph `H_{A_j}`.  If it is cross-ladder, it is routed as a
+ported-interval collision.  If it is same-ladder, it is the remaining Z3
+same-row/source recurrence boundary.
+
+## Current Unified Recurrence Frontier
+
+The remaining recurrence problem is:
+
+```text
+Show that every same-row recurrence above either:
+
+1. attaches to the visible crossed-fan/core footprint;
+2. repeats a full ported interval in an independent branch role;
+3. regenerates a smaller clean external bridge already covered by the
+   tenth-stage reduction;
+4. or forces a right fixer/E255 witness for the bad target.
+```
+
+The most promising first target is `R-b4/R-b5`: row-b cycles are shared by the
+original clean external bridge and by the Z3 generated side:
+
+```text
+x_j -> b -> D_j -> ...
+H_j -> A_j -> D_j -> ...
+```
+
+If those cycles cannot stay independent, the Z3 recurrence boundary folds
+back into the original row-b predecessor fan.
+

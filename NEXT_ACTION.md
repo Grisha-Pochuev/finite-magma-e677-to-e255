@@ -143,16 +143,16 @@ H_i=A_i -> row-b fixed point boundary.
 Current exact residual split:
 
 ```text
-clean_external_bridge_eighth_stage_reduction_lemma.md
+clean_external_bridge_tenth_stage_reduction_lemma.md
 ```
 
 After routing G, beta-X, fresh beta extension, clean same-target matchings,
 V4 beta anchors, base row-b/generated bridge, and X3 target-advance layers,
-then removing the Y2 shared-edge branch, the current residuals are:
+then removing the Y2 shared-edge branch and routing the Z3 paired source
+ladder to its first finite merge/repeat, the current residual is:
 
 ```text
-Z1. same-row recurrence boundaries;
-Z3. coupled clean cycle shell at generated A_j.
+T1. same-row recurrence boundaries.
 ```
 
 The old Y2 branch:
@@ -167,39 +167,46 @@ folds into the already routed base row-b/generated bridge by:
 y2_shared_edge_divergence_folds_to_base_bridge_lemma.md
 ```
 
-The old Y3 branch is sharpened by:
+The old Y3 branch is sharpened and routed by:
 
 ```text
 y3_three_cycle_first_intersection_boundary.md
 fixed_target_source_successor_lemma.md
+fixed_target_source_orbit_first_merge_boundary.md
+fixed_target_source_orbit_ladder_lemma.md
 y3_fixed_target_source_orbit_boundary.md
 y3_shared_successor_square_boundary.md
+y3_shared_successor_watched_hit_routing_lemma.md
 y3_commuting_second_step_reduction_lemma.md
+y3_clean_square_four_edge_matching_boundary.md
+y3_four_edge_matching_target_advance_boundary.md
+clean_external_bridge_ninth_stage_reduction_lemma.md
+z3_paired_source_ladder_eventual_merge_lemma.md
+clean_external_bridge_tenth_stage_reduction_lemma.md
 y3_shell_saturation_diagnostic.md
 ```
 
-Next target: attack the shared-successor square inside Z3.
+Next target: attack the unified same-row recurrence inventory.
 
 Use:
 
 ```text
-p*A_j=S,
-U=p*S,
-V=S*A_j,
-S*(U*p)=A_j.
+same_row_recurrence_inventory.md
 ```
 
-The immediate split is:
+The most promising first target is:
 
 ```text
-1. U or V hits the watched generated/visible layer;
-2. U=V, which becomes a same-target pair in H_U;
-3. U hits the generated source orbit x_j -> b -> D_j -> ...;
-4. V hits the left row-p cycle A_j -> S -> U -> ...;
-5. U,V fresh and distinct: clean shared-successor square residual.
+R-b4/R-b5: closed right-b and row-b A/predecessor cycles.
 ```
 
-Do not restart X3 from the old three-edge matching.
+Try to show that these row-b recurrences attach to the visible crossed-fan
+predecessor fan, repeat a full ported interval in an independent role, or
+regenerate a smaller clean external bridge already covered by the tenth-stage
+reduction.
+
+Do not restart X3/Z3 from the old three-edge matching or shared-successor
+square.
 
 Use:
 
@@ -222,10 +229,19 @@ clean_external_bridge_seventh_stage_reduction_lemma.md
 y2_shared_edge_divergence_folds_to_base_bridge_lemma.md
 y3_three_cycle_first_intersection_boundary.md
 fixed_target_source_successor_lemma.md
+fixed_target_source_orbit_first_merge_boundary.md
+fixed_target_source_orbit_ladder_lemma.md
 y3_fixed_target_source_orbit_boundary.md
 y3_shared_successor_square_boundary.md
+y3_shared_successor_watched_hit_routing_lemma.md
 y3_commuting_second_step_reduction_lemma.md
+y3_clean_square_four_edge_matching_boundary.md
+y3_four_edge_matching_target_advance_boundary.md
+clean_external_bridge_ninth_stage_reduction_lemma.md
+z3_paired_source_ladder_eventual_merge_lemma.md
 clean_external_bridge_eighth_stage_reduction_lemma.md
+clean_external_bridge_tenth_stage_reduction_lemma.md
+same_row_recurrence_inventory.md
 ```
 
 only as already-proved transports.  Do not route G, beta-X, fresh beta

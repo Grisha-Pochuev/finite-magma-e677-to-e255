@@ -107,7 +107,7 @@ The first event is one of:
 2. one orbit hits the visible crossed-fan/core footprint;
 3. one orbit hits a generated A/X/H/Beta layer in a nonlocal role;
 4. an orbit repeats one of its own source rows before any cross-hit;
-5. both orbits remain clean until they enter disjoint source cycles.
+5. both orbits remain clean until their first self-repeat or merge.
 ```
 
 Cases 1-3 are routed hits.
@@ -135,8 +135,10 @@ y3_three_cycle_first_intersection_boundary.md
 The only source-orbit residual left by this split is:
 
 ```text
-Z3-source. two clean disjoint right-A_j source cycles in H_{A_j},
-           one born from p and one born from x_j -> b.
+Z3-source. two clean right-A_j source-successor orbits in H_{A_j},
+           one born from p and one born from x_j -> b,
+           with no watched hit, cross-orbit hit, output merge, or
+           self-repeat before the current frontier.
 ```
 
 Together with:
@@ -151,7 +153,7 @@ the Y3 obstruction is now a coupled two-direction cycle shell:
 left-row cycles through A_j:
   row p, row x_j, row b;
 
-fixed-target source cycles in H_{A_j}:
+fixed-target source-successor orbits in H_{A_j}:
   p -> S -> ...
   x_j -> b -> D_j -> ...
 ```
@@ -175,4 +177,3 @@ p -> S -> S*A_j -> ...
 ```
 
 without producing a watched hit or a repeated ported interval.
-

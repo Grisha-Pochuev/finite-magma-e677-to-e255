@@ -136,7 +136,9 @@ ported interval in `H_{A_j}`.  If they do not cross before internal repeat,
 the remaining source-side object is:
 
 ```text
-Z3-source. two clean disjoint right-A_j source cycles in H_{A_j}.
+Z3-source. two clean right-A_j source-successor orbits in H_{A_j},
+           tracked only until their first watched hit, cross-hit,
+           output merge, or self-repeat.
 ```
 
 ## Eighth-Stage Residual List
@@ -149,8 +151,8 @@ Z1. same-row recurrence boundaries;
 Z3. coupled clean cycle shell at A_j:
     - three disjoint left-row cycles through A_j
       for rows p, x_j, b;
-    - two disjoint fixed-target source orbits in H_{A_j}
-      born from p and from x_j -> b.
+    - two fixed-target source-successor orbits in H_{A_j}
+      born from p and from x_j -> b, tracked to first merge/repeat.
 ```
 
 The removed residual is:
@@ -191,4 +193,3 @@ ported interval in `H_{A_j}`, or a cross-hit with the generated orbit:
 ```text
 x_j -> b -> D_j -> ...
 ```
-

@@ -290,7 +290,16 @@ y3_fixed_target_source_orbit_boundary.md
 clean_external_bridge_eighth_stage_reduction_lemma.md
 y3_shell_saturation_diagnostic.md
 y3_shared_successor_square_boundary.md
+y3_shared_successor_watched_hit_routing_lemma.md
 y3_commuting_second_step_reduction_lemma.md
+y3_clean_square_four_edge_matching_boundary.md
+y3_four_edge_matching_target_advance_boundary.md
+clean_external_bridge_ninth_stage_reduction_lemma.md
+fixed_target_source_orbit_first_merge_boundary.md
+fixed_target_source_orbit_ladder_lemma.md
+z3_paired_source_ladder_eventual_merge_lemma.md
+clean_external_bridge_tenth_stage_reduction_lemma.md
+same_row_recurrence_inventory.md
 ```
 
 ## Right-b Orbit Status
@@ -511,18 +520,17 @@ So the fresh beta extension is no longer independent: it returns to watched
 hits, row-`x_i` recurrence, beta first-hit routing, or beta-anchored reversible
 square.
 
-After routing the U/V/W/X/Y bridge layers, the current clean external bridge
+After routing the U/V/W/X/Y/Z bridge layers, the current clean external bridge
 frontier is summarized in:
 
 ```text
-clean_external_bridge_eighth_stage_reduction_lemma.md
+clean_external_bridge_tenth_stage_reduction_lemma.md
 ```
 
 Current residuals:
 
 ```text
-Z1. same-row recurrence boundaries;
-Z3. coupled clean cycle shell at generated A_j.
+T1. same-row recurrence boundaries.
 ```
 
 Removed:
@@ -540,7 +548,7 @@ y2_shared_edge_divergence_folds_to_base_bridge_lemma.md
 Sharpened:
 
 ```text
-Y3 -> Z3 coupled clean cycle shell.
+Y3 -> Z3 coupled clean cycle shell -> paired ladder first merge/repeat.
 ```
 
 The old three-row comparison at `A_j` is now:
@@ -549,9 +557,17 @@ The old three-row comparison at `A_j` is now:
 left-row cycles through A_j:
   row p, row x_j, row b;
 
-fixed-target source orbits in H_{A_j}:
+fixed-target source-successor orbits in H_{A_j}:
   p -> S -> S*A_j -> ...
   x_j -> b -> D_j -> D_j*A_j -> ...
+```
+
+Important correction: right multiplication by `A_j` is not known to be a
+permutation.  These are forward source orbits tracked to first merge/repeat,
+not automatically cycles.  Use:
+
+```text
+fixed_target_source_orbit_first_merge_boundary.md
 ```
 
 The next exact target is the shared-successor square:
@@ -576,6 +592,20 @@ y3_shell_saturation_diagnostic.md
 ```
 
 found no forced named collapse at the tested bounded level.
+
+The paired Z3 ladder is no longer an independent fresh residual:
+
+```text
+z3_paired_source_ladder_eventual_merge_lemma.md
+```
+
+shows that finite source-successor ladders in `H_{A_j}` must hit a first
+fan/path/full-interval/source-repeat event.  The only non-routed outcome is a
+same-row/source recurrence boundary, now collected in:
+
+```text
+same_row_recurrence_inventory.md
+```
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

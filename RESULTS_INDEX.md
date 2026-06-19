@@ -68,7 +68,16 @@ right file without scanning old summaries.
 | `clean_external_bridge_eighth_stage_reduction_lemma.md` | proved reduction | Removes Y2 and sharpens Y3 to the coupled Z3 clean cycle shell. |
 | `y3_shell_saturation_diagnostic.md` | diagnostic | Shallow Y3/Z3 congruence check found no forced named collapse. |
 | `y3_shared_successor_square_boundary.md` | boundary | Defines the next Z3 square: `p*A_j=S`, `U=p*S`, `V=S*A_j`. |
+| `y3_shared_successor_watched_hit_routing_lemma.md` | proved routing | Routes watched hits of `U=p*S` and `V=S*A_j`. |
 | `y3_commuting_second_step_reduction_lemma.md` | proved reduction | Routes `U=V` to a same-target pair in `H_U`. |
+| `fixed_target_source_orbit_first_merge_boundary.md` | boundary correction | Right-target source motion is a forward orbit with first merge, not a guaranteed cycle. |
+| `fixed_target_source_orbit_ladder_lemma.md` | general proved | Gives predecessor formula along a fixed-target source orbit. |
+| `y3_clean_square_four_edge_matching_boundary.md` | boundary | Clean Z3 square adds a fourth edge in `H_{A_j}`. |
+| `y3_four_edge_matching_target_advance_boundary.md` | boundary | Target-advance form of the clean four-edge Z3 matching. |
+| `clean_external_bridge_ninth_stage_reduction_lemma.md` | proved reduction | Sharpens Z3 square to paired four-edge shell. |
+| `z3_paired_source_ladder_eventual_merge_lemma.md` | proved reduction | Finite paired source ladders must reach fan/path/collision or same-row recurrence. |
+| `clean_external_bridge_tenth_stage_reduction_lemma.md` | proved reduction | Reduces paired Z3 shell to collision routes or same-row recurrence. |
+| `same_row_recurrence_inventory.md` | active inventory | Collects remaining recurrence boundaries after the clean bridge reductions. |
 | `right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
 | `clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
 
