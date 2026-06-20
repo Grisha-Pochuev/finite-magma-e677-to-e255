@@ -15,6 +15,8 @@ This combines:
 ```text
 relay_minimality_measure_candidate.md
 relay_same_source_return_split_boundary.md
+fixed_target_same_source_return_collapse_lemma.md
+target_advance_same_row_period_lemma.md
 clean_external_bridge_twelfth_stage_reduction_lemma.md
 strict_clean_theta_exclusion_lemma.md
 ```
@@ -100,6 +102,30 @@ full ported interval in an independent role.
 
 Thus the remaining returns must be same-source row-orbit returns.
 
+The fixed-target same-source cleanup:
+
+```text
+fixed_target_same_source_return_collapse_lemma.md
+```
+
+adds one useful sharpening: a same-source return to the same old split inside
+the same `H_b` is not a new incidence at all.  It is the same edge again.
+Therefore any genuine new fixed-target return to the old split is already an
+independent return and routes through the crossed-fan path above.
+
+So the remaining same-source returns are only target-advance row-orbit
+recurrences, not new fixed-target double returns.
+
+The pure same-row period is classified by:
+
+```text
+target_advance_same_row_period_lemma.md
+```
+
+Periods `1` and `2` are local fixed/swap recurrences already routed by the
+local recurrence inventory.  Therefore a genuine remaining same-source
+target-advance component must have row-orbit period at least `3`.
+
 ## Remaining Normal Form
 
 A genuine remaining G12 counterexample must therefore be:
@@ -109,7 +135,8 @@ a closed relay loop with no internal side attachment,
 no independent return,
 no fresh clean external bridge subcase,
 no beta/Z3/local recurrence escape,
-and only same-source target-advance row-orbit recurrences.
+and only same-source target-advance row-orbit recurrences of period at least
+3.
 ```
 
 Equivalently, every active ported interval advances along its own source-row
@@ -126,8 +153,7 @@ strict_clean_theta_exclusion_lemma.md
 The likely final obstruction is:
 
 ```text
-show that a relay loop made only of same-source target-advance recurrences is
-exactly a strict clean theta or contains an independent repeated full ported
-interval.
+show that a relay loop made only of period >= 3 same-source target-advance
+recurrences is exactly a strict clean theta or contains an independent
+repeated full ported interval.
 ```
-

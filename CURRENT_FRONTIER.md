@@ -694,6 +694,9 @@ relay_minimality_measure_candidate.md
 minimal_relay_cycle_dichotomy_candidate.md
 relay_termination_frontier.md
 relay_same_source_return_split_boundary.md
+fixed_target_same_source_return_collapse_lemma.md
+target_advance_same_row_period_lemma.md
+m496_target_advance_period_diagnostic.md
 minimal_g12_loop_normal_form_boundary.md
 ```
 
@@ -706,6 +709,33 @@ minimal_g12_loop_normal_form_boundary.md
 Only same-source target-advance row-orbit recurrences remain.  The next target
 is to show that this normal form is strict clean theta or forces an
 independent full ported-interval repeat.
+
+The fixed-target ambiguity is removed by:
+
+```text
+fixed_target_same_source_return_collapse_lemma.md
+```
+
+A same-source return to the same old split in one fixed `H_b` is the same edge
+again, so it is not a new core return.
+
+The moving same-source case is narrowed by:
+
+```text
+target_advance_same_row_period_lemma.md
+```
+
+Periods 1 and 2 are fixed/swap local recurrences.  The remaining same-source
+target-advance cycles have period at least 3.
+
+The diagnostic:
+
+```text
+m496_target_advance_period_diagnostic.md
+```
+
+confirms that the known M496 model has periods `1,5,10,30`; the period
+`>= 3` residue is structurally real.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

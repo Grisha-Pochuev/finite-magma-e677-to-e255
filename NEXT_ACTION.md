@@ -256,6 +256,9 @@ relay_minimality_measure_candidate.md
 minimal_relay_cycle_dichotomy_candidate.md
 relay_termination_frontier.md
 relay_same_source_return_split_boundary.md
+fixed_target_same_source_return_collapse_lemma.md
+target_advance_same_row_period_lemma.md
+m496_target_advance_period_diagnostic.md
 minimal_g12_loop_normal_form_boundary.md
 ```
 
@@ -269,6 +272,33 @@ minimal_g12_loop_normal_form_boundary.md
 Next target: show that a closed relay loop made only of same-source
 target-advance recurrences is either strict clean theta or contains an
 independent repeated full ported interval.
+
+The fixed-target ambiguity is now removed by:
+
+```text
+fixed_target_same_source_return_collapse_lemma.md
+```
+
+so the remaining same-source case is only the moving target-advance row-orbit
+case, not a new second return inside one fixed `H_b`.
+
+The moving same-source case is narrowed further by:
+
+```text
+target_advance_same_row_period_lemma.md
+```
+
+Periods 1 and 2 are local fixed/swap recurrences; the real remaining G12 loop
+must use coupled same-row target-advance cycles of period at least 3.
+
+The M496 diagnostic:
+
+```text
+m496_target_advance_period_diagnostic.md
+```
+
+shows that known E677 behavior has row periods `1,5,10,30`, so the period
+`>= 3` residue is not a merely formal leftover.
 
 Use the global relay framing:
 

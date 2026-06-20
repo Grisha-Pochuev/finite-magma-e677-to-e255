@@ -177,7 +177,10 @@ right file without scanning old summaries.
 | `relay_termination_frontier.md` | active global frontier | Recursive relay termination statement. |
 | `minimal_relay_cycle_dichotomy_candidate.md` | candidate | Minimal closed relay-cycle split. |
 | `relay_same_source_return_split_boundary.md` | boundary | Splits independent returns, which route to crossed fan/G12, from same-source row-orbit returns. |
-| `minimal_g12_loop_normal_form_boundary.md` | boundary | Normal form for the remaining G12 loop: only same-source target-advance recurrences remain. |
+| `fixed_target_same_source_return_collapse_lemma.md` | proved | Same-source double return to one fixed split in `H_b` is the same edge, not a new core return. |
+| `target_advance_same_row_period_lemma.md` | proved | Pure same-row target-advance recurrence has exactly the row-orbit period; periods 1-2 are fixed/swap local cases. |
+| `m496_target_advance_period_diagnostic.md` | diagnostic | M496 rows have periods 1,5,10,30; period >= 3 residual is not vacuous. |
+| `minimal_g12_loop_normal_form_boundary.md` | boundary | Normal form for the remaining G12 loop: only period >= 3 same-source target-advance recurrences remain. |
 | `corridor_side_attachment_shortening_lemma.md` | graph observation | Side attachment gives smaller old-corridor footprint. |
 | `branch_closure_no_free_tail_candidate.md` | older candidate | Use only for historical branch-closure context. |
 
@@ -198,4 +201,5 @@ right file without scanning old summaries.
 | `tools/crossed_double_fan_saturation.js` | active diagnostic | Shallow closure checks for crossed-fan equalities; supports `tb=*` flags. |
 | `tools/y3_shell_saturation.py` | active diagnostic | Bounded local congruence check for the Y3/Z3 shell; needs a real Python executable. |
 | `tools/search_counterexample_strong.js` | active search tool | Use raw modes only for precise bounded hypotheses. |
+| `tools/m496_target_advance_periods.js` | diagnostic | Scans pure same-row target-advance row periods in the known M496 model. |
 | `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |

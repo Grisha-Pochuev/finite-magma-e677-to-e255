@@ -85,12 +85,18 @@ then the full ported interval recurrence is in one row-orbit:
 This is the degenerate return from:
 
 ```text
+fixed_target_same_source_return_collapse_lemma.md
 ported_interval_recurrence_boundary.md
 target_advance_row_orbit_lemma.md
 ```
 
-It does not contradict source reconstruction because the source row is
-supposed to be the same.
+Inside one fixed target graph `H_b`, this cannot be a new second return to the
+same split vertex: the fixed-target same-source collapse lemma says it is the
+same incidence again.
+
+Thus the same-source residue is only the target-advance row-orbit phenomenon:
+the relay has moved the target along the same row and later repeats the same
+full ported interval in the same branch role.
 
 ## Consequence
 
@@ -102,14 +108,13 @@ split:
    crossed fan -> clean external bridge reductions -> G12;
 
 2. same-source return:
-   pure row-orbit recurrence -> must be handled by global relay minimality.
+   fixed-target duplicate edge, or pure target-advance row-orbit recurrence.
 ```
 
 Thus the remaining G12 obstruction can be stated more narrowly:
 
 ```text
 exclude a minimal closed relay cycle whose only returns are same-source
-row-orbit returns and whose independent returns all reduce back to the same
-minimal G12 state.
+target-advance row-orbit returns and whose independent returns all reduce
+back to the same minimal G12 state.
 ```
-
