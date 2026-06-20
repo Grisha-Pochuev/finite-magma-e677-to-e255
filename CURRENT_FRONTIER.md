@@ -704,6 +704,7 @@ clean_first_extra_matching_bridge_alignment.md
 general_v3_bridge_descent_boundary.md
 shared_step_anchored_triangle_boundary.md
 m496_shared_step_anchored_triangle_diagnostic.md
+anchored_identity_negation_raw_diagnostic.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -833,6 +834,15 @@ W=q*(p*b),
 h=U*p=W*q
 => U*h=W*h.
 ```
+
+The negation diagnostic:
+
+```text
+anchored_identity_negation_raw_diagnostic.md
+```
+
+has short closure `ok`; a 60-second size-9 rawmodel run timed out without a
+model.  This is not proof.
 
 The raw diagnostic:
 

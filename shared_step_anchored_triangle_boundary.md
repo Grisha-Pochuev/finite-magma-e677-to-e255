@@ -237,3 +237,9 @@ The M496 diagnostic for the strong identity is recorded in:
 ```text
 m496_shared_step_anchored_triangle_diagnostic.md
 ```
+
+A targeted raw-label diagnostic for the negation is recorded in:
+
+```text
+anchored_identity_negation_raw_diagnostic.md
+```
