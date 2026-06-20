@@ -103,6 +103,51 @@ clean V3 bridge
    or else the first-extra branch remains the exact residual.
 ```
 
+## Extension For Anchored-X3
+
+The shared-step anchored route is now sharpened by:
+
+```text
+shared_step_anchored_triangle_boundary.md
+anchored_x3_three_target_bridge_boundary.md
+anchored_x3_second_triangle_pressure_lemma.md
+anchored_x3_source_orbit_boundary.md
+anchored_x3_rank_measure_candidate.md
+```
+
+If the strong identity:
+
+```text
+U*h=W*h
+```
+
+is not proved directly, the false branch becomes three fixed-target
+source-successor orbits in `H_h`:
+
+```text
+U -> T -> T*h -> ...
+W -> S -> S*h -> ...
+z -> b -> b*h -> ...
+```
+
+Add:
+
+```text
+M7. anchored-X3 source-orbit first-event rank:
+    the earliest repeat/merge/hit among those three right-h source orbits.
+```
+
+The intended use is:
+
+```text
+first cross-orbit hit / output merge / path hit / core hit
+=> already routed;
+
+clean self-repeat
+=> must either be an already routed same-row recurrence, or regenerate a
+   smaller anchored-X3 object under M7.
+```
+
 ## Compatibility With R-b4
 
 For R-b4, the first repeat is:

@@ -193,6 +193,7 @@ right file without scanning old summaries.
 | `anchored_x3_three_target_bridge_boundary.md` | boundary | False branch `U*h!=W*h` routes to an anchored three-target same-input bridge at common input `h`, with old target `b`. |
 | `anchored_x3_second_triangle_pressure_lemma.md` | partial/proved pressure | Anchored-X3 false branch forces a second triangle layer in `H_h` carried by rows `T,S,b`. |
 | `anchored_x3_source_orbit_boundary.md` | boundary | Converts clean anchored-X3 false branch to three fixed-target source-successor orbits in `H_h`: `U->T`, `W->S`, `z->b`. |
+| `anchored_x3_rank_measure_candidate.md` | candidate | Adds `M7` anchored-X3 source-orbit first-event rank for the clean self-repeat residual. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |

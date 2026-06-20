@@ -710,6 +710,7 @@ m496_shared_step_relation_scan_diagnostic.md
 anchored_x3_three_target_bridge_boundary.md
 anchored_x3_second_triangle_pressure_lemma.md
 anchored_x3_source_orbit_boundary.md
+anchored_x3_rank_measure_candidate.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -929,6 +930,16 @@ z -> b -> b*h -> ...
 
 Next exact target: classify the first repeat/merge of these three orbits, or
 define the anchored-X3 rank needed for the clean self-return case.
+
+The measure candidate is:
+
+```text
+anchored_x3_rank_measure_candidate.md
+```
+
+It adds `M7`: the first-event rank of the three right-`h` source orbits
+starting from `U,W,z`.  Next prove M7 descent for a clean self-repeat, or
+isolate the exact clean self-repeat subcase that fails descent.
 
 The raw diagnostic:
 
