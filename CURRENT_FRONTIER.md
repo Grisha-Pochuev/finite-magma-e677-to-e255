@@ -785,9 +785,10 @@ The diagnostic:
 m496_first_extra_intersection_roles_diagnostic.md
 ```
 
-also found no clean first-extra matching in M496: the first extra intersection
-is always a same-input or same-output fan.  Next target: prove or route away
-the clean-disjoint first-extra matching subcase.
+also found no clean first-extra matching in M496: after rotating cycles to the
+shared step `b -> z`, the first extra intersection is always a same-output
+fan.  Next target: prove or route away the clean-disjoint first-extra matching
+subcase, preferably by proving the same-output pattern.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

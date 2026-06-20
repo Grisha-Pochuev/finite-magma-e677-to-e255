@@ -349,10 +349,11 @@ The first-extra role diagnostic:
 m496_first_extra_intersection_roles_diagnostic.md
 ```
 
-found that M496 first extra intersections are always same-input or same-output
-fans; clean matching is absent.  The next structural target is to prove this
-clean-disjoint first-extra matching impossible in a minimal G12 loop, or to
-route it to an already measured two-target bridge descent.
+found that M496 first extra intersections are always same-output fans; clean
+matching is absent.  The next structural target is to prove this
+clean-disjoint first-extra matching impossible in a minimal G12 loop, ideally
+by proving the same-output fan pattern, or to route it to an already measured
+two-target bridge descent.
 
 Use the global relay framing:
 

@@ -34,12 +34,18 @@ tools/m496_first_extra_intersection_roles.js
 
 ## Result
 
+The script rotates each row cycle so that it starts with the shared step:
+
+```text
+b -> z.
+```
+
 For all `892800` shared-step row pairs:
 
 ```text
 full interval collision: 0
-same input fan:          168480
-same output fan:         724320
+same input fan:          0
+same output fan:         892800
 cross hit/path:          0
 clean matching:          0
 no extra intersection:   0
@@ -47,11 +53,11 @@ no extra intersection:   0
 
 ## Interpretation
 
-In M496, the first extra row-cycle intersection is always immediately a fan:
+In M496, the first extra row-cycle intersection is always immediately an
+incoming fan in the relevant `H_w`:
 
 ```text
-same input,
-or same output.
+same output.
 ```
 
 The clean same-target matching subcase left open by:
@@ -65,9 +71,9 @@ does not appear.
 This suggests the next structural target:
 
 ```text
-prove that a first extra intersection in a minimal separated period >= 3
-G12 loop cannot be clean-disjoint; it must create same input, same output,
-cross hit, or full interval collision.
+prove that a first extra intersection in a minimal separated period >= 3 G12
+loop cannot be clean-disjoint; ideally, prove the sharper M496 pattern that
+the first extra intersection is forced to be a same-output fan.
 ```
 
 This is only a diagnostic pattern, not a proof.

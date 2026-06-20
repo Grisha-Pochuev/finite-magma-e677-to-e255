@@ -1,8 +1,9 @@
 "use strict";
 
 // Diagnostic for the first extra intersection in the known M496 model.
-// For each pair of distinct rows sharing b -> z, find the first extra
-// intersection of their row cycles after z and classify the two H_w edges by
+// For each pair of distinct rows sharing b -> z, rotate both row cycles so
+// they start with b -> z, find the first extra intersection on the first row
+// after z, and classify the two H_w edges by
 // same_target_pair_collision_trichotomy_lemma.md.
 // This is only a model diagnostic, not a proof.
 
@@ -87,6 +88,16 @@ function buildCycleData() {
   return { cycleArr, posMap };
 }
 
+function at(cycle, origin, offset) {
+  const n = cycle.length;
+  return cycle[(origin + offset + n * 4) % n];
+}
+
+function relativePosition(positions, cycle, originVertex, vertex) {
+  const n = cycle.length;
+  return (positions[vertex] - positions[originVertex] + n) % n;
+}
+
 function classify(lp, rp, lq, rq) {
   if (lp === lq && rp === rq) return "full";
   if (lp === lq) return "sameInput";
@@ -135,29 +146,33 @@ function main() {
         const q = rows[right];
         const pCycle = cycleArr[p][b];
         const qCycle = cycleArr[q][b];
+        const pPos = posMap[p][b];
         const qPos = posMap[q][b];
-        let i = -1;
+        const pOrigin = pPos[b];
+        const qOrigin = qPos[b];
+        let offset = -1;
+        let w = -1;
 
         for (let k = 2; k < pCycle.length; k++) {
-          const vertex = pCycle[k];
+          const vertex = at(pCycle, pOrigin, k);
           if (vertex !== b && vertex !== z && qPos[vertex] >= 0) {
-            i = k;
+            offset = k;
+            w = vertex;
             break;
           }
         }
 
-        if (i < 0) {
+        if (offset < 0) {
           counts.noExtra++;
           addExample("noExtra", { b, z, p, q });
           continue;
         }
 
-        const w = pCycle[i];
-        const j = qPos[w];
-        const lp = pCycle[(i - 1 + pCycle.length) % pCycle.length];
-        const rp = pCycle[(i + 1) % pCycle.length];
-        const lq = qCycle[(j - 1 + qCycle.length) % qCycle.length];
-        const rq = qCycle[(j + 1) % qCycle.length];
+        const qOffset = relativePosition(qPos, qCycle, b, w);
+        const lp = at(pCycle, pOrigin, offset - 1);
+        const rp = at(pCycle, pOrigin, offset + 1);
+        const lq = at(qCycle, qOrigin, qOffset - 1);
+        const rq = at(qCycle, qOrigin, qOffset + 1);
         const kind = classify(lp, rp, lq, rq);
         counts[kind]++;
         addExample(kind, {
@@ -166,8 +181,8 @@ function main() {
           p,
           q,
           w,
-          i,
-          j,
+          offset,
+          qOffset,
           lp,
           rp,
           lq,
