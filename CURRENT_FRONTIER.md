@@ -703,6 +703,7 @@ two_row_first_extra_intersection_routing_lemma.md
 clean_first_extra_matching_bridge_alignment.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
+clean_first_extra_pattern_raw_diagnostic.md
 minimal_g12_loop_normal_form_boundary.md
 ```
 
@@ -799,6 +800,15 @@ subcase, preferably by proving the same-output pattern.
 
 If the same-output pattern is not proved directly, treat the clean branch as a
 general V3-type bridge descent/admissibility problem.
+
+The raw diagnostic:
+
+```text
+clean_first_extra_pattern_raw_diagnostic.md
+```
+
+found short closure `ok` for the clean pattern and a 60-second size-9 rawmodel
+timeout without a model.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

@@ -186,6 +186,7 @@ right file without scanning old summaries.
 | `clean_first_extra_matching_bridge_alignment.md` | proved reduction | Clean first-extra matching is a general V3-type same-input two-target bridge after target advance. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
+| `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |
 | `minimal_g12_loop_normal_form_boundary.md` | boundary | Normal form for the remaining G12 loop: only period >= 3 same-source target-advance recurrences remain. |
 | `corridor_side_attachment_shortening_lemma.md` | graph observation | Side attachment gives smaller old-corridor footprint. |
 | `branch_closure_no_free_tail_candidate.md` | older candidate | Use only for historical branch-closure context. |

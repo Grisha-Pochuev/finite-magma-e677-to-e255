@@ -265,6 +265,7 @@ two_row_first_extra_intersection_routing_lemma.md
 clean_first_extra_matching_bridge_alignment.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
+clean_first_extra_pattern_raw_diagnostic.md
 minimal_g12_loop_normal_form_boundary.md
 ```
 
@@ -365,6 +366,16 @@ two-target bridge descent.
 After the bridge-alignment file, the clean-disjoint branch should be treated
 as a general V3-type bridge descent/admissibility problem, not as a new
 same-row recurrence.
+
+The raw diagnostic:
+
+```text
+clean_first_extra_pattern_raw_diagnostic.md
+```
+
+shows that the clean first-extra pattern is not killed by short closure, and a
+60-second size-9 rawmodel search timed out without finding a model.  Do not
+claim this branch impossible from computation alone.
 
 Use the global relay framing:
 

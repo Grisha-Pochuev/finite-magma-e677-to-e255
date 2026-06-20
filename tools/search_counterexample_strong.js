@@ -1345,7 +1345,16 @@ function makeSearcher(n, options) {
 }
 
 const runtimeProcess =
-  typeof process !== "undefined"
+  typeof globalThis.__searchCounterexampleArgv !== "undefined"
+    ? {
+        argv: globalThis.__searchCounterexampleArgv,
+        exit(code = 0) {
+          throw Object.assign(new Error("__SEARCH_COUNTEREXAMPLE_EXIT__"), {
+            code,
+          });
+        },
+      }
+    : typeof process !== "undefined"
     ? process
     : {
         argv: globalThis.__searchCounterexampleArgv || [],
