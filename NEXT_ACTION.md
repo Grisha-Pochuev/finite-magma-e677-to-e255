@@ -263,6 +263,7 @@ two_row_target_advance_window_separation_lemma.md
 two_row_orbit_theta_boundary.md
 two_row_first_extra_intersection_routing_lemma.md
 clean_first_extra_matching_bridge_alignment.md
+general_v3_bridge_descent_boundary.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -366,6 +367,15 @@ two-target bridge descent.
 After the bridge-alignment file, the clean-disjoint branch should be treated
 as a general V3-type bridge descent/admissibility problem, not as a new
 same-row recurrence.
+
+The exact descent obligation is now isolated in:
+
+```text
+general_v3_bridge_descent_boundary.md
+```
+
+It extends the measure candidate by `M5` first-extra offset and `M6` clean V3
+bridge rank.
 
 The raw diagnostic:
 

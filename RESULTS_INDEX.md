@@ -184,6 +184,7 @@ right file without scanning old summaries.
 | `two_row_orbit_theta_boundary.md` | boundary | Separated period >= 3 two-row cycles either first-intersect again or form a clean orbit theta. |
 | `two_row_first_extra_intersection_routing_lemma.md` | proved reduction | Routes first extra row-orbit intersection to collision, fan/path, or clean same-input two-target bridge. |
 | `clean_first_extra_matching_bridge_alignment.md` | proved reduction | Clean first-extra matching is a general V3-type same-input two-target bridge after target advance. |
+| `general_v3_bridge_descent_boundary.md` | boundary | Exact M5/M6 descent obligation for clean first-extra V3 bridge. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |

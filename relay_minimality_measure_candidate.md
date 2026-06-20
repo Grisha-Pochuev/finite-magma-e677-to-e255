@@ -68,6 +68,41 @@ corridor_side_attachment_shortening_lemma.md
 
 where the outside path may be long but its old-corridor footprint is smaller.
 
+## Extension For First-Extra V3 Bridges
+
+The period `>= 3` same-source residual is now sharpened by:
+
+```text
+two_row_orbit_theta_boundary.md
+two_row_first_extra_intersection_routing_lemma.md
+clean_first_extra_matching_bridge_alignment.md
+general_v3_bridge_descent_boundary.md
+```
+
+The clean first-extra branch creates a general V3-type same-input two-target
+bridge.  To measure it, extend the lexicographic object by:
+
+```text
+M5. first-extra offset:
+    the first position i>1 where two active same-row target-advance cycles
+    meet again after their shared step;
+
+M6. clean V3 bridge rank:
+    the first clean same-input two-target bridge born at that first extra
+    intersection.
+```
+
+The intended use is:
+
+```text
+same-output fan / path / full interval / core hit
+=> already routed;
+
+clean V3 bridge
+=> must be admissible as a smaller measured relay object under M0-M6,
+   or else the first-extra branch remains the exact residual.
+```
+
 ## Compatibility With R-b4
 
 For R-b4, the first repeat is:
@@ -181,10 +216,11 @@ return path.
 The measure candidate reduces the remaining proof to one exact sentence:
 
 ```text
-Every regenerated relay object produced by R-b4, R-b5, or an ordinary side
-attachment is admissible as a relay object measured by M0-M4, unless it has
-already produced a visible/core hit or an independent full ported-interval
-collision.
+Every regenerated relay object produced by R-b4, R-b5, an ordinary side
+attachment, or a clean first-extra V3 bridge is admissible as a relay object
+measured by M0-M6, unless it has already produced a visible/core hit,
+fan/path hit, same-output first-extra fan, or an independent full
+ported-interval collision.
 ```
 
 Once this admissibility sentence is proved, minimality rules out all internal
@@ -193,6 +229,7 @@ side attachments and internal row-b recurrence repeats.
 The remaining cases are therefore:
 
 ```text
-1. same-source ported recurrence with no independent branch role;
-2. strict clean theta, already excluded.
+1. clean orbit-theta translation to strict clean theta;
+2. clean first-extra V3 bridge descent/admissibility;
+3. strict clean theta, already excluded.
 ```
