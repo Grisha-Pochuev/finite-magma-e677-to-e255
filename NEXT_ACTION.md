@@ -264,6 +264,8 @@ two_row_orbit_theta_boundary.md
 two_row_first_extra_intersection_routing_lemma.md
 clean_first_extra_matching_bridge_alignment.md
 general_v3_bridge_descent_boundary.md
+shared_step_anchored_triangle_boundary.md
+m496_shared_step_anchored_triangle_diagnostic.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -376,6 +378,19 @@ general_v3_bridge_descent_boundary.md
 
 It extends the measure candidate by `M5` first-extra offset and `M6` clean V3
 bridge rank.
+
+New stronger route to try first:
+
+```text
+shared_step_anchored_triangle_boundary.md
+m496_shared_step_anchored_triangle_diagnostic.md
+```
+
+For a shared step `p*b=q*b=z`, define `U=p*z`, `W=q*z`, and
+`h=U*p=W*q=pred_z(b)`.  M496 satisfies `U*h=W*h` for all `892800`
+shared-step pairs.  If this identity is proved generally, it gives an
+incoming fan in `H_h` and bypasses both clean first-extra V3 and clean
+orbit-theta branches.
 
 The raw diagnostic:
 
