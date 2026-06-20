@@ -175,6 +175,52 @@ Interpretation: the negation is not killed by one obvious local cell, but row
 `U` already creates noticeable pressure.  This supports looking for a
 structural back-projection lemma rather than only increasing timeout.
 
+## Clean No-Visible-Period-2 Closure
+
+After:
+
+```text
+anchored_x3_visible_short_repeat_lemma.md
+```
+
+the clean false branch excludes the visible period-2 source-orbit returns:
+
+```text
+T*h=U,
+S*h=W,
+b*h=z.
+```
+
+Using the same raw labels:
+
+```text
+b=0,z=1,p=2,q=3,U=4,W=5,h=6,T=7,S=8
+```
+
+the diagnostic used the additional forbids:
+
+```text
+7*6 != 4,
+8*6 != 5,
+0*6 != 1.
+```
+
+Result:
+
+```text
+status: ok
+row 0 domain: 55508
+row 7 domain: 184765
+row 8 domain: 184765
+forced cells: 9
+domain checks: 1349280
+```
+
+Interpretation: excluding the visible period-2 returns is locally consistent
+in the bounded closure.  The remaining M7 issue is therefore genuinely the
+later/fresh right-`h` self-repeat normal form, not an immediate visible
+short-repeat contradiction.
+
 So this diagnostic supports the identity as a serious lemma target, but does
 not prove it.
 

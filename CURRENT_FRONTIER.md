@@ -961,6 +961,16 @@ hits the displayed anchored layer and is not clean.  The live M7 self-repeat
 is only a later/fresh right-`h` repeat or a return to the initial source after
 at least three steps.
 
+A short raw closure with the visible period-2 returns forbidden remains `ok`;
+see:
+
+```text
+anchored_identity_negation_raw_diagnostic.md
+```
+
+So do not expect the clean no-visible-period-2 branch to close by immediate
+cell propagation.
+
 The exact remaining self-repeat normal form is:
 
 ```text
