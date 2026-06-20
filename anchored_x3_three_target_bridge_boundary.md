@@ -192,3 +192,13 @@ object than the original shared-step residual.
 ```
 
 If neither can be proved directly, this file is the residual to attack next.
+
+The next pressure layer is recorded in:
+
+```text
+anchored_x3_second_triangle_pressure_lemma.md
+```
+
+It shows that the clean false branch also forces a second triangle layer in
+`H_h` carried by rows `T,S,b`, so the residual is coupled back to the old row
+`b` and is not a free fresh X3 layer.

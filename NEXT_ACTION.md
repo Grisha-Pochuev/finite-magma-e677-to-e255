@@ -270,6 +270,8 @@ anchored_identity_negation_raw_diagnostic.md
 anchored_identity_partial_reduction.md
 m496_shared_step_relation_scan_diagnostic.md
 anchored_x3_three_target_bridge_boundary.md
+anchored_x3_second_triangle_pressure_lemma.md
+anchored_x3_source_orbit_boundary.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -460,6 +462,42 @@ H_b: h -> z*b.
 
 This is the exact anchored-X3 residual.  Next prove `T=S`, or show this
 three-target same-input bridge is a smaller measured relay object.
+
+The anchored-X3 false branch has additional pressure:
+
+```text
+anchored_x3_second_triangle_pressure_lemma.md
+```
+
+It forces a second triangle layer back in `H_h`:
+
+```text
+row T: (U*T)*U -> T*h,
+row S: (W*S)*W -> S*h,
+row b: (z*b)*z -> b*h.
+```
+
+Next target: prove this second layer hits the original anchored layer, old
+visible/core footprint, or a full ported interval; otherwise introduce a
+measured anchored-X3 rank.
+
+The correct clean continuation is now:
+
+```text
+anchored_x3_source_orbit_boundary.md
+```
+
+It converts the anchored-X3 false branch into three fixed-target source
+orbits in `H_h`:
+
+```text
+U -> T -> T*h -> ...
+W -> S -> S*h -> ...
+z -> b -> b*h -> ...
+```
+
+Next exact target: classify the first repeat/merge of these three orbits, or
+define the anchored-X3 rank needed for the clean self-return case.
 
 The raw diagnostic:
 

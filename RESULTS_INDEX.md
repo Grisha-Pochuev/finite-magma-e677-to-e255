@@ -191,6 +191,8 @@ right file without scanning old summaries.
 | `anchored_identity_partial_reduction.md` | partial lemma | Reduces negated `U*h=W*h` to a back-projected shared step through one row `h`: `h*(T*U)=p`, `h*(S*W)=q`. |
 | `m496_shared_step_relation_scan_diagnostic.md` | diagnostic | M496 scan around common `T=U*h=W*h`: only back-projection formulas are universal among checked short relations. |
 | `anchored_x3_three_target_bridge_boundary.md` | boundary | False branch `U*h!=W*h` routes to an anchored three-target same-input bridge at common input `h`, with old target `b`. |
+| `anchored_x3_second_triangle_pressure_lemma.md` | partial/proved pressure | Anchored-X3 false branch forces a second triangle layer in `H_h` carried by rows `T,S,b`. |
+| `anchored_x3_source_orbit_boundary.md` | boundary | Converts clean anchored-X3 false branch to three fixed-target source-successor orbits in `H_h`: `U->T`, `W->S`, `z->b`. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |
