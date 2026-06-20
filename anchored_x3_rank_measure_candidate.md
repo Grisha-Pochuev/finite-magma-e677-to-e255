@@ -99,6 +99,24 @@ The only event that can remain as a clean residual is:
 self-repeat inside one source orbit before any cross-orbit hit.
 ```
 
+The visible short part of this residual is routed in:
+
+```text
+anchored_x3_visible_short_repeat_lemma.md
+```
+
+So the live clean self-repeat is only a later/fresh right-`h` repeat, or a
+return to the initial source after at least three right-`h` steps.
+
+The exact normal form for that remaining case is:
+
+```text
+anchored_x3_clean_self_repeat_normal_form.md
+```
+
+It is a clean right-`h` source-successor cycle, not automatically a directed
+cycle in `H_h` and not a left-row period.
+
 ## Desired Descent Sentence
 
 The next proof target is:

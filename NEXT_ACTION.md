@@ -273,6 +273,8 @@ anchored_x3_three_target_bridge_boundary.md
 anchored_x3_second_triangle_pressure_lemma.md
 anchored_x3_source_orbit_boundary.md
 anchored_x3_rank_measure_candidate.md
+anchored_x3_visible_short_repeat_lemma.md
+anchored_x3_clean_self_repeat_normal_form.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -509,6 +511,35 @@ anchored_x3_rank_measure_candidate.md
 It adds `M7`: the first-event rank of the three right-`h` source orbits
 starting from `U,W,z`.  Next prove M7 descent for a clean self-repeat, or
 isolate the exact clean self-repeat subcase that fails descent.
+
+Short visible self-repeats are removed by:
+
+```text
+anchored_x3_visible_short_repeat_lemma.md
+```
+
+Initial period 1 or 2 in:
+
+```text
+U -> T -> ...
+W -> S -> ...
+z -> b -> ...
+```
+
+hits the displayed anchored layer and is not clean.  The live M7 self-repeat
+is only a later/fresh right-`h` repeat or a return to the initial source after
+at least three steps.
+
+The exact remaining self-repeat normal form is:
+
+```text
+anchored_x3_clean_self_repeat_normal_form.md
+```
+
+It is a closed right-`h` source-successor cycle in `H_h`.  It is not
+automatically an `H_h` directed path and not a left-row period.  Next prove it
+creates strict clean theta, an independent full interval, a smaller M7 object,
+or a core hit.
 
 The raw diagnostic:
 
