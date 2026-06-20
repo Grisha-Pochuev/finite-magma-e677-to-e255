@@ -190,6 +190,7 @@ right file without scanning old summaries.
 | `anchored_identity_negation_raw_diagnostic.md` | diagnostic | Size-9 raw negation of `U*h=W*h`: closure ok; 60s and 300s rawmodel timeouts without a model. |
 | `anchored_identity_partial_reduction.md` | partial lemma | Reduces negated `U*h=W*h` to a back-projected shared step through one row `h`: `h*(T*U)=p`, `h*(S*W)=q`. |
 | `m496_shared_step_relation_scan_diagnostic.md` | diagnostic | M496 scan around common `T=U*h=W*h`: only back-projection formulas are universal among checked short relations. |
+| `anchored_x3_three_target_bridge_boundary.md` | boundary | False branch `U*h!=W*h` routes to an anchored three-target same-input bridge at common input `h`, with old target `b`. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |

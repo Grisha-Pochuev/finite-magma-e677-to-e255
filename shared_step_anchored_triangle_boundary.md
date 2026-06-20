@@ -270,3 +270,19 @@ m496_shared_step_relation_scan_diagnostic.md
 It found no additional universal one-step equality around `T=U*h=W*h` among
 the checked neighboring terms, so the next route should be structural rather
 than another guessed short equality.
+
+The clean false branch is classified in:
+
+```text
+anchored_x3_three_target_bridge_boundary.md
+```
+
+When `U*h!=W*h`, the clean local case target-advances to:
+
+```text
+H_{U*h}: h -> U*(U*h),
+H_{W*h}: h -> W*(W*h),
+H_b:     h -> z*b.
+```
+
+This is the exact anchored-X3 object left if the strong identity is not proved.

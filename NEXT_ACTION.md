@@ -269,6 +269,7 @@ m496_shared_step_anchored_triangle_diagnostic.md
 anchored_identity_negation_raw_diagnostic.md
 anchored_identity_partial_reduction.md
 m496_shared_step_relation_scan_diagnostic.md
+anchored_x3_three_target_bridge_boundary.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -441,6 +442,24 @@ m496_shared_step_relation_scan_diagnostic.md
 found no additional universal short equality among `p*U`, `q*W`, `U*T`,
 `W*T`, `z*T`, `T*b`, `T*h`, `h*p`, and `h*q`.  So the next route should be
 structural, not another guessed one-step equality.
+
+The false branch is classified in:
+
+```text
+anchored_x3_three_target_bridge_boundary.md
+```
+
+If `T=U*h` and `S=W*h` are distinct, then the clean local case target-advances
+to:
+
+```text
+H_T: h -> U*T,
+H_S: h -> W*S,
+H_b: h -> z*b.
+```
+
+This is the exact anchored-X3 residual.  Next prove `T=S`, or show this
+three-target same-input bridge is a smaller measured relay object.
 
 The raw diagnostic:
 
