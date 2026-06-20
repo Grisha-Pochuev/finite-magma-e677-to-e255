@@ -693,7 +693,19 @@ Continue with:
 relay_minimality_measure_candidate.md
 minimal_relay_cycle_dichotomy_candidate.md
 relay_termination_frontier.md
+relay_same_source_return_split_boundary.md
+minimal_g12_loop_normal_form_boundary.md
 ```
+
+The remaining loop is now normalized in:
+
+```text
+minimal_g12_loop_normal_form_boundary.md
+```
+
+Only same-source target-advance row-orbit recurrences remain.  The next target
+is to show that this normal form is strict clean theta or forces an
+independent full ported-interval repeat.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

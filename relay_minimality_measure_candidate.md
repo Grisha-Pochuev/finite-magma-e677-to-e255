@@ -151,7 +151,15 @@ The only R-b5 case not removed by this local measure is:
 m=0,
 ```
 
-a start-return minimal A-cycle.
+a start-return minimal A-cycle.  This case is no longer an independent local
+residual after:
+
+```text
+rb5_beta_necklace_first_hit_reduction_lemma.md
+```
+
+because its lifted beta-anchor necklace routes to existing beta/Z3 reductions
+or to the unified same-row recurrence frontier.
 
 ## Compatibility With Ordinary Side Attachment
 
@@ -182,11 +190,9 @@ collision.
 Once this admissibility sentence is proved, minimality rules out all internal
 side attachments and internal row-b recurrence repeats.
 
-The remaining cases are:
+The remaining cases are therefore:
 
 ```text
-1. start-return minimal A-cycle from R-b5;
-2. same-source ported recurrence with no independent branch role;
-3. strict clean theta, already excluded.
+1. same-source ported recurrence with no independent branch role;
+2. strict clean theta, already excluded.
 ```
-

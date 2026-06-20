@@ -176,6 +176,8 @@ right file without scanning old summaries.
 |---|---|---|
 | `relay_termination_frontier.md` | active global frontier | Recursive relay termination statement. |
 | `minimal_relay_cycle_dichotomy_candidate.md` | candidate | Minimal closed relay-cycle split. |
+| `relay_same_source_return_split_boundary.md` | boundary | Splits independent returns, which route to crossed fan/G12, from same-source row-orbit returns. |
+| `minimal_g12_loop_normal_form_boundary.md` | boundary | Normal form for the remaining G12 loop: only same-source target-advance recurrences remain. |
 | `corridor_side_attachment_shortening_lemma.md` | graph observation | Side attachment gives smaller old-corridor footprint. |
 | `branch_closure_no_free_tail_candidate.md` | older candidate | Use only for historical branch-closure context. |
 

@@ -255,10 +255,20 @@ Current exact target:
 relay_minimality_measure_candidate.md
 minimal_relay_cycle_dichotomy_candidate.md
 relay_termination_frontier.md
+relay_same_source_return_split_boundary.md
+minimal_g12_loop_normal_form_boundary.md
 ```
 
-Prove the global admissibility/descent sentence for regenerated relay objects
-under the lexicographic measure M0-M4.
+The global admissibility/descent sentence is now sharpened to the G12 normal
+form:
+
+```text
+minimal_g12_loop_normal_form_boundary.md
+```
+
+Next target: show that a closed relay loop made only of same-source
+target-advance recurrences is either strict clean theta or contains an
+independent repeated full ported interval.
 
 Use the global relay framing:
 
