@@ -189,6 +189,7 @@ right file without scanning old summaries.
 | `m496_shared_step_anchored_triangle_diagnostic.md` | diagnostic | M496 verifies `U*h=W*h` and the anchored incoming fan for all 892800 shared-step pairs. |
 | `anchored_identity_negation_raw_diagnostic.md` | diagnostic | Size-9 raw negation of `U*h=W*h`: closure ok; 60s and 300s rawmodel timeouts without a model. |
 | `anchored_identity_partial_reduction.md` | partial lemma | Reduces negated `U*h=W*h` to a back-projected shared step through one row `h`: `h*(T*U)=p`, `h*(S*W)=q`. |
+| `m496_shared_step_relation_scan_diagnostic.md` | diagnostic | M496 scan around common `T=U*h=W*h`: only back-projection formulas are universal among checked short relations. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |

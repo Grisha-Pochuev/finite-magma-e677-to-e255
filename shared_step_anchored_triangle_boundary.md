@@ -260,3 +260,13 @@ h*(S*W)=q,
 
 So the negated branch is an anchored back-projection through the single row
 `h`, not just an unstructured failure of the incoming fan.
+
+The M496 neighboring-relation scan is recorded in:
+
+```text
+m496_shared_step_relation_scan_diagnostic.md
+```
+
+It found no additional universal one-step equality around `T=U*h=W*h` among
+the checked neighboring terms, so the next route should be structural rather
+than another guessed short equality.

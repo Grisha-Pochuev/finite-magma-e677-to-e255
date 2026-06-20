@@ -706,6 +706,7 @@ shared_step_anchored_triangle_boundary.md
 m496_shared_step_anchored_triangle_diagnostic.md
 anchored_identity_negation_raw_diagnostic.md
 anchored_identity_partial_reduction.md
+m496_shared_step_relation_scan_diagnostic.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -861,6 +862,16 @@ h*(S*W)=q,
 
 So the next proof target is to rule out this anchored back-projected shared
 step, or route it as a new measured residual.
+
+The M496 neighboring-relation scan:
+
+```text
+m496_shared_step_relation_scan_diagnostic.md
+```
+
+found no additional universal short equality among `p*U`, `q*W`, `U*T`,
+`W*T`, `z*T`, `T*b`, `T*h`, `h*p`, and `h*q`.  So the next route should be
+structural, not another guessed one-step equality.
 
 The raw diagnostic:
 
