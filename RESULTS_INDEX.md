@@ -183,6 +183,7 @@ right file without scanning old summaries.
 | `two_row_target_advance_window_separation_lemma.md` | proved | Two distinct rows sharing a target-advance step have distinct left and right ports. |
 | `two_row_orbit_theta_boundary.md` | boundary | Separated period >= 3 two-row cycles either first-intersect again or form a clean orbit theta. |
 | `two_row_first_extra_intersection_routing_lemma.md` | proved reduction | Routes first extra row-orbit intersection to collision, fan/path, or clean same-input two-target bridge. |
+| `clean_first_extra_matching_bridge_alignment.md` | proved reduction | Clean first-extra matching is a general V3-type same-input two-target bridge after target advance. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `minimal_g12_loop_normal_form_boundary.md` | boundary | Normal form for the remaining G12 loop: only period >= 3 same-source target-advance recurrences remain. |

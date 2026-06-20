@@ -161,3 +161,9 @@ It routes to:
 
 The only part not closed inside this file is branch 4.  It is the familiar
 clean two-target bridge form, not a new pure same-row recurrence.
+
+The exact bridge alignment is recorded in:
+
+```text
+clean_first_extra_matching_bridge_alignment.md
+```

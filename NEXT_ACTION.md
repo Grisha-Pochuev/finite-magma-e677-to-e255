@@ -262,6 +262,7 @@ m496_target_advance_period_diagnostic.md
 two_row_target_advance_window_separation_lemma.md
 two_row_orbit_theta_boundary.md
 two_row_first_extra_intersection_routing_lemma.md
+clean_first_extra_matching_bridge_alignment.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 minimal_g12_loop_normal_form_boundary.md
@@ -333,6 +334,12 @@ two_row_first_extra_intersection_routing_lemma.md
 The remaining live branch from that route is the clean same-input two-target
 bridge after target advance.
 
+That branch is aligned with the V3-type bridge frontier in:
+
+```text
+clean_first_extra_matching_bridge_alignment.md
+```
+
 The M496 shared-step diagnostic:
 
 ```text
@@ -354,6 +361,10 @@ matching is absent.  The next structural target is to prove this
 clean-disjoint first-extra matching impossible in a minimal G12 loop, ideally
 by proving the same-output fan pattern, or to route it to an already measured
 two-target bridge descent.
+
+After the bridge-alignment file, the clean-disjoint branch should be treated
+as a general V3-type bridge descent/admissibility problem, not as a new
+same-row recurrence.
 
 Use the global relay framing:
 

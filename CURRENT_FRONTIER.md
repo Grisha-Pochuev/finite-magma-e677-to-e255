@@ -700,6 +700,7 @@ m496_target_advance_period_diagnostic.md
 two_row_target_advance_window_separation_lemma.md
 two_row_orbit_theta_boundary.md
 two_row_first_extra_intersection_routing_lemma.md
+clean_first_extra_matching_bridge_alignment.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 minimal_g12_loop_normal_form_boundary.md
@@ -769,6 +770,12 @@ two_row_first_extra_intersection_routing_lemma.md
 
 leaving only its clean same-input two-target bridge subcase.
 
+That clean subcase is aligned with the general V3-type bridge frontier in:
+
+```text
+clean_first_extra_matching_bridge_alignment.md
+```
+
 The diagnostic:
 
 ```text
@@ -789,6 +796,9 @@ also found no clean first-extra matching in M496: after rotating cycles to the
 shared step `b -> z`, the first extra intersection is always a same-output
 fan.  Next target: prove or route away the clean-disjoint first-extra matching
 subcase, preferably by proving the same-output pattern.
+
+If the same-output pattern is not proved directly, treat the clean branch as a
+general V3-type bridge descent/admissibility problem.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

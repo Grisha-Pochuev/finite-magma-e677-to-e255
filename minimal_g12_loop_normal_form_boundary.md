@@ -20,6 +20,7 @@ target_advance_same_row_period_lemma.md
 two_row_target_advance_window_separation_lemma.md
 two_row_orbit_theta_boundary.md
 two_row_first_extra_intersection_routing_lemma.md
+clean_first_extra_matching_bridge_alignment.md
 clean_external_bridge_twelfth_stage_reduction_lemma.md
 strict_clean_theta_exclusion_lemma.md
 ```
@@ -158,6 +159,12 @@ two_row_first_extra_intersection_routing_lemma.md
 to a full interval collision, fan/path attachment, or clean same-input
 two-target bridge after target advance.
 
+The clean matching subcase is aligned with the V3-type bridge frontier in:
+
+```text
+clean_first_extra_matching_bridge_alignment.md
+```
+
 ## Remaining Normal Form
 
 A genuine remaining G12 counterexample must therefore be:
@@ -187,6 +194,6 @@ The likely final obstruction is:
 
 ```text
 translate the clean orbit-theta branch to the strict clean theta already
-excluded, and route the clean same-input two-target bridge left by the
-first-extra-intersection branch.
+excluded, and prove descent/admissibility for the V3-type bridge left by the
+clean first-extra matching branch.
 ```
