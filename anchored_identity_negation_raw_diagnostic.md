@@ -116,6 +116,65 @@ row-0 representative count: 362880
 Interpretation: no size-9 arbitrary E677 model with the negated anchored
 identity was found in the bounded run, but the search did not complete.
 
+## Longer Targeted Search
+
+Because the negation is a precise hypothesis, one longer local check was run:
+
+```text
+tools/node-portable/node.exe tools/search_counterexample_strong.js 9 300 all rawmodel
+```
+
+with the same requirements.
+
+Result:
+
+```text
+status: timeout
+time: 300.90s
+nodes: 3068
+dead ends: 3022
+forced rows: 0
+forced cells: 23422
+domain checks: 251420714
+row-0 representative count: 362880
+```
+
+Interpretation: the size-9 negation search still found no arbitrary E677
+model after five minutes, but it did not complete.  This strengthens the
+diagnostic priority of the identity, but it is still not proof.
+
+## Local Pressure Diagnostic
+
+A row-limited score check on rows:
+
+```text
+1,2,3,4,5,6,7,8
+```
+
+showed symmetric pressure around rows `4=U` and `5=W`, but no single new cell
+was almost forced.  The most constrained displayed cells were:
+
+```text
+4*3 and 5*2: domain 3121, distinct 7
+4*0 and 5*0: domain 3121, distinct 6
+1*1:         domain 21684, distinct 8
+```
+
+A first-branch diagnostic chose row `4=U` first:
+
+```text
+first row: 4
+first domain: 3121
+checked: 20
+dead after first row: 6
+forced cells: 142
+domain checks: 18777240
+```
+
+Interpretation: the negation is not killed by one obvious local cell, but row
+`U` already creates noticeable pressure.  This supports looking for a
+structural back-projection lemma rather than only increasing timeout.
+
 So this diagnostic supports the identity as a serious lemma target, but does
 not prove it.
 

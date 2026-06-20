@@ -705,6 +705,7 @@ general_v3_bridge_descent_boundary.md
 shared_step_anchored_triangle_boundary.md
 m496_shared_step_anchored_triangle_diagnostic.md
 anchored_identity_negation_raw_diagnostic.md
+anchored_identity_partial_reduction.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -841,8 +842,25 @@ The negation diagnostic:
 anchored_identity_negation_raw_diagnostic.md
 ```
 
-has short closure `ok`; a 60-second size-9 rawmodel run timed out without a
-model.  This is not proof.
+has short closure `ok`; both 60-second and 300-second size-9 rawmodel runs
+timed out without finding a model.  This is not proof.
+
+The partial reduction:
+
+```text
+anchored_identity_partial_reduction.md
+```
+
+shows that with `T=U*h` and `S=W*h`, the negated branch satisfies:
+
+```text
+h*(T*U)=p,
+h*(S*W)=q,
+(h*(T*U))*b=(h*(S*W))*b=z.
+```
+
+So the next proof target is to rule out this anchored back-projected shared
+step, or route it as a new measured residual.
 
 The raw diagnostic:
 

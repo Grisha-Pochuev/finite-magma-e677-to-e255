@@ -243,3 +243,20 @@ A targeted raw-label diagnostic for the negation is recorded in:
 ```text
 anchored_identity_negation_raw_diagnostic.md
 ```
+
+A partial algebraic reduction of the negation is recorded in:
+
+```text
+anchored_identity_partial_reduction.md
+```
+
+It shows that if `T=U*h` and `S=W*h`, then:
+
+```text
+h*(T*U)=p,
+h*(S*W)=q,
+(h*(T*U))*b=(h*(S*W))*b=z.
+```
+
+So the negated branch is an anchored back-projection through the single row
+`h`, not just an unstructured failure of the incoming fan.
