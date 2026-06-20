@@ -17,6 +17,9 @@ relay_minimality_measure_candidate.md
 relay_same_source_return_split_boundary.md
 fixed_target_same_source_return_collapse_lemma.md
 target_advance_same_row_period_lemma.md
+two_row_target_advance_window_separation_lemma.md
+two_row_orbit_theta_boundary.md
+two_row_first_extra_intersection_routing_lemma.md
 clean_external_bridge_twelfth_stage_reduction_lemma.md
 strict_clean_theta_exclusion_lemma.md
 ```
@@ -126,6 +129,35 @@ Periods `1` and `2` are local fixed/swap recurrences already routed by the
 local recurrence inventory.  Therefore a genuine remaining same-source
 target-advance component must have row-orbit period at least `3`.
 
+When two active branch rows share a target-advance step, the local window is
+separated on both sides by:
+
+```text
+two_row_target_advance_window_separation_lemma.md
+```
+
+So a remaining two-row step has no left-neighbor equality and no right-neighbor
+equality unless it already gives an independent full ported-interval
+collision.
+
+The separated windows then have the global split:
+
+```text
+two_row_orbit_theta_boundary.md
+```
+
+Either the two row cycles have a first extra intersection, or their union is a
+clean two-row orbit theta in the target-advance state space.
+
+The first-extra-intersection branch is routed by:
+
+```text
+two_row_first_extra_intersection_routing_lemma.md
+```
+
+to a full interval collision, fan/path attachment, or clean same-input
+two-target bridge after target advance.
+
 ## Remaining Normal Form
 
 A genuine remaining G12 counterexample must therefore be:
@@ -136,7 +168,8 @@ no independent return,
 no fresh clean external bridge subcase,
 no beta/Z3/local recurrence escape,
 and only same-source target-advance row-orbit recurrences of period at least
-3.
+3, assembled from separated two-row target-advance windows whose row cycles
+either have a first extra intersection or form a clean orbit theta.
 ```
 
 Equivalently, every active ported interval advances along its own source-row
@@ -153,7 +186,7 @@ strict_clean_theta_exclusion_lemma.md
 The likely final obstruction is:
 
 ```text
-show that a relay loop made only of period >= 3 same-source target-advance
-recurrences is exactly a strict clean theta or contains an independent
-repeated full ported interval.
+translate the clean orbit-theta branch to the strict clean theta already
+excluded, and route the clean same-input two-target bridge left by the
+first-extra-intersection branch.
 ```

@@ -180,6 +180,11 @@ right file without scanning old summaries.
 | `fixed_target_same_source_return_collapse_lemma.md` | proved | Same-source double return to one fixed split in `H_b` is the same edge, not a new core return. |
 | `target_advance_same_row_period_lemma.md` | proved | Pure same-row target-advance recurrence has exactly the row-orbit period; periods 1-2 are fixed/swap local cases. |
 | `m496_target_advance_period_diagnostic.md` | diagnostic | M496 rows have periods 1,5,10,30; period >= 3 residual is not vacuous. |
+| `two_row_target_advance_window_separation_lemma.md` | proved | Two distinct rows sharing a target-advance step have distinct left and right ports. |
+| `two_row_orbit_theta_boundary.md` | boundary | Separated period >= 3 two-row cycles either first-intersect again or form a clean orbit theta. |
+| `two_row_first_extra_intersection_routing_lemma.md` | proved reduction | Routes first extra row-orbit intersection to collision, fan/path, or clean same-input two-target bridge. |
+| `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
+| `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-input or same-output fans; clean matching is absent. |
 | `minimal_g12_loop_normal_form_boundary.md` | boundary | Normal form for the remaining G12 loop: only period >= 3 same-source target-advance recurrences remain. |
 | `corridor_side_attachment_shortening_lemma.md` | graph observation | Side attachment gives smaller old-corridor footprint. |
 | `branch_closure_no_free_tail_candidate.md` | older candidate | Use only for historical branch-closure context. |
@@ -202,4 +207,6 @@ right file without scanning old summaries.
 | `tools/y3_shell_saturation.py` | active diagnostic | Bounded local congruence check for the Y3/Z3 shell; needs a real Python executable. |
 | `tools/search_counterexample_strong.js` | active search tool | Use raw modes only for precise bounded hypotheses. |
 | `tools/m496_target_advance_periods.js` | diagnostic | Scans pure same-row target-advance row periods in the known M496 model. |
+| `tools/m496_shared_step_orbit_split.js` | diagnostic | Scans shared-step row pairs in M496 for extra cycle intersections versus clean orbit theta. |
+| `tools/m496_first_extra_intersection_roles.js` | diagnostic | Classifies first extra row-cycle intersections in M496 by same-target trichotomy roles. |
 | `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |

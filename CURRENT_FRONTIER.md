@@ -697,6 +697,11 @@ relay_same_source_return_split_boundary.md
 fixed_target_same_source_return_collapse_lemma.md
 target_advance_same_row_period_lemma.md
 m496_target_advance_period_diagnostic.md
+two_row_target_advance_window_separation_lemma.md
+two_row_orbit_theta_boundary.md
+two_row_first_extra_intersection_routing_lemma.md
+m496_shared_step_orbit_split_diagnostic.md
+m496_first_extra_intersection_roles_diagnostic.md
 minimal_g12_loop_normal_form_boundary.md
 ```
 
@@ -706,9 +711,9 @@ The remaining loop is now normalized in:
 minimal_g12_loop_normal_form_boundary.md
 ```
 
-Only same-source target-advance row-orbit recurrences remain.  The next target
-is to show that this normal form is strict clean theta or forces an
-independent full ported-interval repeat.
+Only period `>= 3` same-source target-advance row-orbit recurrences remain.
+The next target is to show that this normal form is strict clean theta or
+forces an independent full ported-interval repeat.
 
 The fixed-target ambiguity is removed by:
 
@@ -736,6 +741,53 @@ m496_target_advance_period_diagnostic.md
 
 confirms that the known M496 model has periods `1,5,10,30`; the period
 `>= 3` residue is structurally real.
+
+The local two-row window is separated by:
+
+```text
+two_row_target_advance_window_separation_lemma.md
+```
+
+So neighboring-port equality is not the next target; it would already be a
+full-interval collision.  The next target is the global loop assembled from
+separated period `>= 3` windows.
+
+The global split is:
+
+```text
+two_row_orbit_theta_boundary.md
+```
+
+Either the two row cycles have a first extra intersection, or their union is a
+clean two-row orbit theta in the target-advance state space.
+
+The first extra intersection is routed by:
+
+```text
+two_row_first_extra_intersection_routing_lemma.md
+```
+
+leaving only its clean same-input two-target bridge subcase.
+
+The diagnostic:
+
+```text
+m496_shared_step_orbit_split_diagnostic.md
+```
+
+found no clean orbit-theta pairs in M496; every shared-step row pair had an
+extra cycle intersection.  Prioritize the clean same-input two-target bridge
+left by that route.
+
+The diagnostic:
+
+```text
+m496_first_extra_intersection_roles_diagnostic.md
+```
+
+also found no clean first-extra matching in M496: the first extra intersection
+is always a same-input or same-output fan.  Next target: prove or route away
+the clean-disjoint first-extra matching subcase.
 
 For independent row-b cycle boundaries, each generated input `A_i` also has
 cross-source pressure between rows `b` and `x_i`:

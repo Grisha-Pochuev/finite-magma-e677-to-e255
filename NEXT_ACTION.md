@@ -259,6 +259,11 @@ relay_same_source_return_split_boundary.md
 fixed_target_same_source_return_collapse_lemma.md
 target_advance_same_row_period_lemma.md
 m496_target_advance_period_diagnostic.md
+two_row_target_advance_window_separation_lemma.md
+two_row_orbit_theta_boundary.md
+two_row_first_extra_intersection_routing_lemma.md
+m496_shared_step_orbit_split_diagnostic.md
+m496_first_extra_intersection_roles_diagnostic.md
 minimal_g12_loop_normal_form_boundary.md
 ```
 
@@ -299,6 +304,55 @@ m496_target_advance_period_diagnostic.md
 
 shows that known E677 behavior has row periods `1,5,10,30`, so the period
 `>= 3` residue is not a merely formal leftover.
+
+The local two-row window inside this residue is separated by:
+
+```text
+two_row_target_advance_window_separation_lemma.md
+```
+
+Thus the next obstruction is global: a loop assembled only from separated
+period `>= 3` two-row windows, with no independent full interval collision and
+no strict clean theta.
+
+This global obstruction is now split in:
+
+```text
+two_row_orbit_theta_boundary.md
+```
+
+Next target: route the first extra intersection of the two row cycles, or
+translate the clean orbit-theta branch to strict clean theta.
+
+The first extra intersection is now routed by:
+
+```text
+two_row_first_extra_intersection_routing_lemma.md
+```
+
+The remaining live branch from that route is the clean same-input two-target
+bridge after target advance.
+
+The M496 shared-step diagnostic:
+
+```text
+m496_shared_step_orbit_split_diagnostic.md
+```
+
+found no clean orbit-theta pairs and found an extra cycle intersection for
+every shared-step row pair.  This suggests prioritizing the clean same-input
+two-target bridge left by the first-extra-intersection route.
+
+The first-extra role diagnostic:
+
+```text
+m496_first_extra_intersection_roles_diagnostic.md
+```
+
+found that M496 first extra intersections are always same-input or same-output
+fans; clean matching is absent.  The next structural target is to prove this
+clean-disjoint first-extra matching impossible in a minimal G12 loop, or to
+route it to an already measured two-target bridge descent.
 
 Use the global relay framing:
 
