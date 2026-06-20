@@ -824,6 +824,16 @@ M496 has `U*h=W*h` for every shared-step pair.  Proving this identity would
 produce an incoming fan in `H_h` and remove both remaining clean final
 branches before first-extra analysis.
 
+Immediate algebraic proof target:
+
+```text
+p*b=q*b,
+U=p*(p*b),
+W=q*(p*b),
+h=U*p=W*q
+=> U*h=W*h.
+```
+
 The raw diagnostic:
 
 ```text

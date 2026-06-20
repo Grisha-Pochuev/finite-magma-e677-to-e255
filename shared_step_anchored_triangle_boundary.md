@@ -114,6 +114,42 @@ fan/relay object.  In particular, it removes:
 
 They would no longer need separate treatment.
 
+## Algebraic Proof Target
+
+In bare term notation the desired quasi-identity is:
+
+```text
+Assume:
+  p*b = q*b = z,
+  U = p*z,
+  W = q*z,
+  h = U*p = W*q.
+
+Prove:
+  U*h = W*h.
+```
+
+Eliminating the abbreviations, this is:
+
+```text
+p*b=q*b
+and
+(p*(p*b))*p = (q*(p*b))*q
+
+=> (p*(p*b))*((p*(p*b))*p)
+ = (q*(p*b))*((p*(p*b))*p).
+```
+
+The second assumption is not an extra empirical fact in the relay setting:
+it is the first-merge certificate equality:
+
+```text
+h=U*p=W*q=pred_z(b).
+```
+
+So the real proof target is to derive the final equality from E677 plus the
+shared-step certificate structure, not from M496.
+
 ## If The Strong Hypothesis Fails
 
 If:

@@ -392,6 +392,16 @@ shared-step pairs.  If this identity is proved generally, it gives an
 incoming fan in `H_h` and bypasses both clean first-extra V3 and clean
 orbit-theta branches.
 
+Immediate algebraic proof target:
+
+```text
+p*b=q*b,
+U=p*(p*b),
+W=q*(p*b),
+h=U*p=W*q
+=> U*h=W*h.
+```
+
 The raw diagnostic:
 
 ```text
