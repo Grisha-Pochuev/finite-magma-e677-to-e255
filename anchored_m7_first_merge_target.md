@@ -5,7 +5,7 @@ Date: 2026-06-21.
 Status:
 
 ```text
-target / next exact proof step for anchored-X3 M7
+routed target / first-event target reduced to clean self-repeat
 ```
 
 ## Current State
@@ -60,9 +60,10 @@ The first event among these three orbits is one of:
 5. self-repeat inside one orbit.
 ```
 
-Cases 1-4 are locally routed by:
+Cases 1-4 are now routed by:
 
 ```text
+anchored_m7_first_event_routing_lemma.md
 fixed_target_source_orbit_first_merge_boundary.md
 same_target_pair_collision_trichotomy_lemma.md
 anchored_x3_source_orbit_boundary.md
@@ -75,7 +76,7 @@ The only live case is:
    event.
 ```
 
-## Desired Lemma
+## Remaining Desired Lemma
 
 Prove:
 

@@ -74,6 +74,11 @@ const s = constant("S");
 const t1 = constant("T1");
 const s1 = constant("S1");
 const b1 = constant("B1");
+const dz = constant("Dz");
+const dh = constant("Dh");
+const du = constant("DU");
+const dw = constant("DW");
+const dt = constant("DT");
 
 const assumptions = [];
 function eq(x, y, label) {
@@ -99,6 +104,11 @@ eq(op(b, op(op(z, b), z)), h, "b*((z*b)*z)=h");
 eq(op(t, h), t1, "T*h=T1");
 eq(op(s, h), s1, "S*h=S1");
 eq(op(b, h), b1, "b*h=B1");
+eq(op(op(z, z), z), dz, "d(z)=Dz");
+eq(op(op(h, h), h), dh, "d(h)=Dh");
+eq(op(op(u, u), u), du, "d(U)=DU");
+eq(op(op(w, w), w), dw, "d(W)=DW");
+eq(op(op(t, t), t), dt, "d(T)=DT");
 
 const forbidden = [
   [t, s, "T!=S"],
@@ -110,7 +120,7 @@ const forbidden = [
   [b1, z, "b*h!=z"],
 ];
 
-const watch = [b, p, q, z, u, w, h, alpha, t, s, t1, s1, b1];
+const watch = [b, p, q, z, u, w, h, alpha, t, s, t1, s1, b1, dz, dh, du, dw, dt];
 
 function seedNamedNeighborhood() {
   for (const x of watch) {
@@ -237,6 +247,14 @@ const comparisons = [
   [op(t1, h), t, "T1*h=T"],
   [op(s1, h), s, "S1*h=S"],
   [op(b1, h), b, "B1*h=b"],
+  [op(z, dh), b, "z*d(h)=b"],
+  [dh, h, "d(h)=h"],
+  [op(h, h), h, "h*h=h"],
+  [dz, z, "d(z)=z"],
+  [op(z, z), z, "z*z=z"],
+  [op(dz, h), b, "d(z)*h=b"],
+  [op(du, h), op(dw, h), "d(U)*h=d(W)*h"],
+  [op(u, dh), op(w, dh), "U*d(h)=W*d(h)"],
 ];
 
 console.log("Anchored M7 saturation");

@@ -199,7 +199,10 @@ right file without scanning old summaries.
 | `atp/anchored_x3_m7_self_repeat.p` | ATP template | TPTP-style local template for testing concrete consequences of the clean anchored-X3/M7 self-repeat residual. |
 | `atp/check_atp_environment.ps1` | helper | Checks whether common ATP provers are visible before trying the M7 TPTP template. |
 | `anchored_m7_saturation_diagnostic.md` | diagnostic | Bounded closure of the anchored-X3/M7 template: first fresh successors `T1,S1,B1` do not short-collapse. |
-| `anchored_m7_first_merge_target.md` | target | Next exact target: first merge/repeat of the three right-`h` source orbits; only clean self-repeat remains live. |
+| `anchored_m7_first_event_routing_lemma.md` | proved reduction | Routes first anchored-M7 events 1-4; only clean same-orbit right-`h` self-repeat remains live. |
+| `anchored_m7_first_merge_target.md` | routed target | First merge/repeat of the three right-`h` source orbits is reduced to clean self-repeat. |
+| `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
+| `m496_anchored_d_term_scan_diagnostic.md` | diagnostic | M496 anchored scan with `d(x)=((x*x)*x)` finds `z*d(h)=b`, `d(h)=h`, `h*h=h`, `d(z)=z`, `z*z=z` for all 892800 pairs. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |
@@ -227,5 +230,6 @@ right file without scanning old summaries.
 | `tools/m496_target_advance_periods.js` | diagnostic | Scans pure same-row target-advance row periods in the known M496 model. |
 | `tools/m496_shared_step_orbit_split.js` | diagnostic | Scans shared-step row pairs in M496 for extra cycle intersections versus clean orbit theta. |
 | `tools/m496_first_extra_intersection_roles.js` | diagnostic | Classifies first extra row-cycle intersections in M496 by same-target trichotomy roles. |
+| `tools/m496_anchored_d_term_scan.js` | diagnostic | Scans anchored shared-step pairs in M496 for short `d(x)=((x*x)*x)` relations. |
 | `tools/m496_shared_step_anchored_triangle.ps1` | diagnostic | PowerShell M496 check for shared-step anchored triangle and `U*h=W*h`. |
 | `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |

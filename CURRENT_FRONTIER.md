@@ -1,6 +1,6 @@
 # Current Frontier: E677 -> E255
 
-Date: 2026-06-18.
+Date: 2026-06-21.
 
 Read this file first at the start of a new run.  Do not start from
 `research_log.md`, `PROJECT_STATUS.md`, or old stop checkpoints unless a
@@ -1007,16 +1007,49 @@ did not derive clean collapses or short equalities among `T1=T*h`,
 merge/repeat of the right-`h` source orbits, not another guessed short
 equality at the first fresh layer.
 
-The exact next target is:
+The first-event routing is now recorded in:
 
 ```text
+anchored_m7_first_event_routing_lemma.md
 anchored_m7_first_merge_target.md
 ```
 
-Classify the first finite event of the three right-`h` source orbits.  The
-only live branch should be a clean self-repeat inside one orbit; prove it
-creates strict clean theta, an independent full interval, smaller M7, or core
-hit.
+Cross-orbit source hits, output merges, input-output cross hits, and
+watched/core hits are routed.  The only live branch is a clean self-repeat
+inside one right-`h` source orbit.  The next proof should model the whole
+cycle start/end, not only the first fresh layer, and prove it creates strict
+clean theta, an independent full interval, smaller M7, or core hit.
+
+The external `eq677` repository supplied one useful template for this:
+
+```text
+eq677_repo_idea_notes.md
+```
+
+Its `cycle-sen.p` style suggests naming the end and next-to-last positions of
+the clean self-repeat cycle.  Its `analysis.rs` style suggests a narrow
+M496 diagnostic with the term `d(x)=((x*x)*x)` around the anchored identity
+`U*h=W*h`.
+
+That diagnostic is now:
+
+```text
+m496_anchored_d_term_scan_diagnostic.md
+```
+
+It found the stronger M496 pattern:
+
+```text
+z*d(h)=b,
+d(h)=h,
+h*h=h,
+d(z)=z,
+z*z=z.
+```
+
+Before continuing the general M7 self-repeat route, try to prove or reject
+`z*d(h)=b` and `h*h=h` symbolically in the anchored setup.  This is a sharper
+candidate than another first-layer equality among `T1,S1,B1`.
 
 The raw diagnostic:
 
