@@ -5,7 +5,7 @@ Date: 2026-06-21.
 Status:
 
 ```text
-diagnostic / external eq677 analysis.rs idea applied to anchored triangle
+diagnostic / idempotent-model warning for d-term scans
 ```
 
 ## Purpose
@@ -88,6 +88,43 @@ T*d(h)=b
 h*d(U)=h*d(W)
 ```
 
+## Correction: M496 Is Idempotent
+
+M496 satisfies:
+
+```text
+x*x=x
+```
+
+for all `496` elements.  Therefore:
+
+```text
+d(x)=((x*x)*x)=x
+```
+
+throughout M496.
+
+So the relations:
+
+```text
+d(h)=h,
+d(z)=z,
+h*h=h,
+z*z=z,
+z*d(h)=b,
+d(z)*h=b,
+d(U)*h=d(W)*h,
+U*d(h)=W*d(h)
+```
+
+are not anchored-specific evidence by themselves.  They reduce to:
+
+```text
+z*h=b,
+U*h=W*h,
+x*x=x.
+```
+
 ## Interpretation
 
 The useful new pattern is not:
@@ -96,7 +133,12 @@ The useful new pattern is not:
 d(U)=d(W).
 ```
 
-Instead M496 suggests that the shared-step anchor has an extra pair of
+The useful lesson is methodological: d-term scans on an idempotent model can
+produce strong-looking but misleading patterns.  They should not be promoted
+to proof targets unless a non-idempotent model also supports them, or unless
+they are derived from non-idempotent structural assumptions.
+
+In M496 the shared-step anchor appears to have an extra pair of
 right-`h`/right-`d(h)` routes to the old target:
 
 ```text
@@ -105,67 +147,34 @@ d(z)*h=b,
 z*d(h)=b.
 ```
 
-Since row `z` is cancellative, the pair:
+But this is explained by:
 
 ```text
-z*h=b,
-z*d(h)=b
+x*x=x
 ```
 
-would imply:
+rather than by a new anchored mechanism.
+
+## Follow-Up Diagnostic
+
+The local strong-branch raw check is recorded in:
 
 ```text
-d(h)=h.
+anchored_d_term_strong_branch_raw_diagnostic.md
 ```
 
-M496 also has:
+It shows that the visible strong anchored branch alone does not close:
 
 ```text
-h*h=h.
+h*h!=h,
+d(h)!=h.
 ```
 
-So the observed pattern is stronger than a neighboring product coincidence:
-it says that the shared-step anchor `h` behaves like an idempotent fixed point
-of `d`.  The same is observed for `z`.
+by short raw closure.
 
-## Next Proof Target
+## Current Use
 
-Try to prove, from E677 plus the shared-step anchored triangle, one of:
-
-```text
-d(z)*h=b,
-z*d(h)=b,
-d(U)*h=d(W)*h,
-U*d(h)=W*d(h).
-```
-
-The strongest immediately useful target is:
-
-```text
-z*d(h)=b.
-```
-
-Together with the already known:
-
-```text
-z*h=b
-```
-
-left cancellation in row `z` would give:
-
-```text
-d(h)=h.
-```
-
-Then E255 for `h` is much closer, and the anchored false branch may collapse
-through the old target `b`.  A still stronger target, also supported by M496,
-is:
-
-```text
-h*h=h.
-```
-
-Together with `d(h)=h`, this gives the E255 equation for `h` immediately.
-
-This is only a model diagnostic.  It must be proved or rejected by a local
-symbolic/ATP check before being used as a lemma.
+Do not use this file as evidence that `h` or `z` must be idempotent in the
+general anchored triangle.  Its value is negative: it prevents overfitting to
+M496 and sends the main proof back to the clean M7 self-repeat cycle-end
+template.

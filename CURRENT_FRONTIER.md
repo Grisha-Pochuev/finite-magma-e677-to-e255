@@ -1037,7 +1037,7 @@ That diagnostic is now:
 m496_anchored_d_term_scan_diagnostic.md
 ```
 
-It found the stronger M496 pattern:
+It found the stronger-looking M496 pattern:
 
 ```text
 z*d(h)=b,
@@ -1047,9 +1047,44 @@ d(z)=z,
 z*z=z.
 ```
 
-Before continuing the general M7 self-repeat route, try to prove or reject
-`z*d(h)=b` and `h*h=h` symbolically in the anchored setup.  This is a sharper
-candidate than another first-layer equality among `T1,S1,B1`.
+This is now corrected by:
+
+```text
+anchored_d_term_strong_branch_raw_diagnostic.md
+```
+
+M496 is fully idempotent, so these d-term equalities are mostly consequences
+of `x*x=x`, not anchored-specific structure.  Raw closure also does not force
+`h*h=h` or `d(h)=h` from the visible strong anchored triangle alone.
+
+Therefore the active route is again the clean M7 self-repeat cycle-end
+template, not the d-term detour.
+
+The cycle-end working surface is:
+
+```text
+anchored_m7_cycle_end_template.md
+atp/anchored_m7_cycle_end.p
+```
+
+It names:
+
+```text
+r0*h=r1,
+rm2*h=rm1,
+rm1*h=r0,
+```
+
+and the corresponding `H_h` inputs:
+
+```text
+i0=h*(r1*r0),
+im2=h*(rm1*rm2),
+im1=h*(r0*rm1).
+```
+
+The next useful candidate is to force a path/fan/theta from these three
+cycle-end edges, without treating the source orbit itself as an `H_h` path.
 
 The raw diagnostic:
 

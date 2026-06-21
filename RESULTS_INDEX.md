@@ -201,8 +201,11 @@ right file without scanning old summaries.
 | `anchored_m7_saturation_diagnostic.md` | diagnostic | Bounded closure of the anchored-X3/M7 template: first fresh successors `T1,S1,B1` do not short-collapse. |
 | `anchored_m7_first_event_routing_lemma.md` | proved reduction | Routes first anchored-M7 events 1-4; only clean same-orbit right-`h` self-repeat remains live. |
 | `anchored_m7_first_merge_target.md` | routed target | First merge/repeat of the three right-`h` source orbits is reduced to clean self-repeat. |
+| `anchored_m7_cycle_end_template.md` | template | Names start/end/next-to-last rows for the remaining clean right-`h` self-repeat cycle. |
+| `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
-| `m496_anchored_d_term_scan_diagnostic.md` | diagnostic | M496 anchored scan with `d(x)=((x*x)*x)` finds `z*d(h)=b`, `d(h)=h`, `h*h=h`, `d(z)=z`, `z*z=z` for all 892800 pairs. |
+| `m496_anchored_d_term_scan_diagnostic.md` | diagnostic/warning | M496 d-term scan is explained by global idempotence `x*x=x`; do not use it as anchored-specific evidence. |
+| `anchored_d_term_strong_branch_raw_diagnostic.md` | diagnostic | Strong anchored branch plus `h*h!=h`/`d(h)!=h` stays raw-closure consistent; size-9 `h*h!=h` model search timed out. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |
