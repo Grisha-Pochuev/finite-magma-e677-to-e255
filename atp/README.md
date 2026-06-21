@@ -29,3 +29,13 @@ T!=S,
 plus the first right-`h` source-successor layers and the exclusion of visible
 period-1 and period-2 repeats.  The conjecture section is intentionally
 modular: edit only that final block to test a proposed M7 consequence.
+
+Environment helper:
+
+```text
+check_atp_environment.ps1
+```
+
+It checks whether common ATP tools are visible in `PATH` and confirms that the
+template file exists.  At creation time no ATP prover was visible in the
+current Codex shell, so the template has not been prover-checked.
