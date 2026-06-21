@@ -275,6 +275,7 @@ anchored_x3_source_orbit_boundary.md
 anchored_x3_rank_measure_candidate.md
 anchored_x3_visible_short_repeat_lemma.md
 anchored_x3_clean_self_repeat_normal_form.md
+atp/anchored_x3_m7_self_repeat.p
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -550,6 +551,17 @@ It is a closed right-`h` source-successor cycle in `H_h`.  It is not
 automatically an `H_h` directed path and not a left-row period.  Next prove it
 creates strict clean theta, an independent full interval, a smaller M7 object,
 or a core hit.
+
+The ATP-style template:
+
+```text
+atp/anchored_x3_m7_self_repeat.p
+```
+
+formalizes this local residual with E677, left cancellation, anchored-X3
+data, the first right-`h` source-successor layer, and no visible period-1/2
+repeat.  Use it only for concrete proposed M7 consequences; do not treat it
+as a proof by itself.
 
 The raw diagnostic:
 

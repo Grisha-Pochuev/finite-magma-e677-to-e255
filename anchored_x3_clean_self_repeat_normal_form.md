@@ -170,3 +170,16 @@ The next proof step should show one of:
 
 Until one of these is proved, this normal form is the exact remaining M7
 self-repeat residual.
+
+## ATP Template
+
+The current ATP-style local formalization is:
+
+```text
+atp/anchored_x3_m7_self_repeat.p
+```
+
+It encodes E677, left cancellation, the anchored-X3 false branch, the first
+right-`h` source-successor layer, and the exclusion of visible period-1/2
+repeats.  Its conjecture block is intentionally modular; edit only that block
+to test a concrete proposed consequence of this normal form.

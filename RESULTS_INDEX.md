@@ -196,6 +196,7 @@ right file without scanning old summaries.
 | `anchored_x3_rank_measure_candidate.md` | candidate | Adds `M7` anchored-X3 source-orbit first-event rank for the clean self-repeat residual. |
 | `anchored_x3_visible_short_repeat_lemma.md` | lemma | Routes initial period-1 and period-2 right-`h` source-orbit repeats as visible hits, leaving only later/fresh self-repeat. |
 | `anchored_x3_clean_self_repeat_normal_form.md` | boundary | Names the remaining M7 self-repeat as a clean right-`h` source-successor cycle, not an `H_h` path or left-row period. |
+| `atp/anchored_x3_m7_self_repeat.p` | ATP template | TPTP-style local template for testing concrete consequences of the clean anchored-X3/M7 self-repeat residual. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |
