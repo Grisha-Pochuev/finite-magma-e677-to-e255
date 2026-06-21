@@ -198,6 +198,7 @@ right file without scanning old summaries.
 | `anchored_x3_clean_self_repeat_normal_form.md` | boundary | Names the remaining M7 self-repeat as a clean right-`h` source-successor cycle, not an `H_h` path or left-row period. |
 | `atp/anchored_x3_m7_self_repeat.p` | ATP template | TPTP-style local template for testing concrete consequences of the clean anchored-X3/M7 self-repeat residual. |
 | `atp/check_atp_environment.ps1` | helper | Checks whether common ATP provers are visible before trying the M7 TPTP template. |
+| `anchored_m7_saturation_diagnostic.md` | diagnostic | Bounded closure of the anchored-X3/M7 template: first fresh successors `T1,S1,B1` do not short-collapse. |
 | `m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
 | `m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
 | `clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |

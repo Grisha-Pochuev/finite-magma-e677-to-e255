@@ -276,6 +276,7 @@ anchored_x3_rank_measure_candidate.md
 anchored_x3_visible_short_repeat_lemma.md
 anchored_x3_clean_self_repeat_normal_form.md
 atp/anchored_x3_m7_self_repeat.p
+anchored_m7_saturation_diagnostic.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -562,6 +563,17 @@ formalizes this local residual with E677, left cancellation, anchored-X3
 data, the first right-`h` source-successor layer, and no visible period-1/2
 repeat.  Use it only for concrete proposed M7 consequences; do not treat it
 as a proof by itself.
+
+The bounded local saturation:
+
+```text
+anchored_m7_saturation_diagnostic.md
+```
+
+did not derive clean collapses or short equalities among `T1=T*h`,
+`S1=S*h`, and `B1=b*h`.  So the next proof target should be the first
+merge/repeat of the right-`h` source orbits, not another guessed short
+equality at the first fresh layer.
 
 The raw diagnostic:
 

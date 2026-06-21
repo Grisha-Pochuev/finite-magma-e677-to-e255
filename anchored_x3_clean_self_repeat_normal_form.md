@@ -183,3 +183,12 @@ It encodes E677, left cancellation, the anchored-X3 false branch, the first
 right-`h` source-successor layer, and the exclusion of visible period-1/2
 repeats.  Its conjecture block is intentionally modular; edit only that block
 to test a concrete proposed consequence of this normal form.
+
+The bounded local closure diagnostic is:
+
+```text
+anchored_m7_saturation_diagnostic.md
+```
+
+It found no short collapse among the first fresh successors
+`T1=T*h`, `S1=S*h`, and `B1=b*h`.
