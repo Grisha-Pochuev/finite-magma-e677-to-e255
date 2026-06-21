@@ -277,6 +277,7 @@ anchored_x3_visible_short_repeat_lemma.md
 anchored_x3_clean_self_repeat_normal_form.md
 atp/anchored_x3_m7_self_repeat.p
 anchored_m7_saturation_diagnostic.md
+anchored_m7_first_merge_target.md
 m496_shared_step_orbit_split_diagnostic.md
 m496_first_extra_intersection_roles_diagnostic.md
 clean_first_extra_pattern_raw_diagnostic.md
@@ -574,6 +575,17 @@ did not derive clean collapses or short equalities among `T1=T*h`,
 `S1=S*h`, and `B1=b*h`.  So the next proof target should be the first
 merge/repeat of the right-`h` source orbits, not another guessed short
 equality at the first fresh layer.
+
+The exact next target is:
+
+```text
+anchored_m7_first_merge_target.md
+```
+
+Classify the first finite event of the three right-`h` source orbits.  The
+only live branch should be a clean self-repeat inside one orbit; prove it
+creates strict clean theta, an independent full interval, smaller M7, or core
+hit.
 
 The raw diagnostic:
 
