@@ -122,6 +122,45 @@ T!=S.
 The clean-triple test requires distinct inputs `p,q,alpha`, distinct outputs
 `T,S,b`, and no input-output cross hit.
 
+The clean-X3 triples were then expanded by the second triangle layer from:
+
+```text
+anchored_x3_second_triangle_pressure_lemma.md
+```
+
+For a clean false pair:
+
+```text
+T=U*h,
+S=W*h,
+T!=S,
+```
+
+the second layer in `H_h` is:
+
+```text
+row T: betaT=(U*T)*U -> T*h
+row S: betaS=(W*S)*W -> S*h
+row b: betaB=(z*b)*z -> b*h
+```
+
+Formula check:
+
+```text
+T*betaT=h,
+S*betaS=h,
+b*betaB=h
+```
+
+had zero failures in the db scan.
+
+Second-layer endpoint classification:
+
+```text
+second layer routes by visible endpoint hit:  5928
+second layer remains fully clean:           11112
+```
+
 Top collision profiles among false pairs:
 
 ```text
@@ -140,6 +179,18 @@ cross:alpha=T:                                            504
 cross:alpha=S:                                            504
 cross:alpha=S;cross:alpha=b;cross:p=T;output:S=b:         150
 cross:alpha=T;cross:alpha=b;cross:q=S;output:T=b:         150
+```
+
+Top second-layer profiles among the clean anchored-X3 triples:
+
+```text
+second-layer-clean:                                      11112
+cross:betaS=Sh:                                          1314
+cross:betaS=Th;cross:betaT=Sh:                           1200
+cross:betaT=Th:                                          1086
+cross:alpha=bh;cross:betaB=b:                             960
+cross:betaS=Th:                                           504
+cross:betaT=Sh:                                           504
 ```
 
 The known failing model families/sizes include:
@@ -212,12 +263,26 @@ first-event/source-orbit rank,
 or V3 admissibility.
 ```
 
+The second-layer scan sharpens this further.  The local two-layer pressure is
+real and often routes, but it is not a universal local closure: many db
+examples remain clean after both layers.  Therefore a proof should not try to
+close anchored-X3 by endpoint comparison alone.  It should use the already
+developed source-successor orbit route:
+
+```text
+anchored_x3_source_orbit_boundary.md
+anchored_x3_rank_measure_candidate.md
+anchored_m7_first_event_routing_lemma.md
+```
+
+or reduce the resulting clean cycle to V3 admissibility.
+
 ## Next Use
 
 Use the new db scanner for two narrower follow-up checks:
 
 ```text
-1. classify false U*h!=W*h examples by V3 target-lift roles;
+1. classify the second-layer-clean false examples by V3 target-lift roles;
 2. test whether the all-distinct db failures still survive the additional
    watched/core/minimal-clean exclusions that define the current G12 residual.
 ```

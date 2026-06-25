@@ -210,8 +210,12 @@ function scanModel(table, maxPairsPerModel) {
     uWhMismatchWithNamedCollision: 0,
     anchoredX3CleanTriple: 0,
     anchoredX3RoutedTriple: 0,
+    secondLayerClean: 0,
+    secondLayerRouted: 0,
+    secondLayerFormulaFailures: 0,
     mismatchProfiles: new Map(),
     tripleProfiles: new Map(),
+    secondLayerProfiles: new Map(),
     sameOutput: 0,
     examples: [],
   };
@@ -256,7 +260,16 @@ function scanModel(table, maxPairsPerModel) {
           else result.anchoredX3RoutedTriple++;
           result.mismatchProfiles.set(profile, (result.mismatchProfiles.get(profile) || 0) + 1);
           result.tripleProfiles.set(triple, (result.tripleProfiles.get(triple) || 0) + 1);
-          addExample(result, { kind: "uWhMismatch", b, z, p, q, U, W, h, alpha, T, S, triple });
+          let secondLayer = "not-clean-x3";
+          if (triple === "triple-clean") {
+            const second = secondLayerProfile(table, { b, z, p, q, U, W, h, alpha, T, S });
+            secondLayer = second.profile;
+            if (!second.formulasHold) result.secondLayerFormulaFailures++;
+            if (second.profile === "second-layer-clean") result.secondLayerClean++;
+            else result.secondLayerRouted++;
+            result.secondLayerProfiles.set(second.profile, (result.secondLayerProfiles.get(second.profile) || 0) + 1);
+          }
+          addExample(result, { kind: "uWhMismatch", b, z, p, q, U, W, h, alpha, T, S, triple, secondLayer });
         } else {
           result.sameOutput++;
         }
@@ -309,6 +322,57 @@ function anchoredX3TripleProfile(inputs, outputs) {
   return groups.sort().join(";");
 }
 
+function secondLayerProfile(table, named) {
+  const { b, z, p, q, U, W, h, alpha, T, S } = named;
+  const UT = table[U][T];
+  const WS = table[W][S];
+  const zb = table[z][b];
+  const betaT = table[UT][U];
+  const betaS = table[WS][W];
+  const betaB = table[zb][z];
+  const Th = table[T][h];
+  const Sh = table[S][h];
+  const bh = table[b][h];
+
+  const formulasHold =
+    table[T][betaT] === h &&
+    table[S][betaS] === h &&
+    table[b][betaB] === h;
+
+  const inputs = { p, q, alpha, betaT, betaS, betaB };
+  const outputs = { T, S, b, Th, Sh, bh };
+  const profile = endpointProfile(inputs, outputs, "second-layer-clean");
+  return { profile, formulasHold };
+}
+
+function endpointProfile(inputs, outputs, cleanName) {
+  const groups = [];
+  const inputEntries = Object.entries(inputs);
+  const outputEntries = Object.entries(outputs);
+
+  for (let i = 0; i < inputEntries.length; i++) {
+    for (let j = i + 1; j < inputEntries.length; j++) {
+      if (inputEntries[i][1] === inputEntries[j][1]) {
+        groups.push(`input:${inputEntries[i][0]}=${inputEntries[j][0]}`);
+      }
+    }
+  }
+  for (let i = 0; i < outputEntries.length; i++) {
+    for (let j = i + 1; j < outputEntries.length; j++) {
+      if (outputEntries[i][1] === outputEntries[j][1]) {
+        groups.push(`output:${outputEntries[i][0]}=${outputEntries[j][0]}`);
+      }
+    }
+  }
+  for (const [iname, ivalue] of inputEntries) {
+    for (const [oname, ovalue] of outputEntries) {
+      if (ivalue === ovalue) groups.push(`cross:${iname}=${oname}`);
+    }
+  }
+  if (groups.length === 0) return cleanName;
+  return groups.sort().join(";");
+}
+
 function addExample(result, example) {
   if (result.examples.length < 8) result.examples.push(example);
 }
@@ -328,8 +392,12 @@ function aggregate(results) {
     uWhMismatchWithNamedCollision: 0,
     anchoredX3CleanTriple: 0,
     anchoredX3RoutedTriple: 0,
+    secondLayerClean: 0,
+    secondLayerRouted: 0,
+    secondLayerFormulaFailures: 0,
     mismatchProfiles: {},
     tripleProfiles: {},
+    secondLayerProfiles: {},
     sameOutput: 0,
     modelsWithFailure: [],
   };
@@ -346,11 +414,17 @@ function aggregate(results) {
     total.uWhMismatchWithNamedCollision += r.uWhMismatchWithNamedCollision;
     total.anchoredX3CleanTriple += r.anchoredX3CleanTriple;
     total.anchoredX3RoutedTriple += r.anchoredX3RoutedTriple;
+    total.secondLayerClean += r.secondLayerClean;
+    total.secondLayerRouted += r.secondLayerRouted;
+    total.secondLayerFormulaFailures += r.secondLayerFormulaFailures;
     for (const [profile, count] of r.mismatchProfiles.entries()) {
       total.mismatchProfiles[profile] = (total.mismatchProfiles[profile] || 0) + count;
     }
     for (const [profile, count] of r.tripleProfiles.entries()) {
       total.tripleProfiles[profile] = (total.tripleProfiles[profile] || 0) + count;
+    }
+    for (const [profile, count] of r.secondLayerProfiles.entries()) {
+      total.secondLayerProfiles[profile] = (total.secondLayerProfiles[profile] || 0) + count;
     }
     total.sameOutput += r.sameOutput;
     if (r.hMismatch || r.zhMismatch || r.uWhMismatch) {
@@ -365,14 +439,19 @@ function aggregate(results) {
         uWhMismatchWithNamedCollision: r.uWhMismatchWithNamedCollision,
         anchoredX3CleanTriple: r.anchoredX3CleanTriple,
         anchoredX3RoutedTriple: r.anchoredX3RoutedTriple,
+        secondLayerClean: r.secondLayerClean,
+        secondLayerRouted: r.secondLayerRouted,
+        secondLayerFormulaFailures: r.secondLayerFormulaFailures,
         topMismatchProfiles: topEntries(r.mismatchProfiles, 8),
         topTripleProfiles: topEntries(r.tripleProfiles, 8),
+        topSecondLayerProfiles: topEntries(r.secondLayerProfiles, 8),
         examples: r.examples,
       });
     }
   }
   total.topMismatchProfiles = topEntries(new Map(Object.entries(total.mismatchProfiles)), 12);
   total.topTripleProfiles = topEntries(new Map(Object.entries(total.tripleProfiles)), 12);
+  total.topSecondLayerProfiles = topEntries(new Map(Object.entries(total.secondLayerProfiles)), 12);
   return total;
 }
 
@@ -413,6 +492,7 @@ async function main() {
   delete compactSummary.modelsWithFailure;
   delete compactSummary.mismatchProfiles;
   delete compactSummary.tripleProfiles;
+  delete compactSummary.secondLayerProfiles;
   const payload = args.totalsOnly
     ? { cache: args.cache, sizes, summary: compactSummary }
     : args.summaryOnly

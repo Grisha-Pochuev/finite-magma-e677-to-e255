@@ -285,6 +285,11 @@ shared-step anchored triangle => U*h=W*h
 because the full public db has 18348 false shared-step pairs, including 17040
 with all named terms distinct.  The same 17040 false pairs are clean
 anchored-X3 triples `p,q,alpha -> T,S,b` in `H_h`; only 1308 route by visible
-X3 hits.  Therefore `U*h=W*h` can only be pursued with extra
-bad-target/minimal-clean assumptions.  Otherwise continue the false branch
-through anchored-X3/V3 admissibility.
+X3 hits.
+
+The second triangle layer from `anchored_x3_second_triangle_pressure_lemma.md`
+was also scanned.  It routes 5928 of the clean-X3 triples by visible endpoint
+hits, but 11112 remain fully clean after both layers.  Therefore `U*h=W*h`
+can only be pursued with extra bad-target/minimal-clean assumptions; local
+two-layer pressure alone is not enough.  Otherwise continue the false branch
+through the source-orbit/M7 route and then V3 admissibility.
