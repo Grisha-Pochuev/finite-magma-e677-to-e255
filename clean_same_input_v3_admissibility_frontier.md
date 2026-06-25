@@ -189,6 +189,24 @@ repeat, or watched/core hit between these two layers routes locally.  The
 fully clean residual is therefore a clean four-edge matching in `H_z`, not
 only a two-edge target-lift pair.
 
+This four-edge matching is itself the first two layers of two fixed-target
+source-successor orbits in `H_z`.  Use:
+
+```text
+clean_v3_fixed_target_source_orbit_reduction.md
+```
+
+The two orbits are:
+
+```text
+p -> s -> s*z -> ...
+q -> r -> r*z -> ...
+```
+
+First source-orbit events route by fixed-target first-merge and same-target
+collision roles.  The only clean finite residual is a same-orbit right-`z`
+self-repeat, which has the same zipper form as the anchored-M7 self-repeat.
+
 ## Unified Admissibility Principle
 
 The needed statement is:
@@ -213,10 +231,11 @@ Prove one of:
 
 ```text
 1. any ungenerated clean V3 bridge has a second-layer hit in H_z;
-2. any clean four-edge V3 matching can be inserted into the global relay
-   measure as a smaller object;
-3. the common input z must be generated/watched/core in both current sources;
-4. a fully clean four-edge V3 matching is the true final obstruction.
+2. any clean four-edge V3 matching has a routed fixed-target first event;
+3. any clean right-z self-repeat zipper born from V3 can be inserted into the
+   global relay measure as a smaller object;
+4. the common input z must be generated/watched/core in both current sources;
+5. a fully clean V3-born zipper is the true final obstruction.
 ```
 
 Do not continue treating first-extra V3 and anchored-M7 V3 as separate

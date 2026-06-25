@@ -348,3 +348,22 @@ B*q -> r*z.
 So the remaining clean V3 obstruction is a clean four-edge matching in `H_z`.
 Next proof target: show this four-edge matching routes or is admissible as the
 smaller relay object needed for both first-extra V3 and anchored-M7 necklace.
+
+The four-edge V3 matching now also reduces to fixed-target source orbits:
+
+```text
+clean_v3_fixed_target_source_orbit_reduction.md
+```
+
+The two source orbits in `H_z` are:
+
+```text
+p -> s -> s*z -> ...
+q -> r -> r*z -> ...
+```
+
+First source-orbit events route by existing fixed-target/same-target roles.
+The only clean residual is a same-orbit right-`z` self-repeat, hence a zipper
+with the same form as anchored-M7.  Next proof target: prove the V3-born
+zipper/adjacent bridge is a smaller admissible relay object, or isolate the
+missing hypothesis for that measure comparison.

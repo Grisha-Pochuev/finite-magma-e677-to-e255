@@ -213,6 +213,7 @@ right file without scanning old summaries.
 | `anchored_m7_reduces_to_general_v3_admissibility.md` | conditional reduction | Anchored M7 clean necklace closes under a unified clean same-input V3 admissibility principle. |
 | `clean_same_input_v3_admissibility_frontier.md` | active frontier | Unified target for first-extra V3 and anchored-M7 V3: ungenerated clean same-input bridge admissibility. |
 | `clean_same_input_v3_second_layer_expansion_lemma.md` | proved expansion | Any V3 bridge forces a second same-target layer in `H_z`; the clean residual is a four-edge V3 matching. |
+| `clean_v3_fixed_target_source_orbit_reduction.md` | proved reduction | Clean V3 four-edge matching is the first two layers of two right-`z` source orbits; only clean self-repeat zipper remains. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
 | `eq677_db_shared_step_scan_diagnostic.md` | diagnostic | Full external db scan: global `U*h=W*h` is false; clean-X3 false pairs route by source-orbit first event or reach the M7 clean self-repeat residual. |
