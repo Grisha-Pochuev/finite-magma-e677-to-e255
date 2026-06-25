@@ -148,6 +148,52 @@ clean self-repeat
    smaller anchored-X3 object under M7.
 ```
 
+## Extension For Anchored V3 Necklace
+
+The clean M7 self-repeat is now sharpened by:
+
+```text
+anchored_m7_cycle_zipper_lemma.md
+anchored_m7_zipper_target_advance_lemma.md
+anchored_m7_zipper_lift_advance_equivalence_lemma.md
+anchored_m7_clean_v3_necklace_obstruction.md
+anchored_m7_v3_necklace_measure_extension.md
+```
+
+A terminal clean M7 self-repeat becomes a closed necklace of V3-type
+same-input bridges at the common input `h`:
+
+```text
+H_{r_i}: h -> A_i,
+A_i=r_{i-1}*r_i.
+```
+
+Add the subrank:
+
+```text
+M8. anchored V3 necklace bridge rank:
+    the first adjacent clean V3 bridge born inside the M7 self-repeat cycle,
+    before the terminal return r_n=r_0.
+```
+
+The intended use is:
+
+```text
+local hit in the zipper or V3 bridge
+=> already routed;
+
+fully clean adjacent V3 bridge
+=> should be admissible as a smaller measured relay object because it is born
+   at position i<n before the M7 terminal self-repeat.
+```
+
+This is still a candidate measure extension.  The missing sentence is:
+
+```text
+An adjacent clean V3 bridge born inside the anchored M7 self-repeat cycle is
+admissible as a relay object under the global minimality measure.
+```
+
 ## Compatibility With R-b4
 
 For R-b4, the first repeat is:

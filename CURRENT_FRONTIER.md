@@ -1069,6 +1069,10 @@ anchored_m7_cycle_end_saturation_diagnostic.md
 anchored_m7_zipper_first_collision_target.md
 anchored_m7_zipper_target_advance_lemma.md
 anchored_m7_coupled_zipper_bridge_residual.md
+anchored_m7_zipper_lift_advance_equivalence_lemma.md
+anchored_m7_clean_v3_necklace_obstruction.md
+anchored_m7_v3_necklace_measure_extension.md
+anchored_m7_reduces_to_general_v3_admissibility.md
 atp/anchored_m7_cycle_end.p
 ```
 
@@ -1129,6 +1133,46 @@ clean same-input bridge necklace with common input h.
 
 The next target is to show this is a smaller admissible V3/M7 object, or to
 force strict clean theta / independent full interval / core hit.
+
+The coupled object is now identified more precisely as:
+
+```text
+closed clean necklace of standard V3 bridges at common input h.
+```
+
+Use:
+
+```text
+anchored_m7_zipper_lift_advance_equivalence_lemma.md
+anchored_m7_clean_v3_necklace_obstruction.md
+```
+
+The next target is measure comparison: show an adjacent V3 bridge born inside
+the first M7 self-repeat cycle is smaller/admissible, or isolate why the
+existing V3 measure does not accept it.
+
+The proposed measure extension is:
+
+```text
+M8. anchored V3 necklace bridge rank.
+```
+
+The exact missing sentence is:
+
+```text
+An adjacent clean V3 bridge born inside the anchored M7 self-repeat cycle is
+admissible as a smaller relay object under M8.
+```
+
+This is now conditionally reduced to the global clean V3 admissibility
+principle:
+
+```text
+anchored_m7_reduces_to_general_v3_admissibility.md
+```
+
+So M7 is no longer an independent local obstruction if clean same-input
+two-target bridge admissibility is proved in the general V3 setting.
 
 The raw diagnostic:
 

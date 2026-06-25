@@ -151,3 +151,31 @@ clean first-extra matching
 -> general V3 bridge at the first extra intersection
 -> prove smaller measured relay, or force same-output fan / collision / core hit.
 ```
+
+## Anchored-M7 Update
+
+The anchored-M7 clean self-repeat residual now also reduces to clean V3
+admissibility:
+
+```text
+anchored_m7_reduces_to_general_v3_admissibility.md
+```
+
+There the V3 bridge is not born at a first-extra intersection.  It is born
+inside the first anchored right-`h` self-repeat cycle:
+
+```text
+H_{r_i}:     h -> A_i,
+H_{r_{i+1}}: h -> A_{i+1}.
+```
+
+So the remaining global target should be stated in the unified form:
+
+```text
+Clean same-input two-target bridge admissibility:
+any clean V3 bridge born before the current terminal event is either locally
+routed or admissible as a smaller measured relay object.
+```
+
+This unified statement would cover both the first-extra V3 bridge and the
+anchored-M7 V3 necklace.

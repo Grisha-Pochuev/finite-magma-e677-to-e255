@@ -1,6 +1,6 @@
 # Next Action
 
-Date: 2026-06-21.
+Date: 2026-06-25.
 
 Read this file first.  Then read `CURRENT_FRONTIER.md` only if more context is
 needed.
@@ -101,6 +101,10 @@ anchored_m7_cycle_end_saturation_diagnostic.md
 anchored_m7_zipper_first_collision_target.md
 anchored_m7_zipper_target_advance_lemma.md
 anchored_m7_coupled_zipper_bridge_residual.md
+anchored_m7_zipper_lift_advance_equivalence_lemma.md
+anchored_m7_clean_v3_necklace_obstruction.md
+anchored_m7_v3_necklace_measure_extension.md
+anchored_m7_reduces_to_general_v3_admissibility.md
 ```
 
 ## d-Term Detour: Deprioritized
@@ -199,10 +203,45 @@ Use:
 
 ```text
 anchored_m7_coupled_zipper_bridge_residual.md
+anchored_m7_zipper_lift_advance_equivalence_lemma.md
+anchored_m7_clean_v3_necklace_obstruction.md
 ```
 
-Next target: prove this coupled object is a smaller admissible V3/M7 bridge,
-or else creates strict clean theta / independent full interval / core hit.
+The coupled object is now identified as a closed clean necklace of standard
+V3-type same-input bridges at the common input `h`.
+
+Next target: formalize the measure comparison:
+
+```text
+original M7 = first self-repeat rank of the right-h source orbit;
+new bridge rank = first adjacent V3 bridge inside that orbit.
+```
+
+If that bridge is admissible under the existing V3 descent boundary, the M7
+self-repeat is not terminal.  If not, record the exact obstruction in the V3
+measure.
+
+The measure extension is now named:
+
+```text
+anchored_m7_v3_necklace_measure_extension.md
+```
+
+Next exact task: prove or refute the admissibility sentence:
+
+```text
+An adjacent clean V3 bridge born inside the anchored M7 self-repeat cycle is
+admissible as a smaller relay object under M8.
+```
+
+This is now reduced to the unified principle:
+
+```text
+Clean same-input two-target bridge admissibility.
+```
+
+It must cover both first-extra V3 bridges and anchored-M7 adjacent V3 bridges.
+If this general V3 admissibility is proved, the clean M7 necklace closes.
 
 The external `eq677` repository suggests using an ATP/e-graph cycle-end
 template rather than only first-layer closure:
