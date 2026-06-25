@@ -19,27 +19,27 @@ or structural regions from the open proof frontier.
 
 The project is not claiming a complete proof of `E677 -> E255` yet.
 
-The current active obstruction is the **branch-closure No-Free-Tail** frontier.
-The bridge recursion has been generalized from the old common edge `0 -> P`
-to an arbitrary target edge:
+The current active obstruction is no longer a finite-size closure claim.  It
+is the **anchored-X3/M7 clean self-repeat** residual reached after the
+branch-closure relay layer.  The fixed-target language is:
 
 ```text
-q*a=b
-q*b=c.
+A_b(q) = the unique a such that q*a=b
+R_b(q) = q*b.
 ```
 
-The open task is to rule out the remaining branch-closure configurations:
-either a triple core fan or a mixed `2+1` core junction.  The project has
-finite evidence for this pressure pattern, but it is not yet a proved lemma.
+The current open task is to close the remaining clean same-orbit right-`h`
+self-repeat in the anchored-X3/M7 residual.  This is structural work, not a
+new claim of a closed finite size.
 
 See:
 
 - `docs/CURRENT_FRONTIER.md`;
-- `lemmas/double_interval_edge_certificate_lemma.md`;
-- `lemmas/bicyclic_component_branch_fan_lemma.md`;
-- `lemmas/bad_target_core_fan_lemma.md`;
-- `lemmas/bicyclic_core_junction_lemma.md`;
-- `lemmas/branch_closure_no_free_tail_candidate.md`.
+- `NEXT_ACTION.md`;
+- `lemmas/shared_step_anchored_triangle_boundary.md`;
+- `lemmas/anchored_x3_three_target_bridge_boundary.md`;
+- `lemmas/anchored_m7_first_event_routing_lemma.md`;
+- `lemmas/anchored_m7_cycle_end_template.md`.
 
 ## Important caveat
 

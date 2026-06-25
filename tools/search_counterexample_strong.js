@@ -150,7 +150,13 @@ function makeSearcher(n, options) {
     options.mode === "rawmodel" ||
     options.mode === "rawmodeldiagnose" ||
     options.mode === "rawcounterexample" ||
-    options.mode === "rawdiagnose";
+    options.mode === "rawdiagnose" ||
+    options.mode === "rawclosure" ||
+    options.mode === "rawbranches" ||
+    options.mode === "rawdomainhist" ||
+    options.mode === "rawcellscores" ||
+    options.mode === "rawrowscores" ||
+    options.mode === "rawrowhist";
   const avoidBadColumn =
     options.mode !== "nonidempotent" &&
     options.mode !== "modeldiagnose" &&
@@ -1339,7 +1345,16 @@ function makeSearcher(n, options) {
 }
 
 const runtimeProcess =
-  typeof process !== "undefined"
+  typeof globalThis.__searchCounterexampleArgv !== "undefined"
+    ? {
+        argv: globalThis.__searchCounterexampleArgv,
+        exit(code = 0) {
+          throw Object.assign(new Error("__SEARCH_COUNTEREXAMPLE_EXIT__"), {
+            code,
+          });
+        },
+      }
+    : typeof process !== "undefined"
     ? process
     : {
         argv: globalThis.__searchCounterexampleArgv || [],
@@ -1364,7 +1379,7 @@ let branchLimit = Infinity;
 let extraReqArg = "";
 let rowHistTarget = -1;
 let rowScoreTargets = [];
-if (mode === "branches") {
+if (mode === "branches" || mode === "rawbranches") {
   const arg6 = runtimeProcess.argv[6];
   const arg7 = runtimeProcess.argv[7];
   if (arg6 && arg6.includes(":")) {
@@ -1373,13 +1388,13 @@ if (mode === "branches") {
     branchLimit = Number(arg6 || Infinity);
     extraReqArg = arg7 || "";
   }
-} else if (mode === "rowhist") {
+} else if (mode === "rowhist" || mode === "rawrowhist") {
   rowHistTarget = Number(runtimeProcess.argv[6]);
   if (Number.isNaN(rowHistTarget)) {
     throw new Error("rowhist mode requires a row number as argument 6");
   }
   extraReqArg = runtimeProcess.argv[7] || "";
-} else if (mode === "rowscores") {
+} else if (mode === "rowscores" || mode === "rawrowscores") {
   rowScoreTargets = (runtimeProcess.argv[6] || "")
     .split(",")
     .filter(Boolean)
@@ -1466,7 +1481,7 @@ if (
   console.log(`domain checks: ${diagnostic.stats.domainChecks}`);
   runtimeProcess.exit(0);
 }
-if (mode === "closure") {
+if (mode === "closure" || mode === "rawclosure") {
   console.log(`Strong closure diagnostic, size ${n}.`);
   if (row0Index !== undefined) {
     const rep = searcher.allRow0[row0Index];
@@ -1487,7 +1502,7 @@ if (mode === "closure") {
   console.log(`domain checks: ${searcher.stats.domainChecks}`);
   runtimeProcess.exit(0);
 }
-if (mode === "branches") {
+if (mode === "branches" || mode === "rawbranches") {
   console.log(`Strong first-branch diagnostic, size ${n}.`);
   if (row0Index !== undefined) {
     const rep = searcher.allRow0[row0Index];
@@ -1520,7 +1535,7 @@ if (mode === "branches") {
   console.log(`domain checks: ${diagnostic.stats.domainChecks}`);
   runtimeProcess.exit(0);
 }
-if (mode === "domainhist") {
+if (mode === "domainhist" || mode === "rawdomainhist") {
   console.log(`Strong best-domain diagnostic, size ${n}.`);
   if (row0Index !== undefined) {
     const rep = searcher.allRow0[row0Index];
@@ -1548,7 +1563,7 @@ if (mode === "domainhist") {
   console.log(`domain checks: ${diagnostic.stats.domainChecks}`);
   runtimeProcess.exit(0);
 }
-if (mode === "cellscores") {
+if (mode === "cellscores" || mode === "rawcellscores") {
   console.log(`Strong cell-score diagnostic, size ${n}.`);
   if (row0Index !== undefined) {
     const rep = searcher.allRow0[row0Index];
@@ -1569,7 +1584,7 @@ if (mode === "cellscores") {
   console.log(`domain checks: ${diagnostic.stats.domainChecks}`);
   runtimeProcess.exit(0);
 }
-if (mode === "rowscores") {
+if (mode === "rowscores" || mode === "rawrowscores") {
   console.log(`Strong row-limited cell-score diagnostic, size ${n}.`);
   if (row0Index !== undefined) {
     const rep = searcher.allRow0[row0Index];
@@ -1591,7 +1606,7 @@ if (mode === "rowscores") {
   console.log(`domain checks: ${diagnostic.stats.domainChecks}`);
   runtimeProcess.exit(0);
 }
-if (mode === "rowhist") {
+if (mode === "rowhist" || mode === "rawrowhist") {
   console.log(`Strong row-domain diagnostic, size ${n}.`);
   if (row0Index !== undefined) {
     const rep = searcher.allRow0[row0Index];

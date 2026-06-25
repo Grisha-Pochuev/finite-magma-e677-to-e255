@@ -1,0 +1,236 @@
+# Anchored Identity Negation Raw Diagnostic
+
+Date: 2026-06-21.
+
+Status:
+
+```text
+diagnostic / targeted negation check for U*h=W*h
+```
+
+## Purpose
+
+This checks the negation of the strong target from:
+
+```text
+shared_step_anchored_triangle_boundary.md
+```
+
+The strong target is:
+
+```text
+p*b=q*b=z,
+U=p*z,
+W=q*z,
+h=U*p=W*q
+=> U*h=W*h.
+```
+
+## Raw Pattern
+
+Use labels:
+
+```text
+b=0,
+z=1,
+p=2,
+q=3,
+U=4,
+W=5,
+h=6,
+T1=7,
+T2=8.
+```
+
+Impose:
+
+```text
+2*0=1,
+3*0=1,
+2*1=4,
+3*1=5,
+4*2=6,
+5*3=6,
+1*6=0,
+4*6=7,
+5*6=8.
+```
+
+The last two cells force the negation:
+
+```text
+U*h != W*h
+```
+
+at the raw-label level.
+
+## Closure Diagnostic
+
+Command shape:
+
+```text
+tools/node-portable/node.exe tools/search_counterexample_strong.js 9 60 all rawdiagnose
+```
+
+with the requirements above.
+
+Result:
+
+```text
+status: ok
+row 1 domain: 21684, forcedCells=1, req=[6->0]
+row 2 domain: 4032, forcedCells=2, req=[0->1, 1->4]
+row 3 domain: 4032, forcedCells=2, req=[0->1, 1->5]
+row 4 domain: 3121, forcedCells=2, req=[2->6, 6->7]
+row 5 domain: 3121, forcedCells=2, req=[3->6, 6->8]
+forced cells: 9
+domain checks: 1349280
+```
+
+Interpretation: short E677 closure does not immediately contradict the
+negation of the anchored identity.
+
+## Raw Model Search
+
+Command shape:
+
+```text
+tools/node-portable/node.exe tools/search_counterexample_strong.js 9 60 all rawmodel
+```
+
+with the same requirements.
+
+Result:
+
+```text
+status: timeout
+time: 60.43s
+nodes: 576
+dead ends: 566
+forced rows: 0
+forced cells: 4607
+domain checks: 36389400
+row-0 representative count: 362880
+```
+
+Interpretation: no size-9 arbitrary E677 model with the negated anchored
+identity was found in the bounded run, but the search did not complete.
+
+## Longer Targeted Search
+
+Because the negation is a precise hypothesis, one longer local check was run:
+
+```text
+tools/node-portable/node.exe tools/search_counterexample_strong.js 9 300 all rawmodel
+```
+
+with the same requirements.
+
+Result:
+
+```text
+status: timeout
+time: 300.90s
+nodes: 3068
+dead ends: 3022
+forced rows: 0
+forced cells: 23422
+domain checks: 251420714
+row-0 representative count: 362880
+```
+
+Interpretation: the size-9 negation search still found no arbitrary E677
+model after five minutes, but it did not complete.  This strengthens the
+diagnostic priority of the identity, but it is still not proof.
+
+## Local Pressure Diagnostic
+
+A row-limited score check on rows:
+
+```text
+1,2,3,4,5,6,7,8
+```
+
+showed symmetric pressure around rows `4=U` and `5=W`, but no single new cell
+was almost forced.  The most constrained displayed cells were:
+
+```text
+4*3 and 5*2: domain 3121, distinct 7
+4*0 and 5*0: domain 3121, distinct 6
+1*1:         domain 21684, distinct 8
+```
+
+A first-branch diagnostic chose row `4=U` first:
+
+```text
+first row: 4
+first domain: 3121
+checked: 20
+dead after first row: 6
+forced cells: 142
+domain checks: 18777240
+```
+
+Interpretation: the negation is not killed by one obvious local cell, but row
+`U` already creates noticeable pressure.  This supports looking for a
+structural back-projection lemma rather than only increasing timeout.
+
+## Clean No-Visible-Period-2 Closure
+
+After:
+
+```text
+anchored_x3_visible_short_repeat_lemma.md
+```
+
+the clean false branch excludes the visible period-2 source-orbit returns:
+
+```text
+T*h=U,
+S*h=W,
+b*h=z.
+```
+
+Using the same raw labels:
+
+```text
+b=0,z=1,p=2,q=3,U=4,W=5,h=6,T=7,S=8
+```
+
+the diagnostic used the additional forbids:
+
+```text
+7*6 != 4,
+8*6 != 5,
+0*6 != 1.
+```
+
+Result:
+
+```text
+status: ok
+row 0 domain: 55508
+row 7 domain: 184765
+row 8 domain: 184765
+forced cells: 9
+domain checks: 1349280
+```
+
+Interpretation: excluding the visible period-2 returns is locally consistent
+in the bounded closure.  The remaining M7 issue is therefore genuinely the
+later/fresh right-`h` self-repeat normal form, not an immediate visible
+short-repeat contradiction.
+
+So this diagnostic supports the identity as a serious lemma target, but does
+not prove it.
+
+## Tool Note
+
+This run used:
+
+```text
+tools/node-portable/node.exe
+```
+
+which is available in the project even when ordinary `node` is not on the
+Codex process PATH.
