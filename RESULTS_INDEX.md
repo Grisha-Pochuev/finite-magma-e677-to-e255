@@ -211,6 +211,7 @@ right file without scanning old summaries.
 | `anchored_m7_clean_v3_necklace_obstruction.md` | active obstruction | Fully clean remaining object is a closed necklace of V3 bridges at common input `h`; next target is measure comparison. |
 | `anchored_m7_v3_necklace_measure_extension.md` | measure candidate | Adds M8 for adjacent V3 bridges born inside the M7 self-repeat; isolates admissibility gap. |
 | `anchored_m7_reduces_to_general_v3_admissibility.md` | conditional reduction | Anchored M7 clean necklace closes under a unified clean same-input V3 admissibility principle. |
+| `clean_same_input_v3_admissibility_frontier.md` | active frontier | Unified target for first-extra V3 and anchored-M7 V3: ungenerated clean same-input bridge admissibility. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
 | `m496_anchored_d_term_scan_diagnostic.md` | diagnostic/warning | M496 d-term scan is explained by global idempotence `x*x=x`; do not use it as anchored-specific evidence. |

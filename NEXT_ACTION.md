@@ -105,6 +105,7 @@ anchored_m7_zipper_lift_advance_equivalence_lemma.md
 anchored_m7_clean_v3_necklace_obstruction.md
 anchored_m7_v3_necklace_measure_extension.md
 anchored_m7_reduces_to_general_v3_admissibility.md
+clean_same_input_v3_admissibility_frontier.md
 ```
 
 ## d-Term Detour: Deprioritized
@@ -242,6 +243,23 @@ Clean same-input two-target bridge admissibility.
 
 It must cover both first-extra V3 bridges and anchored-M7 adjacent V3 bridges.
 If this general V3 admissibility is proved, the clean M7 necklace closes.
+
+Use:
+
+```text
+clean_same_input_v3_admissibility_frontier.md
+```
+
+The hard case is now:
+
+```text
+ungenerated clean same-input two-target bridge
+whose lifted H_z pair is clean-disjoint.
+```
+
+Next target: prove such a bridge is admissible as a smaller measured relay
+object, or prove its common input must be generated/watched/core in the
+first-extra and anchored-M7 sources.
 
 The external `eq677` repository suggests using an ATP/e-graph cycle-end
 template rather than only first-layer closure:

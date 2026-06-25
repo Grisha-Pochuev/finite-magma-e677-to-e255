@@ -1073,6 +1073,7 @@ anchored_m7_zipper_lift_advance_equivalence_lemma.md
 anchored_m7_clean_v3_necklace_obstruction.md
 anchored_m7_v3_necklace_measure_extension.md
 anchored_m7_reduces_to_general_v3_admissibility.md
+clean_same_input_v3_admissibility_frontier.md
 atp/anchored_m7_cycle_end.p
 ```
 
@@ -1173,6 +1174,16 @@ anchored_m7_reduces_to_general_v3_admissibility.md
 
 So M7 is no longer an independent local obstruction if clean same-input
 two-target bridge admissibility is proved in the general V3 setting.
+
+The unified V3 frontier is:
+
+```text
+clean_same_input_v3_admissibility_frontier.md
+```
+
+It separates generated-input V3 bridges, which have extra row-`b`/generated
+structure, from the hard ungenerated clean V3 bridge.  The latter is now the
+common target for both first-extra V3 and anchored-M7 V3 necklace.
 
 The raw diagnostic:
 

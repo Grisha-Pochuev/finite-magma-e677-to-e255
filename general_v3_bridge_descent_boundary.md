@@ -179,3 +179,14 @@ routed or admissible as a smaller measured relay object.
 
 This unified statement would cover both the first-extra V3 bridge and the
 anchored-M7 V3 necklace.
+
+The active unified frontier is:
+
+```text
+clean_same_input_v3_admissibility_frontier.md
+```
+
+It isolates the real hard subcase as an ungenerated clean same-input bridge
+whose target-lift in `H_z` is clean-disjoint.  Generated-input bridges should
+continue to use the row-`b`/generated expansion files rather than this general
+frontier.
