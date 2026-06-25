@@ -1067,6 +1067,8 @@ anchored_m7_cycle_end_template.md
 anchored_m7_cycle_zipper_lemma.md
 anchored_m7_cycle_end_saturation_diagnostic.md
 anchored_m7_zipper_first_collision_target.md
+anchored_m7_zipper_target_advance_lemma.md
+anchored_m7_coupled_zipper_bridge_residual.md
 atp/anchored_m7_cycle_end.p
 ```
 
@@ -1108,6 +1110,25 @@ anchored_m7_zipper_first_collision_target.md
 
 It routes input repeats, output repeats, and input-output hits.  The live
 branch is a fully clean cyclic zipper matching.
+
+The zipper now target-advances to a same-input bridge necklace:
+
+```text
+H_{r_i}: h -> A_i,
+A_i=r_{i-1}*r_i,
+I_i=A_i*r_{i-1}.
+```
+
+So the live object is coupled:
+
+```text
+clean matching in H_h
++
+clean same-input bridge necklace with common input h.
+```
+
+The next target is to show this is a smaller admissible V3/M7 object, or to
+force strict clean theta / independent full interval / core hit.
 
 The raw diagnostic:
 

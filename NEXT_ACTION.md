@@ -99,6 +99,8 @@ anchored_m7_cycle_end_template.md
 anchored_m7_cycle_zipper_lemma.md
 anchored_m7_cycle_end_saturation_diagnostic.md
 anchored_m7_zipper_first_collision_target.md
+anchored_m7_zipper_target_advance_lemma.md
+anchored_m7_coupled_zipper_bridge_residual.md
 ```
 
 ## d-Term Detour: Deprioritized
@@ -176,6 +178,31 @@ anchored_m7_zipper_first_collision_target.md
 Input repeats give outgoing fans, output repeats contradict first-repeat
 minimality, and input-output hits give actual `H_h` paths.  The live residual
 is a fully clean cyclic zipper matching.
+
+Target advance now sharpens the residual:
+
+```text
+H_h:       I_i -> r_{i+1}
+H_{r_i}:  h   -> A_i,     A_i=r_{i-1}*r_i
+I_i=A_i*r_{i-1}
+```
+
+So the active object is:
+
+```text
+clean cyclic zipper matching
++
+clean same-input bridge necklace at common input h.
+```
+
+Use:
+
+```text
+anchored_m7_coupled_zipper_bridge_residual.md
+```
+
+Next target: prove this coupled object is a smaller admissible V3/M7 bridge,
+or else creates strict clean theta / independent full interval / core hit.
 
 The external `eq677` repository suggests using an ATP/e-graph cycle-end
 template rather than only first-layer closure:
