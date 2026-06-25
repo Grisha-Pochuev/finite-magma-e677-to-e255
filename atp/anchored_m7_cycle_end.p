@@ -88,6 +88,10 @@ fof(pred_i0, axiom, i0 = f(h, f(r1,r0))).
 fof(pred_im2, axiom, im2 = f(h, f(rm1,rm2))).
 fof(pred_im1, axiom, im1 = f(h, f(r0,rm1))).
 
+% Zipper consequences from anchored_m7_cycle_zipper_lemma.md.
+fof(zip_i0, axiom, i0 = f(f(rm1,r0), rm1)).
+fof(zip_im1, axiom, im1 = f(f(rm2,rm1), rm2)).
+
 % Clean cycle-end assumptions: the displayed three H_h edges are not already
 % a routed fan/path/full-interval hit.  Remove or weaken these when testing a
 % specific collision route.

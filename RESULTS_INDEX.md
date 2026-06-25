@@ -202,6 +202,9 @@ right file without scanning old summaries.
 | `anchored_m7_first_event_routing_lemma.md` | proved reduction | Routes first anchored-M7 events 1-4; only clean same-orbit right-`h` self-repeat remains live. |
 | `anchored_m7_first_merge_target.md` | routed target | First merge/repeat of the three right-`h` source orbits is reduced to clean self-repeat. |
 | `anchored_m7_cycle_end_template.md` | template | Names start/end/next-to-last rows for the remaining clean right-`h` self-repeat cycle. |
+| `anchored_m7_cycle_zipper_lemma.md` | proved local lemma | In a clean right-`h` source cycle, each `H_h` input has two formulas: `h*(r_{i+1}*r_i)=(r_{i-1}*r_i)*r_{i-1}`. |
+| `anchored_m7_cycle_end_saturation_diagnostic.md` | diagnostic | Cycle-end closure gives zipper equations but no direct endpoint/input collision. |
+| `anchored_m7_zipper_first_collision_target.md` | target | Routes zipper input repeats/output repeats/input-output hits; live branch is clean cyclic zipper matching. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
 | `m496_anchored_d_term_scan_diagnostic.md` | diagnostic/warning | M496 d-term scan is explained by global idempotence `x*x=x`; do not use it as anchored-specific evidence. |
@@ -234,5 +237,6 @@ right file without scanning old summaries.
 | `tools/m496_shared_step_orbit_split.js` | diagnostic | Scans shared-step row pairs in M496 for extra cycle intersections versus clean orbit theta. |
 | `tools/m496_first_extra_intersection_roles.js` | diagnostic | Classifies first extra row-cycle intersections in M496 by same-target trichotomy roles. |
 | `tools/m496_anchored_d_term_scan.js` | diagnostic | Scans anchored shared-step pairs in M496 for short `d(x)=((x*x)*x)` relations. |
+| `tools/anchored_m7_cycle_end_saturation.js` | diagnostic | Bounded equality closure for anchored-M7 cycle-end/zipper residual. |
 | `tools/m496_shared_step_anchored_triangle.ps1` | diagnostic | PowerShell M496 check for shared-step anchored triangle and `U*h=W*h`. |
 | `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |

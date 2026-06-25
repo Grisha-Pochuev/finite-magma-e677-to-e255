@@ -1064,6 +1064,9 @@ The cycle-end working surface is:
 
 ```text
 anchored_m7_cycle_end_template.md
+anchored_m7_cycle_zipper_lemma.md
+anchored_m7_cycle_end_saturation_diagnostic.md
+anchored_m7_zipper_first_collision_target.md
 atp/anchored_m7_cycle_end.p
 ```
 
@@ -1085,6 +1088,26 @@ im1=h*(r0*rm1).
 
 The next useful candidate is to force a path/fan/theta from these three
 cycle-end edges, without treating the source orbit itself as an `H_h` path.
+
+The first cycle-end saturation did not force direct endpoint collisions.
+It did confirm the zipper equation:
+
+```text
+I_i=h*(r_{i+1}*r_i)=(r_{i-1}*r_i)*r_{i-1}.
+```
+
+So the current residual is a clean cyclic zipper.  The next split should be
+the first collision among zipper certificates, or a proof that a fully clean
+zipper creates strict clean theta.
+
+The first-collision target is now explicit:
+
+```text
+anchored_m7_zipper_first_collision_target.md
+```
+
+It routes input repeats, output repeats, and input-output hits.  The live
+branch is a fully clean cyclic zipper matching.
 
 The raw diagnostic:
 

@@ -121,25 +121,46 @@ candidate consequence precise.
 
 ## Next Candidate Consequences
 
-Useful first conjectures are:
+The first bounded check is recorded in:
 
 ```text
-im1 = r1
+anchored_m7_cycle_end_saturation_diagnostic.md
 ```
 
-which would concatenate the last cycle-end edge to the start successor, or:
+It did not derive direct collisions such as:
 
 ```text
-f(r0,r1) = f(rm1,r0)
+im1 = r1,
+i0 = rm1,
+i0 = im1.
 ```
 
-which compares the two row/source certificates at the return point.
+It did derive the zipper equations:
+
+```text
+i0  = h*(r1*r0)  = (rm1*r0)*rm1,
+im1 = h*(r0*rm1) = (rm2*rm1)*rm2.
+```
+
+The proved local statement is:
+
+```text
+anchored_m7_cycle_zipper_lemma.md
+```
 
 Another direct target is to prove that the cycle-end triple creates a clean
 theta in `H_h`.  If it does, strict clean theta is already excluded by:
 
 ```text
 strict_clean_theta_exclusion_lemma.md
+```
+
+So the next useful split should be phrased as:
+
+```text
+first collision among zipper certificates
+Z_i=(r_{i-1}*r_i)*r_{i-1}=h*(r_{i+1}*r_i),
+or fully clean cyclic zipper creates strict clean theta.
 ```
 
 ## Do Not Overclaim

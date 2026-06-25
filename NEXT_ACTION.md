@@ -96,6 +96,9 @@ anchored_x3_clean_self_repeat_normal_form.md
 anchored_m7_first_event_routing_lemma.md
 anchored_m7_saturation_diagnostic.md
 anchored_m7_cycle_end_template.md
+anchored_m7_cycle_zipper_lemma.md
+anchored_m7_cycle_end_saturation_diagnostic.md
+anchored_m7_zipper_first_collision_target.md
 ```
 
 ## d-Term Detour: Deprioritized
@@ -148,7 +151,14 @@ I_i=h*(r_{i+1}*r_i),
 I_i -> r_{i+1} in H_h.
 ```
 
-Try to prove that this clean cycle either:
+The cycle-end check did not force direct endpoint collisions.  It did prove
+the zipper form:
+
+```text
+I_i = h*(r_{i+1}*r_i) = (r_{i-1}*r_i)*r_{i-1}.
+```
+
+Next, try to prove that this clean cyclic zipper either:
 
 ```text
 1. creates strict clean theta;
@@ -156,6 +166,16 @@ Try to prove that this clean cycle either:
 3. regenerates anchored-X3 with smaller M7;
 4. hits the old/core footprint.
 ```
+
+Use the immediate collision split from:
+
+```text
+anchored_m7_zipper_first_collision_target.md
+```
+
+Input repeats give outgoing fans, output repeats contradict first-repeat
+minimality, and input-output hits give actual `H_h` paths.  The live residual
+is a fully clean cyclic zipper matching.
 
 The external `eq677` repository suggests using an ATP/e-graph cycle-end
 template rather than only first-layer closure:
