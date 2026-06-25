@@ -109,8 +109,8 @@ Expected behavior:
 
 - the script checks all size-8 split cases used by the project;
 - each subcase should end with `status: none`;
-- the script writes a new timestamped log such as
-  `logs/size8_rerun_20260605_203000.txt`;
+- the script writes a new timestamped log named like
+  `logs/size8_rerun_<timestamp>`;
 - if a subcase does not close, the script stops and tells the user to send the
   log for inspection.
 

@@ -189,6 +189,116 @@ K_z=pred_z(b)
 is determined by the merge vertex `z` itself. It is not, by itself, a
 path-uniqueness invariant.
 
+The first-merge boundary has now been sharpened in:
+
+```text
+first_merge_certificate_separation_lemma.md
+```
+
+For last edges:
+
+```text
+p*x=b, p*b=z,
+q*y=b, q*b=z,
+```
+
+with `x!=y`, define:
+
+```text
+H_x=z*p,
+H_y=z*q,
+U=p*z,
+W=q*z,
+K=U*p=W*q=pred_z(b).
+```
+
+Then:
+
+```text
+H_x!=H_y,
+U!=W.
+```
+
+So the common `K` does not propagate backward by simple equality of adjacent
+last-certificate labels. The remaining local pressure is the crossed equality:
+
+```text
+(p*z)*p=(q*z)*q=K.
+```
+
+In the generic continuation case, where the merge vertex has a fresh outgoing
+core incidence:
+
+```text
+t*z=b, t*b=m, t notin {p,q},
+```
+
+the first merge relays to a new mixed junction after target swap:
+
+```text
+first_merge_target_swap_mixed_relay.md
+```
+
+In `H_z` the same rows form:
+
+```text
+b -> U
+b -> W
+theta -> b.
+```
+
+Thus a first merge followed by a fresh outgoing edge is not terminal; it is a
+target-swapped mixed split.
+
+The apparent same-row degeneracies are removed in:
+
+```text
+first_merge_degenerate_continuation_boundary.md
+```
+
+If the branches genuinely first arrive at `z`, then a continuation row
+`t*z=b` cannot equal `p` or `q`; otherwise row injectivity gives `x=z` or
+`y=z`.
+
+The remaining local boundary is exactly the loop continuation:
+
+```text
+t*z=b,
+t*b=z.
+```
+
+It becomes a loop `b -> b` in `H_z`, not a right fixer.
+
+This loop boundary is also structurally classified in:
+
+```text
+first_merge_target_swap_junction_dichotomy.md
+```
+
+Since the two merging rows become:
+
+```text
+b -> U,
+b -> W
+```
+
+in `H_z`, and `U,W` are distinct from each other and from `b`, the loop
+continuation gives a triple outgoing fan:
+
+```text
+b -> U,
+b -> W,
+b -> b.
+```
+
+Therefore a first merge with an outgoing continuation relays to one of the
+same two types:
+
+```text
+mixed 2+1;
+triple fan.
+```
+
 For two directed paths with a common split and first merge, compare the full
 last certificates, not only `K_z`, and derive an equality that propagates one
 step backward. The desired induction remains:
@@ -201,3 +311,65 @@ common terminal K
 ```
 
 contradicting the distinct fan tips.
+
+## Pure-Incoming Boundary Reduction
+
+The pure-incoming merge boundary is now partially reduced in:
+
+```text
+pure_incoming_merge_target_swap_fan_lemma.md
+```
+
+If the merge vertex `z` has incoming incidences:
+
+```text
+p_i*x_i=b,
+p_i*b=z,
+```
+
+then after target swap `b -> z` the same rows give:
+
+```text
+b -> U_i,
+U_i=p_i*z,
+```
+
+in `H_z`. The tips `U_i` are pairwise distinct by two-step source
+reconstruction. In a genuine first-merge setting, none of them equals `b`.
+
+Therefore a pure incoming merge of degree at least three relays to a triple
+outgoing fan. The remaining local obstruction is only the binary pure incoming
+sink:
+
+```text
+two incoming branches merge at z,
+no outgoing continuation from z,
+no loop at z,
+no third incoming incidence at z.
+```
+
+This residue is further reduced graph-theoretically in:
+
+```text
+binary_sink_core_escape_lemma.md
+```
+
+The two branches plus a binary sink give only one simple cycle. Since the
+forced bad-target core has at least two independent cycles, some extra core
+material must attach to the branch corridor before the sink. The next target is
+the earliest such side attachment.
+
+This next target is classified in:
+
+```text
+earliest_side_attachment_mixed_junction_lemma.md
+```
+
+At an internal branch vertex, the active path has one incoming and one outgoing
+incidence. Any extra core incidence makes a mixed `2+1` junction. Therefore
+the binary sink residue does not add a new type beyond:
+
+```text
+triple fan,
+mixed 2+1.
+```

@@ -69,19 +69,20 @@ Current recorded status:
 - in size `9`, cases `1-33` are recorded as closed;
 - in `case45`, the branch `7*0=4` is recorded as fully closed;
 - the normalized size-9 role `u=b_3` is now recorded as closed;
-- the latest general progress recasts the bridge recursion for arbitrary
-  target edges and reduces the open proof frontier to branch-closure pressure;
-- the active frontier is the branch-closure No-Free-Tail candidate described in
-  `docs/CURRENT_FRONTIER.md`.
+- the latest general progress routes the crossed-fan clean external bridge and
+  same-row recurrence layers into an anchored-X3/M7 residual;
+- the active frontier is the clean same-orbit right-`h` self-repeat described
+  in `NEXT_ACTION.md` and `docs/CURRENT_FRONTIER.md`.
 
 See:
 
 - `docs/CLOSED_CASES.md` for the compact status table;
 - `docs/LEMMA_STATUS.md` for the current lemma map;
 - `docs/RESULTS_INDEX.md` for navigation through the research files;
-- `docs/CURRENT_FRONTIER.md` for where the next proof attempt starts.
-- `docs/METHOD.md` for the research method.
-- `docs/RESEARCH_UPDATE_2026-06-17.md` for the latest research update.
+- `NEXT_ACTION.md` for the immediate continuation point;
+- `docs/CURRENT_FRONTIER.md` for where the next proof attempt starts;
+- `docs/METHOD.md` for the research method;
+- `docs/RESEARCH_UPDATE_2026-06-25.md` for the latest research update.
 
 ### What is in this repository
 
@@ -91,11 +92,13 @@ lemmas/        Working lemma files and candidate structural arguments.
 tools/         JavaScript search and diagnostic scripts.
 logs/          Historical research logs and verification outputs.
 formal/lean/   Lean formalization notes and current formalization boundary.
+atp/           Experimental ATP/TPTP templates for local residuals.
 ```
 
 `logs/research_log.md` is only a public English placeholder for the longer
 internal historical log.  It should not be read as the current status.  Start
-with `docs/CURRENT_FRONTIER.md` and `docs/LEMMA_STATUS.md`.
+with `NEXT_ACTION.md`, `docs/CURRENT_FRONTIER.md`, and
+`docs/LEMMA_STATUS.md`.
 
 ### Reproducibility
 

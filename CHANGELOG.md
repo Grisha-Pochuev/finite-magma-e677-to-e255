@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-06-25
+
+- Added the anchored-X3/M7 frontier and the clean same-orbit right-`h`
+  self-repeat continuation point.
+- Published the post-2026-06-17 relay-reduction layer for crossed-fan clean
+  external bridges, beta-layer routing, same-row recurrence, and anchored
+  shared-step reductions.
+- Added ATP/TPTP templates for the anchored-X3/M7 self-repeat and cycle-end
+  residuals.
+- Added diagnostic notes and supporting scripts for the M496 shared-step and
+  anchored-M7 checks.
+- Updated project navigation while keeping No-Free-Tail and `E677 => E255`
+  explicitly open.
+
 ## 2026-06-17
 
 - Added a public rerun script for the complete normalized sizes `5`, `6`, and
