@@ -73,6 +73,7 @@ full interval collision.
 By:
 
 ```text
+fixed_target_zipper_bridge_necklace_lemma.md
 anchored_m7_zipper_lift_advance_equivalence_lemma.md
 ```
 

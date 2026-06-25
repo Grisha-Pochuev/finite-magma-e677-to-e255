@@ -157,10 +157,10 @@ r_{n-1}*z=r_0,
 then the generic zipper formula from:
 
 ```text
-anchored_m7_cycle_zipper_lemma.md
+fixed_target_zipper_bridge_necklace_lemma.md
 ```
 
-applies with `h` replaced by `z`:
+applies with `t=z`:
 
 ```text
 z*(r_{i+1}*r_i) = (r_{i-1}*r_i)*r_{i-1}.
@@ -173,6 +173,15 @@ clean fixed-target source self-repeat
 -> cyclic zipper
 -> adjacent same-input V3 bridge necklace.
 ```
+
+For adjacent bridges inside that necklace, use:
+
+```text
+zipper_born_v3_second_layer_shift_lemma.md
+```
+
+Their V3 second layer is a shifted zipper window rather than a fresh generic
+four-edge V3 matching.
 
 The difference is only the source of the two starting orbits:
 

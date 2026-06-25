@@ -345,9 +345,9 @@ A*p -> s*z,
 B*q -> r*z.
 ```
 
-So the remaining clean V3 obstruction is a clean four-edge matching in `H_z`.
-Next proof target: show this four-edge matching routes or is admissible as the
-smaller relay object needed for both first-extra V3 and anchored-M7 necklace.
+So a generic remaining clean V3 obstruction is a clean four-edge matching in
+`H_z`.  Zipper-born adjacent V3 bridges are the special shifted-window case
+recorded below.
 
 The four-edge V3 matching now also reduces to fixed-target source orbits:
 
@@ -367,3 +367,50 @@ The only clean residual is a same-orbit right-`z` self-repeat, hence a zipper
 with the same form as anchored-M7.  Next proof target: prove the V3-born
 zipper/adjacent bridge is a smaller admissible relay object, or isolate the
 missing hypothesis for that measure comparison.
+
+The target-independent zipper transport is now:
+
+```text
+fixed_target_zipper_bridge_necklace_lemma.md
+```
+
+It says any clean right-`t` source self-repeat gives a clean zipper in `H_t`
+coupled to a same-input V3 bridge necklace at common input `t`.  This unifies:
+
+```text
+anchored-M7: t=h;
+V3-born residual: t=z.
+```
+
+Next proof target: prove a clean fixed-target zipper/V3 necklace cannot be
+terminal in a minimal G12 loop because an adjacent V3 bridge is smaller and
+admissible, unless a routed hit/full interval/core attachment occurs.
+
+This is now isolated in:
+
+```text
+fixed_target_zipper_reduces_to_v3_admissibility.md
+```
+
+Exact remaining sentence:
+
+```text
+A zipper-born clean adjacent V3 bridge is admissible under the same global
+minimality measure as first-extra V3 bridges.
+```
+
+Clarification:
+
+```text
+zipper_born_v3_second_layer_shift_lemma.md
+```
+
+A zipper-born adjacent V3 bridge is not a fresh generic four-edge V3 bridge.
+Its second layer is a shifted zipper window.  So the final obstruction is a
+clean fixed-target zipper/V3 necklace whose adjacent shifted windows are not
+accepted by the current global measure.
+
+If this sentence is proved, both the anchored-M7 clean necklace and the
+V3-born clean self-repeat zipper close.  If it fails, the final obstruction is
+a fully clean fixed-target zipper/V3 necklace whose adjacent shifted V3
+windows cannot be inserted into the global relay measure.

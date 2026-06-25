@@ -183,7 +183,8 @@ H_s: z -> A,
 H_r: z -> B.
 ```
 
-The true clean residual is:
+For a generic V3 bridge whose second layer is clean-disjoint, the true clean
+residual is:
 
 ```text
 a clean four-edge matching in H_z
@@ -194,12 +195,23 @@ plus its two-target same-input bridge at z.
 This matters for the global measure: a fully clean V3 bridge has a second
 internal layer before it can be treated as a terminal obstruction.
 
+There is one important exception:
+
+```text
+zipper_born_v3_second_layer_shift_lemma.md
+```
+
+If the V3 bridge is born from adjacent edges of a fixed-target zipper, then
+one source row is also the previous output.  In that case the second layer
+overlaps the existing zipper and becomes a shifted zipper window, not a fresh
+four-edge matching.
+
 ## Consequence For The Current Frontier
 
 The current unified V3 admissibility target should use this sharper residual:
 
 ```text
-ungenerated clean same-input V3
+generic ungenerated clean same-input V3
 -> clean target-lift in H_z
 -> second-layer four-edge expansion in H_z
 -> either a local hit routes,
@@ -207,6 +219,11 @@ ungenerated clean same-input V3
 ```
 
 Thus the next proof step should not attempt to close a bare two-edge V3
-bridge.  It should prove that the clean four-edge matching is admissible as a
-smaller measured relay object, or show that it must hit generated/watched/core
-data in the first-extra and anchored-M7 sources.
+bridge.  It should either:
+
+```text
+1. prove that a generic clean four-edge matching is admissible as a smaller
+   measured relay object;
+2. use the shifted-window reduction for zipper-born V3 bridges;
+3. or show that the V3 common input must hit generated/watched/core data.
+```

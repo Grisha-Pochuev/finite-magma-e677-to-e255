@@ -63,6 +63,16 @@ I_{i-1} -> r_i,
 I_i     -> r_{i+1}.
 ```
 
+The adjacent V3 bridge is a shifted zipper window, not a fresh generic
+four-edge V3 object.  Use:
+
+```text
+zipper_born_v3_second_layer_shift_lemma.md
+```
+
+Its second V3 layer repeats the middle zipper edge and exposes the next
+zipper edge.
+
 ## Fully Clean Assumptions
 
 The obstruction assumes no immediate route:

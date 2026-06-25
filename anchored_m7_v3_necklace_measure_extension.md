@@ -10,7 +10,14 @@ measure extension candidate / exact admissibility gap for coupled zipper bridge
 
 ## Purpose
 
-This extends:
+This file is now the anchored specialization of the target-independent
+measure boundary:
+
+```text
+fixed_target_zipper_reduces_to_v3_admissibility.md
+```
+
+It extends:
 
 ```text
 relay_minimality_measure_candidate.md
@@ -124,6 +131,13 @@ admissible as a relay object under the same global minimality measure.
 This is not automatic from `general_v3_bridge_descent_boundary.md`, because
 that file treats V3 bridges born at first-extra intersections, not V3 bridges
 born inside one anchored self-repeat cycle.
+
+In the unified language, this is the target-independent sentence:
+
+```text
+A zipper-born clean adjacent V3 bridge is admissible under the same global
+minimality measure as first-extra V3 bridges.
+```
 
 ## If Admissibility Fails
 

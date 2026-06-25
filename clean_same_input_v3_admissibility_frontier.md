@@ -185,9 +185,9 @@ B*q -> r*z.
 ```
 
 Any input repeat, output repeat, input-output hit, full ported interval
-repeat, or watched/core hit between these two layers routes locally.  The
-fully clean residual is therefore a clean four-edge matching in `H_z`, not
-only a two-edge target-lift pair.
+repeat, or watched/core hit between these two layers routes locally.  For a
+generic V3 bridge, the fully clean residual is therefore a clean four-edge
+matching in `H_z`, not only a two-edge target-lift pair.
 
 This four-edge matching is itself the first two layers of two fixed-target
 source-successor orbits in `H_z`.  Use:
@@ -206,6 +206,23 @@ q -> r -> r*z -> ...
 First source-orbit events route by fixed-target first-merge and same-target
 collision roles.  The only clean finite residual is a same-orbit right-`z`
 self-repeat, which has the same zipper form as the anchored-M7 self-repeat.
+
+The common fixed-target zipper/V3 necklace transport is recorded in:
+
+```text
+fixed_target_zipper_bridge_necklace_lemma.md
+fixed_target_zipper_reduces_to_v3_admissibility.md
+zipper_born_v3_second_layer_shift_lemma.md
+```
+
+It covers both the anchored-M7 case (`t=h`) and the V3-born case (`t=z`).
+
+Important distinction:
+
+```text
+generic ungenerated V3 -> possible clean four-edge matching;
+zipper-born adjacent V3 -> shifted zipper window, not fresh four-edge clean.
+```
 
 ## Unified Admissibility Principle
 
@@ -232,10 +249,10 @@ Prove one of:
 ```text
 1. any ungenerated clean V3 bridge has a second-layer hit in H_z;
 2. any clean four-edge V3 matching has a routed fixed-target first event;
-3. any clean right-z self-repeat zipper born from V3 can be inserted into the
-   global relay measure as a smaller object;
+3. any zipper-born clean adjacent V3 bridge is admissible under the same
+   global measure as first-extra V3 bridges;
 4. the common input z must be generated/watched/core in both current sources;
-5. a fully clean V3-born zipper is the true final obstruction.
+5. a fully clean fixed-target zipper/V3 necklace is the true final obstruction.
 ```
 
 Do not continue treating first-extra V3 and anchored-M7 V3 as separate

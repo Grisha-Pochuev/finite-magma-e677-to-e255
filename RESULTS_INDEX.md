@@ -214,6 +214,9 @@ right file without scanning old summaries.
 | `clean_same_input_v3_admissibility_frontier.md` | active frontier | Unified target for first-extra V3 and anchored-M7 V3: ungenerated clean same-input bridge admissibility. |
 | `clean_same_input_v3_second_layer_expansion_lemma.md` | proved expansion | Any V3 bridge forces a second same-target layer in `H_z`; the clean residual is a four-edge V3 matching. |
 | `clean_v3_fixed_target_source_orbit_reduction.md` | proved reduction | Clean V3 four-edge matching is the first two layers of two right-`z` source orbits; only clean self-repeat zipper remains. |
+| `fixed_target_zipper_bridge_necklace_lemma.md` | proved transport | Any clean fixed-target source self-repeat gives a coupled zipper/V3 necklace; unifies anchored-M7 and V3-born residuals. |
+| `fixed_target_zipper_reduces_to_v3_admissibility.md` | conditional reduction | A clean fixed-target zipper necklace closes if zipper-born adjacent V3 bridges are admissible as smaller relay objects. |
+| `zipper_born_v3_second_layer_shift_lemma.md` | proved clarification | A zipper-born adjacent V3 second layer is a shifted zipper window, not a fresh generic four-edge V3 matching. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
 | `eq677_db_shared_step_scan_diagnostic.md` | diagnostic | Full external db scan: global `U*h=W*h` is false; clean-X3 false pairs route by source-orbit first event or reach the M7 clean self-repeat residual. |

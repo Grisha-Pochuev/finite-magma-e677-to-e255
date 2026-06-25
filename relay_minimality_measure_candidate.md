@@ -148,11 +148,14 @@ clean self-repeat
    smaller anchored-X3 object under M7.
 ```
 
-## Extension For Anchored V3 Necklace
+## Extension For Fixed-Target Zipper-Born V3 Necklaces
 
-The clean M7 self-repeat is now sharpened by:
+The clean M7 self-repeat and the V3-born clean source self-repeat are now
+both sharpened by:
 
 ```text
+fixed_target_zipper_bridge_necklace_lemma.md
+fixed_target_zipper_reduces_to_v3_admissibility.md
 anchored_m7_cycle_zipper_lemma.md
 anchored_m7_zipper_target_advance_lemma.md
 anchored_m7_zipper_lift_advance_equivalence_lemma.md
@@ -160,20 +163,20 @@ anchored_m7_clean_v3_necklace_obstruction.md
 anchored_m7_v3_necklace_measure_extension.md
 ```
 
-A terminal clean M7 self-repeat becomes a closed necklace of V3-type
-same-input bridges at the common input `h`:
+A terminal clean fixed-target source self-repeat becomes a closed necklace of
+V3-type same-input bridges at the common input `t`:
 
 ```text
-H_{r_i}: h -> A_i,
+H_{r_i}: t -> A_i,
 A_i=r_{i-1}*r_i.
 ```
 
 Add the subrank:
 
 ```text
-M8. anchored V3 necklace bridge rank:
-    the first adjacent clean V3 bridge born inside the M7 self-repeat cycle,
-    before the terminal return r_n=r_0.
+M8/MZ. fixed-target zipper-born V3 bridge rank:
+    the first adjacent clean V3 bridge born inside the clean right-t
+    self-repeat cycle, before the terminal return r_n=r_0.
 ```
 
 The intended use is:
@@ -184,14 +187,14 @@ local hit in the zipper or V3 bridge
 
 fully clean adjacent V3 bridge
 => should be admissible as a smaller measured relay object because it is born
-   at position i<n before the M7 terminal self-repeat.
+   at position i<n before the terminal self-repeat.
 ```
 
 This is still a candidate measure extension.  The missing sentence is:
 
 ```text
-An adjacent clean V3 bridge born inside the anchored M7 self-repeat cycle is
-admissible as a relay object under the global minimality measure.
+A zipper-born clean adjacent V3 bridge is admissible as a relay object under
+the global minimality measure.
 ```
 
 ## Compatibility With R-b4
