@@ -151,6 +151,44 @@ anchored-M7 V3 at z=h,
 
 unless `w` or `h` is later shown to be generated/watched/core.
 
+## Second-Layer Expansion
+
+The ungenerated clean V3 gap now has a sharper internal form.
+
+Use:
+
+```text
+clean_same_input_v3_second_layer_expansion_lemma.md
+```
+
+For:
+
+```text
+p*z=s,
+q*z=r,
+A=p*s,
+B=q*r,
+```
+
+the usual lift in `H_z`:
+
+```text
+P=z*(s*p) -> s,
+Q=z*(r*q) -> r
+```
+
+forces a second layer in the same graph:
+
+```text
+A*p -> s*z,
+B*q -> r*z.
+```
+
+Any input repeat, output repeat, input-output hit, full ported interval
+repeat, or watched/core hit between these two layers routes locally.  The
+fully clean residual is therefore a clean four-edge matching in `H_z`, not
+only a two-edge target-lift pair.
+
 ## Unified Admissibility Principle
 
 The needed statement is:
@@ -174,12 +212,11 @@ anchored-M7 V3 necklace closes by M8.
 Prove one of:
 
 ```text
-1. any ungenerated clean V3 bridge has a target-lift or target-advance hit
-   after one more step;
-2. any ungenerated clean V3 bridge can be inserted into the global relay
+1. any ungenerated clean V3 bridge has a second-layer hit in H_z;
+2. any clean four-edge V3 matching can be inserted into the global relay
    measure as a smaller object;
 3. the common input z must be generated/watched/core in both current sources;
-4. a fully clean ungenerated V3 bridge is the true final obstruction.
+4. a fully clean four-edge V3 matching is the true final obstruction.
 ```
 
 Do not continue treating first-extra V3 and anchored-M7 V3 as separate

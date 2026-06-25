@@ -213,9 +213,13 @@ function scanModel(table, maxPairsPerModel) {
     secondLayerClean: 0,
     secondLayerRouted: 0,
     secondLayerFormulaFailures: 0,
+    firstOrbitCleanSelfRepeat: 0,
+    firstOrbitRouted: 0,
+    firstOrbitNoEvent: 0,
     mismatchProfiles: new Map(),
     tripleProfiles: new Map(),
     secondLayerProfiles: new Map(),
+    firstOrbitProfiles: new Map(),
     sameOutput: 0,
     examples: [],
   };
@@ -268,6 +272,12 @@ function scanModel(table, maxPairsPerModel) {
             if (second.profile === "second-layer-clean") result.secondLayerClean++;
             else result.secondLayerRouted++;
             result.secondLayerProfiles.set(second.profile, (result.secondLayerProfiles.get(second.profile) || 0) + 1);
+
+            const firstEvent = firstSourceOrbitEvent(table, inv, { b, z, p, q, U, W, h, alpha, T, S });
+            if (firstEvent.kind === "clean-self-repeat") result.firstOrbitCleanSelfRepeat++;
+            else if (firstEvent.kind === "no-event") result.firstOrbitNoEvent++;
+            else result.firstOrbitRouted++;
+            result.firstOrbitProfiles.set(firstEvent.profile, (result.firstOrbitProfiles.get(firstEvent.profile) || 0) + 1);
           }
           addExample(result, { kind: "uWhMismatch", b, z, p, q, U, W, h, alpha, T, S, triple, secondLayer });
         } else {
@@ -345,6 +355,86 @@ function secondLayerProfile(table, named) {
   return { profile, formulasHold };
 }
 
+function firstSourceOrbitEvent(table, inv, named) {
+  const { b, z, p, q, U, W, h, alpha, T, S } = named;
+  const n = table.length;
+  const orbits = [
+    { name: "U", rows: [U], firstInput: p, firstOutput: T },
+    { name: "W", rows: [W], firstInput: q, firstOutput: S },
+    { name: "z", rows: [z], firstInput: alpha, firstOutput: b },
+  ];
+  const edges = [];
+  for (const orbit of orbits) {
+    edges.push({
+      orbit: orbit.name,
+      depth: 0,
+      source: orbit.rows[0],
+      input: orbit.firstInput,
+      output: orbit.firstOutput,
+    });
+  }
+
+  for (let depth = 1; depth <= n + 1; depth++) {
+    const current = [];
+    for (const orbit of orbits) {
+      const prev = orbit.rows[depth - 1];
+      const source = table[prev][h];
+      orbit.rows.push(source);
+      current.push({
+        orbit: orbit.name,
+        depth,
+        source,
+        input: inv[source][h],
+        output: table[source][h],
+      });
+    }
+
+    const profile = firstEventProfileAtDepth(current, edges);
+    if (profile !== null) {
+      const onlySelfRepeat = profile.parts.length > 0 && profile.parts.every((x) => x.startsWith("self-source-repeat:"));
+      return {
+        kind: onlySelfRepeat ? "clean-self-repeat" : "routed",
+        depth,
+        profile: `${onlySelfRepeat ? "clean-self-repeat" : "routed"}@${depth}:${profile.parts.join("|")}`,
+      };
+    }
+    edges.push(...current);
+  }
+
+  return { kind: "no-event", depth: n + 1, profile: "no-event" };
+}
+
+function firstEventProfileAtDepth(current, previous) {
+  const parts = [];
+  const allPrevious = previous.slice();
+  for (let i = 0; i < current.length; i++) {
+    const edge = current[i];
+    for (const old of allPrevious) compareSourceOrbitEdges(parts, edge, old);
+    for (let j = 0; j < i; j++) compareSourceOrbitEdges(parts, edge, current[j]);
+  }
+  if (parts.length === 0) return null;
+  return { parts: Array.from(new Set(parts)).sort() };
+}
+
+function compareSourceOrbitEdges(parts, a, b) {
+  if (a.source === b.source) {
+    if (a.orbit === b.orbit) parts.push(`self-source-repeat:${a.orbit}`);
+    else parts.push(`cross-source:${a.orbit}=${b.orbit}`);
+  }
+  if (a.output === b.output && a.source !== b.source) {
+    parts.push(`output-merge:${a.orbit}=${b.orbit}`);
+  }
+  if (a.input === b.input && a.source !== b.source) {
+    parts.push(`input-repeat:${a.orbit}=${b.orbit}`);
+  }
+  if (a.input === b.output) {
+    parts.push(`input-output:${a.orbit}.input=${b.orbit}.output`);
+  }
+  if (a.output === b.input) {
+    parts.push(`input-output:${a.orbit}.output=${b.orbit}.input`);
+  }
+}
+
 function endpointProfile(inputs, outputs, cleanName) {
   const groups = [];
   const inputEntries = Object.entries(inputs);
@@ -395,9 +485,13 @@ function aggregate(results) {
     secondLayerClean: 0,
     secondLayerRouted: 0,
     secondLayerFormulaFailures: 0,
+    firstOrbitCleanSelfRepeat: 0,
+    firstOrbitRouted: 0,
+    firstOrbitNoEvent: 0,
     mismatchProfiles: {},
     tripleProfiles: {},
     secondLayerProfiles: {},
+    firstOrbitProfiles: {},
     sameOutput: 0,
     modelsWithFailure: [],
   };
@@ -417,6 +511,9 @@ function aggregate(results) {
     total.secondLayerClean += r.secondLayerClean;
     total.secondLayerRouted += r.secondLayerRouted;
     total.secondLayerFormulaFailures += r.secondLayerFormulaFailures;
+    total.firstOrbitCleanSelfRepeat += r.firstOrbitCleanSelfRepeat;
+    total.firstOrbitRouted += r.firstOrbitRouted;
+    total.firstOrbitNoEvent += r.firstOrbitNoEvent;
     for (const [profile, count] of r.mismatchProfiles.entries()) {
       total.mismatchProfiles[profile] = (total.mismatchProfiles[profile] || 0) + count;
     }
@@ -425,6 +522,9 @@ function aggregate(results) {
     }
     for (const [profile, count] of r.secondLayerProfiles.entries()) {
       total.secondLayerProfiles[profile] = (total.secondLayerProfiles[profile] || 0) + count;
+    }
+    for (const [profile, count] of r.firstOrbitProfiles.entries()) {
+      total.firstOrbitProfiles[profile] = (total.firstOrbitProfiles[profile] || 0) + count;
     }
     total.sameOutput += r.sameOutput;
     if (r.hMismatch || r.zhMismatch || r.uWhMismatch) {
@@ -442,9 +542,13 @@ function aggregate(results) {
         secondLayerClean: r.secondLayerClean,
         secondLayerRouted: r.secondLayerRouted,
         secondLayerFormulaFailures: r.secondLayerFormulaFailures,
+        firstOrbitCleanSelfRepeat: r.firstOrbitCleanSelfRepeat,
+        firstOrbitRouted: r.firstOrbitRouted,
+        firstOrbitNoEvent: r.firstOrbitNoEvent,
         topMismatchProfiles: topEntries(r.mismatchProfiles, 8),
         topTripleProfiles: topEntries(r.tripleProfiles, 8),
         topSecondLayerProfiles: topEntries(r.secondLayerProfiles, 8),
+        topFirstOrbitProfiles: topEntries(r.firstOrbitProfiles, 8),
         examples: r.examples,
       });
     }
@@ -452,6 +556,7 @@ function aggregate(results) {
   total.topMismatchProfiles = topEntries(new Map(Object.entries(total.mismatchProfiles)), 12);
   total.topTripleProfiles = topEntries(new Map(Object.entries(total.tripleProfiles)), 12);
   total.topSecondLayerProfiles = topEntries(new Map(Object.entries(total.secondLayerProfiles)), 12);
+  total.topFirstOrbitProfiles = topEntries(new Map(Object.entries(total.firstOrbitProfiles)), 12);
   return total;
 }
 
@@ -493,6 +598,7 @@ async function main() {
   delete compactSummary.mismatchProfiles;
   delete compactSummary.tripleProfiles;
   delete compactSummary.secondLayerProfiles;
+  delete compactSummary.firstOrbitProfiles;
   const payload = args.totalsOnly
     ? { cache: args.cache, sizes, summary: compactSummary }
     : args.summaryOnly

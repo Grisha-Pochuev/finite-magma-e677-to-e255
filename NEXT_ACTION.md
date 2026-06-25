@@ -293,3 +293,58 @@ hits, but 11112 remain fully clean after both layers.  Therefore `U*h=W*h`
 can only be pursued with extra bad-target/minimal-clean assumptions; local
 two-layer pressure alone is not enough.  Otherwise continue the false branch
 through the source-orbit/M7 route and then V3 admissibility.
+
+The same db scanner now follows the three source-successor orbits in `H_h`.
+Among the 17040 clean-X3 triples:
+
+```text
+10800 route by first source-orbit event;
+6240 reach clean same-orbit self-repeat;
+0 have no finite event.
+```
+
+So the external db supports the current theoretical path:
+
+```text
+clean-X3 -> M7 clean self-repeat -> zipper -> V3 necklace.
+```
+
+Next exact target remains the proof, not more broad diagnostics:
+
+```text
+prove the clean M7 self-repeat zipper/V3 necklace is admissible under the
+unified clean same-input V3 measure, or isolate the missing hypothesis.
+```
+
+The unified V3 frontier has been sharpened by:
+
+```text
+clean_same_input_v3_second_layer_expansion_lemma.md
+```
+
+Any same-input V3 bridge:
+
+```text
+p*z=s,
+q*z=r,
+A=p*s,
+B=q*r
+```
+
+forces, in `H_z`, not only:
+
+```text
+P=z*(s*p) -> s,
+Q=z*(r*q) -> r,
+```
+
+but also:
+
+```text
+A*p -> s*z,
+B*q -> r*z.
+```
+
+So the remaining clean V3 obstruction is a clean four-edge matching in `H_z`.
+Next proof target: show this four-edge matching routes or is admissible as the
+smaller relay object needed for both first-extra V3 and anchored-M7 necklace.

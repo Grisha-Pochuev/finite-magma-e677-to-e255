@@ -161,6 +161,54 @@ second layer routes by visible endpoint hit:  5928
 second layer remains fully clean:           11112
 ```
 
+The clean-X3 triples were also scanned as fixed-target source-successor
+orbits in `H_h`, following:
+
+```text
+anchored_x3_source_orbit_boundary.md
+anchored_m7_first_event_routing_lemma.md
+```
+
+The three source orbits are:
+
+```text
+U -> T -> T*h -> ...
+W -> S -> S*h -> ...
+z -> b -> b*h -> ...
+```
+
+The scanner stops at the first event among:
+
+```text
+cross-source hit,
+output merge,
+input repeat,
+input-output hit,
+same-orbit source repeat.
+```
+
+First-event result on the 17040 clean-X3 triples:
+
+```text
+routed first source-orbit event: 10800
+clean same-orbit self-repeat:    6240
+no finite event found:              0
+```
+
+Top first-event profiles:
+
+```text
+clean-self-repeat@3:self-source-repeat:z:                         4320
+routed@2:input-output:z.input=z.output|input-repeat:W=U:           1512
+routed@1:input-output:W.input=U.output|input-output:W.output=U.input: 1200
+routed@1:input-output:z.input=z.output|input-output:z.output=z.input: 1200
+routed@2:input-output:z.output=W.input:                           1143
+routed@2:input-output:z.input=W.output:                           1098
+clean-self-repeat@3:self-source-repeat:W|self-source-repeat:z:     1050
+routed@3:cross-source:W=U|self-source-repeat:z:                    909
+clean-self-repeat@3:self-source-repeat:U|self-source-repeat:z:      870
+```
+
 Top collision profiles among false pairs:
 
 ```text
@@ -277,13 +325,38 @@ anchored_m7_first_event_routing_lemma.md
 
 or reduce the resulting clean cycle to V3 admissibility.
 
+The first-source-orbit scan supports the current theoretical reduction even
+more directly.  On the external db, every clean-X3 example reaches a finite
+first event.  Most route by the already named first-event cases; the remaining
+examples are exactly clean same-orbit self-repeats, which is the M7 residual
+already developed in:
+
+```text
+anchored_x3_clean_self_repeat_normal_form.md
+anchored_m7_cycle_zipper_lemma.md
+anchored_m7_v3_necklace_measure_extension.md
+```
+
+Thus the db evidence no longer supports searching for a new local X3 closure.
+It supports continuing the existing route:
+
+```text
+clean-X3
+-> source-orbit first event
+-> clean M7 self-repeat
+-> zipper
+-> clean V3 necklace
+-> unified V3 admissibility.
+```
+
 ## Next Use
 
 Use the new db scanner for two narrower follow-up checks:
 
 ```text
-1. classify the second-layer-clean false examples by V3 target-lift roles;
-2. test whether the all-distinct db failures still survive the additional
+1. classify the M7 clean-self-repeat examples by zipper/V3-necklace roles;
+2. classify the second-layer-clean false examples by V3 target-lift roles;
+3. test whether the all-distinct db failures still survive the additional
    watched/core/minimal-clean exclusions that define the current G12 residual.
 ```
 
