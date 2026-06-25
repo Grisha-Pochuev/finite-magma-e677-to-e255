@@ -268,3 +268,23 @@ template rather than only first-layer closure:
 eq677_repo_idea_notes.md
 atp/anchored_m7_cycle_end.p
 ```
+
+The external db scan is now recorded in:
+
+```text
+eq677_db_shared_step_scan_diagnostic.md
+tools/eq677_db_shared_step_scan.js
+```
+
+It downgrades the unrestricted strong hypothesis:
+
+```text
+shared-step anchored triangle => U*h=W*h
+```
+
+because the full public db has 18348 false shared-step pairs, including 17040
+with all named terms distinct.  The same 17040 false pairs are clean
+anchored-X3 triples `p,q,alpha -> T,S,b` in `H_h`; only 1308 route by visible
+X3 hits.  Therefore `U*h=W*h` can only be pursued with extra
+bad-target/minimal-clean assumptions.  Otherwise continue the false branch
+through anchored-X3/V3 admissibility.
