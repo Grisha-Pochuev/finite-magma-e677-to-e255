@@ -435,6 +435,22 @@ collapse or direct E255 for `z,b,c,h` in the bounded period-3 saturation.
 Therefore the next useful move is still the global admissibility problem for
 the shifted-window bridge `H_b,H_c`, not another local fingerprint chase.
 
+The direct ATP target:
+
+```text
+period-3 zipper => E255(b)
+```
+
+is prepared in:
+
+```text
+atp/period3_zipper_e255_target.p
+period3_zipper_e255_target_atp_note.md
+```
+
+No ATP prover is currently visible in PATH, so this is a prepared target, not
+a proved theorem.
+
 So the external db supports the current theoretical path:
 
 ```text

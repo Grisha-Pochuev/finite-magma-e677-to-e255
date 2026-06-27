@@ -222,7 +222,9 @@ right file without scanning old summaries.
 | `period3_zipper_exact_measure_reduction.md` | conditional reduction | Period-3 closes if the explicit earlier bridge `H_b,H_c` is admissible; otherwise the final gap is a self-renewing triangle not accepted by the measure. |
 | `period3_zipper_saturation_diagnostic.md` | diagnostic | Depth-5 local closure confirms period-3 zipper formulas but no short clean collapse, idempotence, or direct E255 for displayed vertices. |
 | `period3_db_identity_scan_diagnostic.md` | diagnostic | Size-77 db period-3 examples have universal short fingerprints such as `h*h=z*b`, but local E677 closure does not derive them. |
+| `period3_zipper_e255_target_atp_note.md` | ATP note | Prepared direct ATP target for `period-3 zipper => E255(b)`; no prover currently visible in PATH. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
+| `atp/period3_zipper_e255_target.p` | ATP template | TPTP template for testing whether clean period-3 zipper forces E255 or db fingerprint identities. |
 | `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
 | `eq677_db_shared_step_scan_diagnostic.md` | diagnostic | Full external db scan: global `U*h=W*h` is false; clean-X3 false pairs route by source-orbit first event or reach the M7 clean self-repeat residual. |
 | `m496_anchored_d_term_scan_diagnostic.md` | diagnostic/warning | M496 d-term scan is explained by global idempotence `x*x=x`; do not use it as anchored-specific evidence. |
