@@ -195,6 +195,36 @@ clean same-orbit self-repeat:    6240
 no finite event found:              0
 ```
 
+First-event depth split:
+
+```text
+clean-self-repeat@3: 6240
+routed@2:            5592
+routed@1:            3528
+routed@3:            1680
+```
+
+Clean self-repeat return signatures:
+
+```text
+z:3->0:          4320
+W:3->0|z:3->0:  1050
+U:3->0|z:3->0:   870
+```
+
+So every clean db self-repeat returns the `z` source orbit to its initial
+source at depth 3:
+
+```text
+z -> b -> b*h -> z.
+```
+
+Target-advanced period-3 triangle profile:
+
+```text
+period3-advance-clean: 6240
+```
+
 Top first-event profiles:
 
 ```text
@@ -348,6 +378,39 @@ clean-X3
 -> clean V3 necklace
 -> unified V3 admissibility.
 ```
+
+The depth split adds one more useful boundary: all clean self-repeat residuals
+in the public db occur first at depth 3.  So the external examples point toward
+the short period-3 zipper window as the immediate obstruction shape, not toward
+arbitrary long source cycles.
+
+The signature split sharpens this again: every clean db self-repeat includes
+the period-3 anchored `z`-orbit.  This is recorded as a working boundary in:
+
+```text
+fixed_target_period3_zipper_boundary.md
+```
+
+The target-advanced version of this period-3 triangle is also clean in all
+`6240` db instances.  Thus the remaining object is not an endpoint collision
+waiting to be named; it is a genuinely clean three-target same-input triangle:
+
+```text
+H_z: h -> (b*h)*z,
+H_b: h -> z*b,
+H_{b*h}: h -> b*(b*h).
+```
+
+The follow-up structural clarification is:
+
+```text
+period3_zipper_triangle_self_renewal_lemma.md
+```
+
+For this period-3 object, the X3-style triangle-pressure layer is the same
+`H_h` zipper triangle shifted cyclically.  Therefore the db-supported residual
+should not be attacked by merely adding another local pressure layer; that
+does not create new independent structure.
 
 ## Next Use
 

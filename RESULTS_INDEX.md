@@ -217,6 +217,9 @@ right file without scanning old summaries.
 | `fixed_target_zipper_bridge_necklace_lemma.md` | proved transport | Any clean fixed-target source self-repeat gives a coupled zipper/V3 necklace; unifies anchored-M7 and V3-born residuals. |
 | `fixed_target_zipper_reduces_to_v3_admissibility.md` | conditional reduction | A clean fixed-target zipper necklace closes if zipper-born adjacent V3 bridges are admissible as smaller relay objects. |
 | `zipper_born_v3_second_layer_shift_lemma.md` | proved clarification | A zipper-born adjacent V3 second layer is a shifted zipper window, not a fresh generic four-edge V3 matching. |
+| `fixed_target_period3_zipper_boundary.md` | db-supported boundary | External db clean self-repeats all include the depth-3 `z -> b -> b*h -> z` zipper triangle, whose target advance is a clean three-target same-input bridge. |
+| `period3_zipper_triangle_self_renewal_lemma.md` | proved clarification | Period-3 triangle pressure produces the same zipper triangle shifted, so old X3 pressure alone does not close the residual. |
+| `period3_zipper_saturation_diagnostic.md` | diagnostic | Depth-5 local closure confirms period-3 zipper formulas but no short clean collapse, idempotence, or direct E255 for displayed vertices. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
 | `eq677_db_shared_step_scan_diagnostic.md` | diagnostic | Full external db scan: global `U*h=W*h` is false; clean-X3 false pairs route by source-orbit first event or reach the M7 clean self-repeat residual. |
@@ -252,5 +255,6 @@ right file without scanning old summaries.
 | `tools/m496_anchored_d_term_scan.js` | diagnostic | Scans anchored shared-step pairs in M496 for short `d(x)=((x*x)*x)` relations. |
 | `tools/eq677_db_shared_step_scan.js` | diagnostic | Downloads selected external eq677 `db` files into ignored cache and scans shared-step anchored triangle roles. |
 | `tools/anchored_m7_cycle_end_saturation.js` | diagnostic | Bounded equality closure for anchored-M7 cycle-end/zipper residual. |
+| `tools/period3_zipper_saturation.js` | diagnostic | Bounded equality closure for the clean self-renewing period-3 zipper triangle. |
 | `tools/m496_shared_step_anchored_triangle.ps1` | diagnostic | PowerShell M496 check for shared-step anchored triangle and `U*h=W*h`. |
 | `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |

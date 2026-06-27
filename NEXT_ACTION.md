@@ -303,6 +303,89 @@ Among the 17040 clean-X3 triples:
 0 have no finite event.
 ```
 
+The new depth split is sharper:
+
+```text
+clean-self-repeat@3: 6240
+routed@2:            5592
+routed@1:            3528
+routed@3:            1680
+```
+
+Clean self-repeat signatures:
+
+```text
+z:3->0:          4320
+W:3->0|z:3->0:  1050
+U:3->0|z:3->0:   870
+```
+
+So the db residual is not showing long arbitrary source cycles.  Its clean
+part always includes the depth-3 anchored `z`-orbit:
+
+```text
+z -> b -> b*h -> z.
+```
+
+This sharper period-3 boundary is recorded in:
+
+```text
+fixed_target_period3_zipper_boundary.md
+```
+
+The target-advanced period-3 triangle is clean in all `6240` db instances:
+
+```text
+period3-advance-clean: 6240
+```
+
+So the next proof target can be sharpened from "generic zipper/V3 necklace" to
+the clean three-target same-input triangle:
+
+```text
+H_z:     h -> (b*h)*z,
+H_b:     h -> z*b,
+H_{b*h}: h -> b*(b*h).
+```
+
+Inside this triangle, the exact earlier bridge to test against the unified V3
+measure is:
+
+```text
+with c=b*h:
+H_b:     h -> z*b,
+H_c:     h -> b*c.
+```
+
+It is born from `z*h=b`, `b*h=c` before the terminal return `c*h=z`; its
+shifted second layer is the terminal zipper edge.
+
+Important: do not try to close this by merely applying the old X3
+triangle-pressure step again.  In the period-3 case that pressure layer
+self-renews:
+
+```text
+period3_zipper_triangle_self_renewal_lemma.md
+
+advanced three-target triangle
+-> same H_h zipper triangle shifted cyclically.
+```
+
+Thus the remaining proof must use the global V3/relay measure, a watched/core
+hit, or a direct exclusion of the clean self-renewing period-3 triangle.
+
+A bounded local saturation check is recorded in:
+
+```text
+period3_zipper_saturation_diagnostic.md
+tools/period3_zipper_saturation.js
+```
+
+Depth 5 confirms the expected zipper formulas but derives no short clean
+collapse, no displayed idempotence, and no direct E255 for `z,b,c,h`.  Do not
+spend the next step on another guessed equality among these displayed
+period-3 vertices.
+
 So the external db supports the current theoretical path:
 
 ```text

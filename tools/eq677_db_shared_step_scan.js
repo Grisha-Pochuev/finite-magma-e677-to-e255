@@ -216,6 +216,9 @@ function scanModel(table, maxPairsPerModel) {
     firstOrbitCleanSelfRepeat: 0,
     firstOrbitRouted: 0,
     firstOrbitNoEvent: 0,
+    firstOrbitKindDepths: new Map(),
+    cleanSelfRepeatSignatures: new Map(),
+    period3AdvanceProfiles: new Map(),
     mismatchProfiles: new Map(),
     tripleProfiles: new Map(),
     secondLayerProfiles: new Map(),
@@ -277,6 +280,21 @@ function scanModel(table, maxPairsPerModel) {
             if (firstEvent.kind === "clean-self-repeat") result.firstOrbitCleanSelfRepeat++;
             else if (firstEvent.kind === "no-event") result.firstOrbitNoEvent++;
             else result.firstOrbitRouted++;
+            const depthKey = `${firstEvent.kind}@${firstEvent.depth}`;
+            result.firstOrbitKindDepths.set(depthKey, (result.firstOrbitKindDepths.get(depthKey) || 0) + 1);
+            if (firstEvent.selfRepeatSignature) {
+              result.cleanSelfRepeatSignatures.set(
+                firstEvent.selfRepeatSignature,
+                (result.cleanSelfRepeatSignatures.get(firstEvent.selfRepeatSignature) || 0) + 1
+              );
+              if (firstEvent.selfRepeatSignature.includes("z:3->0")) {
+                const period3 = period3AnchoredAdvanceProfile(table, { b, z, h });
+                result.period3AdvanceProfiles.set(
+                  period3,
+                  (result.period3AdvanceProfiles.get(period3) || 0) + 1
+                );
+              }
+            }
             result.firstOrbitProfiles.set(firstEvent.profile, (result.firstOrbitProfiles.get(firstEvent.profile) || 0) + 1);
           }
           addExample(result, { kind: "uWhMismatch", b, z, p, q, U, W, h, alpha, T, S, triple, secondLayer });
@@ -396,6 +414,7 @@ function firstSourceOrbitEvent(table, inv, named) {
         kind: onlySelfRepeat ? "clean-self-repeat" : "routed",
         depth,
         profile: `${onlySelfRepeat ? "clean-self-repeat" : "routed"}@${depth}:${profile.parts.join("|")}`,
+        selfRepeatSignature: onlySelfRepeat ? selfRepeatSignature(current, edges) : undefined,
       };
     }
     edges.push(...current);
@@ -414,6 +433,58 @@ function firstEventProfileAtDepth(current, previous) {
   }
   if (parts.length === 0) return null;
   return { parts: Array.from(new Set(parts)).sort() };
+}
+
+function selfRepeatSignature(current, previous) {
+  const parts = [];
+  for (const edge of current) {
+    for (const old of previous) {
+      if (edge.orbit === old.orbit && edge.source === old.source) {
+        parts.push(`${edge.orbit}:${edge.depth}->${old.depth}`);
+      }
+    }
+  }
+  return Array.from(new Set(parts)).sort().join("|");
+}
+
+function period3AnchoredAdvanceProfile(table, named) {
+  const { b, z, h } = named;
+  const c = table[b][h];
+  if (table[c][h] !== z) return "period3-return-failure";
+
+  const targets = { z, b, c };
+  const outputs = {
+    Az: table[c][z],
+    Ab: table[z][b],
+    Ac: table[b][c],
+  };
+
+  const groups = [];
+  const targetEntries = Object.entries(targets);
+  const outputEntries = Object.entries(outputs);
+  for (let i = 0; i < targetEntries.length; i++) {
+    if (targetEntries[i][1] === h) groups.push(`target-input:${targetEntries[i][0]}=h`);
+    for (let j = i + 1; j < targetEntries.length; j++) {
+      if (targetEntries[i][1] === targetEntries[j][1]) {
+        groups.push(`target:${targetEntries[i][0]}=${targetEntries[j][0]}`);
+      }
+    }
+  }
+  for (let i = 0; i < outputEntries.length; i++) {
+    if (outputEntries[i][1] === h) groups.push(`output-input:${outputEntries[i][0]}=h`);
+    for (let j = i + 1; j < outputEntries.length; j++) {
+      if (outputEntries[i][1] === outputEntries[j][1]) {
+        groups.push(`output:${outputEntries[i][0]}=${outputEntries[j][0]}`);
+      }
+    }
+  }
+  for (const [oname, ovalue] of outputEntries) {
+    for (const [tname, tvalue] of targetEntries) {
+      if (ovalue === tvalue) groups.push(`output-target:${oname}=${tname}`);
+    }
+  }
+  if (groups.length === 0) return "period3-advance-clean";
+  return groups.sort().join(";");
 }
 
 function compareSourceOrbitEdges(parts, a, b) {
@@ -488,6 +559,9 @@ function aggregate(results) {
     firstOrbitCleanSelfRepeat: 0,
     firstOrbitRouted: 0,
     firstOrbitNoEvent: 0,
+    firstOrbitKindDepths: {},
+    cleanSelfRepeatSignatures: {},
+    period3AdvanceProfiles: {},
     mismatchProfiles: {},
     tripleProfiles: {},
     secondLayerProfiles: {},
@@ -514,6 +588,15 @@ function aggregate(results) {
     total.firstOrbitCleanSelfRepeat += r.firstOrbitCleanSelfRepeat;
     total.firstOrbitRouted += r.firstOrbitRouted;
     total.firstOrbitNoEvent += r.firstOrbitNoEvent;
+    for (const [profile, count] of r.firstOrbitKindDepths.entries()) {
+      total.firstOrbitKindDepths[profile] = (total.firstOrbitKindDepths[profile] || 0) + count;
+    }
+    for (const [profile, count] of r.cleanSelfRepeatSignatures.entries()) {
+      total.cleanSelfRepeatSignatures[profile] = (total.cleanSelfRepeatSignatures[profile] || 0) + count;
+    }
+    for (const [profile, count] of r.period3AdvanceProfiles.entries()) {
+      total.period3AdvanceProfiles[profile] = (total.period3AdvanceProfiles[profile] || 0) + count;
+    }
     for (const [profile, count] of r.mismatchProfiles.entries()) {
       total.mismatchProfiles[profile] = (total.mismatchProfiles[profile] || 0) + count;
     }
@@ -545,6 +628,9 @@ function aggregate(results) {
         firstOrbitCleanSelfRepeat: r.firstOrbitCleanSelfRepeat,
         firstOrbitRouted: r.firstOrbitRouted,
         firstOrbitNoEvent: r.firstOrbitNoEvent,
+        topFirstOrbitKindDepths: topEntries(r.firstOrbitKindDepths, 8),
+        topCleanSelfRepeatSignatures: topEntries(r.cleanSelfRepeatSignatures, 8),
+        topPeriod3AdvanceProfiles: topEntries(r.period3AdvanceProfiles, 8),
         topMismatchProfiles: topEntries(r.mismatchProfiles, 8),
         topTripleProfiles: topEntries(r.tripleProfiles, 8),
         topSecondLayerProfiles: topEntries(r.secondLayerProfiles, 8),
@@ -556,6 +642,9 @@ function aggregate(results) {
   total.topMismatchProfiles = topEntries(new Map(Object.entries(total.mismatchProfiles)), 12);
   total.topTripleProfiles = topEntries(new Map(Object.entries(total.tripleProfiles)), 12);
   total.topSecondLayerProfiles = topEntries(new Map(Object.entries(total.secondLayerProfiles)), 12);
+  total.topFirstOrbitKindDepths = topEntries(new Map(Object.entries(total.firstOrbitKindDepths)), 12);
+  total.topCleanSelfRepeatSignatures = topEntries(new Map(Object.entries(total.cleanSelfRepeatSignatures)), 12);
+  total.topPeriod3AdvanceProfiles = topEntries(new Map(Object.entries(total.period3AdvanceProfiles)), 12);
   total.topFirstOrbitProfiles = topEntries(new Map(Object.entries(total.firstOrbitProfiles)), 12);
   return total;
 }
@@ -599,6 +688,9 @@ async function main() {
   delete compactSummary.tripleProfiles;
   delete compactSummary.secondLayerProfiles;
   delete compactSummary.firstOrbitProfiles;
+  delete compactSummary.firstOrbitKindDepths;
+  delete compactSummary.cleanSelfRepeatSignatures;
+  delete compactSummary.period3AdvanceProfiles;
   const payload = args.totalsOnly
     ? { cache: args.cache, sizes, summary: compactSummary }
     : args.summaryOnly
