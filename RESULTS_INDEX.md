@@ -224,8 +224,10 @@ right file without scanning old summaries.
 | `period3_db_identity_scan_diagnostic.md` | diagnostic | Size-77 db period-3 examples have universal short fingerprints such as `h*h=z*b`, but local E677 closure does not derive them. |
 | `anchored_period3_fingerprint_saturation_diagnostic.md` | diagnostic | Anchored size-77 fingerprints `p*c=T`, `U*z=Ib` and shifted-window hit roles are not local E677 closure routes. |
 | `v3_admissibility_gap_audit_2026_06_27.md` | boundary audit | Local shifted-window closures are exhausted; live target is global admissibility of zipper-born adjacent V3 bridges as smaller relay objects. |
-| `period3_core_hook_diagnostic.md` | diagnostic | Public strict period-3 db examples put all hooks in 2-core; the middle `H_c` hook lies in a bicyclic component and has an outgoing fan at `h`. |
-| `period3_middle_target_core_hook_frontier.md` | active frontier | Replaces broad shifted-window admissibility with the concrete target: prove a middle-target `H_c` fan at `h`, or fall back to the core-hook split. |
+| `period3_core_hook_diagnostic.md` | diagnostic | Public strict period-3 db examples put all hooks in 2-core; the middle `H_c` hook has a named outgoing fan at `h` with second row `Ib`. |
+| `period3_middle_target_core_hook_frontier.md` | active frontier | Replaces broad shifted-window admissibility with the concrete target: prove `Ib*h=c`, or fall back to named-negation/core-hook splits. |
+| `period3_named_fan_reduces_to_Ibhc_lemma.md` | proved reduction | Shows the named middle-target fan only needs `Ib*h=c`; output equality would force `Ib=b` by ported-interval reconstruction. |
+| `period3_input_source_fan_boundary.md` | boundary/diagnostic | If `Ib*h!=c`, the negation adds `P -> D` in `H_h` and starts a fresh right-`h` source orbit `Ib -> D -> ...`; depth-4 closure finds no immediate local hits. |
 | `period3_zipper_e255_target_atp_note.md` | ATP note | Prepared direct ATP target for `period-3 zipper => E255(b)`; no prover currently visible in PATH. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `atp/period3_zipper_e255_target.p` | ATP template | TPTP template for testing whether clean period-3 zipper forces E255 or db fingerprint identities. |

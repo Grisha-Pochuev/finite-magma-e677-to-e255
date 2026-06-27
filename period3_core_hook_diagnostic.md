@@ -194,3 +194,102 @@ in the clean period-3 residual, there is a row r!=b with r*h=c.
 
 If additionally `r*c!=b*c`, then `H_c` has an outgoing fan at `h`.  In the db
 examples `HcInAtBC=1`, so this output collision exception never occurs.
+
+## Named Fan Row
+
+The endpoint scan was extended to classify which already named rows satisfy:
+
+```text
+r*h=c.
+```
+
+Result:
+
+```text
+fanRowNameProfiles: Ib,b
+freshFanRows=9; namedFanRows=2
+```
+
+So the named second row is always:
+
+```text
+r=Ib.
+```
+
+The public models satisfy:
+
+```text
+b*h=c,
+Ib*h=c,
+Ib*c=z,
+b*c=BC,
+z!=BC.
+```
+
+Thus the visible db fan is:
+
+```text
+row b:  h -> BC=b*c
+row Ib: h -> z=Ib*c
+```
+
+inside `H_c`.
+
+## Local Closure Check With The Named Fan
+
+The bounded local period-3 closure was rerun with:
+
+```text
+--assume=Ibhc
+--assume=Ibhc,IbcZ
+```
+
+where:
+
+```text
+Ibhc means Ib*h=c,
+IbcZ means Ib*c=z.
+```
+
+Results:
+
+```text
+Ib*h=c alone:
+  clean-consistent-in-closure: true
+  Ib*c=z: false
+  E255(z/b/c/h): false
+
+Ib*h=c and Ib*c=z:
+  clean-consistent-in-closure: true
+  E255(z/b/c/h): false
+```
+
+Interpretation:
+
+```text
+Ib*h=c and Ib*c=z are not local closure shortcuts.
+```
+
+They should be used as a structural fan hook in `H_c`, not as a direct
+period-3 equality proof.
+
+The reverse direction was also checked at depth 4:
+
+```text
+--assume=zIbIc
+--assume=IbcZ
+--assume=hIbCZ
+```
+
+None of these single db fingerprints derives:
+
+```text
+Ib*h=c.
+```
+
+So the named fan target is not just a disguised form of one of the other
+short db identities.  It remains the specific input-source equality:
+
+```text
+(pred_b(h))*h = b*h.
+```

@@ -248,6 +248,8 @@ const hookRightFixerProfiles = new Map();
 const hookComponentSizeProfiles = new Map();
 const coreSizeProfiles = new Map();
 const hookEndpointProfiles = new Map();
+const fanRowNameProfiles = new Map();
+const fanRowFreshProfiles = new Map();
 const misses = [];
 
 for (const item of localModelFiles()) {
@@ -340,11 +342,28 @@ for (const item of localModelFiles()) {
 
         let hcOutAtH = 0;
         let hcInAtBC = 0;
+        const named = { b, z, c, h, p, q, U, W, T, S, alpha, ZB, BC, CZ };
+        named.Ib = inv[b][h];
+        named.Ic = inv[c][h];
+        const nameByValue = new Map();
+        for (const [name, value] of Object.entries(named)) {
+          if (!nameByValue.has(value)) nameByValue.set(value, []);
+          nameByValue.get(value).push(name);
+        }
+        const fanNames = [];
+        let freshFanRows = 0;
         for (let row = 0; row < n; row++) {
-          if (inv[row][c] === h) hcOutAtH++;
+          if (inv[row][c] === h) {
+            hcOutAtH++;
+            const names = nameByValue.get(row);
+            if (names === undefined) freshFanRows++;
+            else fanNames.push(...names);
+          }
           if (table[row][c] === BC) hcInAtBC++;
         }
         add(hookEndpointProfiles, `HcOutAtH=${hcOutAtH};HcInAtBC=${hcInAtBC}`);
+        add(fanRowNameProfiles, fanNames.sort().join(",") || "none-named");
+        add(fanRowFreshProfiles, `freshFanRows=${freshFanRows};namedFanRows=${fanNames.length}`);
 
         if (!(inHb && inHc && inHz) && misses.length < 20) {
           misses.push({
@@ -364,6 +383,8 @@ for (const item of localModelFiles()) {
             rowCHzRightFixers: hz.componentRightFixerCount[hz.rowComponent[c]],
             hcOutAtH,
             hcInAtBC,
+            fanNames: fanNames.sort(),
+            freshFanRows,
             hbCoreEdges: hb.coreEdgeCount,
             hcCoreEdges: hc.coreEdgeCount,
             hzCoreEdges: hz.coreEdgeCount,
@@ -385,6 +406,8 @@ console.log(JSON.stringify({
   hookComponentSizeProfiles: Object.fromEntries([...hookComponentSizeProfiles.entries()].sort()),
   hookRightFixerProfiles: Object.fromEntries([...hookRightFixerProfiles.entries()].sort()),
   hookEndpointProfiles: Object.fromEntries([...hookEndpointProfiles.entries()].sort()),
+  fanRowNameProfiles: Object.fromEntries([...fanRowNameProfiles.entries()].sort()),
+  fanRowFreshProfiles: Object.fromEntries([...fanRowFreshProfiles.entries()].sort()),
   coreSizeProfilesTop: [...coreSizeProfiles.entries()].sort((a, b) => b[1] - a[1]).slice(0, 20),
   misses,
 }, null, 2));

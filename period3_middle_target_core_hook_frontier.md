@@ -116,6 +116,41 @@ r*c!=b*c.
 If proved, this immediately turns the shifted window into a standard
 target-`c` outgoing fan, avoiding the broad V3 admissibility gap.
 
+The public db scan identifies a named second row:
+
+```text
+r=Ib.
+```
+
+The output separation is now proved in:
+
+```text
+period3_named_fan_reduces_to_Ibhc_lemma.md
+```
+
+So the named fan reduces to one equality:
+
+```text
+Ib*h=c.
+```
+
+Indeed, if `Ib*h=c` and `Ib*c=b*c`, then rows `Ib` and `b` realize the same
+full ported interval `(c,h,b*c)`, forcing `Ib=b`, which is a routed clean
+collision.  In the db examples the stronger identity holds:
+
+```text
+Ib*c=z.
+```
+
+Together with the clean condition `z!=b*c`, this gives the displayed fan:
+
+```text
+row b:  h -> b*c
+row Ib: h -> z
+```
+
+inside `H_c`.
+
 The negation is also concrete:
 
 ```text
@@ -246,22 +281,30 @@ better relay candidate.
 The strongest next statement is:
 
 ```text
-Middle-target fan-at-h lemma:
-in a minimal clean period-3 G12 residual, the middle target c=b*h has at least
-two rows through the input h:
+Named middle-target fan lemma:
+in a minimal clean period-3 G12 residual, the zipper input Ib satisfies:
 
-    b*h=c,
-    r*h=c with r!=b,
+    Ib*h=c.
 
-and the second row does not repeat the same full ported interval in H_c.
+The db-supported stronger target is:
+
+    Ib*h=c,
+    Ib*c=z.
 ```
 
 If this fails, record and attack the exact negation:
 
 ```text
+named fan negation:
+the clean period-3 zipper has Ib*h!=c; in particular the named db fan row
+does not pass through c at input h.
+```
+
+The older unique-preimage residual is stronger:
+
+```text
 unique-preimage middle residual:
-the clean period-3 zipper has b as the unique preimage of c under right
-multiplication by h.
+b is the unique row with b*h=c.
 ```
 
 If this is too strong, fall back to the weaker core-hook statement:
@@ -290,3 +333,52 @@ MZ<n
 
 as the whole proof.  The core-hook lemma must explain why the earlier
 shifted window is a real relay/core object.
+
+## Relation To Existing Target-Swap Squares
+
+The known target-swap/reversible-square lemmas:
+
+```text
+x_layer_bridge_pair_reversible_square_lemma.md
+beta_x_bridge_pair_reversible_square_lemma.md
+mixed_junction_target_swap_bridge_square.md
+```
+
+do not directly prove:
+
+```text
+Ib*h=c.
+```
+
+They transport an already known full ported interval across a target swap and
+show reversibility of that transported interval.  The present claim is
+different: the input of the row-`b` zipper edge,
+
+```text
+Ib=pred_b(h),
+```
+
+would itself become a source row through the same input `h`:
+
+```text
+row Ib: h -> c.
+```
+
+So the live target should be treated as a new input-source fan mechanism:
+
+```text
+row b:  Ib -> c in H_h,
+row Ib: h  -> ? in H_c.
+```
+
+The public db suggests the missing output is exactly:
+
+```text
+Ib*c=z.
+```
+
+but the fan only needs the input-source equality:
+
+```text
+Ib*h=c.
+```

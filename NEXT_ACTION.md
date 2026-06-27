@@ -704,23 +704,109 @@ H_c: h -> b*c.
 Next theoretical target:
 
 ```text
-Middle-target fan-at-h lemma:
-in a minimal clean period-3 G12 residual, the middle target c=b*h has a
-second row r!=b with r*h=c and r*c!=b*c.
+Named middle-target fan lemma:
+in a minimal clean period-3 G12 residual, the zipper input Ib satisfies
+
+    Ib*h=c.
+
+The db-supported stronger target is:
+
+    Ib*h=c,
+    Ib*c=z.
 ```
 
 If proved, the shifted-window bridge becomes an ordinary outgoing fan in
 `H_c` at the common input `h`.
 
+Use:
+
+```text
+period3_named_fan_reduces_to_Ibhc_lemma.md
+```
+
+It proves that output separation is automatic: if `Ib*h=c` but
+`Ib*c=b*c`, then rows `Ib` and `b` have the same full ported interval
+`(c,h,b*c)`, forcing `Ib=b`, a routed clean collision.
+
 Exact negation to attack if the fan lemma fails:
 
 ```text
-unique-preimage middle residual:
+Ib*h!=c; equivalently, the named db fan row does not pass through c at input h.
+```
+
+The older unique-preimage residual is stronger:
+
+```text
 b is the unique row with b*h=c.
 ```
 
-Equivalently, in `H_h` the zipper edge `Ib -> c` is the only edge entering
-`c`.
+Equivalently, in `H_h` the zipper edge `Ib -> c` carried by row `b` is the
+only edge entering `c`.  Do not confuse this stronger residual with the
+single named negation `Ib*h!=c`.
+
+Important mechanism note:
+
+```text
+Ib*h=c is an input-source fan claim.
+```
+
+It says the input `Ib=pred_b(h)` of the row-`b` zipper edge becomes a source
+row through the same input `h` after target swap to `c`.  Existing
+target-swap/reversible-square lemmas transport known intervals, but do not
+prove this input-source claim directly.
+
+If `Ib*h=c` is not proved, use:
+
+```text
+period3_input_source_fan_boundary.md
+```
+
+It sets:
+
+```text
+D=Ib*h,
+P=pred_{Ib}(h)=h*(D*Ib),
+```
+
+and records that the negation `D!=c` adds a fourth edge in `H_h`:
+
+```text
+alpha -> b,
+Ib    -> c,
+Ic    -> z,
+P     -> D.
+```
+
+Any local hit routes; the clean residual is this four-edge input-source
+extension of the period-3 zipper.
+
+The same file also records the forced successor layer.  With:
+
+```text
+E=Ib*D,
+```
+
+row `D` gives in `H_h`:
+
+```text
+(E*Ib) -> D*h.
+```
+
+So named fan failure creates a fresh right-`h` source orbit:
+
+```text
+Ib -> D -> D*h -> ...
+```
+
+The next proof should compare this orbit with the period-3 orbit:
+
+```text
+z -> b -> c -> z.
+```
+
+First source/output/input/cross hits should route by fixed-target first-event
+machinery.  The remaining clean residual would be a two-orbit fixed-target
+problem, much narrower than the old V3 admissibility gap.
 
 Fallback target:
 

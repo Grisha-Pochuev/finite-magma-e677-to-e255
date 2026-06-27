@@ -254,6 +254,9 @@ function d4(x) {
   return op(op(op(x, x), x), x);
 }
 
+const inputSourceD = op(ib, h);
+const inputSourceP = op(h, op(inputSourceD, ib));
+
 seedNamedNeighborhood();
 let closeRounds = 0;
 for (; closeRounds < formulaRounds; closeRounds++) {
@@ -296,6 +299,15 @@ const useful = [
   [op(cz, ic), zb, "CZ*Ic=ZB"],
   [op(ib, c), z, "Ib*c=z"],
   [op(ib, h), c, "Ib*h=c"],
+  [inputSourceD, z, "D=Ib*h hits z"],
+  [inputSourceD, b, "D=Ib*h hits b"],
+  [inputSourceD, h, "D=Ib*h hits h"],
+  [inputSourceP, alpha, "P=pred_Ib(h) hits alpha"],
+  [inputSourceP, ib, "P=pred_Ib(h) hits Ib"],
+  [inputSourceP, ic, "P=pred_Ib(h) hits Ic"],
+  [inputSourceP, z, "P=pred_Ib(h) hits z"],
+  [inputSourceP, b, "P=pred_Ib(h) hits b"],
+  [inputSourceP, c, "P=pred_Ib(h) hits c"],
   [op(ic, z), ib, "Ic*z=Ib"],
   [op(z, ib), ic, "z*Ib=Ic"],
 ];
