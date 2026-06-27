@@ -1,0 +1,47 @@
+ЗАГРУЗКА НОВОГО КОММИТА НА GITHUB
+
+Репозиторий:
+https://github.com/Grisha-Pochuev/finite-magma-e677-to-e255
+
+Папка обновления:
+C:\Users\12йц\Documents\New project 2\github_upload_update_2026-06-08
+
+1. Откройте репозиторий на GitHub.
+2. Нажмите Add file.
+3. Нажмите Upload files.
+4. Откройте папку github_upload_update_2026-06-08 на компьютере.
+5. Выделите ВСЕ ЕЕ СОДЕРЖИМОЕ:
+   AGENTS.md
+   CHANGELOG.md
+   README.md
+   verify_smoke.cmd
+   verify_size8_closed.cmd
+   папку docs
+   папку lemmas
+6. Перетащите выделенное содержимое в область загрузки GitHub.
+   Не перетаскивайте саму внешнюю папку github_upload_update_2026-06-08,
+   иначе в репозитории появится лишний уровень папок.
+7. Дождитесь загрузки всех 57 файлов.
+8. В поле Commit message вставьте:
+
+Research update: fan bridge recursion and size-9 closure
+
+9. В дополнительное описание можно вставить:
+
+Add proved common-edge fan bridge and zipper lemmas, terminal bad-cycle
+anchoring, fan-spine reductions, and the recorded closure of the normalized
+size-9 role u=b_3. Update the active frontier to the three-source good-six
+pressure candidate. Refresh the public status summaries and make the Windows
+verification launchers report failures correctly.
+
+10. Выберите Commit directly to the main branch.
+11. Нажмите Commit changes.
+
+После завершения обновите страницу репозитория и проверьте:
+- число коммитов стало 2;
+- появился CHANGELOG.md;
+- появился docs/RESEARCH_UPDATE_2026-06-08.md;
+- в lemmas появились fan_tip_bridge_expansion_lemma.md,
+  fan_bridge_zipper_extension_lemma.md,
+  terminal_source_anchored_fan_lemma.md,
+  three_source_good_six_pressure_candidate.md.

@@ -1,5 +1,29 @@
-node_modules/
+# Historical material and publication copies
+/archive/
+/github_publish/
+/github_upload_update_2026-06-08/
+
+# Local runtimes and downloaded tools
+/tools/node-portable/
+
+# Generated logs, solver outputs, and temporary diagnostics
+/cache/
+*.log
 *.tmp
-*.log.tmp
-.DS_Store
+*.bak
+*.cache
+*.out
+*.err
+*.trace
+*.sqlite
+*.db
+size*_verified_split_log.txt
+
+# OS/editor noise
 Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# Git helper is tracked; Git itself is installed outside the repo.
