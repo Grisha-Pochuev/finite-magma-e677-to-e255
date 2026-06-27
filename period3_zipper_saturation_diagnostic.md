@@ -130,6 +130,23 @@ E255(z), E255(b), E255(c), E255(h),
 z*z=z, b*b=b, c*c=c, h*h=h.
 ```
 
+After the db identity scan, several size-77 universal fingerprints were also
+tested locally:
+
+```text
+h*h=z*b,
+h*alpha=b,
+h*Ib=c*z,
+alpha*(z*b)=h,
+z*Ib=Ic.
+```
+
+The depth-5 local closure did not derive any of these either.  See:
+
+```text
+period3_db_identity_scan_diagnostic.md
+```
+
 ## Interpretation
 
 The clean period-3 zipper is locally stable under the currently encoded short
@@ -152,4 +169,3 @@ The meaningful remaining exits are:
 3. find a watched/core/full-interval attachment not visible in this local
    closure.
 ```
-

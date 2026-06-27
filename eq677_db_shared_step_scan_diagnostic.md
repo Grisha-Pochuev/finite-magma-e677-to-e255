@@ -255,6 +255,25 @@ c=b*h=15,
 z*b=17, b*c=9, c*z=74.
 ```
 
+A narrower identity scan of the strict `6240` period-3 examples is recorded
+in:
+
+```text
+period3_db_identity_scan_diagnostic.md
+tools/period3_db_identity_scan.js
+```
+
+It found universal size-77 fingerprints such as:
+
+```text
+h*h=z*b,
+h*alpha=b,
+h*Ib=c*z.
+```
+
+These are not currently derived by the local period-3 E677 closure, so they
+remain hints rather than proof lemmas.
+
 Top first-event profiles:
 
 ```text

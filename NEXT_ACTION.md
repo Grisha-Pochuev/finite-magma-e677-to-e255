@@ -408,6 +408,27 @@ collapse, no displayed idempotence, and no direct E255 for `z,b,c,h`.  Do not
 spend the next step on another guessed equality among these displayed
 period-3 vertices.
 
+A db identity scan is recorded in:
+
+```text
+period3_db_identity_scan_diagnostic.md
+tools/period3_db_identity_scan.js
+```
+
+It found universal short fingerprints in the four size-77 period-3 models,
+for example:
+
+```text
+h*h=z*b,
+h*alpha=b,
+h*Ib=c*z,
+z*Ib=Ic.
+```
+
+But the local period-3 E677 closure does not derive them.  Treat these as
+db/E255-model hints, not as proved E677 consequences, unless a new global
+minimality reason is found.
+
 So the external db supports the current theoretical path:
 
 ```text

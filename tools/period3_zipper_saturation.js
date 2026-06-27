@@ -261,6 +261,17 @@ const useful = [
   [op(b, b), b, "b*b=b"],
   [op(c, c), c, "c*c=c"],
   [op(h, h), h, "h*h=h"],
+  [op(h, h), zb, "h*h=ZB"],
+  [op(h, alpha), b, "h*alpha=b"],
+  [op(h, ib), cz, "h*Ib=CZ"],
+  [op(alpha, zb), h, "alpha*ZB=h"],
+  [op(b, cz), ic, "b*CZ=Ic"],
+  [op(bc, z), c, "BC*z=c"],
+  [op(cz, ic), zb, "CZ*Ic=ZB"],
+  [op(ib, c), z, "Ib*c=z"],
+  [op(ib, h), c, "Ib*h=c"],
+  [op(ic, z), ib, "Ic*z=Ib"],
+  [op(z, ib), ic, "z*Ib=Ic"],
 ];
 
 console.log("Period-3 zipper saturation");
