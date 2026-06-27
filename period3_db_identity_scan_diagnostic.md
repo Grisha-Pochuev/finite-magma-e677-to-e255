@@ -126,12 +126,49 @@ alpha*(z*b)=h,
 z*Ib=Ic.
 ```
 
+The same script now accepts extra assumptions:
+
+```text
+--assume=hhZB
+--assume=hAlphaB
+--assume=hIbCZ
+...
+```
+
+Each single db fingerprint was tested as an added local hypothesis at depth 4.
+No single fingerprint caused:
+
+```text
+clean forbidden collapse,
+E255(z), E255(b), E255(c), E255(h),
+or displayed idempotence.
+```
+
+The full size-77 fingerprint package was also tested:
+
+```text
+--assume=hhZB,hAlphaB,hIbCZ,alphaZBH,bCZIc,BCzc,CZIcZB,IbcZ,Ibhc,IczIb,zIbIc
+```
+
+At depth 4 this package is still locally clean-consistent and still does not
+derive:
+
+```text
+E255(z), E255(b), E255(c), E255(h),
+z*z=z, b*b=b, c*c=c, h*h=h.
+```
+
 ## Interpretation
 
 These short identities are useful model fingerprints, but they should not be
 promoted to E677 lemmas without an extra hypothesis.  They may be consequences
 of the fact that the public db models already satisfy E255, or of additional
 global structure absent from the local period-3 template.
+
+Even taken as an added fingerprint package, they do not give an immediate
+local period-3 closure in the bounded saturation.  So the next proof target
+should not be "prove one db fingerprint and then close locally" unless a new
+argument shows why that fingerprint interacts with the global relay measure.
 
 The next proof step should therefore stay on the measure/admissibility route:
 

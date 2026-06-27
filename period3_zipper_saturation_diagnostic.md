@@ -147,6 +147,18 @@ The depth-5 local closure did not derive any of these either.  See:
 period3_db_identity_scan_diagnostic.md
 ```
 
+The script also supports testing these fingerprints as added assumptions via
+`--assume=...`.  At depth 4:
+
+```text
+each single fingerprint assumption stays clean-consistent;
+the full fingerprint package stays clean-consistent;
+neither derives E255(z), E255(b), E255(c), or E255(h).
+```
+
+Thus the db fingerprints are not immediate local closing keys for the
+period-3 residual.
+
 ## Interpretation
 
 The clean period-3 zipper is locally stable under the currently encoded short

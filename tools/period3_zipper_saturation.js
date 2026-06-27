@@ -6,6 +6,10 @@
 const maxDepth = Number(process.argv[2] || 4);
 const formulaRounds = Number(process.argv[3] || 12);
 const maxTerms = Number(process.argv[4] || 250000);
+const extraAssumptions = process.argv
+  .slice(5)
+  .flatMap((arg) => arg.startsWith("--assume=") ? arg.slice("--assume=".length).split(",") : [])
+  .filter(Boolean);
 
 const termByKey = new Map();
 const terms = [];
@@ -94,6 +98,28 @@ eq(ic, op(h, op(z, c)), "Ic=h*(z*c)");
 eq(op(z, b), zb, "z*b=ZB");
 eq(op(b, c), bc, "b*c=BC");
 eq(op(c, z), cz, "c*z=CZ");
+
+const extraAssumptionMap = {
+  hhZB: [op(h, h), zb, "assume h*h=ZB"],
+  hAlphaB: [op(h, alpha), b, "assume h*alpha=b"],
+  hIbCZ: [op(h, ib), cz, "assume h*Ib=CZ"],
+  alphaZBH: [op(alpha, zb), h, "assume alpha*ZB=h"],
+  bCZIc: [op(b, cz), ic, "assume b*CZ=Ic"],
+  BCzc: [op(bc, z), c, "assume BC*z=c"],
+  CZIcZB: [op(cz, ic), zb, "assume CZ*Ic=ZB"],
+  IbcZ: [op(ib, c), z, "assume Ib*c=z"],
+  Ibhc: [op(ib, h), c, "assume Ib*h=c"],
+  IczIb: [op(ic, z), ib, "assume Ic*z=Ib"],
+  zIbIc: [op(z, ib), ic, "assume z*Ib=Ic"],
+};
+
+for (const name of extraAssumptions) {
+  const item = extraAssumptionMap[name];
+  if (item === undefined) {
+    throw new Error(`unknown --assume item: ${name}`);
+  }
+  eq(...item);
+}
 
 const watch = [h, z, b, c, alpha, ib, ic, zb, bc, cz];
 
@@ -278,6 +304,7 @@ console.log("Period-3 zipper saturation");
 console.log(`maxDepth: ${maxDepth}`);
 console.log(`formulaRounds: ${formulaRounds}`);
 console.log(`maxTerms: ${maxTerms}`);
+console.log(`extraAssumptions: ${extraAssumptions.length ? extraAssumptions.join(",") : "none"}`);
 console.log(`closeRounds: ${closeRounds}`);
 console.log(`terms: ${terms.length}`);
 

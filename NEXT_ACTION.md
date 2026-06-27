@@ -429,6 +429,12 @@ But the local period-3 E677 closure does not derive them.  Treat these as
 db/E255-model hints, not as proved E677 consequences, unless a new global
 minimality reason is found.
 
+The same diagnostic also tested each fingerprint, and the full fingerprint
+package, as extra local assumptions.  They still do not force a clean
+collapse or direct E255 for `z,b,c,h` in the bounded period-3 saturation.
+Therefore the next useful move is still the global admissibility problem for
+the shifted-window bridge `H_b,H_c`, not another local fingerprint chase.
+
 So the external db supports the current theoretical path:
 
 ```text
