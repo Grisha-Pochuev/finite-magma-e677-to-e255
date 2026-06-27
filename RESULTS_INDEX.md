@@ -219,6 +219,7 @@ right file without scanning old summaries.
 | `zipper_born_v3_second_layer_shift_lemma.md` | proved clarification | A zipper-born adjacent V3 second layer is a shifted zipper window, not a fresh generic four-edge V3 matching. |
 | `fixed_target_period3_zipper_boundary.md` | db-supported boundary | External db clean self-repeats all include the depth-3 `z -> b -> b*h -> z` zipper triangle, whose target advance is a clean three-target same-input bridge. |
 | `period3_zipper_triangle_self_renewal_lemma.md` | proved clarification | Period-3 triangle pressure produces the same zipper triangle shifted, so old X3 pressure alone does not close the residual. |
+| `period3_zipper_exact_measure_reduction.md` | conditional reduction | Period-3 closes if the explicit earlier bridge `H_b,H_c` is admissible; otherwise the final gap is a self-renewing triangle not accepted by the measure. |
 | `period3_zipper_saturation_diagnostic.md` | diagnostic | Depth-5 local closure confirms period-3 zipper formulas but no short clean collapse, idempotence, or direct E255 for displayed vertices. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |

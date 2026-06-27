@@ -110,6 +110,48 @@ The proposed measure names it by:
 M8.
 ```
 
+### 3. Period-3 Zipper Bridge
+
+From:
+
+```text
+fixed_target_period3_zipper_boundary.md
+period3_zipper_triangle_self_renewal_lemma.md
+period3_zipper_exact_measure_reduction.md
+```
+
+The common input is again the anchor:
+
+```text
+z=h.
+```
+
+Using the period-3 notation:
+
+```text
+z0*h=b,
+b*h=c,
+c*h=z0,
+```
+
+the exact earlier bridge is:
+
+```text
+H_b: h -> z0*b,
+H_c: h -> b*c.
+```
+
+It is a zipper-born shifted-window bridge.  Its second layer is not a fresh
+generic four-edge V3 matching; it is the terminal zipper edge:
+
+```text
+Ic -> z0.
+```
+
+Thus period-3 does not add a new local V3 type.  It adds the sharpest test of
+the same admissibility sentence: can this earlier shifted-window bridge be
+measured as smaller than the terminal return `c*h=z0`?
+
 ## Generated-Input Subcase
 
 When the common input is a generated input:
@@ -147,6 +189,7 @@ This includes:
 ```text
 first-extra V3 at z=w,
 anchored-M7 V3 at z=h,
+period-3 shifted-window V3 at z=h,
 ```
 
 unless `w` or `h` is later shown to be generated/watched/core.

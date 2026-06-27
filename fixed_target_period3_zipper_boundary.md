@@ -171,6 +171,20 @@ earlier V3 bridge:    H_b,H_c at common input h.
 If this bridge is admissible under the unified clean V3 measure, the period-3
 zipper cannot be terminal.
 
+The exact rank comparison is recorded in:
+
+```text
+period3_zipper_exact_measure_reduction.md
+```
+
+There the terminal event is `c*h=z`, while the earlier bridge is the adjacent
+window:
+
+```text
+H_b: h -> z*b,
+H_c: h -> b*c.
+```
+
 ## External db Signature
 
 The scanner:
@@ -210,6 +224,23 @@ examples have:
 ```text
 period3-advance-clean: 6240
 ```
+
+Idempotence split:
+
+```text
+idempotent:      0
+non-idempotent: 6240
+```
+
+All public-db period-3 examples occur in the four non-idempotent size-77
+models:
+
+```text
+77/65, 77/71, 77/72, 77/73.
+```
+
+Thus this short clean zipper obstruction should not be dismissed as an
+idempotent/M496 artifact.
 
 Here "clean" means that in:
 

@@ -339,6 +339,10 @@ The target-advanced period-3 triangle is clean in all `6240` db instances:
 period3-advance-clean: 6240
 ```
 
+These `6240` cases are all non-idempotent and occur in the four size-77 db
+models `77/65`, `77/71`, `77/72`, `77/73`.  So the period-3 obstruction is
+not an M496/idempotence artifact.
+
 So the next proof target can be sharpened from "generic zipper/V3 necklace" to
 the clean three-target same-input triangle:
 
@@ -373,6 +377,24 @@ advanced three-target triangle
 
 Thus the remaining proof must use the global V3/relay measure, a watched/core
 hit, or a direct exclusion of the clean self-renewing period-3 triangle.
+
+The exact period-3 measure reduction is recorded in:
+
+```text
+period3_zipper_exact_measure_reduction.md
+```
+
+It identifies the explicit earlier bridge:
+
+```text
+H_b: h -> z*b,
+H_c: h -> b*c
+```
+
+as born before the terminal return `c*h=z`.  If this bridge is admissible as
+a smaller zipper-born V3/relay object, the period-3 residual closes.  If not,
+the remaining obstruction is exactly a clean self-renewing period-3 triangle
+whose earlier shifted-window V3 bridge is not accepted by the global measure.
 
 A bounded local saturation check is recorded in:
 

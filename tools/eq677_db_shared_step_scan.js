@@ -562,6 +562,10 @@ function aggregate(results) {
     firstOrbitKindDepths: {},
     cleanSelfRepeatSignatures: {},
     period3AdvanceProfiles: {},
+    period3AdvancePairs: 0,
+    period3AdvanceIdempotentPairs: 0,
+    period3AdvanceNonIdempotentPairs: 0,
+    period3Models: [],
     mismatchProfiles: {},
     tripleProfiles: {},
     secondLayerProfiles: {},
@@ -596,6 +600,19 @@ function aggregate(results) {
     }
     for (const [profile, count] of r.period3AdvanceProfiles.entries()) {
       total.period3AdvanceProfiles[profile] = (total.period3AdvanceProfiles[profile] || 0) + count;
+    }
+    const period3Count = Array.from(r.period3AdvanceProfiles.values()).reduce((a, b) => a + b, 0);
+    total.period3AdvancePairs += period3Count;
+    if (r.idempotent) total.period3AdvanceIdempotentPairs += period3Count;
+    else total.period3AdvanceNonIdempotentPairs += period3Count;
+    if (period3Count > 0) {
+      total.period3Models.push({
+        name: r.name,
+        n: r.n,
+        idempotent: r.idempotent,
+        period3AdvancePairs: period3Count,
+        topPeriod3AdvanceProfiles: topEntries(r.period3AdvanceProfiles, 4),
+      });
     }
     for (const [profile, count] of r.mismatchProfiles.entries()) {
       total.mismatchProfiles[profile] = (total.mismatchProfiles[profile] || 0) + count;
@@ -645,6 +662,10 @@ function aggregate(results) {
   total.topFirstOrbitKindDepths = topEntries(new Map(Object.entries(total.firstOrbitKindDepths)), 12);
   total.topCleanSelfRepeatSignatures = topEntries(new Map(Object.entries(total.cleanSelfRepeatSignatures)), 12);
   total.topPeriod3AdvanceProfiles = topEntries(new Map(Object.entries(total.period3AdvanceProfiles)), 12);
+  total.topPeriod3Models = total.period3Models
+    .slice()
+    .sort((a, b) => b.period3AdvancePairs - a.period3AdvancePairs || a.name.localeCompare(b.name))
+    .slice(0, 12);
   total.topFirstOrbitProfiles = topEntries(new Map(Object.entries(total.firstOrbitProfiles)), 12);
   return total;
 }
@@ -691,6 +712,7 @@ async function main() {
   delete compactSummary.firstOrbitKindDepths;
   delete compactSummary.cleanSelfRepeatSignatures;
   delete compactSummary.period3AdvanceProfiles;
+  delete compactSummary.period3Models;
   const payload = args.totalsOnly
     ? { cache: args.cache, sizes, summary: compactSummary }
     : args.summaryOnly

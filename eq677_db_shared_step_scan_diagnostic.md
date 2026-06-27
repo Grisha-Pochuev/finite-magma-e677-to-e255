@@ -225,6 +225,36 @@ Target-advanced period-3 triangle profile:
 period3-advance-clean: 6240
 ```
 
+Idempotence split for these period-3 cases:
+
+```text
+period3AdvancePairs:              6240
+period3AdvanceIdempotentPairs:       0
+period3AdvanceNonIdempotentPairs: 6240
+```
+
+Top period-3 model families:
+
+```text
+77/65: 1560
+77/71: 1560
+77/72: 1560
+77/73: 1560
+```
+
+So the clean period-3 residual is not an M496/idempotence artifact.  In the
+external db it appears only in non-idempotent size-77 models.
+
+One concrete clean representative from `77/65`:
+
+```text
+b=10, z=25, p=0, q=1,
+U=4, W=58, h=33, alpha=18,
+T=67, S=66,
+c=b*h=15,
+z*b=17, b*c=9, c*z=74.
+```
+
 Top first-event profiles:
 
 ```text
