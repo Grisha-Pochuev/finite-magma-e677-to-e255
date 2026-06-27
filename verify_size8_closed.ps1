@@ -3,10 +3,7 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $root
 
-$logDir = Join-Path $root "logs"
-New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-$stamp = Get-Date -Format "yyyyMMdd_HHmmss"
-$log = Join-Path $logDir "size8_rerun_$stamp.txt"
+$log = Join-Path $root "size8_verified_split_log.txt"
 "E677 -> E255 size 8 verification with structural splits, started $(Get-Date)" | Set-Content -Path $log -Encoding UTF8
 
 function Run-Case {
@@ -31,8 +28,7 @@ function Run-Case {
   $status = ($out | Select-String '^status:').Line
   Write-Host $status
   if ($status -ne "status: none") {
-    Write-Host "Stopped: this subcase did not close cleanly. Inspect the rerun log:"
-    Write-Host $log
+    Write-Host "Stopped: this subcase did not close cleanly. Send size8_verified_split_log.txt to Codex."
     exit 1
   }
 }
