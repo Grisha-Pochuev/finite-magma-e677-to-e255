@@ -435,6 +435,26 @@ collapse or direct E255 for `z,b,c,h` in the bounded period-3 saturation.
 Therefore the next useful move is still the global admissibility problem for
 the shifted-window bridge `H_b,H_c`, not another local fingerprint chase.
 
+The anchored size-77 fingerprints:
+
+```text
+p*c=T,
+q*c=S,
+U*z=Ib,
+W*z=Ib
+```
+
+were also tested in:
+
+```text
+anchored_period3_fingerprint_saturation_diagnostic.md
+tools/anchored_period3_saturation.js
+```
+
+They are not derived by the local anchored period-3 closure, and even assuming
+them all does not force `T=S`, E255 on `z,b,c,h`, or a visible clean collapse.
+So do not chase these anchored fingerprints as the next local closure route.
+
 The direct ATP target:
 
 ```text
@@ -562,3 +582,155 @@ If this sentence is proved, both the anchored-M7 clean necklace and the
 V3-born clean self-repeat zipper close.  If it fails, the final obstruction is
 a fully clean fixed-target zipper/V3 necklace whose adjacent shifted V3
 windows cannot be inserted into the global relay measure.
+
+## 2026-06-27 Shifted-Window Audit
+
+Use first:
+
+```text
+v3_admissibility_gap_audit_2026_06_27.md
+```
+
+It records the current exact boundary:
+
+```text
+local shifted-window closures are exhausted;
+the remaining issue is global admissibility of a zipper-born adjacent V3
+bridge as a smaller relay object.
+```
+
+The anchored period-3 diagnostic was sharpened:
+
+```text
+tools/anchored_period3_saturation.js
+anchored_period3_fingerprint_saturation_diagnostic.md
+```
+
+It now checks not only db fingerprints:
+
+```text
+p*c=T,
+q*c=S,
+U*z=W*z=Ib,
+```
+
+but also ordinary local hit roles for the shifted bridge:
+
+```text
+H_b: h -> z*b,
+H_c: h -> b*c,
+```
+
+for the full triangle:
+
+```text
+H_z: h -> c*z,
+H_b: h -> z*b,
+H_c: h -> b*c,
+```
+
+and its lift:
+
+```text
+alpha -> b,
+Ib    -> c,
+Ic    -> z.
+```
+
+Result:
+
+```text
+even after assuming the db fingerprints, no same-output hit, input-output hit,
+lift-triangle hit, source hit, T=S, or E255(z/b/c/h) is derived.
+```
+
+Therefore do not chase more isolated anchored period-3 fingerprints next.
+Also do not try to close period-3 by merely reapplying X3 triangle pressure:
+that pressure self-renews the same zipper triangle.
+
+The next useful lemma is:
+
+```text
+Shifted-window admissibility lemma:
+in a minimal G12 relay loop, a clean adjacent V3 bridge born inside a
+fixed-target zipper before the terminal self-repeat is either locally routed
+or is a smaller admissible relay object.
+```
+
+Important caution from the audit:
+
+```text
+the inequality MZ<n is chronological, not automatically a shorter autonomous
+cycle.  The proof must justify that the earlier shifted window belongs to the
+same minimized relay/ported-object class, or explain how it creates such an
+object.
+```
+
+## 2026-06-27 Period-3 Core-Hook Diagnostic
+
+Use:
+
+```text
+period3_core_hook_diagnostic.md
+period3_middle_target_core_hook_frontier.md
+tools/period3_core_hook_scan.js
+```
+
+The public db strict period-3 examples now give a sharper clue:
+
+```text
+total strict period-3 examples: 6240
+
+H_b hook row z is always in the 2-core, but its component has excess 0.
+H_z hook row c is always in the 2-core, but its component has excess 0.
+H_c hook row b is always in the 2-core, and its component has excess 9.
+At the endpoint, H_c has HcOutAtH=11 and HcInAtBC=1 in all examples.
+```
+
+So the old-target edge:
+
+```text
+H_b: h -> z*b
+```
+
+is probably not enough by itself.  The stronger db-supported route is the
+middle target:
+
+```text
+c=b*h,
+H_c: h -> b*c.
+```
+
+Next theoretical target:
+
+```text
+Middle-target fan-at-h lemma:
+in a minimal clean period-3 G12 residual, the middle target c=b*h has a
+second row r!=b with r*h=c and r*c!=b*c.
+```
+
+If proved, the shifted-window bridge becomes an ordinary outgoing fan in
+`H_c` at the common input `h`.
+
+Exact negation to attack if the fan lemma fails:
+
+```text
+unique-preimage middle residual:
+b is the unique row with b*h=c.
+```
+
+Equivalently, in `H_h` the zipper edge `Ib -> c` is the only edge entering
+`c`.
+
+Fallback target:
+
+```text
+Middle-target core-hook lemma:
+in a minimal clean period-3 G12 residual, the row-b edge h -> b*c in H_c is
+not outside the core and not merely unicyclic, unless the residual already
+routes by old/core attachment, independent full ported interval collision, or
+a right-fixer/shorter same-row recurrence.
+```
+
+This would turn the shifted-window bridge into an actual relay/core object
+instead of relying on the circular statement "the earlier window is smaller".

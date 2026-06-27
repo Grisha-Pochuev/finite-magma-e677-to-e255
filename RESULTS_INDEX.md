@@ -222,6 +222,10 @@ right file without scanning old summaries.
 | `period3_zipper_exact_measure_reduction.md` | conditional reduction | Period-3 closes if the explicit earlier bridge `H_b,H_c` is admissible; otherwise the final gap is a self-renewing triangle not accepted by the measure. |
 | `period3_zipper_saturation_diagnostic.md` | diagnostic | Depth-5 local closure confirms period-3 zipper formulas but no short clean collapse, idempotence, or direct E255 for displayed vertices. |
 | `period3_db_identity_scan_diagnostic.md` | diagnostic | Size-77 db period-3 examples have universal short fingerprints such as `h*h=z*b`, but local E677 closure does not derive them. |
+| `anchored_period3_fingerprint_saturation_diagnostic.md` | diagnostic | Anchored size-77 fingerprints `p*c=T`, `U*z=Ib` and shifted-window hit roles are not local E677 closure routes. |
+| `v3_admissibility_gap_audit_2026_06_27.md` | boundary audit | Local shifted-window closures are exhausted; live target is global admissibility of zipper-born adjacent V3 bridges as smaller relay objects. |
+| `period3_core_hook_diagnostic.md` | diagnostic | Public strict period-3 db examples put all hooks in 2-core; the middle `H_c` hook lies in a bicyclic component and has an outgoing fan at `h`. |
+| `period3_middle_target_core_hook_frontier.md` | active frontier | Replaces broad shifted-window admissibility with the concrete target: prove a middle-target `H_c` fan at `h`, or fall back to the core-hook split. |
 | `period3_zipper_e255_target_atp_note.md` | ATP note | Prepared direct ATP target for `period-3 zipper => E255(b)`; no prover currently visible in PATH. |
 | `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
 | `atp/period3_zipper_e255_target.p` | ATP template | TPTP template for testing whether clean period-3 zipper forces E255 or db fingerprint identities. |
@@ -261,5 +265,7 @@ right file without scanning old summaries.
 | `tools/anchored_m7_cycle_end_saturation.js` | diagnostic | Bounded equality closure for anchored-M7 cycle-end/zipper residual. |
 | `tools/period3_zipper_saturation.js` | diagnostic | Bounded equality closure for the clean self-renewing period-3 zipper triangle. |
 | `tools/period3_db_identity_scan.js` | diagnostic | Scans strict clean period-3 db representatives for universal named product identities. |
+| `tools/anchored_period3_saturation.js` | diagnostic | Bounded closure for anchored-X3 plus period-3 fingerprints such as `p*c=T` and `U*z=Ib`. |
+| `tools/period3_core_hook_scan.js` | diagnostic | Scans strict period-3 db examples for 2-core membership and core-component excess of the target-advanced hook edges. |
 | `tools/m496_shared_step_anchored_triangle.ps1` | diagnostic | PowerShell M496 check for shared-step anchored triangle and `U*h=W*h`. |
 | `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |
