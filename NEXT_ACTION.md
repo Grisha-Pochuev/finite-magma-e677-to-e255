@@ -808,6 +808,27 @@ First source/output/input/cross hits should route by fixed-target first-event
 machinery.  The remaining clean residual would be a two-orbit fixed-target
 problem, much narrower than the old V3 admissibility gap.
 
+This is now recorded in:
+
+```text
+period3_named_fan_negation_orbit_first_event_boundary.md
+```
+
+It says the clean named-fan negation becomes:
+
+```text
+a fresh right-h source-successor orbit starting at Ib,
+disjoint from the watched period-3 cycle until its first clean self-repeat.
+```
+
+The next useful proof target is:
+
+```text
+show this fresh orbit cannot remain clean-disjoint from z -> b -> c -> z
+until self-repeat in a minimal G12 loop, or show the resulting self-repeat is
+a smaller admissible fixed-target zipper.
+```
+
 Fallback target:
 
 ```text
