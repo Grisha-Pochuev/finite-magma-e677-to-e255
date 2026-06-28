@@ -28,17 +28,23 @@ magmas. The ETP paper reports the completion of the implication graph between
 4,694 simple magma laws, covering 22,028,942 implication edges, using a mixture
 of human-generated arguments, automated methods, and Lean validation.
 
-The finite implication `E677 -> E255` was one of the especially difficult
-remaining finite-magma questions in the project. Terence Tao and other ETP
-contributors discussed it publicly as a stubborn finite implication. This
-repository is an independent open research attempt focused on that single
-remaining crack: either prove that every finite `E677` magma satisfies `E255`,
-or find a finite counterexample.
+Fields Medalist Terence Tao was one of the central public figures of the
+Equational Theories Project and kept a personal project log while working on
+it. In that log, he wrote:
+
+> "The notoriously stubborn 677=>255 implication for finite magmas remains unresolved."
+
+The finite implication `E677 -> E255` was therefore one of the especially
+difficult remaining finite-magma questions in the project. This repository is
+an independent open research attempt focused on that single remaining crack:
+either prove that every finite `E677` magma satisfies `E255`, or find a finite
+counterexample.
 
 References:
 
 - Equational Theories Project paper: https://arxiv.org/abs/2512.07087
 - Terence Tao's ETP blog post: https://terrytao.wordpress.com/2025/12/09/the-equational-theories-project-advancing-collaborative-mathematical-research-at-scale/
+- Terence Tao's personal ETP log: https://github.com/teorth/equational_theories/wiki/Terence-Tao%27s-personal-log
 - ETP repository: https://github.com/teorth/equational_theories
 
 ## Current status
