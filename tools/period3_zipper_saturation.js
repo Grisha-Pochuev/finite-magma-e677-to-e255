@@ -259,6 +259,15 @@ const inputSourceP = op(h, op(inputSourceD, ib));
 const inputSourceE = op(ib, inputSourceD);
 const inputSourceJ = op(inputSourceE, ib);
 const inputSourceF = op(inputSourceD, h);
+const cInputA = op(ib, c);
+const shiftedHookInput = op(op(ib, c), ib);
+const cInputL = op(c, shiftedHookInput);
+const cInputBForward = op(b, bc);
+const cInputBSecondInput = op(cInputBForward, b);
+const cInputBSecondOutput = op(bc, c);
+const cInputIbForward = op(ib, cInputA);
+const cInputIbSecondInput = op(cInputIbForward, ib);
+const cInputIbSecondOutput = op(cInputA, c);
 
 seedNamedNeighborhood();
 let closeRounds = 0;
@@ -301,7 +310,54 @@ const useful = [
   [op(bc, z), c, "BC*z=c"],
   [op(cz, ic), zb, "CZ*Ic=ZB"],
   [op(ib, c), z, "Ib*c=z"],
+  [cInputA, bc, "A=Ib*c hits BC"],
+  [cInputA, z, "A=Ib*c hits z"],
+  [cInputA, b, "A=Ib*c hits b"],
+  [cInputA, c, "A=Ib*c hits c"],
+  [cInputA, h, "A=Ib*c hits h"],
+  [cInputL, h, "L=c*((Ib*c)*Ib) hits h"],
+  [cInputL, alpha, "L=c*((Ib*c)*Ib) hits alpha"],
+  [cInputL, ib, "L=c*((Ib*c)*Ib) hits Ib"],
+  [cInputL, ic, "L=c*((Ib*c)*Ib) hits Ic"],
+  [cInputL, z, "L=c*((Ib*c)*Ib) hits z"],
+  [cInputL, b, "L=c*((Ib*c)*Ib) hits b"],
+  [cInputL, c, "L=c*((Ib*c)*Ib) hits c"],
+  [cInputL, bc, "L=c*((Ib*c)*Ib) hits BC"],
+  [cInputL, cInputA, "L=c*((Ib*c)*Ib) hits A"],
+  [shiftedHookInput, ic, "(Ib*c)*Ib=Ic"],
   [op(ib, h), c, "Ib*h=c"],
+  [cInputBForward, cInputIbForward, "c-input second forward merge b*BC=Ib*A"],
+  [cInputBSecondInput, h, "c-input row BC second input hits h"],
+  [cInputBSecondInput, cInputL, "c-input row BC second input hits L"],
+  [cInputBSecondInput, alpha, "c-input row BC second input hits alpha"],
+  [cInputBSecondInput, ib, "c-input row BC second input hits Ib"],
+  [cInputBSecondInput, ic, "c-input row BC second input hits Ic"],
+  [cInputBSecondInput, z, "c-input row BC second input hits z"],
+  [cInputBSecondInput, b, "c-input row BC second input hits b"],
+  [cInputBSecondInput, c, "c-input row BC second input hits c"],
+  [cInputBSecondInput, bc, "c-input row BC second input hits BC"],
+  [cInputBSecondInput, cInputA, "c-input row BC second input hits A"],
+  [cInputIbSecondInput, h, "c-input row A second input hits h"],
+  [cInputIbSecondInput, cInputL, "c-input row A second input hits L"],
+  [cInputIbSecondInput, alpha, "c-input row A second input hits alpha"],
+  [cInputIbSecondInput, ib, "c-input row A second input hits Ib"],
+  [cInputIbSecondInput, ic, "c-input row A second input hits Ic"],
+  [cInputIbSecondInput, z, "c-input row A second input hits z"],
+  [cInputIbSecondInput, b, "c-input row A second input hits b"],
+  [cInputIbSecondInput, c, "c-input row A second input hits c"],
+  [cInputIbSecondInput, bc, "c-input row A second input hits BC"],
+  [cInputIbSecondInput, cInputA, "c-input row A second input hits A"],
+  [cInputBSecondOutput, bc, "c-input row BC second output hits BC"],
+  [cInputBSecondOutput, cInputA, "c-input row BC second output hits A"],
+  [cInputBSecondOutput, z, "c-input row BC second output hits z"],
+  [cInputBSecondOutput, b, "c-input row BC second output hits b"],
+  [cInputBSecondOutput, c, "c-input row BC second output hits c"],
+  [cInputIbSecondOutput, bc, "c-input row A second output hits BC"],
+  [cInputIbSecondOutput, cInputA, "c-input row A second output hits A"],
+  [cInputIbSecondOutput, z, "c-input row A second output hits z"],
+  [cInputIbSecondOutput, b, "c-input row A second output hits b"],
+  [cInputIbSecondOutput, c, "c-input row A second output hits c"],
+  [cInputBSecondOutput, cInputIbSecondOutput, "c-input second output merge BC*c=A*c"],
   [inputSourceD, z, "D=Ib*h hits z"],
   [inputSourceD, b, "D=Ib*h hits b"],
   [inputSourceD, h, "D=Ib*h hits h"],
@@ -359,6 +415,8 @@ for (const [a, bTerm, label] of useful) {
 console.log(`alpha class: ${JSON.stringify(classTerms(alpha))}`);
 console.log(`Ib class: ${JSON.stringify(classTerms(ib))}`);
 console.log(`Ic class: ${JSON.stringify(classTerms(ic))}`);
+console.log(`A=Ib*c class: ${JSON.stringify(classTerms(cInputA))}`);
+console.log(`L=c*((Ib*c)*Ib) class: ${JSON.stringify(classTerms(cInputL))}`);
 console.log(`ZB class: ${JSON.stringify(classTerms(zb))}`);
 console.log(`BC class: ${JSON.stringify(classTerms(bc))}`);
 console.log(`CZ class: ${JSON.stringify(classTerms(cz))}`);

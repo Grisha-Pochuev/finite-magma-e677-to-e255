@@ -134,6 +134,39 @@ So the named fan reduces to one equality:
 Ib*h=c.
 ```
 
+As of 2026-06-28 this has a sharper V3 formulation:
+
+```text
+period3_row_b_Ib_c_input_v3_lemma.md
+```
+
+Rows `b` and `Ib` at the common input `c` give:
+
+```text
+row b:  c -> b*c,
+row Ib: c -> Ib*c.
+```
+
+If `Ib*c=b*c`, the target-lift in `H_c` routes by output merge or full
+ported-interval reconstruction.  Otherwise this is a standard same-input V3
+bridge at `c`.  The named fan is the special subcase where the lifted input
+of the row-`Ib` edge equals `h`, equivalently:
+
+```text
+(Ib*c)*Ib=Ic.
+```
+
+The db-supported identity:
+
+```text
+Ib*c=z
+```
+
+is a watched output hit of this same `c`-input V3 bridge.  Thus the current
+middle-target task is sharper than only proving `Ib*h=c`: prove watched/core
+attachment of `Ib*c`, prove the fan-lift input, or reduce the remaining clean
+four-edge V3 in `H_c` by the unified V3 frontier.
+
 Indeed, if `Ib*h=c` and `Ib*c=b*c`, then rows `Ib` and `b` realize the same
 full ported interval `(c,h,b*c)`, forcing `Ib=b`, which is a routed clean
 collision.  In the db examples the stronger identity holds:

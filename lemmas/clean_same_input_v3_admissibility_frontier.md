@@ -118,6 +118,9 @@ From:
 fixed_target_period3_zipper_boundary.md
 period3_zipper_triangle_self_renewal_lemma.md
 period3_zipper_exact_measure_reduction.md
+period3_row_b_Ib_c_input_v3_lemma.md
+period3_c_input_v3_second_layer_boundary.md
+period3_c_input_v3_fixed_target_orbit_boundary.md
 ```
 
 The common input is again the anchor:
@@ -151,6 +154,41 @@ Ic -> z0.
 Thus period-3 does not add a new local V3 type.  It adds the sharpest test of
 the same admissibility sentence: can this earlier shifted-window bridge be
 measured as smaller than the terminal return `c*h=z0`?
+
+There is also a middle-target exposure using the named row `Ib`:
+
+```text
+row b:  c -> b*c,
+row Ib: c -> Ib*c.
+```
+
+In the clean residual, output equality routes through `H_c`; otherwise this is
+a standard same-input V3 bridge at common input `c`.  Its target-lift in `H_c`
+is:
+
+```text
+row b:  h -> b*c,
+row Ib: L -> Ib*c,
+L=c*((Ib*c)*Ib).
+```
+
+The named fan is the special subcase:
+
+```text
+L=h.
+```
+
+If `Ib*c` hits watched period-3 data, especially the db-supported `Ib*c=z`,
+the bridge routes before the fully clean V3 residual.  If not, the second
+layer is a generic four-edge matching in `H_c`, so this branch belongs to the
+ordinary ungenerated clean V3 gap with fixed target `c`.
+
+The corresponding fixed-target source orbits are:
+
+```text
+b  -> b*c -> (b*c)*c -> ...
+Ib -> Ib*c -> (Ib*c)*c -> ...
+```
 
 ## Generated-Input Subcase
 
@@ -190,9 +228,11 @@ This includes:
 first-extra V3 at z=w,
 anchored-M7 V3 at z=h,
 period-3 shifted-window V3 at z=h,
+period-3 shifted-input failure V3 at z=c,
 ```
 
-unless `w` or `h` is later shown to be generated/watched/core.
+unless `w`, `h`, or the period-3 cycle vertex `c` is later shown to be
+generated/watched/core in the relevant relay state.
 
 ## Second-Layer Expansion
 

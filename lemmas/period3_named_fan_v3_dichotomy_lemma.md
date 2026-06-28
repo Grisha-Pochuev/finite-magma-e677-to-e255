@@ -216,15 +216,60 @@ or
 standard clean same-input V3 bridge b/Ib at input h.
 ```
 
+There is also a sharper middle-target formulation:
+
+```text
+period3_row_b_Ib_c_input_v3_lemma.md
+period3_c_input_v3_second_layer_boundary.md
+```
+
+It shows that, in the clean residual, rows `b` and `Ib` already expose either
+a routed output merge:
+
+```text
+Ib*c=b*c,
+```
+
+or a standard same-input V3 bridge at common input:
+
+```text
+c.
+```
+
+The named fan is the subcase where the target-lift of this `c`-input bridge
+has equal input `h` in `H_c`, equivalently:
+
+```text
+(Ib*c)*Ib=Ic.
+```
+
+The db-supported case:
+
+```text
+Ib*c=z
+```
+
+is even earlier: it is a watched output hit of the `c`-input V3 bridge, so it
+routes before the fully clean four-edge V3 residual.
+
 Thus the next global proof should not treat period-3 as a separate local
 equality hunt.  The remaining work is one of:
 
 ```text
-1. prove the named fan equality Ib*h=c in the minimal G12 setting;
-2. prove the resulting V3 bridge is admissible as a smaller relay object;
+1. prove the watched hit Ib*c=z or the fan-lift input (Ib*c)*Ib=Ic;
+2. prove the resulting clean V3 bridge in H_c is admissible as a smaller relay object;
 3. prove the fresh Ib-orbit cannot self-repeat cleanly while avoiding the
    watched period-3 cycle.
 ```
+
+Use:
+
+```text
+period3_row_b_Ib_c_input_v3_lemma.md
+period3_shifted_hook_pair_implies_named_fan_lemma.md
+```
+
+for the first route.
 
 The db evidence supports case 1, but the formal reduction is valid without
 assuming it.

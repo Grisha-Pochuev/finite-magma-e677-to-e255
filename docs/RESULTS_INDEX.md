@@ -1,0 +1,287 @@
+# Results Index
+
+Date: 2026-06-18.
+
+This is a compact navigation map, not a research log.  Use it to find the
+right file without scanning old summaries.
+
+## Start Here
+
+| File | Status | Use |
+|---|---|---|
+| `docs/NEXT_ACTION.md` | active | First file to read at startup. |
+| `docs/CURRENT_FRONTIER.md` | active compact frontier | Main current context after `docs/NEXT_ACTION.md`. |
+| `AGENTS.md` | project rules | Workflow, computation limits, long-run mode, Git note. |
+
+## Current Active Frontier
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/proper_crossed_fan_clean_external_bridge_boundary.md` | active residual | Clean bad-target crossed-fan residual. |
+| `lemmas/right_b_orbit_repeat_core_attachment_gap.md` | active gap | Records why right-`b` orbit repeat is not automatically core-attached. |
+| `lemmas/right_b_orbit_ported_transition_lemma.md` | proved connector in state space | Shows right-`b` orbit is a path in full ported-interval states. |
+| `lemmas/ported_cycle_hb_footprint_trichotomy_lemma.md` | proved connector criteria | Classifies A-repeat, X-repeat, and A-X hit inside generated `H_b` footprint. |
+| `lemmas/clean_ported_matching_predecessor_layer_boundary.md` | proved normal form | Two-layer matching residual `H_i -> A_i -> x_{i+1}` and next hit types. |
+| `lemmas/row_b_predecessor_tower_dichotomy_boundary.md` | proved finite dichotomy | Row-b predecessor tower first-hit vs independent row-b cycle. |
+| `lemmas/row_b_tower_first_hit_role_map.md` | proved role map | Splits `H_i=A_j`, `H_i=x_j`, visible hit, fixed point, fresh extension. |
+| `lemmas/row_b_a_layer_cycle_boundary.md` | proved boundary | A-layer-only hits close as row-b cycle on generated inputs. |
+| `lemmas/row_b_x_layer_hit_target_bridge_boundary.md` | boundary | X-layer hit becomes a two-target bridge involving rows `b` and `x_j`. |
+| `lemmas/clean_external_bridge_first_hit_reduction_lemma.md` | proved reduction | Combines footprint/tower hits into exact residual alternatives A-H. |
+| `lemmas/generated_input_cross_source_pressure_lemma.md` | proved pressure tool | At each `A_i`, compares row `b` predecessor `H_i` with row `x_i` predecessor `Beta_i`. |
+| `lemmas/beta_layer_first_hit_boundary.md` | boundary | Splits `Beta_i` hits into H/A/X/visible/fresh cases. |
+| `lemmas/beta_equals_h_shared_edge_divergence_lemma.md` | proved routing | `Beta_i=H_i` is shared-edge divergence for rows `b` and `x_i`. |
+| `lemmas/beta_a_hit_same_input_split_boundary.md` | boundary correction | `Beta_i=A_j` is same-input two-target split, not common-edge fan. |
+| `lemmas/beta_x_hit_target_bridge_boundary.md` | boundary | `Beta_i=x_j` becomes a target bridge with fresh `delta` split. |
+| `lemmas/beta_x_bridge_pair_reversible_square_lemma.md` | proved reduction | Shows beta-X fresh target bridge is a reversible two-target square with `Beta_j`. |
+| `lemmas/beta_layer_reduction_lemma.md` | proved reduction | Packages beta hits to shared-edge divergence, beta-coupled same-target pair, reversible square, visible hit, or fresh beta. |
+| `lemmas/x_layer_two_target_bridge_reduction_lemma.md` | proved reduction | Routes G to hits, row-b swap, beta-coupled same-input lift, recurrence, or reversible square. |
+| `lemmas/same_input_split_target_lift_lemma.md` | proved transport | Converts same-input split into a same-target pair in `H_z`; couples X/beta residuals. |
+| `lemmas/clean_external_bridge_second_stage_reduction_lemma.md` | proved reduction | Replaces F/G/H by exact second-stage residuals R1-R5. |
+| `lemmas/fresh_reversible_square_beta_anchor_lemma.md` | proved reduction | Shows fresh reversible squares are anchored at `Beta_j`, hence part of fresh beta extension. |
+| `lemmas/beta_fresh_predecessor_zipper_ladder_lemma.md` | proved zipper tool | Expands a fresh beta predecessor chain into row-x_i chain plus side edges. |
+| `lemmas/beta_fresh_extension_first_hit_boundary.md` | boundary | Splits fresh beta extension by watched hits, Z-chain repeats, and shifted-column repeats. |
+| `lemmas/beta_zipper_shifted_repeat_split_lemma.md` | proved reduction | First shifted-column repeat before Z-repeat is a proper same-input split lifted to `H_T`. |
+| `lemmas/beta_zipper_clean_cycle_boundary.md` | corrected boundary | Pure disjoint Z-cycle is superseded by eventual generated X-hit. |
+| `lemmas/fresh_beta_extension_eventual_x_hit_lemma.md` | proved reduction | Fresh beta predecessor chain must eventually hit generated X-layer. |
+| `lemmas/deep_beta_x_hit_reduction_lemma.md` | proved reduction | Any deeper beta zipper X-hit routes to recurrence, beta routing, or beta-anchored square. |
+| `lemmas/clean_external_bridge_third_stage_reduction_lemma.md` | proved reduction | Removes fresh beta extension; leaves U1-U5 cross-role residuals. |
+| `lemmas/same_target_pair_collision_trichotomy_lemma.md` | proved connector | Classifies common input/output/full interval/cross-hit for two edges in one `H_T`. |
+| `lemmas/beta_coupled_same_target_pair_advance_lemma.md` | proved reduction | U3 clean same-target pair advances back to `H_{A_i}` and generated `H_b` edge. |
+| `lemmas/same_input_lift_target_advance_lemma.md` | proved transport | Any clean lifted same-input pair advances back to a two-target bridge sharing the original input. |
+| `lemmas/clean_external_bridge_fourth_stage_reduction_lemma.md` | proved reduction | Removes clean same-target matching; leaves V1-V4 two-target/square residuals. |
+| `lemmas/beta_anchor_row_b_partner_reduction_lemma.md` | proved reduction | V4 beta anchor has row-b same-target partner and folds into V3-type bridge. |
+| `lemmas/clean_external_bridge_fifth_stage_reduction_lemma.md` | proved reduction | Folds V4 into W3; leaves W1-W3 residuals. |
+| `lemmas/generated_input_three_source_bridge_expansion_lemma.md` | proved expansion | W3 at generated `A_j` expands to three edges in `H_{A_j}`. |
+| `lemmas/row_b_generated_input_bridge_lemma.md` | proved bridge | Every generated `A_j` has row-b/generated same-input bridge via `D_j=b*A_j`. |
+| `lemmas/row_b_successor_eventual_h_hit_lemma.md` | proved reduction | Fresh `D_j=b*A_j` successor chain must eventually hit `H_j`. |
+| `lemmas/row_b_successor_h_hit_role_lemma.md` | proved reduction | First row-b successor H-hit immediately advances to generated `A_k`. |
+| `lemmas/clean_external_bridge_sixth_stage_reduction_lemma.md` | proved reduction | Removes base W3 bridge; leaves X1-X3 residuals. |
+| `lemmas/x3_three_edge_matching_advance_boundary.md` | boundary | X3 advances to clean three-target same-input bridge at `A_j`. |
+| `lemmas/x3_advanced_edge_triangle_pressure_lemma.md` | proved pressure | Advanced X3 edges force a second triangle layer coupled to row-b edge. |
+| `lemmas/x3_self_renewal_boundary.md` | corrected boundary | Clean X3 creates a coupled triangle layer, not a free source-triple successor. |
+| `lemmas/source_successor_eventual_predecessor_hit_lemma.md` | general proved | Any forward row-r chain from `a` eventually hits `pred_r(a)`. |
+| `lemmas/clean_external_bridge_seventh_stage_reduction_lemma.md` | proved reduction | X3 becomes clean three-row cycle comparison at generated `A_j`. |
+| `lemmas/y2_shared_edge_divergence_folds_to_base_bridge_lemma.md` | proved reduction | Removes Y2 by folding `Beta_i=H_i` into the base row-b/generated bridge. |
+| `lemmas/y3_three_cycle_first_intersection_boundary.md` | boundary | Routes early cross-hits among the three Y3 source-row cycles. |
+| `lemmas/fixed_target_source_successor_lemma.md` | general proved | Any `H_T` edge forces the next source-row edge in the same `H_T`. |
+| `lemmas/y3_fixed_target_source_orbit_boundary.md` | boundary | Shows Y3 source rows reduce to two right-`A_j` source orbits. |
+| `lemmas/clean_external_bridge_eighth_stage_reduction_lemma.md` | proved reduction | Removes Y2 and sharpens Y3 to the coupled Z3 clean cycle shell. |
+| `lemmas/y3_shell_saturation_diagnostic.md` | diagnostic | Shallow Y3/Z3 congruence check found no forced named collapse. |
+| `lemmas/y3_shared_successor_square_boundary.md` | boundary | Defines the next Z3 square: `p*A_j=S`, `U=p*S`, `V=S*A_j`. |
+| `lemmas/y3_shared_successor_watched_hit_routing_lemma.md` | proved routing | Routes watched hits of `U=p*S` and `V=S*A_j`. |
+| `lemmas/y3_commuting_second_step_reduction_lemma.md` | proved reduction | Routes `U=V` to a same-target pair in `H_U`. |
+| `lemmas/fixed_target_source_orbit_first_merge_boundary.md` | boundary correction | Right-target source motion is a forward orbit with first merge, not a guaranteed cycle. |
+| `lemmas/fixed_target_source_orbit_ladder_lemma.md` | general proved | Gives predecessor formula along a fixed-target source orbit. |
+| `lemmas/y3_clean_square_four_edge_matching_boundary.md` | boundary | Clean Z3 square adds a fourth edge in `H_{A_j}`. |
+| `lemmas/y3_four_edge_matching_target_advance_boundary.md` | boundary | Target-advance form of the clean four-edge Z3 matching. |
+| `lemmas/clean_external_bridge_ninth_stage_reduction_lemma.md` | proved reduction | Sharpens Z3 square to paired four-edge shell. |
+| `lemmas/z3_paired_source_ladder_eventual_merge_lemma.md` | proved reduction | Finite paired source ladders must reach fan/path/collision or same-row recurrence. |
+| `lemmas/clean_external_bridge_tenth_stage_reduction_lemma.md` | proved reduction | Reduces paired Z3 shell to collision routes or same-row recurrence. |
+| `lemmas/same_row_recurrence_inventory.md` | active inventory | Collects remaining recurrence boundaries after the clean bridge reductions. |
+| `lemmas/clean_external_bridge_to_relay_recurrence_frontier.md` | active frontier alignment | Connects clean external bridge T1 to the global minimal relay recurrence gap. |
+| `lemmas/rb4_first_repeat_target_swap_relay_lemma.md` | proved reduction | R-b4 right-b first repeat relays by first-merge target swap. |
+| `lemmas/rb4_internal_repeat_right_b_footprint_descent_lemma.md` | proved conditional descent | Internal R-b4 repeat gives smaller right-b footprint; return to start is visible/original fan attachment. |
+| `lemmas/rb5_a_layer_cycle_base_bridge_relay_lemma.md` | proved reduction | R-b5 A-layer cycle is a chain of base row-b/generated bridge A-hits. |
+| `lemmas/rb5_a_layer_footprint_descent_boundary.md` | boundary | Internal R-b5 A-layer repeat gives smaller A-cycle footprint; start-return cycle remains. |
+| `lemmas/rb5_start_return_a_cycle_beta_pair_boundary.md` | boundary | Exact lifted beta-pair necklace on the remaining start-return R-b5 A-cycle. |
+| `lemmas/rb5_beta_necklace_reduction_candidate.md` | candidate | R-b5 beta necklace should fold into existing beta/Z3 reductions by first-hit coverage. |
+| `lemmas/rb5_beta_necklace_first_hit_reduction_lemma.md` | proved reduction | First-hit coverage routes the R-b5 beta necklace to existing beta/Z3 routes or recurrence. |
+| `lemmas/rx_beta_chain_recurrence_absorption_lemma.md` | proved reduction | R-x beta-chain recurrence is absorbed by beta-X and existing recurrence routes. |
+| `lemmas/rz_source_ladder_recurrence_absorption_lemma.md` | proved reduction | R-Z source-ladder recurrence is exactly the Z3 contribution to E11, not a new local branch. |
+| `lemmas/local_swap_fixed_recurrence_classification.md` | boundary | Classifies R-a/R-b1/R-b2/R-b3 as visible/generated swap/fixed boundaries, not fresh branches. |
+| `lemmas/clean_external_bridge_eleventh_stage_reduction_lemma.md` | proved reduction | Removes R-b4/R-b5 as independent fresh recurrence cases; leaves minimal relay descent. |
+| `lemmas/clean_external_bridge_twelfth_stage_reduction_lemma.md` | proved reduction | Exhausts local clean external bridge recurrence inventory; leaves global relay-cycle descent. |
+| `lemmas/relay_minimality_measure_candidate.md` | candidate | Lexicographic global measure combining old corridor, right-b footprint, A-layer footprint, and relay period. |
+| `lemmas/right_b_orbit_second_successor_boundary.md` | boundary/diagnostic | Routes `t*b` first-hit cases; avoids repeated local checks. |
+| `lemmas/clean_external_bridge_predecessor_chain_candidate.md` | candidate | Predecessor-chain route for the clean external bridge. |
+
+## Core Bad-Target Reduction
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/bicyclic_component_branch_fan_lemma.md` | proved | Bad target forces bicyclic component pressure. |
+| `lemmas/bad_target_core_fan_lemma.md` | proved | Core gives triple fan or mixed `2+1`. |
+| `lemmas/bicyclic_core_junction_lemma.md` | proved | Graph junction extraction. |
+| `lemmas/right_fixer_to_balanced_witness_lemma.md` | proved | Right fixer gives E255 for the target. |
+
+## Full Interval And Relay State
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/two_step_source_reconstruction_lemma.md` | proved | Same ordered two-step interval reconstructs source row. |
+| `lemmas/ported_interval_state_lemma.md` | proved | Full `(target,input,output)` state determines source row. |
+| `lemmas/ported_interval_recurrence_boundary.md` | boundary | Cross-role interval repeat contradicts; same-row repeat does not. |
+| `lemmas/target_advance_row_orbit_lemma.md` | proved | Target advance for one row is a sliding row-orbit window. |
+
+## Local Relay Reductions
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/target_swap_fan_duality_lemma.md` | proved | Target swap for fan orientation. |
+| `lemmas/mixed_junction_target_swap_bridge_square.md` | proved | Mixed `2+1` target-swap bridge square. |
+| `lemmas/first_merge_certificate_separation_lemma.md` | proved | Separates last certificates at first merge. |
+| `lemmas/first_merge_target_swap_junction_dichotomy.md` | proved | First merge plus continuation relays to mixed/triple. |
+| `lemmas/pure_incoming_merge_target_swap_fan_lemma.md` | proved | Pure incoming degree >= 3 relays to triple fan. |
+| `lemmas/binary_sink_core_escape_lemma.md` | proved graph step | Binary sink forces side attachment in bicyclic core. |
+| `lemmas/earliest_side_attachment_mixed_junction_lemma.md` | proved graph step | Internal side attachment gives mixed `2+1`. |
+| `lemmas/side_attachment_orientation_reduction_lemma.md` | proved | Incoming side attachment already first-merge relay. |
+| `lemmas/minority_core_return_relay_lemma.md` | proved graph step | Mixed theta minority edge must return to corridor. |
+| `lemmas/strict_clean_theta_exclusion_lemma.md` | proved | Strict clean mixed theta impossible in core. |
+
+## Crossed-Fan Route
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/bad_target_crossed_fan_boundary.md` | active subproblem | Bad-target crossed-fan overview and routed cases. |
+| `lemmas/figure_eight_closure_crossed_fan_boundary.md` | reduction | Figure-eight closure becomes crossed fan or same-row recurrence. |
+| `lemmas/crossed_double_fan_pressure_candidate.md` | candidate | Broad crossed double-fan pressure; not proved. |
+| `lemmas/crossed_fan_swap_row_degeneracy_lemma.md` | proved | Swap-row crossed fan degenerates to same-row recurrence. |
+| `lemmas/swap_row_target_advance_loop_lemma.md` | proved | Swap row gives two-state target-advance loop. |
+| `lemmas/crossed_fan_cross_tip_hub_separation_lemma.md` | proved | Equal hubs imply cross-tip disjointness. |
+| `lemmas/cross_tip_collision_target_advance_lemma.md` | proved routing | Cross-tip collision advances to common new target. |
+| `lemmas/proper_crossed_fan_target_swap_self_duality_lemma.md` | proved | Proper crossed-fan skeleton is self-dual on `{a,b}`. |
+
+## Row-a Bridge Layer
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/bad_target_crossed_fan_row_a_edge_lemma.md` | proved | Badness gives row-a edge `k -> t` in `H_b`. |
+| `lemmas/bad_target_no_predecessor_output_lemma.md` | proved | For bad `b`, `x*b != pred_b(x)`. |
+| `lemmas/bad_target_row_a_output_avoids_b_hub_lemma.md` | proved | Special case `a*b != h`. |
+| `lemmas/row_a_bridge_edge_attachment_cases.md` | routed cases | Local hit classification for `k -> t`. |
+| `lemmas/row_a_bridge_loop_recurrence_boundary.md` | boundary | `t=k` gives same-row recurrence. |
+| `lemmas/row_a_bridge_second_certificate_lemma.md` | proved | `ell=t*a=pred_b(k)`, `b*ell=k`. |
+| `lemmas/row_a_second_bridge_visible_hit_cases.md` | routed cases | Visible hits of `ell`. |
+| `lemmas/clean_external_bridge_row_b_predecessor_fan_lemma.md` | proved | Row `b` has predecessor fan `h -> a`, `ell -> k`. |
+| `lemmas/clean_external_bridge_three_source_predecessor_fan_lemma.md` | proved | Rows `p,q,a` form cross-source predecessor fan. |
+| `lemmas/clean_external_bridge_new_source_row_lemma.md` | proved | Row `a` is new, not one of `p,q,r,s`. |
+
+## Right-b Orbit Layer
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/bad_target_right_b_orbit_predecessor_recursion_lemma.md` | proved | Recursion for `x_{i+1}=x_i*b`, `A_i`, `H_i`. |
+| `lemmas/right_b_orbit_local_repeat_roles.md` | proved roles | Classifies local equalities such as `A_i=x_{i+1}`. |
+| `lemmas/first_right_b_successor_fan_attachment_lemma.md` | proved routing | Routes `ell=b` and `t*b=a`. |
+| `lemmas/right_b_orbit_first_repeat_boundary.md` | boundary | First repeat form and routed hit list. |
+| `lemmas/right_b_orbit_first_repeat_fan_lemma.md` | proved | Internal repeat creates incoming fan in `H_b`. |
+| `lemmas/clean_external_bridge_returns_to_branch_relay_lemma.md` | corrected boundary | Fan-regeneration step; core attachment still missing. |
+| `lemmas/ported_cycle_hb_footprint_trichotomy_lemma.md` | proved | Converts ported-cycle equalities into actual `H_b` fan/path incidences. |
+| `lemmas/clean_ported_matching_predecessor_layer_boundary.md` | proved | Sharp residual after no generated `H_b` incidence: row-b predecessor layer remains. |
+| `lemmas/clean_external_bridge_first_hit_reduction_lemma.md` | proved | Current major reduction for clean external bridge; leaves exact residuals F/G/H. |
+
+## Global Termination
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/relay_termination_frontier.md` | active global frontier | Recursive relay termination statement. |
+| `lemmas/minimal_relay_cycle_dichotomy_candidate.md` | candidate | Minimal closed relay-cycle split. |
+| `lemmas/relay_same_source_return_split_boundary.md` | boundary | Splits independent returns, which route to crossed fan/G12, from same-source row-orbit returns. |
+| `lemmas/fixed_target_same_source_return_collapse_lemma.md` | proved | Same-source double return to one fixed split in `H_b` is the same edge, not a new core return. |
+| `lemmas/target_advance_same_row_period_lemma.md` | proved | Pure same-row target-advance recurrence has exactly the row-orbit period; periods 1-2 are fixed/swap local cases. |
+| `lemmas/m496_target_advance_period_diagnostic.md` | diagnostic | M496 rows have periods 1,5,10,30; period >= 3 residual is not vacuous. |
+| `lemmas/two_row_target_advance_window_separation_lemma.md` | proved | Two distinct rows sharing a target-advance step have distinct left and right ports. |
+| `lemmas/two_row_orbit_theta_boundary.md` | boundary | Separated period >= 3 two-row cycles either first-intersect again or form a clean orbit theta. |
+| `lemmas/two_row_first_extra_intersection_routing_lemma.md` | proved reduction | Routes first extra row-orbit intersection to collision, fan/path, or clean same-input two-target bridge. |
+| `lemmas/clean_first_extra_matching_bridge_alignment.md` | proved reduction | Clean first-extra matching is a general V3-type same-input two-target bridge after target advance. |
+| `lemmas/general_v3_bridge_descent_boundary.md` | boundary | Exact M5/M6 descent obligation for clean first-extra V3 bridge. |
+| `lemmas/shared_step_anchored_triangle_boundary.md` | boundary | Shared-step anchored triangle in `H_h`; strong target is `U*h=W*h`. |
+| `lemmas/m496_shared_step_anchored_triangle_diagnostic.md` | diagnostic | M496 verifies `U*h=W*h` and the anchored incoming fan for all 892800 shared-step pairs. |
+| `lemmas/anchored_identity_negation_raw_diagnostic.md` | diagnostic | Size-9 raw negation of `U*h=W*h`: closure ok; 60s and 300s rawmodel timeouts without a model. |
+| `lemmas/anchored_identity_partial_reduction.md` | partial lemma | Reduces negated `U*h=W*h` to a back-projected shared step through one row `h`: `h*(T*U)=p`, `h*(S*W)=q`. |
+| `lemmas/m496_shared_step_relation_scan_diagnostic.md` | diagnostic | M496 scan around common `T=U*h=W*h`: only back-projection formulas are universal among checked short relations. |
+| `lemmas/anchored_x3_three_target_bridge_boundary.md` | boundary | False branch `U*h!=W*h` routes to an anchored three-target same-input bridge at common input `h`, with old target `b`. |
+| `lemmas/anchored_x3_second_triangle_pressure_lemma.md` | partial/proved pressure | Anchored-X3 false branch forces a second triangle layer in `H_h` carried by rows `T,S,b`. |
+| `lemmas/anchored_x3_source_orbit_boundary.md` | boundary | Converts clean anchored-X3 false branch to three fixed-target source-successor orbits in `H_h`: `U->T`, `W->S`, `z->b`. |
+| `lemmas/anchored_x3_rank_measure_candidate.md` | candidate | Adds `M7` anchored-X3 source-orbit first-event rank for the clean self-repeat residual. |
+| `lemmas/anchored_x3_visible_short_repeat_lemma.md` | lemma | Routes initial period-1 and period-2 right-`h` source-orbit repeats as visible hits, leaving only later/fresh self-repeat. |
+| `lemmas/anchored_x3_clean_self_repeat_normal_form.md` | boundary | Names the remaining M7 self-repeat as a clean right-`h` source-successor cycle, not an `H_h` path or left-row period. |
+| `atp/anchored_x3_m7_self_repeat.p` | ATP template | TPTP-style local template for testing concrete consequences of the clean anchored-X3/M7 self-repeat residual. |
+| `atp/check_atp_environment.ps1` | helper | Checks whether common ATP provers are visible before trying the M7 TPTP template. |
+| `lemmas/anchored_m7_saturation_diagnostic.md` | diagnostic | Bounded closure of the anchored-X3/M7 template: first fresh successors `T1,S1,B1` do not short-collapse. |
+| `lemmas/anchored_m7_first_event_routing_lemma.md` | proved reduction | Routes first anchored-M7 events 1-4; only clean same-orbit right-`h` self-repeat remains live. |
+| `lemmas/anchored_m7_first_merge_target.md` | routed target | First merge/repeat of the three right-`h` source orbits is reduced to clean self-repeat. |
+| `lemmas/anchored_m7_cycle_end_template.md` | template | Names start/end/next-to-last rows for the remaining clean right-`h` self-repeat cycle. |
+| `lemmas/anchored_m7_cycle_zipper_lemma.md` | proved local lemma | In a clean right-`h` source cycle, each `H_h` input has two formulas: `h*(r_{i+1}*r_i)=(r_{i-1}*r_i)*r_{i-1}`. |
+| `lemmas/anchored_m7_cycle_end_saturation_diagnostic.md` | diagnostic | Cycle-end closure gives zipper equations but no direct endpoint/input collision. |
+| `lemmas/anchored_m7_zipper_first_collision_target.md` | target | Routes zipper input repeats/output repeats/input-output hits; live branch is clean cyclic zipper matching. |
+| `lemmas/anchored_m7_zipper_target_advance_lemma.md` | proved transport | Target-advances the zipper to `H_{r_i}: h -> A_i`, a same-input bridge necklace. |
+| `lemmas/anchored_m7_coupled_zipper_bridge_residual.md` | active residual | Exact live object: clean `H_h` zipper matching coupled to clean same-input bridge necklace at input `h`. |
+| `lemmas/anchored_m7_zipper_lift_advance_equivalence_lemma.md` | proved transport | Adjacent zipper edges are exactly target-lifts of same-input splits at `h`; advance returns to V3 bridge necklace. |
+| `lemmas/anchored_m7_clean_v3_necklace_obstruction.md` | active obstruction | Fully clean remaining object is a closed necklace of V3 bridges at common input `h`; next target is measure comparison. |
+| `lemmas/anchored_m7_v3_necklace_measure_extension.md` | measure candidate | Adds M8 for adjacent V3 bridges born inside the M7 self-repeat; isolates admissibility gap. |
+| `lemmas/anchored_m7_reduces_to_general_v3_admissibility.md` | conditional reduction | Anchored M7 clean necklace closes under a unified clean same-input V3 admissibility principle. |
+| `lemmas/clean_same_input_v3_admissibility_frontier.md` | active frontier | Unified target for first-extra V3 and anchored-M7 V3: ungenerated clean same-input bridge admissibility. |
+| `lemmas/clean_same_input_v3_second_layer_expansion_lemma.md` | proved expansion | Any V3 bridge forces a second same-target layer in `H_z`; the clean residual is a four-edge V3 matching. |
+| `lemmas/clean_v3_fixed_target_source_orbit_reduction.md` | proved reduction | Clean V3 four-edge matching is the first two layers of two right-`z` source orbits; only clean self-repeat zipper remains. |
+| `lemmas/fixed_target_zipper_bridge_necklace_lemma.md` | proved transport | Any clean fixed-target source self-repeat gives a coupled zipper/V3 necklace; unifies anchored-M7 and V3-born residuals. |
+| `lemmas/fixed_target_zipper_reduces_to_v3_admissibility.md` | conditional reduction | A clean fixed-target zipper necklace closes if zipper-born adjacent V3 bridges are admissible as smaller relay objects. |
+| `lemmas/zipper_born_v3_second_layer_shift_lemma.md` | proved clarification | A zipper-born adjacent V3 second layer is a shifted zipper window, not a fresh generic four-edge V3 matching. |
+| `lemmas/fixed_target_period3_zipper_boundary.md` | db-supported boundary | External db clean self-repeats all include the depth-3 `z -> b -> b*h -> z` zipper triangle, whose target advance is a clean three-target same-input bridge. |
+| `lemmas/period3_zipper_triangle_self_renewal_lemma.md` | proved clarification | Period-3 triangle pressure produces the same zipper triangle shifted, so old X3 pressure alone does not close the residual. |
+| `lemmas/period3_zipper_exact_measure_reduction.md` | conditional reduction | Period-3 closes if the explicit earlier bridge `H_b,H_c` is admissible; otherwise the final gap is a self-renewing triangle not accepted by the measure. |
+| `lemmas/period3_zipper_saturation_diagnostic.md` | diagnostic | Depth-5 local closure confirms period-3 zipper formulas but no short clean collapse, idempotence, or direct E255 for displayed vertices. |
+| `lemmas/period3_db_identity_scan_diagnostic.md` | diagnostic | Size-77 db period-3 examples have universal short fingerprints such as `h*h=z*b`, but local E677 closure does not derive them. |
+| `lemmas/anchored_period3_fingerprint_saturation_diagnostic.md` | diagnostic | Anchored size-77 fingerprints `p*c=T`, `U*z=Ib` and shifted-window hit roles are not local E677 closure routes. |
+| `lemmas/v3_admissibility_gap_audit_2026_06_27.md` | boundary audit | Local shifted-window closures are exhausted; live target is global admissibility of zipper-born adjacent V3 bridges as smaller relay objects. |
+| `lemmas/period3_core_hook_diagnostic.md` | diagnostic | Public strict period-3 db examples put all hooks in 2-core; the middle `H_c` hook has a named outgoing fan at `h` with second row `Ib`. |
+| `lemmas/period3_middle_target_core_hook_frontier.md` | active frontier | Replaces broad shifted-window admissibility with the concrete target: prove `Ib*h=c`, or fall back to named-negation/core-hook splits. |
+| `lemmas/period3_named_fan_reduces_to_Ibhc_lemma.md` | proved reduction | Shows the named middle-target fan only needs `Ib*h=c`; output equality would force `Ib=b` by ported-interval reconstruction. |
+| `lemmas/period3_row_b_Ib_c_input_v3_lemma.md` | proved reduction | Shows clean period-3 either routes `Ib*c=b*c`, or rows `b,Ib` form a standard V3 bridge at common input `c`; named fan is the equal-lift-input subcase. |
+| `lemmas/period3_c_input_v3_second_layer_boundary.md` | boundary/diagnostic | Expands the `c`-input V3 to its four-edge `H_c` second layer; `Ib*c=z` is a watched hit, otherwise the clean residual is generic V3 in `H_c`. |
+| `lemmas/period3_c_input_v3_fixed_target_orbit_boundary.md` | boundary | Specializes clean V3 orbit reduction: the clean `c`-input branch becomes two right-`c` source orbits `b->BC...` and `Ib->A...`, then first event or fixed-target zipper. |
+| `lemmas/period3_c_input_fresh_A_rawmodel_diagnostic.md` | diagnostic | Weak fresh-A template has no size-7 arbitrary E677 model; size 8 timed out at 60s without a model. |
+| `lemmas/period3_all_cycles_Ibc_scan_diagnostic.md` | diagnostic | All cached period-3 cycles show `Ib*c=z` is not general; strict misses often have `(Ib*c)*Ib=c` and row-Ib input `c*c`. |
+| `lemmas/period3_m7_witness_named_profile_diagnostic.md` | diagnostic | Cycle-level db scan: all 240 strict period-3 cycles with an M7 witness have `Ib*c=z`, `z*Ib=Ic`, `(Ib*c)*Ib=Ic`, and `Ib*h=c`. |
+| `lemmas/period3_m7_witness_named_profile_candidate.md` | candidate | Exact theorem target: clean shared-step/M7 period-3 should force `Ib*c=z` and likely the full named profile. |
+| `lemmas/period3_clean_anchored_profile_diagnostic.md` | diagnostic/candidate | Stronger db filter: all 13200 strict period-3 shared-step false-branch candidates are clean and have `Ib*c=z`, `K=Ic`, `L=h`, `Ib*h=c`, `z*Ib=Ic`; local depth-5 closure does not derive this. |
+| `lemmas/period3_shared_step_profile_candidate.md` | candidate | New exact proof target: strict period-3 plus shared-step anchored false branch should force the full named profile before M7 first-event minimality is needed. |
+| `lemmas/period3_shifted_hook_pair_implies_named_fan_lemma.md` | proved reduction/target | Shows `(Ib*c)*Ib=Ic` implies `Ib*h=c`; the db-supported shifted hooks `Ib*c=z` and `z*Ib=Ic` are a sufficient pair. |
+| `lemmas/period3_shifted_input_failure_v3_bridge_lemma.md` | proved reduction | Shows failure of `(Ib*c)*Ib=Ic` gives a clean same-target pair in `H_c`, which target-advances to a standard V3 bridge at common input `c`. |
+| `lemmas/period3_input_source_fan_boundary.md` | boundary/diagnostic | If `Ib*h!=c`, the negation adds `P -> D` in `H_h` and starts a fresh right-`h` source orbit `Ib -> D -> ...`; depth-4 closure finds no immediate local hits. |
+| `lemmas/period3_named_fan_v3_dichotomy_lemma.md` | proved reduction | Packages period-3 into a dichotomy: `Ib*h=c` gives a named `H_c` fan; otherwise rows `b,Ib` form a standard V3 bridge at input `h`. |
+| `lemmas/period3_named_fan_negation_is_v3_bridge_lemma.md` | proved reduction/diagnostic | Identifies `Ib*h!=c` as a clean same-input V3 bridge between rows `b` and `Ib`; depth-4 closure finds no immediate target-advance hit. |
+| `lemmas/period3_named_fan_negation_orbit_first_event_boundary.md` | boundary | Named fan failure reduces to a fresh right-`h` orbit from `Ib`, watched against the period-3 cycle until first event or clean self-repeat. |
+| `lemmas/period3_zipper_e255_target_atp_note.md` | ATP note | Prepared direct ATP target for `period-3 zipper => E255(b)`; no prover currently visible in PATH. |
+| `atp/anchored_m7_cycle_end.p` | ATP template | TPTP cycle-end template for the clean anchored-M7 self-repeat residual. |
+| `atp/period3_zipper_e255_target.p` | ATP template | TPTP template for testing whether clean period-3 zipper forces E255 or db fingerprint identities. |
+| `lemmas/eq677_repo_idea_notes.md` | external idea notes | Records useful ideas from memoryleak47/eq677: cycle-end ATP template and `d(x)=((x*x)*x)` short-identity scans. |
+| `lemmas/eq677_db_shared_step_scan_diagnostic.md` | diagnostic | Full external db scan: global `U*h=W*h` is false; clean-X3 false pairs route by source-orbit first event or reach the M7 clean self-repeat residual. |
+| `lemmas/m496_anchored_d_term_scan_diagnostic.md` | diagnostic/warning | M496 d-term scan is explained by global idempotence `x*x=x`; do not use it as anchored-specific evidence. |
+| `lemmas/anchored_d_term_strong_branch_raw_diagnostic.md` | diagnostic | Strong anchored branch plus `h*h!=h`/`d(h)!=h` stays raw-closure consistent; size-9 `h*h!=h` model search timed out. |
+| `lemmas/m496_shared_step_orbit_split_diagnostic.md` | diagnostic | In M496, every shared-step row pair has an extra cycle intersection; clean orbit theta does not appear. |
+| `lemmas/m496_first_extra_intersection_roles_diagnostic.md` | diagnostic | In M496, first extra intersections are always same-output fans; clean matching is absent. |
+| `lemmas/clean_first_extra_pattern_raw_diagnostic.md` | diagnostic | Size-9 raw clean first-extra pattern: closure ok; 60s rawmodel search timed out without a model. |
+| `lemmas/minimal_g12_loop_normal_form_boundary.md` | boundary | Normal form for the remaining G12 loop: only period >= 3 same-source target-advance recurrences remain. |
+| `lemmas/corridor_side_attachment_shortening_lemma.md` | graph observation | Side attachment gives smaller old-corridor footprint. |
+| `lemmas/branch_closure_no_free_tail_candidate.md` | older candidate | Use only for historical branch-closure context. |
+
+## Warnings And Retired Paths
+
+| File | Status | Use |
+|---|---|---|
+| `lemmas/directed_two_edge_canonical_collapse_boundary.md` | warning | Do not use canonical two-edge witness as black-box stopper. |
+| `lemmas/mixed_row_lift_sufficient_candidate.md` | rejected/too strong | Do not rely on it. |
+| `archive/STOP_CHECKPOINT_2026-06-08.md` | historical | Old checkpoint, not current start. |
+| `archive/STOP_CHECKPOINT_2026-06-09.md` | historical | Old checkpoint, not current start. |
+| `logs/research_log.md` | historical log | Read only for exact provenance of a past step. |
+
+## Scripts
+
+| File | Status | Use |
+|---|---|---|
+| `tools/crossed_double_fan_saturation.js` | active diagnostic | Shallow closure checks for crossed-fan equalities; supports `tb=*` flags. |
+| `tools/y3_shell_saturation.py` | active diagnostic | Bounded local congruence check for the Y3/Z3 shell; needs a real Python executable. |
+| `tools/search_counterexample_strong.js` | active search tool | Use raw modes only for precise bounded hypotheses. |
+| `tools/m496_target_advance_periods.js` | diagnostic | Scans pure same-row target-advance row periods in the known M496 model. |
+| `tools/m496_shared_step_orbit_split.js` | diagnostic | Scans shared-step row pairs in M496 for extra cycle intersections versus clean orbit theta. |
+| `tools/m496_first_extra_intersection_roles.js` | diagnostic | Classifies first extra row-cycle intersections in M496 by same-target trichotomy roles. |
+| `tools/m496_anchored_d_term_scan.js` | diagnostic | Scans anchored shared-step pairs in M496 for short `d(x)=((x*x)*x)` relations. |
+| `tools/eq677_db_shared_step_scan.js` | diagnostic | Downloads selected external eq677 `db` files into ignored cache and scans shared-step anchored triangle roles. |
+| `tools/anchored_m7_cycle_end_saturation.js` | diagnostic | Bounded equality closure for anchored-M7 cycle-end/zipper residual. |
+| `tools/period3_zipper_saturation.js` | diagnostic | Bounded equality closure for the clean self-renewing period-3 zipper triangle. |
+| `tools/period3_db_identity_scan.js` | diagnostic | Scans strict clean period-3 db representatives for universal named product identities. |
+| `tools/anchored_period3_saturation.js` | diagnostic | Bounded closure for anchored-X3 plus period-3 fingerprints such as `p*c=T` and `U*z=Ib`. |
+| `tools/period3_core_hook_scan.js` | diagnostic | Scans strict period-3 db examples for 2-core membership and core-component excess of the target-advanced hook edges. |
+| `tools/m496_shared_step_anchored_triangle.ps1` | diagnostic | PowerShell M496 check for shared-step anchored triangle and `U*h=W*h`. |
+| `tools/git.cmd` | infrastructure | Use if plain `git` is not visible in PATH. |

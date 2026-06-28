@@ -249,6 +249,11 @@ for (; closeRounds < formulaRounds; closeRounds++) {
 }
 
 const useful = [
+  [op(ib, c), z, "A=Ib*c=z"],
+  [op(op(ib, c), ib), ic, "K=(Ib*c)*Ib=Ic"],
+  [op(c, op(op(ib, c), ib)), h, "L=c*((Ib*c)*Ib)=h"],
+  [op(ib, h), c, "Ib*h=c"],
+  [op(z, ib), ic, "z*Ib=Ic"],
   [op(p, c), t, "p*c=T"],
   [op(q, c), s, "q*c=S"],
   [op(u, z), ib, "U*z=Ib"],
@@ -285,7 +290,6 @@ const useful = [
   [cz, c, "CZ hits source c"],
   [op(h, h), zb, "h*h=ZB"],
   [op(h, alpha), b, "h*alpha=b"],
-  [op(z, ib), ic, "z*Ib=Ic"],
   [d4(b), b, "E255(b)"],
   [d4(z), z, "E255(z)"],
   [d4(c), c, "E255(c)"],

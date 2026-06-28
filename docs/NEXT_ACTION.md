@@ -823,6 +823,216 @@ The dichotomy file is the compact entry point.  It says period-3 splits into:
 2. Ib*h!=c -> standard same-input V3 bridge between rows b and Ib at h.
 ```
 
+The best current direct route to the first case is not to guess `Ib*h=c`
+again.  Use:
+
+```text
+period3_row_b_Ib_c_input_v3_lemma.md
+period3_shifted_hook_pair_implies_named_fan_lemma.md
+```
+
+The first file is now the best compact entry point for the middle-target
+period-3 branch.  It says:
+
+```text
+either Ib*c=b*c routes as an H_c output merge,
+or rows b and Ib form a standard V3 bridge at common input c.
+```
+
+Use next:
+
+```text
+period3_c_input_v3_second_layer_boundary.md
+period3_c_input_v3_fixed_target_orbit_boundary.md
+```
+
+It sharpens the `c`-input bridge:
+
+```text
+A=Ib*c hits watched data, especially A=z -> routed attachment;
+L=c*((Ib*c)*Ib)=h -> named H_c fan;
+otherwise -> generic clean four-edge V3 matching in H_c.
+```
+
+If the third case remains clean, the fixed-target orbit boundary says the
+object is now two right-`c` source orbits:
+
+```text
+b  -> BC -> BC*c -> ...
+Ib -> A  -> A*c  -> ...
+```
+
+First source/output/input/cross/watched events route; only a clean right-`c`
+self-repeat remains, which is the generic fixed-target zipper/V3 necklace.
+
+It proves:
+
+```text
+(Ib*c)*Ib=Ic  =>  Ib*h=c.
+```
+
+The db-supported shifted hook pair is a concrete sufficient condition:
+
+```text
+Ib*c=z and z*Ib=Ic  =>  (Ib*c)*Ib=Ic  =>  Ib*h=c.
+```
+
+Both shifted hooks hold in all `6240` cached strict period-3 db examples, but
+the bare depth-5/16 local saturation still does not derive them.  Therefore
+the next direct target is:
+
+```text
+prove the watched hit Ib*c=z or the fan input L=h from global/minimality/core data,
+or show the fully clean four-edge V3 in H_c is admissible under the unified
+clean V3 frontier.
+```
+
+Important warning from:
+
+```text
+period3_all_cycles_Ibc_scan_diagnostic.md
+```
+
+Do not try to prove `Ib*c=z` from the bare period-3 zipper alone.  A scan of
+all cached period-3 right-`h` cycles found strict clean cycles with fresh
+`A=Ib*c`, often satisfying:
+
+```text
+(Ib*c)*Ib=c,
+L=c*c.
+```
+
+The identity `Ib*c=z` is supported for the strict shared-step/G12 residual,
+not for arbitrary period-3 cycles.  Any proof of this watched hit must use
+the extra G12 origin: shared-step anchored triangle, first-event minimality,
+or relay/core assumptions.
+
+The size-49 check is the warning example: broad all-cycle fresh profiles occur
+there, but the shared-step scan has:
+
+```text
+period3AdvancePairs=0,
+firstOrbitCleanSelfRepeat=0.
+```
+
+So those fresh period-3 cycles are routed before the current M7/G12
+period-3 residual.
+
+Use the sharper cycle-level witness diagnostic:
+
+```text
+period3_m7_witness_named_profile_diagnostic.md
+tools/period3_m7_witness_cycle_scan.js
+```
+
+It says that among all cached db cycles:
+
+```text
+strict period-3 cycles:              201500
+strict cycles with M7 witness:          240
+pair-level M7 witnesses:              6240
+M7 cycles without Ib*c=z:                0
+```
+
+Moreover every M7-witness cycle has the full profile:
+
+```text
+Ib*c=z,
+z*Ib=Ic,
+(Ib*c)*Ib=Ic,
+Ib*h=c.
+```
+
+The sharper intermediate diagnostic is now:
+
+```text
+period3_clean_anchored_profile_diagnostic.md
+period3_shared_step_profile_candidate.md
+tools/period3_clean_triple_identity_scan.js
+tools/period3_shared_step_dirty_reason_scan.js
+```
+
+It shows that the M7 first-event condition is probably not the first place
+where the profile is forced.  In the cached db, all strict period-3
+shared-step false-branch candidates already have:
+
+```text
+Ib*c=z,
+z*Ib=Ic,
+(Ib*c)*Ib=Ic,
+Ib*h=c,
+c*((Ib*c)*Ib)=h.
+```
+
+Counts:
+
+```text
+strict shared-step period-3 candidates: 13200
+clean anchored-X3 triples:             13200
+dirty anchored-X3 triples:                 0
+examples without Ib*c=z:                  0
+```
+
+Depth-4 and depth-5 anchored local saturation did not derive this profile,
+even after adding the db fingerprints:
+
+```text
+p*c=T,
+q*c=S,
+U*z=Ib,
+W*z=Ib.
+```
+
+So the next proof target is now the stronger shared-step period-3 profile
+lemma:
+
+```text
+strict period-3 cycle + shared-step anchored false branch
+=> named profile above,
+```
+
+or at least the first watched hit `Ib*c=z`.
+
+The older M7 theorem target remains a consequence:
+
+```text
+period3_m7_witness_named_profile_candidate.md
+```
+
+but the contradiction target should be moved one layer earlier:
+
+```text
+strict period-3 + shared-step anchored false branch + Ib*c!=z
+```
+
+Try to show that this branch cannot satisfy the shared-step equations at all,
+or that it immediately creates one of the standard routed events.  The useful
+fingerprints to derive structurally are:
+
+```text
+U*z=Ib,
+W*z=Ib,
+p*c=T,
+q*c=S.
+```
+
+Then use the two-row structure together, not any single fingerprint alone, to
+force the named period-3 profile or a routed event.
+
+The failure route is now recorded in:
+
+```text
+period3_shifted_input_failure_v3_bridge_lemma.md
+```
+
+It says:
+
+```text
+(Ib*c)*Ib!=Ic, clean
+-> row b and row Ib form a clean same-target pair in H_c
+-> target advance gives a standard same-input V3 bridge at common input c.
+```
+
 The second file identifies the negation as a standard clean same-input V3
 bridge:
 
