@@ -811,10 +811,35 @@ problem, much narrower than the old V3 admissibility gap.
 This is now recorded in:
 
 ```text
+period3_named_fan_v3_dichotomy_lemma.md
+period3_named_fan_negation_is_v3_bridge_lemma.md
 period3_named_fan_negation_orbit_first_event_boundary.md
 ```
 
-It says the clean named-fan negation becomes:
+The dichotomy file is the compact entry point.  It says period-3 splits into:
+
+```text
+1. Ib*h=c -> named outgoing fan in H_c at h;
+2. Ib*h!=c -> standard same-input V3 bridge between rows b and Ib at h.
+```
+
+The second file identifies the negation as a standard clean same-input V3
+bridge:
+
+```text
+b*h=c,
+Ib*h=D,
+D!=c.
+```
+
+Its target-lift in `H_h` is exactly:
+
+```text
+Ib -> c,
+P  -> D.
+```
+
+The second file says the clean named-fan negation becomes:
 
 ```text
 a fresh right-h source-successor orbit starting at Ib,
