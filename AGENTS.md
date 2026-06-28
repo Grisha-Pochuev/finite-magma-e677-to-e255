@@ -244,6 +244,61 @@ As of 2026-05-24, future work should use a token-saving role split:
 The goal is to spend the strongest reasoning on mathematical decisions, not on
 routine enumeration or long status narration.
 
+## Repository Hygiene And Commit Rule
+
+As of 2026-06-29, repository structure must be protected before every commit
+or publication step.
+
+Allowed root files are only:
+
+```text
+README.md
+AGENTS.md
+CONTRIBUTING.md
+LICENSE
+CITATION.cff
+.gitignore
+.rgignore
+verify_*.ps1
+verify_*.cmd
+```
+
+All working research notes belong in `lemmas/`.  Status and navigation files
+belong in `docs/`.  Historical checkpoints belong in `archive/`.  Logs belong
+in `logs/`.  Scripts belong in `tools/`.  Do not leave new lemma, boundary,
+candidate, diagnostic, frontier, period, orbit, bridge, fan, zipper, relay, or
+row markdown files in the repository root.
+
+`README.md` is a public front page, not a working scratchpad.  Do not rewrite
+it from scratch.  Preserve the background, Equational Theories Project
+references, Terence Tao quote, acknowledgements, and repository explanation.
+Only update README in the narrow current-progress/status area or to fix links
+after file moves.  If a README edit is needed, inspect the diff before commit
+and reject accidental rewrites of the public introduction/background.
+
+Before every commit, run a repository hygiene check:
+
+```text
+git status --short
+git diff --stat
+list root files
+```
+
+If unexpected root-level markdown files appear, move them first with `git mv`
+when tracked.  If `README.md` is modified, inspect the README diff separately
+and confirm that only the intended current-progress/link lines changed.
+
+Commit protocol:
+
+- keep cleanup commits separate from mathematical research commits;
+- use one clear branch per publication task;
+- fetch `origin` before comparing or publishing;
+- never force push;
+- if local history diverges from `origin/main`, create a safe branch from
+  `origin/main` and publish through a pull request;
+- before pushing, run `git diff --check` or `git diff --cached --check`;
+- after pushing, report the branch, commit SHA, and PR link if one was created.
+
 ## Communication Style
 
 Speak to the user in Russian by default.

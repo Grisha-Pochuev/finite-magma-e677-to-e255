@@ -20,6 +20,42 @@ github_publish/
 github_upload_update_2026-06-08/
 ```
 
+## Repository Hygiene / Commit Protocol
+
+Added 2026-06-29.
+
+This repository must not accumulate working Markdown files in the root. Keep:
+
+- public front-door files in root (`README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `LICENSE`, `CITATION.cff`, ignore files, verify launchers);
+- status and navigation files in `docs/`;
+- lemmas, candidates, diagnostics, frontiers, periods, orbits, bridges, relays, and other working research notes in `lemmas/`;
+- logs in `logs/`;
+- old checkpoints and upload notes in `archive/`;
+- scripts in `tools/`.
+
+Before every commit:
+
+1. run `git status --short`;
+2. inspect the root file list;
+3. inspect `git diff --stat`;
+4. run `git diff --check` or `git diff --cached --check`.
+
+Do not commit if unexpected root-level Markdown files remain.
+
+README rule:
+
+- do not rewrite `README.md` from scratch;
+- preserve the public background, Equational Theories Project references, Terence Tao quote, acknowledgements, and repository explanation;
+- update only the current progress/status area or links;
+- always inspect `git diff -- README.md` before commit when `README.md` changes.
+
+Publication rule:
+
+- fetch `origin` first;
+- never force push;
+- use a branch and pull request when local history diverges from `origin/main`;
+- keep cleanup commits separate from mathematical research commits.
+
 Искать в этих каталогах только при проверке конкретной старой записи или
 публикационного пакета, явно задавая нужный путь. Не использовать режимы
 `rg -u` или `rg -uu` для обычного исследования.
