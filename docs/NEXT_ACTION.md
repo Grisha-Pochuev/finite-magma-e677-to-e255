@@ -429,6 +429,48 @@ But the local period-3 E677 closure does not derive them.  Treat these as
 db/E255-model hints, not as proved E677 consequences, unless a new global
 minimality reason is found.
 
+The same diagnostic also tested each fingerprint, and the full fingerprint
+package, as extra local assumptions.  They still do not force a clean
+collapse or direct E255 for `z,b,c,h` in the bounded period-3 saturation.
+Therefore the next useful move is still the global admissibility problem for
+the shifted-window bridge `H_b,H_c`, not another local fingerprint chase.
+
+The anchored size-77 fingerprints:
+
+```text
+p*c=T,
+q*c=S,
+U*z=Ib,
+W*z=Ib
+```
+
+were also tested in:
+
+```text
+anchored_period3_fingerprint_saturation_diagnostic.md
+tools/anchored_period3_saturation.js
+```
+
+They are not derived by the local anchored period-3 closure, and even assuming
+them all does not force `T=S`, E255 on `z,b,c,h`, or a visible clean collapse.
+So do not chase these anchored fingerprints as the next local closure route.
+
+The direct ATP target:
+
+```text
+period-3 zipper => E255(b)
+```
+
+is prepared in:
+
+```text
+atp/period3_zipper_e255_target.p
+period3_zipper_e255_target_atp_note.md
+```
+
+No ATP prover is currently visible in PATH, so this is a prepared target, not
+a proved theorem.
+
 So the external db supports the current theoretical path:
 
 ```text
@@ -540,3 +582,497 @@ If this sentence is proved, both the anchored-M7 clean necklace and the
 V3-born clean self-repeat zipper close.  If it fails, the final obstruction is
 a fully clean fixed-target zipper/V3 necklace whose adjacent shifted V3
 windows cannot be inserted into the global relay measure.
+
+## 2026-06-27 Shifted-Window Audit
+
+Use first:
+
+```text
+v3_admissibility_gap_audit_2026_06_27.md
+```
+
+It records the current exact boundary:
+
+```text
+local shifted-window closures are exhausted;
+the remaining issue is global admissibility of a zipper-born adjacent V3
+bridge as a smaller relay object.
+```
+
+The anchored period-3 diagnostic was sharpened:
+
+```text
+tools/anchored_period3_saturation.js
+anchored_period3_fingerprint_saturation_diagnostic.md
+```
+
+It now checks not only db fingerprints:
+
+```text
+p*c=T,
+q*c=S,
+U*z=W*z=Ib,
+```
+
+but also ordinary local hit roles for the shifted bridge:
+
+```text
+H_b: h -> z*b,
+H_c: h -> b*c,
+```
+
+for the full triangle:
+
+```text
+H_z: h -> c*z,
+H_b: h -> z*b,
+H_c: h -> b*c,
+```
+
+and its lift:
+
+```text
+alpha -> b,
+Ib    -> c,
+Ic    -> z.
+```
+
+Result:
+
+```text
+even after assuming the db fingerprints, no same-output hit, input-output hit,
+lift-triangle hit, source hit, T=S, or E255(z/b/c/h) is derived.
+```
+
+Therefore do not chase more isolated anchored period-3 fingerprints next.
+Also do not try to close period-3 by merely reapplying X3 triangle pressure:
+that pressure self-renews the same zipper triangle.
+
+The next useful lemma is:
+
+```text
+Shifted-window admissibility lemma:
+in a minimal G12 relay loop, a clean adjacent V3 bridge born inside a
+fixed-target zipper before the terminal self-repeat is either locally routed
+or is a smaller admissible relay object.
+```
+
+Important caution from the audit:
+
+```text
+the inequality MZ<n is chronological, not automatically a shorter autonomous
+cycle.  The proof must justify that the earlier shifted window belongs to the
+same minimized relay/ported-object class, or explain how it creates such an
+object.
+```
+
+## 2026-06-27 Period-3 Core-Hook Diagnostic
+
+Use:
+
+```text
+period3_core_hook_diagnostic.md
+period3_middle_target_core_hook_frontier.md
+tools/period3_core_hook_scan.js
+```
+
+The public db strict period-3 examples now give a sharper clue:
+
+```text
+total strict period-3 examples: 6240
+
+H_b hook row z is always in the 2-core, but its component has excess 0.
+H_z hook row c is always in the 2-core, but its component has excess 0.
+H_c hook row b is always in the 2-core, and its component has excess 9.
+At the endpoint, H_c has HcOutAtH=11 and HcInAtBC=1 in all examples.
+```
+
+So the old-target edge:
+
+```text
+H_b: h -> z*b
+```
+
+is probably not enough by itself.  The stronger db-supported route is the
+middle target:
+
+```text
+c=b*h,
+H_c: h -> b*c.
+```
+
+Next theoretical target:
+
+```text
+Named middle-target fan lemma:
+in a minimal clean period-3 G12 residual, the zipper input Ib satisfies
+
+    Ib*h=c.
+
+The db-supported stronger target is:
+
+    Ib*h=c,
+    Ib*c=z.
+```
+
+If proved, the shifted-window bridge becomes an ordinary outgoing fan in
+`H_c` at the common input `h`.
+
+Use:
+
+```text
+period3_named_fan_reduces_to_Ibhc_lemma.md
+```
+
+It proves that output separation is automatic: if `Ib*h=c` but
+`Ib*c=b*c`, then rows `Ib` and `b` have the same full ported interval
+`(c,h,b*c)`, forcing `Ib=b`, a routed clean collision.
+
+Exact negation to attack if the fan lemma fails:
+
+```text
+Ib*h!=c; equivalently, the named db fan row does not pass through c at input h.
+```
+
+The older unique-preimage residual is stronger:
+
+```text
+b is the unique row with b*h=c.
+```
+
+Equivalently, in `H_h` the zipper edge `Ib -> c` carried by row `b` is the
+only edge entering `c`.  Do not confuse this stronger residual with the
+single named negation `Ib*h!=c`.
+
+Important mechanism note:
+
+```text
+Ib*h=c is an input-source fan claim.
+```
+
+It says the input `Ib=pred_b(h)` of the row-`b` zipper edge becomes a source
+row through the same input `h` after target swap to `c`.  Existing
+target-swap/reversible-square lemmas transport known intervals, but do not
+prove this input-source claim directly.
+
+If `Ib*h=c` is not proved, use:
+
+```text
+period3_input_source_fan_boundary.md
+```
+
+It sets:
+
+```text
+D=Ib*h,
+P=pred_{Ib}(h)=h*(D*Ib),
+```
+
+and records that the negation `D!=c` adds a fourth edge in `H_h`:
+
+```text
+alpha -> b,
+Ib    -> c,
+Ic    -> z,
+P     -> D.
+```
+
+Any local hit routes; the clean residual is this four-edge input-source
+extension of the period-3 zipper.
+
+The same file also records the forced successor layer.  With:
+
+```text
+E=Ib*D,
+```
+
+row `D` gives in `H_h`:
+
+```text
+(E*Ib) -> D*h.
+```
+
+So named fan failure creates a fresh right-`h` source orbit:
+
+```text
+Ib -> D -> D*h -> ...
+```
+
+The next proof should compare this orbit with the period-3 orbit:
+
+```text
+z -> b -> c -> z.
+```
+
+First source/output/input/cross hits should route by fixed-target first-event
+machinery.  The remaining clean residual would be a two-orbit fixed-target
+problem, much narrower than the old V3 admissibility gap.
+
+This is now recorded in:
+
+```text
+period3_named_fan_v3_dichotomy_lemma.md
+period3_named_fan_negation_is_v3_bridge_lemma.md
+period3_named_fan_negation_orbit_first_event_boundary.md
+```
+
+The dichotomy file is the compact entry point.  It says period-3 splits into:
+
+```text
+1. Ib*h=c -> named outgoing fan in H_c at h;
+2. Ib*h!=c -> standard same-input V3 bridge between rows b and Ib at h.
+```
+
+The best current direct route to the first case is not to guess `Ib*h=c`
+again.  Use:
+
+```text
+period3_row_b_Ib_c_input_v3_lemma.md
+period3_shifted_hook_pair_implies_named_fan_lemma.md
+```
+
+The first file is now the best compact entry point for the middle-target
+period-3 branch.  It says:
+
+```text
+either Ib*c=b*c routes as an H_c output merge,
+or rows b and Ib form a standard V3 bridge at common input c.
+```
+
+Use next:
+
+```text
+period3_c_input_v3_second_layer_boundary.md
+period3_c_input_v3_fixed_target_orbit_boundary.md
+```
+
+It sharpens the `c`-input bridge:
+
+```text
+A=Ib*c hits watched data, especially A=z -> routed attachment;
+L=c*((Ib*c)*Ib)=h -> named H_c fan;
+otherwise -> generic clean four-edge V3 matching in H_c.
+```
+
+If the third case remains clean, the fixed-target orbit boundary says the
+object is now two right-`c` source orbits:
+
+```text
+b  -> BC -> BC*c -> ...
+Ib -> A  -> A*c  -> ...
+```
+
+First source/output/input/cross/watched events route; only a clean right-`c`
+self-repeat remains, which is the generic fixed-target zipper/V3 necklace.
+
+It proves:
+
+```text
+(Ib*c)*Ib=Ic  =>  Ib*h=c.
+```
+
+The db-supported shifted hook pair is a concrete sufficient condition:
+
+```text
+Ib*c=z and z*Ib=Ic  =>  (Ib*c)*Ib=Ic  =>  Ib*h=c.
+```
+
+Both shifted hooks hold in all `6240` cached strict period-3 db examples, but
+the bare depth-5/16 local saturation still does not derive them.  Therefore
+the next direct target is:
+
+```text
+prove the watched hit Ib*c=z or the fan input L=h from global/minimality/core data,
+or show the fully clean four-edge V3 in H_c is admissible under the unified
+clean V3 frontier.
+```
+
+Important warning from:
+
+```text
+period3_all_cycles_Ibc_scan_diagnostic.md
+```
+
+Do not try to prove `Ib*c=z` from the bare period-3 zipper alone.  A scan of
+all cached period-3 right-`h` cycles found strict clean cycles with fresh
+`A=Ib*c`, often satisfying:
+
+```text
+(Ib*c)*Ib=c,
+L=c*c.
+```
+
+The identity `Ib*c=z` is supported for the strict shared-step/G12 residual,
+not for arbitrary period-3 cycles.  Any proof of this watched hit must use
+the extra G12 origin: shared-step anchored triangle, first-event minimality,
+or relay/core assumptions.
+
+The size-49 check is the warning example: broad all-cycle fresh profiles occur
+there, but the shared-step scan has:
+
+```text
+period3AdvancePairs=0,
+firstOrbitCleanSelfRepeat=0.
+```
+
+So those fresh period-3 cycles are routed before the current M7/G12
+period-3 residual.
+
+Use the sharper cycle-level witness diagnostic:
+
+```text
+period3_m7_witness_named_profile_diagnostic.md
+tools/period3_m7_witness_cycle_scan.js
+```
+
+It says that among all cached db cycles:
+
+```text
+strict period-3 cycles:              201500
+strict cycles with M7 witness:          240
+pair-level M7 witnesses:              6240
+M7 cycles without Ib*c=z:                0
+```
+
+Moreover every M7-witness cycle has the full profile:
+
+```text
+Ib*c=z,
+z*Ib=Ic,
+(Ib*c)*Ib=Ic,
+Ib*h=c.
+```
+
+The sharper intermediate diagnostic is now:
+
+```text
+period3_clean_anchored_profile_diagnostic.md
+period3_shared_step_profile_candidate.md
+tools/period3_clean_triple_identity_scan.js
+tools/period3_shared_step_dirty_reason_scan.js
+```
+
+It shows that the M7 first-event condition is probably not the first place
+where the profile is forced.  In the cached db, all strict period-3
+shared-step false-branch candidates already have:
+
+```text
+Ib*c=z,
+z*Ib=Ic,
+(Ib*c)*Ib=Ic,
+Ib*h=c,
+c*((Ib*c)*Ib)=h.
+```
+
+Counts:
+
+```text
+strict shared-step period-3 candidates: 13200
+clean anchored-X3 triples:             13200
+dirty anchored-X3 triples:                 0
+examples without Ib*c=z:                  0
+```
+
+Depth-4 and depth-5 anchored local saturation did not derive this profile,
+even after adding the db fingerprints:
+
+```text
+p*c=T,
+q*c=S,
+U*z=Ib,
+W*z=Ib.
+```
+
+So the next proof target is now the stronger shared-step period-3 profile
+lemma:
+
+```text
+strict period-3 cycle + shared-step anchored false branch
+=> named profile above,
+```
+
+or at least the first watched hit `Ib*c=z`.
+
+The older M7 theorem target remains a consequence:
+
+```text
+period3_m7_witness_named_profile_candidate.md
+```
+
+but the contradiction target should be moved one layer earlier:
+
+```text
+strict period-3 + shared-step anchored false branch + Ib*c!=z
+```
+
+Try to show that this branch cannot satisfy the shared-step equations at all,
+or that it immediately creates one of the standard routed events.  The useful
+fingerprints to derive structurally are:
+
+```text
+U*z=Ib,
+W*z=Ib,
+p*c=T,
+q*c=S.
+```
+
+Then use the two-row structure together, not any single fingerprint alone, to
+force the named period-3 profile or a routed event.
+
+The failure route is now recorded in:
+
+```text
+period3_shifted_input_failure_v3_bridge_lemma.md
+```
+
+It says:
+
+```text
+(Ib*c)*Ib!=Ic, clean
+-> row b and row Ib form a clean same-target pair in H_c
+-> target advance gives a standard same-input V3 bridge at common input c.
+```
+
+The second file identifies the negation as a standard clean same-input V3
+bridge:
+
+```text
+b*h=c,
+Ib*h=D,
+D!=c.
+```
+
+Its target-lift in `H_h` is exactly:
+
+```text
+Ib -> c,
+P  -> D.
+```
+
+The second file says the clean named-fan negation becomes:
+
+```text
+a fresh right-h source-successor orbit starting at Ib,
+disjoint from the watched period-3 cycle until its first clean self-repeat.
+```
+
+The next useful proof target is:
+
+```text
+show this fresh orbit cannot remain clean-disjoint from z -> b -> c -> z
+until self-repeat in a minimal G12 loop, or show the resulting self-repeat is
+a smaller admissible fixed-target zipper.
+```
+
+Fallback target:
+
+```text
+Middle-target core-hook lemma:
+in a minimal clean period-3 G12 residual, the row-b edge h -> b*c in H_c is
+not outside the core and not merely unicyclic, unless the residual already
+routes by old/core attachment, independent full ported interval collision, or
+a right-fixer/shorter same-row recurrence.
+```
+
+This would turn the shifted-window bridge into an actual relay/core object
+instead of relying on the circular statement "the earlier window is smaller".

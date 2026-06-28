@@ -66,6 +66,7 @@ congruence for generated products.
 ```text
 tools\node-portable\node.exe tools\period3_zipper_saturation.js 4 12 250000
 tools\node-portable\node.exe tools\period3_zipper_saturation.js 5 12 1000000
+tools\node-portable\node.exe tools\period3_zipper_saturation.js 5 16 1200000
 ```
 
 Depth 4:
@@ -81,6 +82,14 @@ Depth 5:
 ```text
 terms: 111878
 closeRounds: 12
+clean-consistent-in-closure: true
+```
+
+Depth 5 with 16 formula rounds:
+
+```text
+terms: 111974
+closeRounds: 13
 clean-consistent-in-closure: true
 ```
 
@@ -146,6 +155,82 @@ The depth-5 local closure did not derive any of these either.  See:
 ```text
 period3_db_identity_scan_diagnostic.md
 ```
+
+The 2026-06-28 depth-5/16-round rerun also did not derive the shifted hook
+pair:
+
+```text
+Ib*c=z,
+z*Ib=Ic.
+```
+
+It also did not derive the sharper single sufficient identity:
+
+```text
+(Ib*c)*Ib=Ic.
+```
+
+After the `c`-input V3 split was isolated, the script was extended to watch
+the second-layer terms:
+
+```text
+A=Ib*c,
+L=c*((Ib*c)*Ib),
+(b*BC)*b,
+(Ib*A)*Ib,
+BC*c,
+A*c.
+```
+
+Depth 4 and depth 5/16-round checks do not derive a local hit among these
+terms and the displayed watched set.  In particular they do not derive:
+
+```text
+A=BC,
+A in {z,b,c,h},
+L in {h,alpha,Ib,Ic,z,b,c,BC,A},
+BC*c=A*c.
+```
+
+The depth-4 class output leaves the new terms as singleton classes:
+
+```text
+A=Ib*c class: ["(Ib*c)"]
+L=c*((Ib*c)*Ib) class: ["(c*((Ib*c)*Ib))"]
+```
+
+See:
+
+```text
+period3_c_input_v3_second_layer_boundary.md
+```
+
+Single-assumption checks at the same depth showed:
+
+```text
+assuming Ib*c=z     does not derive z*Ib=Ic or Ib*h=c;
+assuming z*Ib=Ic    does not derive Ib*c=z or Ib*h=c;
+assuming both       derives (Ib*c)*Ib=Ic and Ib*h=c.
+```
+
+However, the single identity and the pair are now known to be sufficient
+structural targets.  See:
+
+```text
+period3_shifted_hook_pair_implies_named_fan_lemma.md
+```
+
+The script also supports testing these fingerprints as added assumptions via
+`--assume=...`.  At depth 4:
+
+```text
+each single fingerprint assumption stays clean-consistent;
+the full fingerprint package stays clean-consistent;
+neither derives E255(z), E255(b), E255(c), or E255(h).
+```
+
+Thus the db fingerprints are not immediate local closing keys for the
+period-3 residual.
 
 ## Interpretation
 

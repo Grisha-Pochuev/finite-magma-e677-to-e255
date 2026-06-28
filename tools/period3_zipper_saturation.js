@@ -6,6 +6,10 @@
 const maxDepth = Number(process.argv[2] || 4);
 const formulaRounds = Number(process.argv[3] || 12);
 const maxTerms = Number(process.argv[4] || 250000);
+const extraAssumptions = process.argv
+  .slice(5)
+  .flatMap((arg) => arg.startsWith("--assume=") ? arg.slice("--assume=".length).split(",") : [])
+  .filter(Boolean);
 
 const termByKey = new Map();
 const terms = [];
@@ -94,6 +98,28 @@ eq(ic, op(h, op(z, c)), "Ic=h*(z*c)");
 eq(op(z, b), zb, "z*b=ZB");
 eq(op(b, c), bc, "b*c=BC");
 eq(op(c, z), cz, "c*z=CZ");
+
+const extraAssumptionMap = {
+  hhZB: [op(h, h), zb, "assume h*h=ZB"],
+  hAlphaB: [op(h, alpha), b, "assume h*alpha=b"],
+  hIbCZ: [op(h, ib), cz, "assume h*Ib=CZ"],
+  alphaZBH: [op(alpha, zb), h, "assume alpha*ZB=h"],
+  bCZIc: [op(b, cz), ic, "assume b*CZ=Ic"],
+  BCzc: [op(bc, z), c, "assume BC*z=c"],
+  CZIcZB: [op(cz, ic), zb, "assume CZ*Ic=ZB"],
+  IbcZ: [op(ib, c), z, "assume Ib*c=z"],
+  Ibhc: [op(ib, h), c, "assume Ib*h=c"],
+  IczIb: [op(ic, z), ib, "assume Ic*z=Ib"],
+  zIbIc: [op(z, ib), ic, "assume z*Ib=Ic"],
+};
+
+for (const name of extraAssumptions) {
+  const item = extraAssumptionMap[name];
+  if (item === undefined) {
+    throw new Error(`unknown --assume item: ${name}`);
+  }
+  eq(...item);
+}
 
 const watch = [h, z, b, c, alpha, ib, ic, zb, bc, cz];
 
@@ -228,6 +254,21 @@ function d4(x) {
   return op(op(op(x, x), x), x);
 }
 
+const inputSourceD = op(ib, h);
+const inputSourceP = op(h, op(inputSourceD, ib));
+const inputSourceE = op(ib, inputSourceD);
+const inputSourceJ = op(inputSourceE, ib);
+const inputSourceF = op(inputSourceD, h);
+const cInputA = op(ib, c);
+const shiftedHookInput = op(op(ib, c), ib);
+const cInputL = op(c, shiftedHookInput);
+const cInputBForward = op(b, bc);
+const cInputBSecondInput = op(cInputBForward, b);
+const cInputBSecondOutput = op(bc, c);
+const cInputIbForward = op(ib, cInputA);
+const cInputIbSecondInput = op(cInputIbForward, ib);
+const cInputIbSecondOutput = op(cInputA, c);
+
 seedNamedNeighborhood();
 let closeRounds = 0;
 for (; closeRounds < formulaRounds; closeRounds++) {
@@ -269,7 +310,82 @@ const useful = [
   [op(bc, z), c, "BC*z=c"],
   [op(cz, ic), zb, "CZ*Ic=ZB"],
   [op(ib, c), z, "Ib*c=z"],
+  [cInputA, bc, "A=Ib*c hits BC"],
+  [cInputA, z, "A=Ib*c hits z"],
+  [cInputA, b, "A=Ib*c hits b"],
+  [cInputA, c, "A=Ib*c hits c"],
+  [cInputA, h, "A=Ib*c hits h"],
+  [cInputL, h, "L=c*((Ib*c)*Ib) hits h"],
+  [cInputL, alpha, "L=c*((Ib*c)*Ib) hits alpha"],
+  [cInputL, ib, "L=c*((Ib*c)*Ib) hits Ib"],
+  [cInputL, ic, "L=c*((Ib*c)*Ib) hits Ic"],
+  [cInputL, z, "L=c*((Ib*c)*Ib) hits z"],
+  [cInputL, b, "L=c*((Ib*c)*Ib) hits b"],
+  [cInputL, c, "L=c*((Ib*c)*Ib) hits c"],
+  [cInputL, bc, "L=c*((Ib*c)*Ib) hits BC"],
+  [cInputL, cInputA, "L=c*((Ib*c)*Ib) hits A"],
+  [shiftedHookInput, ic, "(Ib*c)*Ib=Ic"],
   [op(ib, h), c, "Ib*h=c"],
+  [cInputBForward, cInputIbForward, "c-input second forward merge b*BC=Ib*A"],
+  [cInputBSecondInput, h, "c-input row BC second input hits h"],
+  [cInputBSecondInput, cInputL, "c-input row BC second input hits L"],
+  [cInputBSecondInput, alpha, "c-input row BC second input hits alpha"],
+  [cInputBSecondInput, ib, "c-input row BC second input hits Ib"],
+  [cInputBSecondInput, ic, "c-input row BC second input hits Ic"],
+  [cInputBSecondInput, z, "c-input row BC second input hits z"],
+  [cInputBSecondInput, b, "c-input row BC second input hits b"],
+  [cInputBSecondInput, c, "c-input row BC second input hits c"],
+  [cInputBSecondInput, bc, "c-input row BC second input hits BC"],
+  [cInputBSecondInput, cInputA, "c-input row BC second input hits A"],
+  [cInputIbSecondInput, h, "c-input row A second input hits h"],
+  [cInputIbSecondInput, cInputL, "c-input row A second input hits L"],
+  [cInputIbSecondInput, alpha, "c-input row A second input hits alpha"],
+  [cInputIbSecondInput, ib, "c-input row A second input hits Ib"],
+  [cInputIbSecondInput, ic, "c-input row A second input hits Ic"],
+  [cInputIbSecondInput, z, "c-input row A second input hits z"],
+  [cInputIbSecondInput, b, "c-input row A second input hits b"],
+  [cInputIbSecondInput, c, "c-input row A second input hits c"],
+  [cInputIbSecondInput, bc, "c-input row A second input hits BC"],
+  [cInputIbSecondInput, cInputA, "c-input row A second input hits A"],
+  [cInputBSecondOutput, bc, "c-input row BC second output hits BC"],
+  [cInputBSecondOutput, cInputA, "c-input row BC second output hits A"],
+  [cInputBSecondOutput, z, "c-input row BC second output hits z"],
+  [cInputBSecondOutput, b, "c-input row BC second output hits b"],
+  [cInputBSecondOutput, c, "c-input row BC second output hits c"],
+  [cInputIbSecondOutput, bc, "c-input row A second output hits BC"],
+  [cInputIbSecondOutput, cInputA, "c-input row A second output hits A"],
+  [cInputIbSecondOutput, z, "c-input row A second output hits z"],
+  [cInputIbSecondOutput, b, "c-input row A second output hits b"],
+  [cInputIbSecondOutput, c, "c-input row A second output hits c"],
+  [cInputBSecondOutput, cInputIbSecondOutput, "c-input second output merge BC*c=A*c"],
+  [inputSourceD, z, "D=Ib*h hits z"],
+  [inputSourceD, b, "D=Ib*h hits b"],
+  [inputSourceD, h, "D=Ib*h hits h"],
+  [inputSourceP, alpha, "P=pred_Ib(h) hits alpha"],
+  [inputSourceP, ib, "P=pred_Ib(h) hits Ib"],
+  [inputSourceP, ic, "P=pred_Ib(h) hits Ic"],
+  [inputSourceP, z, "P=pred_Ib(h) hits z"],
+  [inputSourceP, b, "P=pred_Ib(h) hits b"],
+  [inputSourceP, c, "P=pred_Ib(h) hits c"],
+  [inputSourceF, z, "F=D*h hits z"],
+  [inputSourceF, b, "F=D*h hits b"],
+  [inputSourceF, c, "F=D*h hits c"],
+  [inputSourceF, inputSourceD, "F=D*h hits D"],
+  [inputSourceE, zb, "E=Ib*D hits ZB"],
+  [inputSourceE, bc, "E=Ib*D hits BC"],
+  [inputSourceE, cz, "E=Ib*D hits CZ"],
+  [inputSourceE, z, "E=Ib*D hits z"],
+  [inputSourceE, b, "E=Ib*D hits b"],
+  [inputSourceE, c, "E=Ib*D hits c"],
+  [inputSourceE, h, "E=Ib*D hits h"],
+  [inputSourceJ, alpha, "J=(Ib*D)*Ib hits alpha"],
+  [inputSourceJ, ib, "J=(Ib*D)*Ib hits Ib"],
+  [inputSourceJ, ic, "J=(Ib*D)*Ib hits Ic"],
+  [inputSourceJ, inputSourceP, "J=(Ib*D)*Ib hits P"],
+  [inputSourceJ, z, "J=(Ib*D)*Ib hits z"],
+  [inputSourceJ, b, "J=(Ib*D)*Ib hits b"],
+  [inputSourceJ, c, "J=(Ib*D)*Ib hits c"],
+  [inputSourceJ, inputSourceD, "J=(Ib*D)*Ib hits D"],
   [op(ic, z), ib, "Ic*z=Ib"],
   [op(z, ib), ic, "z*Ib=Ic"],
 ];
@@ -278,6 +394,7 @@ console.log("Period-3 zipper saturation");
 console.log(`maxDepth: ${maxDepth}`);
 console.log(`formulaRounds: ${formulaRounds}`);
 console.log(`maxTerms: ${maxTerms}`);
+console.log(`extraAssumptions: ${extraAssumptions.length ? extraAssumptions.join(",") : "none"}`);
 console.log(`closeRounds: ${closeRounds}`);
 console.log(`terms: ${terms.length}`);
 
@@ -298,6 +415,8 @@ for (const [a, bTerm, label] of useful) {
 console.log(`alpha class: ${JSON.stringify(classTerms(alpha))}`);
 console.log(`Ib class: ${JSON.stringify(classTerms(ib))}`);
 console.log(`Ic class: ${JSON.stringify(classTerms(ic))}`);
+console.log(`A=Ib*c class: ${JSON.stringify(classTerms(cInputA))}`);
+console.log(`L=c*((Ib*c)*Ib) class: ${JSON.stringify(classTerms(cInputL))}`);
 console.log(`ZB class: ${JSON.stringify(classTerms(zb))}`);
 console.log(`BC class: ${JSON.stringify(classTerms(bc))}`);
 console.log(`CZ class: ${JSON.stringify(classTerms(cz))}`);
