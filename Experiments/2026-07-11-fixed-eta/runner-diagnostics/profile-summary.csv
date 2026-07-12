@@ -1,0 +1,6 @@
+profile,samples,cores,memory_per_worker_mb,median_bandwidth_1_thread_gbps,median_bandwidth_4_thread_gbps,median_bandwidth_scaling_4_to_1,median_max_tree_rss_gib,median_max_tree_pss_gib,largest_tree_rss_gib,lowest_mem_available_gib,largest_tree_swap_gib,oom_kill_events,classifications
+e-auto-4x2500,4,4,2500,28.8045,34.923,1.2123,5.4172,5.3874,5.4197,9.0154,0.0,0,expected-short-limit=4
+vampire-casc-2x5000,4,2,5000,30.0241,34.9994,1.159,5.3888,5.3659,5.4607,9.2779,0.0,0,expected-short-limit=4
+vampire-casc-3x3300,4,3,3300,32.219,38.294,1.1905,4.4705,4.4369,4.5652,10.1325,0.0,0,expected-short-limit=4
+vampire-casc-4x2500,4,4,2500,29.9257,39.8416,1.2037,3.7067,3.6623,3.9974,10.7036,0.0,0,expected-short-limit=4
+vampire-sat-4x2500,4,4,2500,32.1244,37.9383,1.181,1.555,1.5156,1.6221,12.9222,0.0,0,expected-short-limit=4
