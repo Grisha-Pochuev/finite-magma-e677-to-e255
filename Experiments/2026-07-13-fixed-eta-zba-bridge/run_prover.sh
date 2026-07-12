@@ -60,25 +60,31 @@ set -e
 echo "$STATUS" > "$OUT_DIR/monitor-exit-code.txt"
 LOG="$OUT_DIR/solver.log"
 RESULT=UNKNOWN
+
 if grep -Eq 'SZS status (Theorem|Unsatisfiable)' "$LOG"; then
   RESULT=THEOREM
 elif grep -Eq 'SZS status (Satisfiable|CounterSatisfiable)' "$LOG"; then
   RESULT=COUNTERMODEL_OR_SATISFIABLE
+elif grep -Eqi 'parse error|syntax error|user error|invalid option|unknown option|unrecognized option|cannot open|no such file|segmentation fault|assertion.*failed|fatal error' "$LOG"; then
+  RESULT=TECHNICAL_FAILURE
 elif [ "$STATUS" -eq 124 ]; then
   RESULT=TIME_LIMIT
 elif [ "$STATUS" -eq 125 ]; then
   RESULT=MEMORY_GUARD
-elif grep -Eqi 'memory limit|out of memory' "$LOG"; then
+elif grep -Eqi 'memory limit|out of memory|SZS status ResourceOut' "$LOG"; then
   RESULT=SOLVER_MEMORY_LIMIT
-elif [ "$STATUS" -eq 0 ] || [ "$STATUS" -eq 1 ]; then
+elif grep -Eqi 'SZS status (Timeout|GaveUp|Unknown|Open)|time limit reached|timeout|ran out of time' "$LOG"; then
+  RESULT=TIME_LIMIT_OR_GAVE_UP
+elif [ "$STATUS" -le 125 ]; then
   RESULT=NO_DECISIVE_RESULT
 else
   RESULT=TECHNICAL_FAILURE
 fi
+
 printf '%s\n' "$RESULT" | tee "$OUT_DIR/RESULT.txt"
 
 case "$RESULT" in
-  THEOREM|COUNTERMODEL_OR_SATISFIABLE|TIME_LIMIT|MEMORY_GUARD|SOLVER_MEMORY_LIMIT|NO_DECISIVE_RESULT)
+  THEOREM|COUNTERMODEL_OR_SATISFIABLE|TIME_LIMIT|TIME_LIMIT_OR_GAVE_UP|MEMORY_GUARD|SOLVER_MEMORY_LIMIT|NO_DECISIVE_RESULT)
     exit 0
     ;;
   *)
