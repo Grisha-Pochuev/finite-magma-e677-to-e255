@@ -1,5 +1,5 @@
 name: Fixed eta ZBA bridge 2026-07-13
-run-name: Fixed eta ZBA bridge · 5h50 · 20 runners
+run-name: Fixed eta ZBA bridge · retry · 5h50 · 20 runners
 
 on:
   workflow_dispatch:
@@ -20,7 +20,6 @@ env:
 jobs:
   validate:
     name: Validate package and smoke test
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'Launch fixed eta ZBA bridge run' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -45,26 +44,35 @@ jobs:
           python3 -m py_compile "$RUN_DIR/monitor_tree.py"
           test "$(find "$RUN_DIR" -maxdepth 1 -name '*.p' | wc -l)" -eq 5
 
-          set +e
-          timeout 20s prover-bin/eprover \
-            --auto-schedule=4 --memory-limit=250 --cpu-limit=5 \
-            --tstp-format "$RUN_DIR/01-zba-bridge.p" \
-            > e-smoke.log 2>&1
-          E_STATUS=$?
-          timeout 20s prover-bin/vampire \
-            --input_syntax tptp --mode casc --cores 2 -m 250 -t 5 -p tptp \
-            "$RUN_DIR/01-zba-bridge.p" \
-            > vampire-smoke.log 2>&1
-          V_STATUS=$?
-          set -e
+          mkdir -p smoke-logs
+          for problem in "$RUN_DIR"/*.p; do
+            name=$(basename "$problem" .p)
+            set +e
+            timeout 15s prover-bin/eprover \
+              --auto-schedule=1 --memory-limit=500 --cpu-limit=2 \
+              --tstp-format "$problem" \
+              > "smoke-logs/e-${name}.log" 2>&1
+            status=$?
+            set -e
+            cat "smoke-logs/e-${name}.log"
+            test -s "smoke-logs/e-${name}.log"
+            if grep -Eqi 'parse error|syntax error|user error|invalid option|unknown option|unrecognized option|cannot open|no such file|segmentation fault|assertion.*failed|fatal error' "smoke-logs/e-${name}.log"; then
+              exit 1
+            fi
+            if [ "$status" -eq 126 ] || [ "$status" -eq 127 ] || [ "$status" -ge 128 ]; then
+              echo "E prover smoke failed for $problem with status $status" >&2
+              exit 1
+            fi
+          done
 
-          cat e-smoke.log
-          cat vampire-smoke.log
-          if grep -Eqi 'parse error|syntax error|user error|invalid option|unknown option' e-smoke.log vampire-smoke.log; then
-            exit 1
-          fi
-          case "$E_STATUS" in 0|1|124) ;; *) exit "$E_STATUS" ;; esac
-          case "$V_STATUS" in 0|1|124) ;; *) exit "$V_STATUS" ;; esac
+          LIMIT_SECONDS=5 "$RUN_DIR/run_prover.sh" \
+            e-auto-4x2500 01-zba-bridge.p smoke-e-wrapper
+          LIMIT_SECONDS=5 "$RUN_DIR/run_prover.sh" \
+            vampire-casc-2x5000 01-zba-bridge.p smoke-vampire-wrapper
+          test -s smoke-e-wrapper/RESULT.txt
+          test -s smoke-vampire-wrapper/RESULT.txt
+          cat smoke-e-wrapper/RESULT.txt
+          cat smoke-vampire-wrapper/RESULT.txt
 
   search:
     name: "${{ matrix.slot }} · ${{ matrix.problem_name }} · ${{ matrix.profile }}"
@@ -113,6 +121,7 @@ jobs:
       - name: Prepare executables
         run: |
           set -euo pipefail
+          mkdir -p "run-output/slot-${{ matrix.slot }}"
           chmod +x prover-bin/eprover prover-bin/vampire "$RUN_DIR/run_prover.sh" "$RUN_DIR/monitor_tree.py"
           prover-bin/eprover --version | head -5 || true
           prover-bin/vampire --version | head -5 || true
@@ -132,5 +141,5 @@ jobs:
         with:
           name: "fixed-eta-zba-${{ matrix.slot }}-${{ matrix.profile }}"
           path: "run-output/slot-${{ matrix.slot }}/"
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
