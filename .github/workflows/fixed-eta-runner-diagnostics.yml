@@ -1,0 +1,138 @@
+name: Fixed eta runner diagnostics
+run-name: Runner diagnostics for fixed eta
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fixed-eta-runner-diagnostics.yml"
+
+permissions:
+  actions: read
+  contents: read
+
+env:
+  DIAG_DIR: Experiments/2026-07-11-fixed-eta/runner-diagnostics
+  SOURCE_RUN_ID: "29168947710"
+
+jobs:
+  validate:
+    name: Validate diagnostic package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Check scripts and benchmark
+        run: |
+          set -euxo pipefail
+          bash -n "$DIAG_DIR/run_profile.sh"
+          python3 -m py_compile "$DIAG_DIR/monitor_tree.py" "$DIAG_DIR/aggregate_results.py"
+          gcc -O3 -fopenmp -std=c11 "$DIAG_DIR/stream_bench.c" -o "$RUNNER_TEMP/stream_bench"
+          "$RUNNER_TEMP/stream_bench" 1 1048576 3
+
+  diagnose:
+    name: "${{ matrix.slot }} · ${{ matrix.profile }} · repeat ${{ matrix.repeat }}"
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {slot: "01", profile: "vampire-casc-4x2500", kind: "vampire", cores: "4", mem_mb: "2500", intent: "unsat", repeat: "1"}
+          - {slot: "02", profile: "vampire-casc-4x2500", kind: "vampire", cores: "4", mem_mb: "2500", intent: "unsat", repeat: "2"}
+          - {slot: "03", profile: "vampire-casc-4x2500", kind: "vampire", cores: "4", mem_mb: "2500", intent: "unsat", repeat: "3"}
+          - {slot: "04", profile: "vampire-casc-4x2500", kind: "vampire", cores: "4", mem_mb: "2500", intent: "unsat", repeat: "4"}
+          - {slot: "05", profile: "vampire-casc-3x3300", kind: "vampire", cores: "3", mem_mb: "3300", intent: "unsat", repeat: "1"}
+          - {slot: "06", profile: "vampire-casc-3x3300", kind: "vampire", cores: "3", mem_mb: "3300", intent: "unsat", repeat: "2"}
+          - {slot: "07", profile: "vampire-casc-3x3300", kind: "vampire", cores: "3", mem_mb: "3300", intent: "unsat", repeat: "3"}
+          - {slot: "08", profile: "vampire-casc-3x3300", kind: "vampire", cores: "3", mem_mb: "3300", intent: "unsat", repeat: "4"}
+          - {slot: "09", profile: "vampire-casc-2x5000", kind: "vampire", cores: "2", mem_mb: "5000", intent: "unsat", repeat: "1"}
+          - {slot: "10", profile: "vampire-casc-2x5000", kind: "vampire", cores: "2", mem_mb: "5000", intent: "unsat", repeat: "2"}
+          - {slot: "11", profile: "vampire-casc-2x5000", kind: "vampire", cores: "2", mem_mb: "5000", intent: "unsat", repeat: "3"}
+          - {slot: "12", profile: "vampire-casc-2x5000", kind: "vampire", cores: "2", mem_mb: "5000", intent: "unsat", repeat: "4"}
+          - {slot: "13", profile: "vampire-sat-4x2500", kind: "vampire", cores: "4", mem_mb: "2500", intent: "sat", repeat: "1"}
+          - {slot: "14", profile: "vampire-sat-4x2500", kind: "vampire", cores: "4", mem_mb: "2500", intent: "sat", repeat: "2"}
+          - {slot: "15", profile: "vampire-sat-4x2500", kind: "vampire", cores: "4", mem_mb: "2500", intent: "sat", repeat: "3"}
+          - {slot: "16", profile: "vampire-sat-4x2500", kind: "vampire", cores: "4", mem_mb: "2500", intent: "sat", repeat: "4"}
+          - {slot: "17", profile: "e-auto-4x2500", kind: "e", cores: "4", mem_mb: "2500", intent: "n/a", repeat: "1"}
+          - {slot: "18", profile: "e-auto-4x2500", kind: "e", cores: "4", mem_mb: "2500", intent: "n/a", repeat: "2"}
+          - {slot: "19", profile: "e-auto-4x2500", kind: "e", cores: "4", mem_mb: "2500", intent: "n/a", repeat: "3"}
+          - {slot: "20", profile: "e-auto-4x2500", kind: "e", cores: "4", mem_mb: "2500", intent: "n/a", repeat: "4"}
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Download prover binaries from the historical run
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-eta-prover-binaries
+          path: prover-bin
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+
+      - name: Prepare executables
+        run: |
+          set -euxo pipefail
+          chmod +x prover-bin/eprover prover-bin/vampire "$DIAG_DIR/run_profile.sh" "$DIAG_DIR/monitor_tree.py" "$DIAG_DIR/aggregate_results.py"
+          ls -lh prover-bin
+          nproc
+          free -h
+
+      - name: Run short diagnostic profile
+        run: |
+          bash "$DIAG_DIR/run_profile.sh" \
+            "${{ matrix.slot }}" \
+            "${{ matrix.profile }}" \
+            "${{ matrix.kind }}" \
+            "${{ matrix.cores }}" \
+            "${{ matrix.mem_mb }}" \
+            "${{ matrix.intent }}" \
+            "${{ matrix.repeat }}"
+
+      - name: Upload complete diagnostic record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "runner-diagnostic-${{ matrix.slot }}-${{ matrix.profile }}-r${{ matrix.repeat }}"
+          path: "run-output/runner-diagnostics/slot-${{ matrix.slot }}/"
+          if-no-files-found: error
+          retention-days: 30
+
+  aggregate:
+    name: Aggregate runner diagnostics
+    needs: [validate, diagnose]
+    if: ${{ always() && needs.validate.result == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Download all diagnostic artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: runner-diagnostic-*
+          path: combined
+          merge-multiple: false
+
+      - name: Build combined tables
+        run: |
+          set -euxo pipefail
+          python3 "$DIAG_DIR/aggregate_results.py" combined aggregate-output
+          cat aggregate-output/SUMMARY.md
+
+      - name: Upload combined result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: runner-diagnostics-combined
+          path: aggregate-output/
+          if-no-files-found: error
+          retention-days: 30
