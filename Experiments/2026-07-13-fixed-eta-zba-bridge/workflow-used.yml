@@ -1,0 +1,136 @@
+name: Fixed eta ZBA bridge 2026-07-13
+run-name: Fixed eta ZBA bridge · 5h50 · 20 runners
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fixed-eta-zba-bridge-2026-07-13.yml"
+
+permissions:
+  actions: read
+  contents: read
+
+env:
+  RUN_DIR: Experiments/2026-07-13-fixed-eta-zba-bridge
+  SOURCE_RUN_ID: "29168947710"
+  LIMIT_SECONDS: "21000"
+
+jobs:
+  validate:
+    name: Validate package and smoke test
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'Launch fixed eta ZBA bridge run' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v4
+
+      - name: Download proven Linux binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-eta-prover-binaries
+          path: prover-bin
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+
+      - name: Validate scripts, inputs and exact command forms
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x prover-bin/eprover prover-bin/vampire "$RUN_DIR/run_prover.sh" "$RUN_DIR/monitor_tree.py"
+          bash -n "$RUN_DIR/run_prover.sh"
+          python3 -m py_compile "$RUN_DIR/monitor_tree.py"
+          test "$(find "$RUN_DIR" -maxdepth 1 -name '*.p' | wc -l)" -eq 5
+
+          set +e
+          timeout 20s prover-bin/eprover \
+            --auto-schedule=4 --memory-limit=250 --cpu-limit=5 \
+            --tstp-format "$RUN_DIR/01-zba-bridge.p" \
+            > e-smoke.log 2>&1
+          E_STATUS=$?
+          timeout 20s prover-bin/vampire \
+            --input_syntax tptp --mode casc --cores 2 -m 250 -t 5 -p tptp \
+            "$RUN_DIR/01-zba-bridge.p" \
+            > vampire-smoke.log 2>&1
+          V_STATUS=$?
+          set -e
+
+          cat e-smoke.log
+          cat vampire-smoke.log
+          if grep -Eqi 'parse error|syntax error|user error|invalid option|unknown option' e-smoke.log vampire-smoke.log; then
+            exit 1
+          fi
+          case "$E_STATUS" in 0|1|124) ;; *) exit "$E_STATUS" ;; esac
+          case "$V_STATUS" in 0|1|124) ;; *) exit "$V_STATUS" ;; esac
+
+  search:
+    name: "${{ matrix.slot }} · ${{ matrix.problem_name }} · ${{ matrix.profile }}"
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {slot: "01", problem: "01-zba-bridge.p", problem_name: "ZBA bridge", profile: "e-auto-4x2500"}
+          - {slot: "02", problem: "01-zba-bridge.p", problem_name: "ZBA bridge", profile: "vampire-casc-4x2500"}
+          - {slot: "03", problem: "01-zba-bridge.p", problem_name: "ZBA bridge", profile: "vampire-casc-2x5000"}
+          - {slot: "04", problem: "01-zba-bridge.p", problem_name: "ZBA bridge", profile: "vampire-sat-4x2500"}
+          - {slot: "05", problem: "02-zbib-zb-c.p", problem_name: "ZBIb-ZB=c", profile: "e-auto-4x2500"}
+          - {slot: "06", problem: "02-zbib-zb-c.p", problem_name: "ZBIb-ZB=c", profile: "vampire-casc-4x2500"}
+          - {slot: "07", problem: "02-zbib-zb-c.p", problem_name: "ZBIb-ZB=c", profile: "vampire-casc-2x5000"}
+          - {slot: "08", problem: "02-zbib-zb-c.p", problem_name: "ZBIb-ZB=c", profile: "vampire-sat-4x2500"}
+          - {slot: "09", problem: "03-b-zba-h.p", problem_name: "b-ZBA=h", profile: "e-auto-4x2500"}
+          - {slot: "10", problem: "03-b-zba-h.p", problem_name: "b-ZBA=h", profile: "vampire-casc-4x2500"}
+          - {slot: "11", problem: "03-b-zba-h.p", problem_name: "b-ZBA=h", profile: "vampire-casc-2x5000"}
+          - {slot: "12", problem: "03-b-zba-h.p", problem_name: "b-ZBA=h", profile: "vampire-sat-4x2500"}
+          - {slot: "13", problem: "04-direct-az.p", problem_name: "direct A=z", profile: "e-auto-4x2500"}
+          - {slot: "14", problem: "04-direct-az.p", problem_name: "direct A=z", profile: "vampire-casc-4x2500"}
+          - {slot: "15", problem: "04-direct-az.p", problem_name: "direct A=z", profile: "vampire-casc-2x5000"}
+          - {slot: "16", problem: "04-direct-az.p", problem_name: "direct A=z", profile: "vampire-sat-4x2500"}
+          - {slot: "17", problem: "05-zba-bad-target.p", problem_name: "ZBA bad target", profile: "e-auto-4x2500"}
+          - {slot: "18", problem: "05-zba-bad-target.p", problem_name: "ZBA bad target", profile: "vampire-casc-4x2500"}
+          - {slot: "19", problem: "05-zba-bad-target.p", problem_name: "ZBA bad target", profile: "vampire-casc-2x5000"}
+          - {slot: "20", problem: "05-zba-bad-target.p", problem_name: "ZBA bad target", profile: "vampire-sat-4x2500"}
+
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v4
+
+      - name: Download proven Linux binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-eta-prover-binaries
+          path: prover-bin
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+
+      - name: Prepare executables
+        run: |
+          set -euo pipefail
+          chmod +x prover-bin/eprover prover-bin/vampire "$RUN_DIR/run_prover.sh" "$RUN_DIR/monitor_tree.py"
+          prover-bin/eprover --version | head -5 || true
+          prover-bin/vampire --version | head -5 || true
+
+      - name: Run 5h50 bounded search
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUN_DIR/run_prover.sh" \
+            "${{ matrix.profile }}" \
+            "${{ matrix.problem }}" \
+            "run-output/slot-${{ matrix.slot }}"
+
+      - name: Upload complete record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "fixed-eta-zba-${{ matrix.slot }}-${{ matrix.profile }}"
+          path: "run-output/slot-${{ matrix.slot }}/"
+          if-no-files-found: error
+          retention-days: 30
