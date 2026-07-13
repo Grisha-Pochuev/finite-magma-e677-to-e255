@@ -64,15 +64,9 @@ The stored `RESULT.txt` files label the 15 Vampire slots as `SOLVER_MEMORY_LIMIT
 
 The wrapper checked the broad phrase `memory limit` before it checked the final timeout status. Portfolio worker messages therefore shadowed the final solver status. The committed wrapper is corrected so that final `SZS Timeout` / `Termination reason: Time limit` takes precedence, while true final resource exhaustion remains `SOLVER_MEMORY_LIMIT`.
 
-The original artifact labels are preserved in the CSV/JSON as `artifact_result`; the reviewed outcome is stored separately as `normalized_result`.
+The original artifact labels are preserved in `run-29212167864-summary.csv` as `artifact_result`; the reviewed outcome is stored separately as `normalized_result`. The CSV also records exact artifact IDs and SHA-256 digests, commands' resource outcomes, CPU models, exit codes and per-slot mathematical flags.
 
-## Archived files
-
-- `run-29212167864-summary.csv` — one row per slot, suitable for spreadsheets and scripts.
-- `run-29212167864-summary.json` — the same reviewed data in JSON.
-- `run-29212167864-evidence.txt` — exact commands, resource summaries and selected decisive log lines.
-
-The full temporary GitHub artifacts contain the complete solver logs and two-second resource traces. The compact committed archive preserves the information needed to reproduce and interpret the run without adding roughly 23 MB of repetitive sampling data to Git history.
+The full temporary GitHub artifacts contain the complete solver logs and two-second resource traces. They total roughly 23 MB uncompressed. The committed CSV and this report preserve the information needed to reproduce and interpret the run without adding repetitive sampling data to Git history.
 
 ## Launch history
 
