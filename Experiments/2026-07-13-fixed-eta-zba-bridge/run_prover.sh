@@ -71,10 +71,12 @@ elif [ "$STATUS" -eq 124 ]; then
   RESULT=TIME_LIMIT
 elif [ "$STATUS" -eq 125 ]; then
   RESULT=MEMORY_GUARD
-elif grep -Eqi 'memory limit|out of memory|SZS status ResourceOut' "$LOG"; then
-  RESULT=SOLVER_MEMORY_LIMIT
-elif grep -Eqi 'SZS status (Timeout|GaveUp|Unknown|Open)|time limit reached|timeout|ran out of time' "$LOG"; then
+# A portfolio may report worker-level memory limits while its final status is Timeout.
+# Prefer the final bounded-search outcome over incidental worker messages.
+elif grep -Eqi 'SZS status (Timeout|GaveUp|Unknown|Open)|Termination reason: Time limit|Proof not found in time|time limit reached|timeout|ran out of time' "$LOG"; then
   RESULT=TIME_LIMIT_OR_GAVE_UP
+elif grep -Eqi 'SZS status ResourceOut|Termination reason: Memory limit|(^|[^a-z])out of memory([^a-z]|$)|memory limit reached' "$LOG"; then
+  RESULT=SOLVER_MEMORY_LIMIT
 elif [ "$STATUS" -le 125 ]; then
   RESULT=NO_DECISIVE_RESULT
 else
