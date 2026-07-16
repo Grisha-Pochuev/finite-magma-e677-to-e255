@@ -1,0 +1,217 @@
+name: Complete fixed-band realizability 2026-07-17
+run-name: "Fixed band · ${{ inputs.run_mode }} · 2026-07-17"
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_mode:
+        description: smoke first; full only after smoke review
+        required: true
+        default: smoke
+        type: choice
+        options:
+          - smoke
+          - full
+
+permissions:
+  actions: read
+  contents: read
+
+env:
+  RUN_DIR: Experiments/2026-07-17-fixed-band-realizability
+  SOURCE_RUN_ID: "29168947710"
+
+jobs:
+  validate:
+    name: Validate package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download proven Linux binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-eta-prover-binaries
+          path: prover-bin
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+      - name: Static checks and parse every input
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x prover-bin/eprover prover-bin/vampire "$RUN_DIR/run_prover.sh" "$RUN_DIR/monitor_tree.py" "$RUN_DIR/make_summary.py" "$RUN_DIR/collect.py"
+          bash -n "$RUN_DIR/run_prover.sh"
+          python3 -m py_compile "$RUN_DIR/monitor_tree.py" "$RUN_DIR/make_summary.py" "$RUN_DIR/collect.py"
+          test "$(find "$RUN_DIR" -maxdepth 1 -name '*.p' | wc -l)" -eq 5
+          mkdir -p validation-logs
+          for problem in "$RUN_DIR"/*.p; do
+            name=$(basename "$problem" .p)
+            set +e
+            timeout 12s prover-bin/eprover --auto-schedule=1 --memory-limit=500 --cpu-limit=2 --tstp-format "$problem" > "validation-logs/${name}.log" 2>&1
+            status=$?
+            set -e
+            test -s "validation-logs/${name}.log"
+            if grep -Eqi 'parse error|syntax error|user error|invalid option|unknown option|unrecognized option|cannot open|no such file|segmentation fault|assertion.*failed|fatal error' "validation-logs/${name}.log"; then exit 1; fi
+            if [ "$status" -eq 126 ] || [ "$status" -eq 127 ] || [ "$status" -ge 128 ]; then exit 1; fi
+          done
+          set +e
+          "$RUN_DIR/run_prover.sh" deliberately-invalid 01-band2-collapse.p invalid-profile-check
+          bad_status=$?
+          set -e
+          test "$bad_status" -ne 0
+
+  smoke:
+    name: "Smoke · ${{ matrix.profile }}"
+    if: ${{ inputs.run_mode == 'smoke' }}
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {slot: "s1", problem: "01-band2-collapse.p", target: "band2 smoke", profile: "e-auto-4x2500"}
+          - {slot: "s2", problem: "01-band2-collapse.p", target: "band2 smoke", profile: "vampire-casc-4x2500"}
+          - {slot: "s3", problem: "01-band2-collapse.p", target: "band2 smoke", profile: "vampire-casc-2x5000"}
+          - {slot: "s4", problem: "01-band2-collapse.p", target: "band2 smoke", profile: "vampire-sat-4x2500"}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download proven Linux binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-eta-prover-binaries
+          path: prover-bin
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+      - name: Run real wrapper for 30 seconds
+        env:
+          LIMIT_SECONDS: "30"
+        run: |
+          set -euo pipefail
+          mkdir -p "run-output/${{ matrix.slot }}"
+          chmod +x prover-bin/eprover prover-bin/vampire "$RUN_DIR/run_prover.sh" "$RUN_DIR/monitor_tree.py"
+          "$RUN_DIR/run_prover.sh" "${{ matrix.profile }}" "${{ matrix.problem }}" "run-output/${{ matrix.slot }}"
+      - name: Write smoke summary
+        if: always()
+        env:
+          ARTIFACT_NAME: "fixed-band-smoke-${{ matrix.slot }}-${{ matrix.profile }}"
+        run: |
+          python3 "$RUN_DIR/make_summary.py" --slot "${{ matrix.slot }}" --problem "${{ matrix.problem }}" --target "${{ matrix.target }}" --profile "${{ matrix.profile }}" --out-dir "run-output/${{ matrix.slot }}"
+      - name: Upload smoke record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "fixed-band-smoke-${{ matrix.slot }}-${{ matrix.profile }}"
+          path: "run-output/${{ matrix.slot }}/"
+          if-no-files-found: error
+          retention-days: 30
+
+  collect-smoke:
+    name: Collect smoke summaries
+    if: ${{ always() && inputs.run_mode == 'smoke' }}
+    needs: [validate, smoke]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: "fixed-band-smoke-*"
+          path: downloaded
+      - name: Collect
+        run: |
+          python3 "$RUN_DIR/collect.py" --input downloaded --out collected --expected 4
+      - name: Upload collected smoke report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fixed-band-smoke-summary
+          path: collected/
+          if-no-files-found: error
+
+  search:
+    name: "${{ matrix.slot }} · ${{ matrix.target }} · ${{ matrix.profile }}"
+    if: ${{ inputs.run_mode == 'full' }}
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {slot: "01", problem: "01-band2-collapse.p", target: "band2 collapse", profile: "e-auto-4x2500"}
+          - {slot: "02", problem: "01-band2-collapse.p", target: "band2 collapse", profile: "vampire-casc-4x2500"}
+          - {slot: "03", problem: "01-band2-collapse.p", target: "band2 collapse", profile: "vampire-casc-2x5000"}
+          - {slot: "04", problem: "01-band2-collapse.p", target: "band2 collapse", profile: "vampire-sat-4x2500"}
+          - {slot: "05", problem: "02-band3-collapse.p", target: "band3 collapse", profile: "e-auto-4x2500"}
+          - {slot: "06", problem: "02-band3-collapse.p", target: "band3 collapse", profile: "vampire-casc-4x2500"}
+          - {slot: "07", problem: "02-band3-collapse.p", target: "band3 collapse", profile: "vampire-casc-2x5000"}
+          - {slot: "08", problem: "02-band3-collapse.p", target: "band3 collapse", profile: "vampire-sat-4x2500"}
+          - {slot: "09", problem: "03-band2-bridge.p", target: "band2 bridge", profile: "e-auto-4x2500"}
+          - {slot: "10", problem: "03-band2-bridge.p", target: "band2 bridge", profile: "vampire-casc-4x2500"}
+          - {slot: "11", problem: "03-band2-bridge.p", target: "band2 bridge", profile: "vampire-casc-2x5000"}
+          - {slot: "12", problem: "03-band2-bridge.p", target: "band2 bridge", profile: "vampire-sat-4x2500"}
+          - {slot: "13", problem: "04-band3-bridge.p", target: "band3 bridge", profile: "e-auto-4x2500"}
+          - {slot: "14", problem: "04-band3-bridge.p", target: "band3 bridge", profile: "vampire-casc-4x2500"}
+          - {slot: "15", problem: "04-band3-bridge.p", target: "band3 bridge", profile: "vampire-casc-2x5000"}
+          - {slot: "16", problem: "04-band3-bridge.p", target: "band3 bridge", profile: "vampire-sat-4x2500"}
+          - {slot: "17", problem: "05-two-position-bridge.p", target: "two-position bridge", profile: "e-auto-4x2500"}
+          - {slot: "18", problem: "05-two-position-bridge.p", target: "two-position bridge", profile: "vampire-casc-4x2500"}
+          - {slot: "19", problem: "05-two-position-bridge.p", target: "two-position bridge", profile: "vampire-casc-2x5000"}
+          - {slot: "20", problem: "05-two-position-bridge.p", target: "two-position bridge", profile: "vampire-sat-4x2500"}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download proven Linux binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-eta-prover-binaries
+          path: prover-bin
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+      - name: Run bounded search
+        env:
+          LIMIT_SECONDS: "21000"
+        run: |
+          set -euo pipefail
+          mkdir -p "run-output/${{ matrix.slot }}"
+          chmod +x prover-bin/eprover prover-bin/vampire "$RUN_DIR/run_prover.sh" "$RUN_DIR/monitor_tree.py"
+          "$RUN_DIR/run_prover.sh" "${{ matrix.profile }}" "${{ matrix.problem }}" "run-output/${{ matrix.slot }}"
+      - name: Write job summary
+        if: always()
+        env:
+          ARTIFACT_NAME: "fixed-band-full-${{ matrix.slot }}-${{ matrix.profile }}"
+        run: |
+          python3 "$RUN_DIR/make_summary.py" --slot "${{ matrix.slot }}" --problem "${{ matrix.problem }}" --target "${{ matrix.target }}" --profile "${{ matrix.profile }}" --out-dir "run-output/${{ matrix.slot }}"
+      - name: Upload complete record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "fixed-band-full-${{ matrix.slot }}-${{ matrix.profile }}"
+          path: "run-output/${{ matrix.slot }}/"
+          if-no-files-found: error
+          retention-days: 30
+
+  collect:
+    name: Collect full summaries
+    if: ${{ always() && inputs.run_mode == 'full' }}
+    needs: [validate, search]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: "fixed-band-full-*"
+          path: downloaded
+      - name: Collect
+        run: |
+          python3 "$RUN_DIR/collect.py" --input downloaded --out collected --expected 20
+      - name: Upload collected full report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fixed-band-full-summary
+          path: collected/
+          if-no-files-found: error
