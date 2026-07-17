@@ -18,13 +18,13 @@ The bridge and `P_0*z=V_0`, by left cancellation, imply `Ib*c=z`.
 
 ## Matrix and safety
 
-Each target uses four previously validated profiles:
+Each target uses four previously validated profiles. The completed pilot used 1,800 seconds per job and the validated 12 GiB process-tree guard.
 
-- E auto schedule, 4 workers at 2500 MB;
-- Vampire CASC, 4 workers at 2500 MB;
-- Vampire CASC, 2 workers at 5000 MB;
-- Vampire satisfiability intent, 4 workers at 2500 MB.
 
-Full mode is 20 independent jobs, each with 21,000 seconds of useful search and a 360-minute job limit. The whole process tree is softly stopped after three consecutive samples at 12 GiB RSS or below 2.5 GiB MemAvailable.
+## Completed 30-minute pilot
 
-The workflow has separate `smoke` and `full` dispatch modes. Full mode is allowed only after the smoke artifacts and logs have been reviewed.
+Run: https://github.com/Grisha-Pochuev/finite-magma-e677-to-e255/actions/runs/29538663524
+
+The validation gate and all 20 matrix jobs completed. All five targets timed out in all four profiles; no proof, model, memory guard, OOM, or technical failure occurred. Peak tree RSS was 7915.8 MiB and the lowest MemAvailable was 7057.4 MiB.
+
+The pilot is a negative search boundary: do not promote this unchanged matrix to 5h50. The next mathematical step must extract a global cyclic invariant or materially guide the encoding.
