@@ -1,13 +1,13 @@
 # Codex handoff
 
-This experiment does not repeat the 2026-07-13 broad bridge matrix.
+Run `29538663524` completed: 20/20 valid summaries, 0 proofs, 0 models, 20 reviewed timeouts, 0 technical failures.
 
-Interpretation priority:
+The complete length-2 and length-3 band-collapse targets, their bridge targets, and the size-free two-position bridge all timed out under E and three Vampire profiles. Resource safety was comfortable.
 
-1. A theorem for target 01 or 02 excludes that complete eta-cycle length.
-2. A theorem for target 03, 04, or 05 gives the active bridge `P*(Ib*c)=P*z`, hence `Ib*c=z` by left cancellation.
-3. A satisfiable result is only a first-order model of the encoded axioms; inspect whether it is finite and whether all intended inequalities are represented before using it mathematically.
-4. Timeouts are a search boundary, not evidence for realizability.
-5. Any proof object must be checked and translated into an E677 derivation before it is cited.
+Mathematical interpretation:
 
-Begin with the collected summary artifact; open full logs only for decisive or technically anomalous slots.
+1. The exact cache still contains zero complete bands, but this remains diagnostic rather than a theorem.
+2. Direct unguided first-order saturation of the complete small cycles is now also exhausted.
+3. Do not repeat the matrix at 5h50.
+4. Continue by deriving a multiplication-specific invariant transported around the whole eta cycle, or by a substantially guided proof encoding based on a named intermediate lemma.
+5. Open full logs only for a concrete strategy hypothesis; there was no decisive or anomalous slot.

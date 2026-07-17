@@ -1,0 +1,21 @@
+slot,problem,target,profile,normalized_result,final_szs_status,elapsed_seconds,peak_tree_rss_mib,min_mem_available_mib,max_swap_used_mib,cpu
+01,01-band2-collapse.p,band2 collapse,e-auto-4x2500,TIME_LIMIT,,1801.274,5809.758,9268.059,0.0,AMD EPYC 7763
+02,01-band2-collapse.p,band2 collapse,vampire-casc-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1800.969,6768.969,8164.773,0.0,AMD EPYC 9V45
+03,01-band2-collapse.p,band2 collapse,vampire-casc-2x5000,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.463,5838.820,9200.574,0.0,AMD EPYC 7763
+04,01-band2-collapse.p,band2 collapse,vampire-sat-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.526,2561.402,12384.230,0.0,AMD EPYC 7763
+05,02-band3-collapse.p,band3 collapse,e-auto-4x2500,TIME_LIMIT,,1801.097,7592.387,7484.762,0.0,AMD EPYC 7763
+06,02-band3-collapse.p,band3 collapse,vampire-casc-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.716,6144.926,8950.891,0.0,Intel Xeon Platinum 8573C
+07,02-band3-collapse.p,band3 collapse,vampire-casc-2x5000,TIME_LIMIT_OR_GAVE_UP,Timeout,1800.500,7188.266,7487.852,0.0,Intel Xeon Platinum 8573C
+08,02-band3-collapse.p,band3 collapse,vampire-sat-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.249,2969.477,11893.844,0.0,AMD EPYC 9V74
+09,03-band2-bridge.p,band2 bridge,e-auto-4x2500,TIME_LIMIT,,1801.690,6211.590,8876.715,0.0,AMD EPYC 9V74
+10,03-band2-bridge.p,band2 bridge,vampire-casc-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1800.513,5753.203,9278.109,0.0,Intel Xeon Platinum 8573C
+11,03-band2-bridge.p,band2 bridge,vampire-casc-2x5000,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.681,6030.184,8915.352,0.0,AMD EPYC 7763
+12,03-band2-bridge.p,band2 bridge,vampire-sat-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.590,2583.066,12540.785,0.0,AMD EPYC 7763
+13,04-band3-bridge.p,band3 bridge,e-auto-4x2500,TIME_LIMIT,,1801.702,7915.801,7057.352,0.0,AMD EPYC 9V74
+14,04-band3-bridge.p,band3 bridge,vampire-casc-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1800.903,5877.824,9195.109,0.0,Intel Xeon Platinum 8573C
+15,04-band3-bridge.p,band3 bridge,vampire-casc-2x5000,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.789,7718.055,7355.449,0.0,AMD EPYC 7763
+16,04-band3-bridge.p,band3 bridge,vampire-sat-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.421,2948.184,11987.602,0.0,AMD EPYC 9V74
+17,05-two-position-bridge.p,two-position bridge,e-auto-4x2500,TIME_LIMIT,,1801.455,5886.336,9203.820,0.0,AMD EPYC 9V74
+18,05-two-position-bridge.p,two-position bridge,vampire-casc-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1800.551,5728.934,9374.023,0.0,Intel Xeon Platinum 8370C
+19,05-two-position-bridge.p,two-position bridge,vampire-casc-2x5000,TIME_LIMIT_OR_GAVE_UP,Timeout,1800.251,7031.574,8041.836,0.0,AMD EPYC 9V74
+20,05-two-position-bridge.p,two-position bridge,vampire-sat-4x2500,TIME_LIMIT_OR_GAVE_UP,Timeout,1801.751,2335.438,12686.090,0.0,AMD EPYC 7763
