@@ -1,0 +1,8 @@
+encoding: order=9; variables=3151; clauses=55911; solver=cadical195; no-HIT=True; bad-counts=3..3; bad2-structural=False; bad3-structural=True
+bad3 case 16/24 split 1/6 C:square-Good,D0=2; D-3cycle; f1=2,f2=2; root=(0,2),product=Good: UNKNOWN; elapsed=34.697s; conflicts=500000
+bad3 case 16/24 split 2/6 C:square-Good,D0=2; D-3cycle; f1=2,f2=2; root=(0,2),product=row=0: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 16/24 split 3/6 C:square-Good,D0=2; D-3cycle; f1=2,f2=2; root=(0,2),product=third=3: UNSAT; elapsed=0.000s; conflicts=1
+bad3 case 16/24 split 4/6 C:square-Good,D0=2; D-3cycle; f1=2,f2=2; root=(0,3),product=Good: UNSAT; elapsed=14.485s; conflicts=146828
+bad3 case 16/24 split 5/6 C:square-Good,D0=2; D-3cycle; f1=2,f2=2; root=(0,3),product=row=0: UNSAT; elapsed=1.415s; conflicts=22762
+bad3 case 16/24 split 6/6 C:square-Good,D0=2; D-3cycle; f1=2,f2=2; root=(0,3),product=third=2: UNSAT; elapsed=3.568s; conflicts=37607
+bad3 summary: unsat=5/6; unknown=['C:square-Good,D0=2; D-3cycle; f1=2,f2=2; root=(0,2),product=Good']; elapsed=54.186s
