@@ -1,0 +1,6 @@
+encoding: order=9; variables=3151; clauses=55911; solver=cadical195; no-HIT=True; bad-counts=3..3; bad2-structural=False; bad3-structural=True
+bad3 case 03/24 split 1/4 A:square-Bad,D0=1; D-3cycle; f1=3,f3=1; root=(0,1),product=Good:3: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 03/24 split 2/4 A:square-Bad,D0=1; D-3cycle; f1=3,f3=1; root=(0,1),product=Good:4: UNSAT; elapsed=7.479s; conflicts=117503
+bad3 case 03/24 split 3/4 A:square-Bad,D0=1; D-3cycle; f1=3,f3=1; root=(0,2),product=Good:3: UNSAT; elapsed=3.153s; conflicts=44943
+bad3 case 03/24 split 4/4 A:square-Bad,D0=1; D-3cycle; f1=3,f3=1; root=(0,2),product=Good:4: UNSAT; elapsed=3.152s; conflicts=41977
+bad3 summary: unsat=4/4; unknown=[]; elapsed=13.810s
