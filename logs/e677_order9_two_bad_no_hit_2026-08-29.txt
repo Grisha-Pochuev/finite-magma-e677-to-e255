@@ -1,0 +1,49 @@
+E677 order-9 |Bad|=2, no-HIT certificate record
+Date: 2026-08-29
+
+Checker:
+  tools/e677_order9_no_hit_bad_count_sat.py
+
+Final encoding after OMEGA-EXIT:
+  order=9
+  variables=2359
+  clauses=53834
+  exact Bad count=2
+  D(Bad) subset Bad
+
+Four exhaustive normalized forms:
+  I.   B={0,1}; f(1)=1
+       CaDiCaL195: UNSAT (0.002s in initial structural scan)
+
+  II.  B={0,1}; f(1)=2,f(2)=1
+       final wrapper:
+         CaDiCaL195: UNSAT, 15.157s, 160201 conflicts
+         Glucose42:  UNSAT, 25.350s, 186242 conflicts
+
+  III. B={0,2}; f(1)=2,f(2)=2
+       crossing profiles: 3/4 UNSAT
+       sole residual: 0*2 and 2*2 Good
+       normalized (a,g,h) renewal cores:
+         CaDiCaL195: 5/5 UNSAT, max 0.265s
+         Glucose42:  5/5 UNSAT, max 0.152s
+
+  IV.  B={0,2}; f(1)=3,f(3)=2
+       crossing profiles: 7/8 UNSAT
+       sole residual: every Bad*Bad product Good
+       normalized (a,b,c) product cores:
+         CaDiCaL195: 20/20 UNSAT, max 0.515s
+         Glucose42:  20/20 UNSAT, max 0.450s
+
+Important audit correction:
+  An earlier timer-based CaDiCaL run printed UNSAT for form III at the same
+  moment as manual Ctrl+C.  A clean 400000-conflict run returned UNKNOWN,
+  so that interrupted output was rejected and is not used.  The later
+  five-orbit renewal split is the valid dual-solver closure of form III.
+
+Conclusion:
+  No order-9 E677 counterexample with |Bad|=2 can satisfy no-HIT.
+
+Full wrapper rerun:
+  verify_order9_two_bad_no_hit.ps1: PASSED
+  checker SHA256:
+    6064BEEB8F30BC82207555A1046FB11E3F4E9A48AC8E2C489EDF99D1046DFC42

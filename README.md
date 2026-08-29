@@ -49,38 +49,112 @@ References:
 
 ## Current status
 
-This is active research, not a finished proof.
+This is active research.  There is currently neither a proof of the finite
+implication nor a complete finite counterexample.
 
-Recorded progress in this repository:
+To state the present reduction, define
 
-- finite sizes `5`, `6`, `7`, and `8` are recorded as closed;
-- size `8` has a reproducibility script and a recorded verification log;
-- size `9` is the active finite-search and proof-extraction zone;
-- earlier work recorded progress through `case45`, including the branch
-  `7*0=4` as fully closed;
-- the proof search has moved beyond the older no-free-tail / double-interval
-  pressure frontier into anchored, zipper, V3-admissibility, and period-3
-  residual reductions;
-- the latest internal frontier is concentrated around a period-3 zipper / named
-  fan residual, rather than a broad blind search.
+```text
+sigma(x) = (x*x)*x,
+D(x)     = sigma(x)*x.
+```
 
-In plain language: the project has not solved the full problem yet, but it has
-reduced the search to much more structured residual configurations. The current
-work is trying to turn those residual configurations into a general proof, or
-else expose the shape of a possible finite counterexample.
+Call `x` **Good** if `D(x)=x`, and **Bad** otherwise.  Proving E255 is exactly
+the same as proving that there are no Bad elements.  Starting from a Bad
+element and repeatedly applying `D` has only two possible behaviours in a
+finite magma: it eventually reaches a Good element, or it remains Bad and
+eventually enters a cycle.
 
-For the most current internal context, start with the active status and
-navigation files. During the repository cleanup after a working snapshot upload,
-some current files may still temporarily sit at the repository root until they
-are moved back into `docs/`, `lemmas/`, and `logs/`.
+The current size-independent argument proves the following.
 
-See:
+1. A completely closed periodic configuration cannot keep reusing all of its
+   predecessor cells internally: it must produce a boundary cell outside the
+   periodic part.
+2. In the remaining equality case, the Bad set `B` carries an auxiliary
+   operation
 
-- `docs/NEXT_ACTION.md` for the next working step;
-- `docs/CURRENT_FRONTIER.md` for the active frontier;
-- `docs/LEMMA_STATUS.md` for the lemma map;
-- `docs/RESULTS_INDEX.md` for navigation through the research files;
-- `docs/REPOSITORY_CLEANUP_PLAN.md` for the current repository cleanup plan.
+   ```text
+   r o u = r*u  if r != u,
+   r o r = r,
+   ```
+
+   and `(B,o)` is proved to be an idempotent Latin quasigroup satisfying E677.
+   This auxiliary operation is called the **Bad shadow** in the working notes;
+   it is not asserted to be a submagma of the original magma.
+3. For each Bad `q`, put
+
+   ```text
+   e = D(q),  t = sigma(q),  h = e\q,  z = t*e,
+   ```
+
+   where `a\b` denotes the unique input sent to `b` by the row of `a`.  The
+   companion equations force exactly one of two explicit alternatives:
+
+   ```text
+   z=h and t=h\h;                 or
+   z is Good and z*t=h is Bad.
+   ```
+
+The unresolved step is global: prove that all cells of the second kind, taken
+together, force a shorter Bad orbit or a Good element, or else use them to
+construct a complete counterexample.  The local counting argument alone is not
+enough.
+
+The smallest symmetric completion test for the first alternative is UNSAT at
+order 15 in two independent SAT engines.  The identical partial shell is SAT
+when E677 is disabled, so the contradiction genuinely uses the mixed E677
+equations.  This is a bounded computational result, not a general theorem.
+
+There is also a separate finite-order checkpoint.  Orders `5` through `8`
+are recorded as closed; order `9` is not yet closed.  For order `9`, the
+no-HIT branch has the following reproducible reductions:
+
+- terminal root equality is excluded;
+- exactly two Bad elements are excluded;
+- exactly three Bad elements reduce to 24 normalized forms, 15 of which are
+  already UNSAT in the first exact scan;
+- in normalized three-Bad form 2, eight of nine canonical root leaves are
+  independently UNSAT, leaving one explicitly stated companion case.
+
+The last statement and its exact restart point are in the
+[order-9 three-Bad reduction](lemmas/e677_order9_three_bad_root_and_case2_reduction.md).
+These are finite reductions only: the HIT branch and the remaining no-HIT
+forms still prevent a complete order-9 certificate.
+
+Progress numbers are deliberately scoped:
+
+```text
+complete proof or checked counterexample:              no (0%)
+periodic-reuse subproblem:                         1/1 (100%)
+terminal Bad-set structural reduction:              2/3 (67%)
+global crossing-network outcomes proved:              0/3 (0%)
+```
+
+The `67%` figure refers only to this last three-part reduction.  It is not an
+estimate that the original open problem is 67% solved.
+
+## Terminology used in the working notes
+
+Several capitalized words in the research files are short search labels, not
+standard mathematical terminology and not claims that new kinds of objects
+have been discovered.  They can always be replaced by the stated equations or
+orbit behaviour.
+
+| Working label | Meaning |
+| --- | --- |
+| `HIT` | a Bad `D`-orbit reaches a Good element |
+| `CYCLE` | a `D`-orbit remains Bad and enters a cycle |
+| `ZERO root` | a state with no predecessor in a particular transport graph; it is not a zero element of the magma |
+| `SHORT` | a Bad segment of length one in a multiplication row |
+| `ZIPPER` | the first displayed alternative: `t*e=h` and `t=h\h` |
+| `G-CROSS` | the second alternative: a Good row and Good input produce the Bad value `h` |
+| `K5 shell` | a symmetric five-Bad-point partial multiplication pattern used in a bounded completion test |
+
+For a first mathematical audit, read the
+[ZERO-root reduction](lemmas/e677_zero_root_reuse_shadow_quasigroup_boundary.md),
+then its [computational certificate](lemmas/e677_zero_root_reuse_computational_certificate.md).
+The [active frontier](docs/ACTIVE_FRONTIER_MIN.md) is a dense continuation
+record for contributors, not the recommended introduction for a new reader.
 
 ## What is in this repository
 
@@ -100,14 +174,25 @@ files belong in `lemmas/` or `docs/`, not at the top level.
 
 ## Reproducibility
 
-The main reproducible computational checkpoint included here is the size-8
-closure:
+The current ZERO-root/ZIPPER checkpoint is reproduced locally, sequentially,
+by:
 
 ```powershell
-.\verify_smoke.ps1
+.\verify_zero_root_zipper.ps1
 ```
 
-then:
+The optional longer order-10 recheck is:
+
+```powershell
+.\verify_zero_root_zipper.ps1 -IncludeOrder10
+```
+
+The wrapper verifies the satisfiable control shell and reruns the order-15
+UNSAT result with both Glucose and CaDiCaL.  It requires Python 3 and
+`python-sat==1.9.dev7`; see `tools/requirements-e677-sat.txt`.  Checks are run
+one at a time, and no GitHub Actions job is needed.
+
+The older size-8 checkpoint remains available:
 
 ```powershell
 .\verify_size8_closed.ps1
@@ -117,9 +202,21 @@ On Windows, the `.cmd` launchers can be used if PowerShell blocks direct script
 execution:
 
 ```text
-verify_smoke.cmd
 verify_size8_closed.cmd
+verify_zero_root_zipper.cmd
 ```
+
+The current order-9 finite checkpoints are reproduced, one process at a time,
+by:
+
+```powershell
+.\verify_order9_terminal_zero.ps1
+.\verify_order9_two_bad_no_hit.ps1
+.\verify_order9_three_bad_case2.ps1
+```
+
+The third command is the short newest certificate: it checks the same eight
+three-Bad leaves independently with CaDiCaL195 and Glucose42.
 
 On a normal machine with Node.js installed, the verification script reruns the
 structural split used for the size-8 result and writes a timestamped log under
@@ -169,3 +266,8 @@ See:
 
 - `CONTRIBUTING.md`
 - `CITATION.cff`
+
+## Follow the project
+
+Research updates and discussion are published on the
+[project author's Telegram channel](https://t.me/let_people_dance).
