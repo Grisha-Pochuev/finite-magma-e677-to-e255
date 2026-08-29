@@ -63,3 +63,30 @@ Every SAT answer must decode to a complete `9 x 9` table and pass independent
 checks of all nine permutation rows, all 81 E677 substitutions, the exact Bad
 set, the exact D-map, and no HIT.  A partial assignment is never treated as a
 counterexample.
+
+## Runs
+
+```text
+smoke: 33269622554
+full:  33269852847
+full head SHA: 5b0e8765b40fac638d1e09ba15908a9e01f3b347
+```
+
+The short gate passed in both engines and produced valid summaries and a
+collected report.  The full run then gave:
+
+```text
+aggregate six outcomes / Glucose42:       6/6 UNSAT;
+aggregate six outcomes / CaDiCaL195:      5/6 UNSAT, one Good aggregate UNKNOWN;
+exact two Good representatives / Glucose42:  2/2 UNSAT;
+exact two Good representatives / CaDiCaL195: 2/2 UNSAT.
+```
+
+The sole CaDiCaL aggregate UNKNOWN is `(0,2)` with Good product.  Its complete
+residual relabelling orbit is represented by `0*2=4`, which is UNSAT in both
+engines.  Consequently all six exhaustive outcomes are excluded and top form
+16 is UNSAT.
+
+No SAT model and therefore no complete order-nine counterexample was found.
+The exact records are in `RESULTS.md`, `run-summary.json`, `RUN_REPORT.md`,
+`closure-summary.json`, and the four compact solver logs in this folder.
