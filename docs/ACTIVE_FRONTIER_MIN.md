@@ -895,7 +895,7 @@ technical failure.  Hence form `2` is UNSAT and the total closed count is now
 16/24.
 ```
 
-The remaining three-Bad forms are exactly
+After the form-2 exclusion, the remaining three-Bad forms were
 
 ```text
 3,11,15,16,18,21,23,24.
@@ -911,9 +911,50 @@ logs/e677_order9_three_bad_case2_complete_2026-08-29.txt;
 verify_order9_three_bad_case2.ps1.
 ```
 
-The next finite question is form `3`, which keeps the same three-cycle
-D-pattern and replaces the first-column chain by `1*0=3, 3*0=1`.  Reuse the
-canonical-root split and companion word; do not rerun the unsplit cube.
+Top form `3` is now also completely certified.  It has
+
+```text
+B={0,1,2}; D: 0->1->2->0;
+0*0=1; 1*0=3; 3*0=1.
+```
+
+Its canonical strict extra roots are `(0,1)` and `(0,2)`.  For each root the
+product is exhaustively Good, row value `0`, or the third Bad point, giving
+six aggregate leaves.  Both engines independently prove
+
+```text
+CaDiCaL195: 6/6 UNSAT;
+Glucose42:  6/6 UNSAT.
+```
+
+The difficult Good leaves were independently refined by residual Good
+relabelling to four exact representatives, all `4/4 UNSAT` in both engines.
+There was no SAT model, UNKNOWN, or technical failure.  Hence form `3` is
+UNSAT and the total closed count is now
+
+```text
+17/24.
+```
+
+The remaining three-Bad forms are exactly
+
+```text
+11,15,16,18,21,23,24.
+```
+
+Exact proof, checker, record, and verifier:
+
+```text
+lemmas/e677_order9_three_bad_case3_exclusion.md;
+tools/e677_order9_no_hit_bad_count_sat.py;
+Experiments/2026-08-29-order9-case3-root/RESULTS.md;
+verify_order9_three_bad_case3.ps1.
+```
+
+The next finite step should compare these seven forms by their exact
+canonical-root orbit count.  Form `16` has only two Good-product
+representatives after the six-outcome split and is the smallest immediate
+candidate; do not rerun any unsplit top-form cube.
 
 The size-free active structural question remains the simultaneous G-CROSS
 network.
@@ -968,9 +1009,11 @@ completed nontrivial row-label orbit formulas:     80/80 (100%).
 order-9 terminal ZERO equality/no-HIT subgate:        1/1 (100%).
 order-9 |Bad|=2 no-HIT subgate:                       1/1 (100%).
 order-9 |Bad|=3 initial exact scan:                 15/24 (62.5%).
-order-9 |Bad|=3 subsequent form-2 closure:              1/9 (11.1%).
-order-9 |Bad|=3 total top forms closed:                16/24 (66.7%).
+order-9 |Bad|=3 subsequent form-2 closure:                1/1 (100%).
+order-9 |Bad|=3 subsequent form-3 closure:                1/1 (100%).
+order-9 |Bad|=3 total top forms closed:                17/24 (70.8%).
 order-9 |Bad|=3 form-2 root outcomes excluded:           9/9 (100%).
+order-9 |Bad|=3 form-3 root outcomes excluded:           6/6 (100%).
 order-9 remaining no-HIT Bad cardinalities:             0/7 (0%).
 full order-9 implication certificate:                  0/1 (0%).
 ```
