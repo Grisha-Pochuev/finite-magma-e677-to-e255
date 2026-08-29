@@ -1,6 +1,7 @@
 # Results: order-9 three-Bad form-2 paused continuation
 
-Status: complete; all six paused leaves are independently UNSAT.
+Status: complete; all six paused leaves and all fourteen total form-2 leaves
+are independently UNSAT.
 
 ## Source state
 
@@ -71,6 +72,42 @@ The other five leaves were already forced inconsistent by the clauses learned
 while resolving the first leaf and were confirmed UNSAT under their own exact
 assumptions.  Learned clauses are consequences of the shared base formula;
 the same pattern occurred independently in both engines.
+
+## Combined fourteen-leaf reproduction
+
+The public wrapper
+
+```text
+verify_order9_three_bad_case2.ps1
+```
+
+was extended to reproduce the earlier eight leaves and the final six leaves,
+sequentially in both engines.  Run `33267978483` reached the exact terminal
+marker
+
+```text
+PASS: order-9 three-Bad top form 2 is fully excluded in both engines.
+```
+
+Its verification artifact has SHA256
+
+```text
+1a2f4cc8a7ceed9dbb1477d25735f5d7674e05292867eacdada3abf81e1342e5.
+```
+
+The run was marked failed only after the mathematical and textual audits had
+passed, because the publication step attempted to add an ignored `.log` file.
+No solver or certificate step failed.  The already verified artifact was then
+read by the commit-only run `33268058135`, which synchronized the status files
+without repeating the SAT search.  The publication commit is
+
+```text
+3179c26db08fbb0590f59edd8245353370e2c8cd.
+```
+
+The combined verifier record is stored as `verifier-linux.txt` in this folder.
+All temporary active workflow files were disabled after completion; exact
+snapshots remain here.
 
 ## Mathematical conclusion
 
