@@ -1,0 +1,43 @@
+E677 order-9 three-Bad top form 2: exact paused continuation
+Date: 2026-08-29
+
+Base main commit: b8deaabab7b6aeda15022fc78ca9f257fb913020
+Base checker Git blob: efe356acd0047eef8ae5645b2cb04ac2a493632d
+Full GitHub Actions run: 33267614227
+Head SHA: fa1d990ff1e499e279bd32cb4fe953854dc837d5
+
+Fixed form:
+  Bad={0,1,2}
+  D: 0->1->2->0
+  0*0=1, 1*0=2, 2*0=1
+  selected extra root=(0,2), 0*2=3 Good
+
+Put a=0*3 and k=a*0.  E677 forces 3*k=2.  Exhaustive residual
+representatives:
+  (a,k)=(0,1),(2,1),(4,1),(4,3),(4,4),(4,5)
+
+Formula:
+  variables=3151
+  clauses=55911
+  full row-permutation constraints
+  all 81 E677 instances
+  exact Bad set and exact no-HIT D-map
+  independent semantic verifier for every SAT table
+
+Results:
+  CaDiCaL195: 6/6 UNSAT, 0 UNKNOWN, 0 SAT
+  Glucose42:  6/6 UNSAT, 0 UNKNOWN, 0 SAT
+  technical failures: 0
+  verified counterexamples: 0
+
+Hard leaf (a,k)=(0,1), equivalently 0*3=0 and 3*1=2:
+  CaDiCaL195: UNSAT, 3.501s, 63138 conflicts
+  Glucose42:  UNSAT, 3.391s, 62888 conflicts
+
+Conclusion:
+  top form 2 is completely excluded;
+  the three-Bad top-form count improves from 15/24 to 16/24;
+  unresolved indices are 3,11,15,16,18,21,23,24.
+
+This is a finite order-nine exclusion only.  It does not close HIT, larger
+Bad cardinalities, or the full order-nine implication.
