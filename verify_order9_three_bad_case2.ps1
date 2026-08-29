@@ -5,6 +5,7 @@ param(
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $checker = Join-Path $repoRoot "tools\e677_order9_no_hit_bad_count_sat.py"
+$pausedChecker = Join-Path $repoRoot "Experiments\2026-08-29-order9-case2-paused\run_case2_paused.py"
 
 function Resolve-Python {
     if ($PythonPath) {
@@ -29,18 +30,19 @@ function Resolve-Python {
 function Invoke-ExpectedCheck {
     param(
         [string]$Name,
-        [string[]]$CheckArgs
+        [string]$ScriptPath,
+        [string[]]$CheckArgs,
+        [string]$Marker
     )
     Write-Host "[$Name]"
-    $output = & $script:PythonExe $checker @CheckArgs 2>&1 | Out-String
+    $output = & $script:PythonExe $ScriptPath @CheckArgs 2>&1 | Out-String
     $exitCode = $LASTEXITCODE
     Write-Host $output.TrimEnd()
     if ($exitCode -ne 2) {
         throw "$Name returned exit code $exitCode; expected 2."
     }
-    $marker = "bad3 summary: unsat=8/8; unknown=[]"
-    if (-not $output.Contains($marker)) {
-        throw "$Name did not print the expected marker: $marker"
+    if (-not $output.Contains($Marker)) {
+        throw "$Name did not print the expected marker: $Marker"
     }
 }
 
@@ -52,18 +54,39 @@ $base = @(
 )
 
 Write-Host "Python: $script:PythonExe"
-Write-Host "Checker SHA256: $((Get-FileHash -LiteralPath $checker -Algorithm SHA256).Hash)"
+Write-Host "Base checker SHA256: $((Get-FileHash -LiteralPath $checker -Algorithm SHA256).Hash)"
+Write-Host "Paused wrapper SHA256: $((Get-FileHash -LiteralPath $pausedChecker -Algorithm SHA256).Hash)"
 
 Invoke-ExpectedCheck `
-    -Name "case 2 reduction / CaDiCaL195" `
+    -Name "case 2 root reduction / CaDiCaL195" `
+    -ScriptPath $checker `
     -CheckArgs @($base + @(
         "--solver", "cadical195", "--conflict-budget", "50000"
-    ))
+    )) `
+    -Marker "bad3 summary: unsat=8/8; unknown=[]"
 
 Invoke-ExpectedCheck `
-    -Name "case 2 reduction / Glucose42" `
+    -Name "case 2 root reduction / Glucose42" `
+    -ScriptPath $checker `
     -CheckArgs @($base + @(
         "--solver", "glucose42", "--per-count-seconds", "30"
-    ))
+    )) `
+    -Marker "bad3 summary: unsat=8/8; unknown=[]"
 
-Write-Host "PASS: order-9 three-Bad case-2 reduction is 8/8 UNSAT in both engines."
+Invoke-ExpectedCheck `
+    -Name "case 2 paused continuation / CaDiCaL195" `
+    -ScriptPath $pausedChecker `
+    -CheckArgs @(
+        "--solver", "cadical195", "--conflict-budget", "100000"
+    ) `
+    -Marker "bad3 summary: unsat=6/6; unknown=[]"
+
+Invoke-ExpectedCheck `
+    -Name "case 2 paused continuation / Glucose42" `
+    -ScriptPath $pausedChecker `
+    -CheckArgs @(
+        "--solver", "glucose42", "--per-leaf-seconds", "30"
+    ) `
+    -Marker "bad3 summary: unsat=6/6; unknown=[]"
+
+Write-Host "PASS: order-9 three-Bad top form 2 is fully excluded in both engines."
