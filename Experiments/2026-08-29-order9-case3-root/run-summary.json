@@ -1,0 +1,49 @@
+{
+  "smoke_run_id": 33268344813,
+  "full_run_id": 33268434711,
+  "full_head_sha": "ffe689639271d827ed67b9407bedafbda4f3ff0d",
+  "base_checker_git_blob": "efe356acd0047eef8ae5645b2cb04ac2a493632d",
+  "formula": {
+    "variables": 3151,
+    "clauses": 55911
+  },
+  "technical_failures": 0,
+  "verified_counterexamples": 0,
+  "root_outcomes": {
+    "expected": 6,
+    "cadical195": {
+      "unsat": 6,
+      "unknown": 0,
+      "sat": 0,
+      "artifact_sha256": "5b57d7ff3f87614b588531d97b8106956ddb227a9e6f5f84dda41697d856916b"
+    },
+    "glucose42": {
+      "unsat": 6,
+      "unknown": 0,
+      "sat": 0,
+      "artifact_sha256": "dd6de793f04908921f1480b5fe199e24b31cb9b4a141302efe88c12855ae7cbd"
+    }
+  },
+  "good_product_representatives": {
+    "expected": 4,
+    "cadical195": {
+      "unsat": 4,
+      "unknown": 0,
+      "sat": 0,
+      "artifact_sha256": "b4569d7962911315dcf0c466f6f96faabca6a82e424d42500fa94b34f71574f2"
+    },
+    "glucose42": {
+      "unsat": 4,
+      "unknown": 0,
+      "sat": 0,
+      "artifact_sha256": "bf33d2872da5ce941c1242ab284df88692c51395846583d8952295ebf2d3e73b"
+    }
+  },
+  "mathematical_conclusion": {
+    "form_3_excluded": true,
+    "three_bad_closed_before": 16,
+    "three_bad_closed_after": 17,
+    "three_bad_total": 24,
+    "remaining_indices": [11, 15, 16, 18, 21, 23, 24]
+  }
+}
