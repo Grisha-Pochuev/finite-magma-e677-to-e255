@@ -49,38 +49,28 @@ References:
 
 ## Current status
 
-This is active research, not a finished proof.
+This is active research, not a finished proof or a counterexample.  The final
+certificate is therefore still `0%`: no size-independent proof and no complete
+finite Bad table has been obtained.
 
-Recorded progress in this repository:
+The current direct-proof route has completely resolved the periodic-reuse
+subgate inside the CYCLE branch.  At the remaining terminal ZERO-root boundary,
+two of three structural gates are proved:
 
-- finite sizes `5`, `6`, `7`, and `8` are recorded as closed;
-- size `8` has a reproducibility script and a recorded verification log;
-- size `9` is the active finite-search and proof-extraction zone;
-- earlier work recorded progress through `case45`, including the branch
-  `7*0=4` as fully closed;
-- the proof search has moved beyond the older no-free-tail / double-interval
-  pressure frontier into anchored, zipper, V3-admissibility, and period-3
-  residual reductions;
-- the latest internal frontier is concentrated around a period-3 zipper / named
-  fan residual, rather than a broad blind search.
+- exact root equality produces an idempotent Latin E677 shadow on the Bad set;
+- every canonical Bad `D`-cell routes to exactly `ZIPPER` or a marked
+  Good-row `G-CROSS`;
+- the global simultaneous `G-CROSS` network is still open.
 
-In plain language: the project has not solved the full problem yet, but it has
-reduced the search to much more structured residual configurations. The current
-work is trying to turn those residual configurations into a general proof, or
-else expose the shape of a possible finite counterexample.
+Thus the scoped ZERO-reuse gate is `2/3 (67%)`, not an estimate that the whole
+theorem is 67% solved.  The smallest symmetric pure-ZIPPER K5 shell is excluded
+exactly at order 15, with a satisfiable control shell when E677 is disabled.
+This is a bounded diagnostic, not a general proof.
 
-For the most current internal context, start with the active status and
-navigation files. During the repository cleanup after a working snapshot upload,
-some current files may still temporarily sit at the repository root until they
-are moved back into `docs/`, `lemmas/`, and `logs/`.
-
-See:
-
-- `docs/NEXT_ACTION.md` for the next working step;
-- `docs/CURRENT_FRONTIER.md` for the active frontier;
-- `docs/LEMMA_STATUS.md` for the lemma map;
-- `docs/RESULTS_INDEX.md` for navigation through the research files;
-- `docs/REPOSITORY_CLEANUP_PLAN.md` for the current repository cleanup plan.
+Start with `docs/ACTIVE_FRONTIER_MIN.md`.  The exact ZERO-root argument and its
+bounded computational boundary are in
+`lemmas/e677_zero_root_reuse_shadow_quasigroup_boundary.md`; the reproducibility
+audit is in `lemmas/e677_zero_root_reuse_computational_certificate.md`.
 
 ## What is in this repository
 
@@ -100,14 +90,25 @@ files belong in `lemmas/` or `docs/`, not at the top level.
 
 ## Reproducibility
 
-The main reproducible computational checkpoint included here is the size-8
-closure:
+The current ZERO-root/ZIPPER checkpoint is reproduced locally, sequentially,
+by:
 
 ```powershell
-.\verify_smoke.ps1
+.\verify_zero_root_zipper.ps1
 ```
 
-then:
+The optional longer order-10 recheck is:
+
+```powershell
+.\verify_zero_root_zipper.ps1 -IncludeOrder10
+```
+
+The wrapper verifies the satisfiable control shell and reruns the order-15
+UNSAT result with both Glucose and CaDiCaL.  It requires Python 3 and
+`python-sat==1.9.dev7`; see `tools/requirements-e677-sat.txt`.  Checks are run
+one at a time, and no GitHub Actions job is needed.
+
+The older size-8 checkpoint remains available:
 
 ```powershell
 .\verify_size8_closed.ps1
@@ -117,8 +118,8 @@ On Windows, the `.cmd` launchers can be used if PowerShell blocks direct script
 execution:
 
 ```text
-verify_smoke.cmd
 verify_size8_closed.cmd
+verify_zero_root_zipper.cmd
 ```
 
 On a normal machine with Node.js installed, the verification script reruns the
