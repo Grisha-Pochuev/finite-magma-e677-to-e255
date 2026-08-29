@@ -1,0 +1,113 @@
+name: Retry publish order-9 form-16 certificate 2026-08-29
+run-name: Retry publish order 9 · three-Bad form 16 certificate
+
+on:
+  push:
+    branches:
+      - web/order9-case16-root-2026-08-29
+    paths:
+      - .github/workflows/order9-case16-publish-retry-2026-08-29.yml
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  RUN_DIR: Experiments/2026-08-29-order9-case16-root
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: web/order9-case16-root-2026-08-29
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tools/requirements-e677-sat.txt
+
+      - name: Install exact SAT dependency
+        run: python -m pip install -r tools/requirements-e677-sat.txt
+
+      - name: Check source and reproduce the two-engine certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            tools/e677_order9_no_hit_bad_count_sat.py \
+            "$RUN_DIR/summarize_split.py" \
+            "$RUN_DIR/collect.py" \
+            "$RUN_DIR/apply_status_updates.py"
+          test "$(git hash-object tools/e677_order9_no_hit_bad_count_sat.py)" = \
+            "efe356acd0047eef8ae5645b2cb04ac2a493632d"
+          pwsh -File ./verify_order9_three_bad_case16.ps1 \
+            -PythonPath "${{ env.pythonLocation }}/bin/python"
+
+      - name: Apply status update once and audit it
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -Fq "18/24 forms are closed" README.md; then
+            echo "Central status is already updated; skipping duplicate replacement."
+          else
+            python "$RUN_DIR/apply_status_updates.py"
+          fi
+          git diff --check
+          grep -F "18/24 forms are closed" README.md
+          grep -F "order-9 |Bad|=3 total top forms closed:                18/24 (75.0%)." docs/ACTIVE_FRONTIER_MIN.md
+          grep -F "11,15,18,21,23,24." docs/ACTIVE_FRONTIER_MIN.md
+          grep -F "2026-08-29-order9-case16-root" Experiments/START_HERE_WEB.md
+
+      - name: Deactivate all automatic form-16 workflows
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          paths = [
+              Path('.github/workflows/order9-case16-root-smoke-2026-08-29.yml'),
+              Path('.github/workflows/order9-case16-root-full-2026-08-29.yml'),
+              Path('.github/workflows/order9-case16-publish-2026-08-29.yml'),
+              Path('.github/workflows/order9-case16-publish-retry-2026-08-29.yml'),
+          ]
+          for path in paths:
+              text = path.read_text(encoding='utf-8')
+              if 'workflow_dispatch:' in text.split('\n\npermissions:', 1)[0]:
+                  continue
+              start = text.index('on:\n')
+              end = text.index('\n\npermissions:', start)
+              path.write_text(
+                  text[:start] + 'on:\n  workflow_dispatch:' + text[end:],
+                  encoding='utf-8',
+              )
+          PY
+          git diff --check
+
+      - name: Commit any remaining publication changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md docs/ACTIVE_FRONTIER_MIN.md \
+            Experiments/README.md Experiments/START_HERE_WEB.md \
+            Experiments/2026-08-29-order9-case16-root \
+            lemmas/e677_order9_three_bad_case16_exclusion.md \
+            verify_order9_three_bad_case16.ps1 \
+            .github/workflows/order9-case16-root-smoke-2026-08-29.yml \
+            .github/workflows/order9-case16-root-full-2026-08-29.yml \
+            .github/workflows/order9-case16-publish-2026-08-29.yml \
+            .github/workflows/order9-case16-publish-retry-2026-08-29.yml
+          if git diff --cached --quiet; then
+            echo "No publication changes remain."
+          else
+            git diff --cached --stat
+            git commit -m "Publish exact order-9 three-Bad form-16 exclusion"
+            git push origin HEAD:web/order9-case16-root-2026-08-29
+          fi

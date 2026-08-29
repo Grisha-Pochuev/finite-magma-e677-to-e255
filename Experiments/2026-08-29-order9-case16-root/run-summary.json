@@ -1,0 +1,67 @@
+{
+  "run_id": 33269852847,
+  "head_sha": "5b0e8765b40fac638d1e09ba15908a9e01f3b347",
+  "expected_summary_count": 4,
+  "summary_count": 4,
+  "broken_summary_count": 0,
+  "technical_failure_count": 0,
+  "verified_model_count": 0,
+  "jobs": [
+    {
+      "mode": "good-products",
+      "solver": "cadical195",
+      "normalized_result": "ALL_UNSAT",
+      "raw_exit_code": 2,
+      "leaf_count": 2,
+      "unsat_count": 2,
+      "unknown_count": 0,
+      "sat_count": 0,
+      "elapsed_seconds": 17.161,
+      "conflicts": 261332,
+      "cpu": "AMD EPYC 7763 64-Core Processor"
+    },
+    {
+      "mode": "good-products",
+      "solver": "glucose42",
+      "normalized_result": "ALL_UNSAT",
+      "raw_exit_code": 2,
+      "leaf_count": 2,
+      "unsat_count": 2,
+      "unknown_count": 0,
+      "sat_count": 0,
+      "elapsed_seconds": 10.179,
+      "conflicts": 177651,
+      "cpu": "AMD EPYC 7763 64-Core Processor"
+    },
+    {
+      "mode": "root-outcomes",
+      "solver": "cadical195",
+      "normalized_result": "BOUNDED_UNKNOWN",
+      "raw_exit_code": 3,
+      "leaf_count": 6,
+      "unsat_count": 5,
+      "unknown_count": 1,
+      "sat_count": 0,
+      "elapsed_seconds": 54.165,
+      "conflicts": 707198,
+      "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+      "unknown_leaf": "root=(0,2), product=Good"
+    },
+    {
+      "mode": "root-outcomes",
+      "solver": "glucose42",
+      "normalized_result": "ALL_UNSAT",
+      "raw_exit_code": 2,
+      "leaf_count": 6,
+      "unsat_count": 6,
+      "unknown_count": 0,
+      "sat_count": 0,
+      "elapsed_seconds": 59.265,
+      "conflicts": 695660,
+      "cpu": "AMD EPYC 7763 64-Core Processor"
+    }
+  ],
+  "closure_reason": "The only aggregate UNKNOWN has one residual-Good relabelling representative, 0*2=4, and that representative is UNSAT in both solvers.",
+  "mathematical_result": "FORM16_UNSAT",
+  "full_order9_closed": false
+}

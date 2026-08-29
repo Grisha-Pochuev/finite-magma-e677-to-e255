@@ -1,0 +1,5 @@
+slot,mode,solver,normalized_result,raw_exit_code,leaf_count,sat_count,unsat_count,unknown_count,elapsed_seconds,conflicts,technical_failure,model_found,cpu,commit_sha
+good-products-cadical195,good-products,cadical195,ALL_UNSAT,2,2,0,2,0,17.161,261332,False,False,AMD EPYC 7763 64-Core Processor,5b0e8765b40fac638d1e09ba15908a9e01f3b347
+good-products-glucose42,good-products,glucose42,ALL_UNSAT,2,2,0,2,0,10.179,177651,False,False,AMD EPYC 7763 64-Core Processor,5b0e8765b40fac638d1e09ba15908a9e01f3b347
+root-outcomes-cadical195,root-outcomes,cadical195,BOUNDED_UNKNOWN,3,6,0,5,1,54.165,707198,False,False,INTEL(R) XEON(R) PLATINUM 8573C,5b0e8765b40fac638d1e09ba15908a9e01f3b347
+root-outcomes-glucose42,root-outcomes,glucose42,ALL_UNSAT,2,6,0,6,0,59.265,695660,False,False,AMD EPYC 7763 64-Core Processor,5b0e8765b40fac638d1e09ba15908a9e01f3b347
