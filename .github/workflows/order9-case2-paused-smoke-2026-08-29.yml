@@ -1,0 +1,85 @@
+name: Order-9 case-2 paused smoke 2026-08-29
+run-name: Order 9 · three-Bad form 2 · paused smoke
+
+on:
+  push:
+    branches:
+      - web/order9-case2-paused-2026-08-29
+    paths:
+      - .github/workflows/order9-case2-paused-smoke-2026-08-29.yml
+
+permissions:
+  actions: read
+  contents: read
+
+env:
+  RUN_DIR: Experiments/2026-08-29-order9-case2-paused
+
+jobs:
+  smoke:
+    name: Static and short end-to-end gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tools/requirements-e677-sat.txt
+
+      - name: Install exact SAT dependency
+        run: python -m pip install -r tools/requirements-e677-sat.txt
+
+      - name: Static checks
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            "$RUN_DIR/run_case2_paused.py" \
+            "$RUN_DIR/parse_run.py" \
+            "$RUN_DIR/collect.py" \
+            tools/e677_order9_no_hit_bad_count_sat.py
+          test "$(git hash-object tools/e677_order9_no_hit_bad_count_sat.py)" = \
+            "efe356acd0047eef8ae5645b2cb04ac2a493632d"
+
+      - name: Run both engines through the exact six-leaf wrapper
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p smoke-output
+          for solver in cadical195 glucose42; do
+            mkdir -p "smoke-output/$solver"
+            extra=(--per-leaf-seconds 2 --conflict-budget 1000)
+            set +e
+            python "$RUN_DIR/run_case2_paused.py" \
+              --solver "$solver" "${extra[@]}" \
+              2>&1 | tee "smoke-output/$solver/solver.log"
+            status=${PIPESTATUS[0]}
+            set -e
+            case "$status" in
+              0|2|3) ;;
+              *) echo "unexpected checker exit code: $status" >&2; exit "$status" ;;
+            esac
+            python "$RUN_DIR/parse_run.py" \
+              --phase smoke \
+              --solver "$solver" \
+              --log "smoke-output/$solver/solver.log" \
+              --exit-code "$status" \
+              --output "smoke-output/$solver/summary.json"
+          done
+          python "$RUN_DIR/collect.py" \
+            --input smoke-output \
+            --output smoke-collected \
+            --expected 2
+
+      - name: Upload smoke record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: order9-case2-paused-smoke
+          path: |
+            smoke-output/
+            smoke-collected/
+          if-no-files-found: error
+          retention-days: 30
