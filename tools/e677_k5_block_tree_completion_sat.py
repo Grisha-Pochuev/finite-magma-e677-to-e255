@@ -109,8 +109,8 @@ def main() -> int:
 
     block_list = blocks(args.blocks, args.shape)
     n = 1 + 4 * args.blocks + args.extra
-    if args.terminal_k5 and (args.blocks != 1 or args.extra < 5):
-        raise SystemExit("--terminal-k5 requires --blocks 1 and --extra at least 5")
+    if args.terminal_k5 and (args.blocks != 1 or args.extra < 1):
+        raise SystemExit("--terminal-k5 requires --blocks 1 and at least one Good label")
     if args.equivariant_four_layer and (
         not args.terminal_k5 or args.blocks != 1 or args.extra != 15
     ):

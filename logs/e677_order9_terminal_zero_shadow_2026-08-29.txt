@@ -1,0 +1,53 @@
+E677 order-9 terminal ZERO-shadow certificate record
+Date: 2026-08-29
+
+Shadow scan command:
+  python tools/e677_idempotent_latin_order_scan.py
+    --min-order 2 --max-order 8 --solver cadical195
+    --per-cube-seconds 10
+
+Summary:
+  order=2: UNSAT; 1/1 cycle-type cubes
+  order=3: UNSAT; 2/2
+  order=4: UNSAT; 3/3
+  order=5: SAT VERIFIED; K5 table decoded
+  order=6: UNSAT; 7/7
+  order=7: UNSAT; 11/11
+  order=8: UNSAT; 15/15
+  total elapsed: 0.140s
+
+K5 uniqueness command:
+  python tools/e677_idempotent_latin_order_scan.py
+    --min-order 5 --max-order 5 --solver glucose42
+    --per-cube-seconds 10 --exclude-k5-orbit
+
+Summary:
+  excluded labelled K5 orbit: 6 tables
+  all 5 row-zero cycle-type cubes: UNSAT
+  elapsed: 0.019s
+
+Terminal 5 Bad + 4 Good formula:
+  python tools/e677_k5_block_tree_completion_sat.py
+    --blocks 1 --extra 4 --terminal-k5 --seconds 180
+
+Encoding:
+  variables=2187
+  clauses=27528
+  fixed off-diagonal K5 cells=20
+
+Results:
+  CaDiCaL195: UNSAT; elapsed=2.460s
+  Glucose42:  UNSAT; elapsed=1.204s
+
+Full wrapper rerun:
+  verify_order9_terminal_zero.ps1: PASSED
+  Glucose42 terminal formula:  UNSAT; elapsed=0.882s
+  CaDiCaL195 terminal formula: UNSAT; elapsed=1.171s
+  shadow checker SHA256:
+    E9E42D0F600DD2A2574B000E8EAB46CE073CB391EC3908AC86DFBDF911A5DE02
+  completion checker SHA256:
+    C67C45F97677F8BC17DB05F6B069D1924555B810F4269517741E2B0AE4876A95
+
+Interpretation:
+  At order 9, Z_Omega=|Bad| together with D(B) subset B is impossible.
+  A counterexample must have HIT or Z_Omega>|Bad|.

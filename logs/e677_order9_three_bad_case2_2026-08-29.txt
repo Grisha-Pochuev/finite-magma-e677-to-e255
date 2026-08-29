@@ -1,0 +1,34 @@
+E677 order-9 three-Bad case-2 reduction
+Date: 2026-08-29
+
+Checker:
+  tools/e677_order9_no_hit_bad_count_sat.py
+  SHA256 29CDD3BDF4A6F7437EF58781B955724B1F949A1DD9612558335B81A40752E7E6
+
+Common arguments:
+  --min-bad 3 --max-bad 3 --scan-bad3-structural
+  --bad3-frontier-only --bad3-case2-reduction
+
+CaDiCaL195:
+  limit: 50000 conflicts per cube
+  result: 8/8 UNSAT; 0 UNKNOWN; elapsed 1.904 s
+  conflicts by cube: 0, 0, 0, 0, 5656, 0, 9366, 8533
+
+Glucose42:
+  limit: 30 seconds per cube
+  result: 8/8 UNSAT; 0 UNKNOWN; elapsed 1.579 s
+  conflicts by cube: 0, 0, 0, 0, 5631, 0, 14182, 9096
+
+The eight cubes are, in order:
+  root (0,1), Bad product 0;
+  root (0,1), Bad product 2;
+  root (0,2), Bad product 0;
+  root (0,2), Bad product 1;
+  root (0,1), Good product 3, companion a=4, k=2;
+  root (0,1), Good product 3, companion a=4, k=3;
+  root (0,1), Good product 3, companion a=4, k=4;
+  root (0,1), Good product 3, companion a=4, k=5.
+
+Conclusion:
+  In normalized three-Bad top form 2, the selected extra Omega-root must be
+  (0,2) with Good product 0*2=3.  This does not close all |Bad|=3 models.

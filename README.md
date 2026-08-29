@@ -105,6 +105,22 @@ order 15 in two independent SAT engines.  The identical partial shell is SAT
 when E677 is disabled, so the contradiction genuinely uses the mixed E677
 equations.  This is a bounded computational result, not a general theorem.
 
+There is also a separate finite-order checkpoint.  Orders `5` through `8`
+are recorded as closed; order `9` is not yet closed.  For order `9`, the
+no-HIT branch has the following reproducible reductions:
+
+- terminal root equality is excluded;
+- exactly two Bad elements are excluded;
+- exactly three Bad elements reduce to 24 normalized forms, 15 of which are
+  already UNSAT in the first exact scan;
+- in normalized three-Bad form 2, eight of nine canonical root leaves are
+  independently UNSAT, leaving one explicitly stated companion case.
+
+The last statement and its exact restart point are in the
+[order-9 three-Bad reduction](lemmas/e677_order9_three_bad_root_and_case2_reduction.md).
+These are finite reductions only: the HIT branch and the remaining no-HIT
+forms still prevent a complete order-9 certificate.
+
 Progress numbers are deliberately scoped:
 
 ```text
@@ -189,6 +205,18 @@ execution:
 verify_size8_closed.cmd
 verify_zero_root_zipper.cmd
 ```
+
+The current order-9 finite checkpoints are reproduced, one process at a time,
+by:
+
+```powershell
+.\verify_order9_terminal_zero.ps1
+.\verify_order9_two_bad_no_hit.ps1
+.\verify_order9_three_bad_case2.ps1
+```
+
+The third command is the short newest certificate: it checks the same eight
+three-Bad leaves independently with CaDiCaL195 and Glucose42.
 
 On a normal machine with Node.js installed, the verification script reruns the
 structural split used for the size-8 result and writes a timestamped log under

@@ -759,7 +759,148 @@ The independent three-Good-layer equivariant order-20 ansatz remained
 Exact proof, the local negative boundary, and commands are in
 `lemmas/e677_zero_root_reuse_shadow_quasigroup_boundary.md`.
 
-The active structural question is now only the simultaneous G-CROSS network.
+## Order-9 terminal ZERO side closure
+
+The late global ZERO lemma now gives a strict finite reduction at order `9`.
+Under
+
+```text
+D(Bad) contained in Bad,
+Z_(Bad x Bad)=|Bad|,
+```
+
+the Bad shadow is an idempotent Latin E677 quasigroup.  An exhaustive
+cycle-type scan proves that among possible shadow orders `2,...,8` only
+order `5` exists.  Blocking the full relabelling orbit proves that its unique
+isomorphism type is the K5 table.  Hence the order-nine terminal residue is
+exactly `5 Bad + 4 Good` with the twenty off-diagonal K5 cells fixed.
+
+The full terminal completion is independently UNSAT in both engines:
+
+```text
+CaDiCaL195: UNSAT(2.460s);
+Glucose42:  UNSAT(1.204s).
+```
+
+Therefore the exact finite continuation is
+
+```text
+order-9 counterexample -> HIT or Z_(Bad x Bad)>|Bad|.             (O9)
+```
+
+The terminal equality/no-HIT class is closed and must not be rerun.  The
+checker, certificate wrapper, output record, and proof are respectively
+
+```text
+tools/e677_idempotent_latin_order_scan.py;
+verify_order9_terminal_zero.ps1;
+logs/e677_order9_terminal_zero_shadow_2026-08-29.txt;
+lemmas/e677_order9_terminal_zero_shadow_exclusion.md.
+```
+
+For the finite order-nine side route, the next named question is whether one
+strict extra `Omega` root can be attached injectively to its first merger or
+coloured exit; the other top branch is HIT.  Do not rerun raw full order-nine
+SAT or the terminal K5 formula unchanged.
+
+The first strict-surplus cardinality is now also closed.  If `|Bad|=2`, every
+state in `Bad x Bad` is an internal indegree-zero state: an off-diagonal Bad
+product is either Good or the row label, and the latter has multiplicity
+`N_B(r,r)=0`.  Hence every `tau` edge leaves `Bad x Bad`.
+
+At order `9`, normalize `0*0=1` and put `f(t)=t*0`.  Exact no-HIT routing has
+only four forms:
+
+```text
+B={0,1}: f(1)=1;
+B={0,1}: f(1)=2, f(2)=1;
+B={0,2}: f(1)=2, f(2)=2;
+B={0,2}: f(1)=3, f(3)=2.
+```
+
+The first two are direct UNSAT.  In the third form, the colour split leaves
+one profile and residual relabelling gives five renewal cores; all are
+independently `5/5 UNSAT` in CaDiCaL195 and Glucose42.  In the fourth form,
+the sole colour survivor has all four `Bad*Bad` products Good; the joint
+first-new-label split of `0*2,2*0,2*2` has twenty orbits, independently
+`20/20 UNSAT` in both engines.
+
+Therefore the exact order-nine continuation improves to
+
+```text
+order-9 counterexample
+  -> HIT
+  or no HIT, |Bad| in {3,4,5,6,7,8,9}, Z_(Bad x Bad)>|Bad|.      (O9+)
+```
+
+Do not rerun the two-Bad formulas.  Exact proof, checker, record, and wrapper:
+
+```text
+lemmas/e677_order9_two_bad_no_hit_exclusion.md;
+tools/e677_order9_no_hit_bad_count_sat.py;
+logs/e677_order9_two_bad_no_hit_2026-08-29.txt;
+verify_order9_two_bad_no_hit.ps1.
+```
+
+The next finite question is the three-Bad `D`-orbit/root pattern.  Unlike
+the two-Bad case, an off-diagonal product may be the third Bad label, so
+`Omega` is not automatically root-only.
+
+That three-Bad pattern is now normalized exactly.  Select one strict extra
+Omega-root before naming the labels.  The fixed-point-free map `D` on three
+Bad points is either a 3-cycle or a 2-cycle with one tail.  After setting
+`0*0=1`, the square colour, the value `D(0)`, and the chain
+`f(t)=t*0` give exactly `24` top forms:
+
+```text
+family A (square Bad, D(0)=1): 3 D-types * 3 f-chains = 9;
+family B (square Bad, D(0)=2): 3 D-types * 2 f-chains = 6;
+family C (square Good,D(0)=2): 3 D-types * 3 f-chains = 9.
+```
+
+The first exact CaDiCaL scan closed `15/24`; the nine bounded UNKNOWN forms
+are indices `2,3,11,15,16,18,21,23,24`.  Fixing only the root position gave
+`15/15 UNKNOWN` before an intentional stop and is retired.  Splitting the
+canonical root by Good/row/third-Bad product closed `23/66` small cubes;
+naming the Good product up to residual symmetry closed `6/37` further cubes.
+These counts locate the boundary and do not close all three-Bad models.
+
+One full top-form reduction is certified independently.  In form `2`,
+
+```text
+B={0,1,2}; D: 0->1->2->0;
+0*0=1; 1*0=2; 2*0=1,
+```
+
+all four Bad-product extra roots and all four companion cases for a Good
+root `(0,1)` are `8/8 UNSAT` in both CaDiCaL195 and Glucose42.  Therefore
+the selected extra root must be exactly
+
+```text
+(0,2), with 0*2=3 Good.
+```
+
+For this sole form-2 residue, put `a=0*3`, `k=a*0`; E677 forces `3*k=2` and
+the exact paused split is
+
+```text
+a in {0,2,4};
+a in {0,2} -> k=1;
+a=4       -> k in {1,3,4,5}.
+```
+
+No calculation of that split has been started.  Exact proof, checker, log,
+and wrapper are
+
+```text
+lemmas/e677_order9_three_bad_root_and_case2_reduction.md;
+tools/e677_order9_no_hit_bad_count_sat.py;
+logs/e677_order9_three_bad_case2_2026-08-29.txt;
+verify_order9_three_bad_case2.ps1.
+```
+
+The size-free active structural question remains the simultaneous G-CROSS
+network.
 For every non-ZIPPER point mark
 
 ```text
@@ -808,6 +949,12 @@ proper K5 extension sizes 6--9 (diagnostic only):       4/4 (100%);
 completed nonabelian presentations:  8,255,936/8,255,936 (100%);
 completed cover Bad-target tests:                 99/99 (100%).
 completed nontrivial row-label orbit formulas:     80/80 (100%).
+order-9 terminal ZERO equality/no-HIT subgate:        1/1 (100%).
+order-9 |Bad|=2 no-HIT subgate:                       1/1 (100%).
+order-9 |Bad|=3 top forms initially closed:          15/24 (62.5%).
+order-9 |Bad|=3 form-2 root outcomes excluded:         8/9 (88.9%).
+order-9 remaining no-HIT Bad cardinalities:             0/7 (0%).
+full order-9 implication certificate:                  0/1 (0%).
 ```
 
 Every `100%` entry certifies only its explicitly named subproblem, not
