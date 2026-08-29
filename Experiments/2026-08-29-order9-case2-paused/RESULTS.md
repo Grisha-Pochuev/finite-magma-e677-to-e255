@@ -1,6 +1,6 @@
 # Results: order-9 three-Bad form-2 paused continuation
 
-Status: smoke gate passed; five leaves closed; one leaf sent to the full bounded check.
+Status: complete; all six paused leaves are independently UNSAT.
 
 ## Source state
 
@@ -28,53 +28,79 @@ artifact SHA256: 540bcab76066e6fb0990d4ee62c4f3fc7950ff1ad6f8e9c1433741ac6bb23a5
 technical result: PASS
 ```
 
-Both independent engines returned the same exact split:
+Both engines returned the same preliminary split:
 
 ```text
 CaDiCaL195: 5 UNSAT, 1 UNKNOWN, 0 SAT;
 Glucose42:  5 UNSAT, 1 UNKNOWN, 0 SAT.
 ```
 
-The five independently excluded leaves are
+The sole smoke residue was `(a,k)=(0,1)`, equivalently
+`0*3=0, 3*1=2`.  This was only a resource-bounded UNKNOWN.
+
+## Full exact run
 
 ```text
-(a,k)=(2,1),(4,1),(4,3),(4,4),(4,5).
+run id:   33267614227
+head SHA: fa1d990ff1e499e279bd32cb4fe953854dc837d5
+summary artifact: order9-case2-paused-full-summary
+summary SHA256:   87abc29dd16faf80bfb435c92938c10e1b4e7881b8fbe933fb9a64695db952e5
+CaDiCaL artifact SHA256: 9276a1ec60a40be07b4a9314508b70728dbd8226c5a54fb0ab9eda288134078b
+Glucose artifact SHA256: 736e1d0ee73802ad0b78b208a7ed101ce4c0882280347a612c19113b70c0d205
+technical failures: 0
+missing summaries: 0
+verified counterexamples: 0
 ```
 
-The sole shared bounded residue is
+The two independent engines agree:
 
 ```text
-(a,k)=(0,1),
-so 0*3=0 and 3*1=2.
+CaDiCaL195: 6/6 UNSAT, 0 UNKNOWN, 0 SAT;
+Glucose42:  6/6 UNSAT, 0 UNKNOWN, 0 SAT.
 ```
 
-CaDiCaL reached its smoke boundary at `1,001` conflicts.  Glucose reached its
-two-second boundary after `45,405` conflicts.  UNSAT is exact even in a smoke
-run; UNKNOWN only says the resource boundary was reached.
-
-## Full bounded run
+The only nontrivial leaf was the smoke residue:
 
 ```text
-run id:   pending
-head SHA: pending
-CaDiCaL195: pending
-Glucose42:  pending
+(a,k)=(0,1):
+CaDiCaL195 UNSAT in 3.501s with 63,138 conflicts;
+Glucose42  UNSAT in 3.391s with 62,888 conflicts.
 ```
 
-The full run keeps the same six-leaf wrapper but gives the common residue a
-much larger boundary.  Since the other five leaves are already exact UNSAT,
-they are retained as consistency checks rather than new search targets.
+The other five leaves were already forced inconsistent by the clauses learned
+while resolving the first leaf and were confirmed UNSAT under their own exact
+assumptions.  Learned clauses are consequences of the shared base formula;
+the same pattern occurred independently in both engines.
 
-## Mathematical interpretation
+## Mathematical conclusion
 
-The paused continuation has been reduced from six leaves to one exact leaf:
+The preceding lemma had reduced top form 2 to these six exhaustive leaves.
+Since all six are UNSAT, top form 2 itself is now completely excluded:
 
 ```text
-Bad={0,1,2}; D:0->1->2->0;
-0*0=1; 1*0=2; 2*0=1;
-0*2=3 Good; 0*3=0; 3*1=2.
+no order-nine no-HIT E677 magma with exactly three Bad points
+can realize normalized top form 2.
 ```
 
-This is a strict reduction of top form 2.  It is not a counterexample, does
-not yet close top form 2, and does not address the other eight unresolved
-three-Bad forms, larger Bad cardinalities, or HIT.
+Consequently the initial three-Bad classification improves from
+
+```text
+15/24 top forms closed
+```
+
+to
+
+```text
+16/24 top forms closed.
+```
+
+The remaining top-form indices are
+
+```text
+3, 11, 15, 16, 18, 21, 23, 24.
+```
+
+This is a strict finite order-nine result.  It does not close those eight
+forms, larger Bad cardinalities, HIT, or the full order-nine implication.
+No partial table or SAT core has been treated as a counterexample; no SAT
+model was returned.
