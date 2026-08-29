@@ -1,0 +1,137 @@
+name: Order-9 case-2 paused full 2026-08-29
+run-name: Order 9 · three-Bad form 2 · sole paused residue
+
+on:
+  push:
+    branches:
+      - web/order9-case2-paused-2026-08-29
+    paths:
+      - .github/workflows/order9-case2-paused-full-2026-08-29.yml
+
+permissions:
+  actions: read
+  contents: read
+
+env:
+  RUN_DIR: Experiments/2026-08-29-order9-case2-paused
+
+jobs:
+  validate:
+    name: Validate exact checker and wrapper
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tools/requirements-e677-sat.txt
+      - name: Install exact SAT dependency
+        run: python -m pip install -r tools/requirements-e677-sat.txt
+      - name: Static and source-integrity checks
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            "$RUN_DIR/run_case2_paused.py" \
+            "$RUN_DIR/parse_run.py" \
+            "$RUN_DIR/collect.py" \
+            tools/e677_order9_no_hit_bad_count_sat.py
+          test "$(git hash-object tools/e677_order9_no_hit_bad_count_sat.py)" = \
+            "efe356acd0047eef8ae5645b2cb04ac2a493632d"
+
+  search:
+    name: "${{ matrix.solver }} · exact six leaves"
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - solver: cadical195
+            per_leaf_seconds: "900"
+            conflict_budget: "20000000"
+          - solver: glucose42
+            per_leaf_seconds: "900"
+            conflict_budget: "1000"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tools/requirements-e677-sat.txt
+      - name: Install exact SAT dependency
+        run: python -m pip install -r tools/requirements-e677-sat.txt
+      - name: Run exact paused continuation
+        id: solve
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p run-output
+          set +e
+          python "$RUN_DIR/run_case2_paused.py" \
+            --solver "${{ matrix.solver }}" \
+            --per-leaf-seconds "${{ matrix.per_leaf_seconds }}" \
+            --conflict-budget "${{ matrix.conflict_budget }}" \
+            2>&1 | tee run-output/solver.log
+          status=${PIPESTATUS[0]}
+          set -e
+          printf '%s\n' "$status" > run-output/checker-exit-code.txt
+          case "$status" in
+            0|2|3) ;;
+            *) echo "unexpected checker exit code: $status" >&2; exit "$status" ;;
+          esac
+          python "$RUN_DIR/parse_run.py" \
+            --phase full \
+            --solver "${{ matrix.solver }}" \
+            --log run-output/solver.log \
+            --exit-code "$status" \
+            --output run-output/summary.json
+      - name: Upload complete solver record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "order9-case2-paused-full-${{ matrix.solver }}"
+          path: run-output/
+          if-no-files-found: error
+          retention-days: 30
+
+  collect:
+    name: Collect exact solver summaries
+    if: always()
+    needs: [validate, search]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download solver records
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: order9-case2-paused-full-*
+          path: downloaded
+      - name: Build compact report
+        id: collect
+        shell: bash
+        run: |
+          set +e
+          python "$RUN_DIR/collect.py" \
+            --input downloaded \
+            --output collected \
+            --expected 2
+          status=$?
+          set -e
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+      - name: Upload collected report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: order9-case2-paused-full-summary
+          path: collected/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Enforce technical integrity
+        if: always()
+        run: exit "${{ steps.collect.outputs.status || '1' }}"
