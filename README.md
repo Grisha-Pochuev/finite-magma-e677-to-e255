@@ -112,17 +112,18 @@ no-HIT branch has the following reproducible reductions:
 - terminal root equality is excluded;
 - exactly two Bad elements are excluded;
 - exactly three Bad elements reduce to 24 normalized forms; 15 were UNSAT in
-  the first exact scan, and normalized form 2 has now been independently
-  excluded, so 16/24 forms are closed;
-- form 2 is covered by fourteen exhaustive leaves: the earlier eight root
-  outcomes and the final six companion leaves are UNSAT in both CaDiCaL195
-  and Glucose42.
+  the first exact scan, and normalized forms 2 and 3 have now been
+  independently excluded, so 17/24 forms are closed;
+- form 2 is covered by fourteen exhaustive leaves, while form 3 is covered by
+  six exhaustive canonical root outcomes; both certificates agree in
+  CaDiCaL195 and Glucose42.
 
-The complete form-2 certificate and the remaining indices
-`3,11,15,16,18,21,23,24` are in the
-[order-9 three-Bad exclusion](lemmas/e677_order9_three_bad_root_and_case2_reduction.md).
-These are finite reductions only: the HIT branch and the remaining no-HIT
-forms still prevent a complete order-9 certificate.
+The complete certificates are the
+[form-2 exclusion](lemmas/e677_order9_three_bad_root_and_case2_reduction.md)
+and the [form-3 exclusion](lemmas/e677_order9_three_bad_case3_exclusion.md).
+The remaining indices are `11,15,16,18,21,23,24`.  These are finite
+reductions only: the HIT branch and the remaining no-HIT forms still prevent
+a complete order-9 certificate.
 
 Progress numbers are deliberately scoped:
 
@@ -216,11 +217,13 @@ by:
 .\verify_order9_terminal_zero.ps1
 .\verify_order9_two_bad_no_hit.ps1
 .\verify_order9_three_bad_case2.ps1
+.\verify_order9_three_bad_case3.ps1
 ```
 
-The third command checks all fourteen exhaustive leaves of normalized
-three-Bad form 2: the earlier eight root outcomes and the final six companion
-leaves, independently in CaDiCaL195 and Glucose42.
+The third command checks all fourteen exhaustive leaves of normalized form 2.
+The fourth checks the six exhaustive canonical root outcomes of normalized
+form 3 and the four finer Good-product representatives, independently in
+CaDiCaL195 and Glucose42.
 
 On a normal machine with Node.js installed, the verification script reruns the
 structural split used for the size-8 result and writes a timestamped log under

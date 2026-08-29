@@ -9,12 +9,17 @@
 
 ## Последний завершенный прогон
 
-- `2026-08-29-order9-case2-paused/` — exact order-9 three-Bad form-2
-  continuation.  Six of six paused leaves are UNSAT in both CaDiCaL195 and
-  Glucose42; form 2 is fully excluded and the top-form count is `16/24`.
-  Runs: smoke `33267460851`, full `33267614227`.
+- `2026-08-29-order9-case3-root/` — exact order-9 three-Bad form-3
+  canonical-root certificate.  Six of six aggregate root outcomes and four
+  of four Good-product representatives are UNSAT in both engines; form 3 is
+  excluded and the top-form count is `17/24`.  Runs: smoke `33268344813`,
+  full `33268434711`.
 
 Previous completed runs:
+
+- `2026-08-29-order9-case2-paused/` — exact form-2 continuation; form 2 is
+  fully excluded and raised the count from `15/24` to `16/24`.  Runs: smoke
+  `33267460851`, full `33267614227`.
 
 - `2026-07-13-fixed-eta-zba-bridge/` — 20 jobs on five fixed-eta targets;
   all ended by timeout without a proof or model.  Final commit:
