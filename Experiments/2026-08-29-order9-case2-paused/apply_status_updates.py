@@ -80,7 +80,7 @@ def update_frontier() -> None:
     text = read(path)
     start = "That three-Bad pattern is now normalized exactly."
     end = "The size-free active structural question remains the simultaneous G-CROSS\nnetwork."
-    body = """That three-Bad pattern is now normalized exactly.  Select one strict extra
+    body = """  Select one strict extra
 Omega-root before naming the labels.  The fixed-point-free map `D` on three
 Bad points is either a 3-cycle or a 2-cycle with one tail.  After setting
 `0*0=1`, the square colour, the value `D(0)`, and the chain
