@@ -1,0 +1,22 @@
+{
+  "order": 9,
+  "bad_count": 3,
+  "top_form": 16,
+  "smoke_run_id": 33269622554,
+  "full_run_id": 33269852847,
+  "full_head_sha": "5b0e8765b40fac638d1e09ba15908a9e01f3b347",
+  "checker_git_blob": "efe356acd0047eef8ae5645b2cb04ac2a493632d",
+  "aggregate_leaf_count": 6,
+  "good_representative_count": 2,
+  "glucose_aggregate": "6/6 UNSAT",
+  "cadical_aggregate": "5/6 UNSAT; root=(0,2), product=Good bounded UNKNOWN",
+  "glucose_good_representatives": "2/2 UNSAT",
+  "cadical_good_representatives": "2/2 UNSAT",
+  "residual_good_symmetry": "each aggregate Good product has the unique representative 4",
+  "mathematical_result": "FORM16_UNSAT",
+  "verified_complete_counterexamples": 0,
+  "three_bad_forms_closed": 18,
+  "three_bad_forms_total": 24,
+  "remaining_three_bad_forms": [11, 15, 18, 21, 23, 24],
+  "full_order9_closed": false
+}
