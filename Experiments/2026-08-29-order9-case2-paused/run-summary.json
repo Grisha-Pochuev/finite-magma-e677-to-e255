@@ -1,0 +1,54 @@
+{
+  "run_id": 33267614227,
+  "head_sha": "fa1d990ff1e499e279bd32cb4fe953854dc837d5",
+  "base_checker_git_blob": "efe356acd0047eef8ae5645b2cb04ac2a493632d",
+  "expected_summaries": 2,
+  "found_summaries": 2,
+  "missing_summaries": 0,
+  "all_six_unsat_engines": 2,
+  "verified_counterexamples": 0,
+  "bounded_unknown_engines": 0,
+  "technical_failures": 0,
+  "summary_artifact": {
+    "name": "order9-case2-paused-full-summary",
+    "sha256": "87abc29dd16faf80bfb435c92938c10e1b4e7881b8fbe933fb9a64695db952e5"
+  },
+  "records": [
+    {
+      "solver": "cadical195",
+      "normalized_result": "ALL_SIX_UNSAT",
+      "raw_exit_code": 2,
+      "leaf_count": 6,
+      "sat_count": 0,
+      "unsat_count": 6,
+      "unknown_count": 0,
+      "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz",
+      "artifact_sha256": "9276a1ec60a40be07b4a9314508b70728dbd8226c5a54fb0ab9eda288134078b",
+      "hard_leaf": {
+        "a": 0,
+        "k": 1,
+        "status": "UNSAT",
+        "elapsed_seconds": 3.501,
+        "conflicts": 63138
+      }
+    },
+    {
+      "solver": "glucose42",
+      "normalized_result": "ALL_SIX_UNSAT",
+      "raw_exit_code": 2,
+      "leaf_count": 6,
+      "sat_count": 0,
+      "unsat_count": 6,
+      "unknown_count": 0,
+      "cpu": "AMD EPYC 7763 64-Core Processor",
+      "artifact_sha256": "736e1d0ee73802ad0b78b208a7ed101ce4c0882280347a612c19113b70c0d205",
+      "hard_leaf": {
+        "a": 0,
+        "k": 1,
+        "status": "UNSAT",
+        "elapsed_seconds": 3.391,
+        "conflicts": 62888
+      }
+    }
+  ]
+}
