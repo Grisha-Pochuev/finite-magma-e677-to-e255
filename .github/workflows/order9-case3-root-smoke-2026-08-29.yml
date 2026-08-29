@@ -1,0 +1,90 @@
+name: Order-9 form-3 canonical root smoke 2026-08-29
+run-name: Order 9 · three-Bad form 3 · canonical root smoke
+
+on:
+  push:
+    branches:
+      - web/order9-case3-root-2026-08-29
+    paths:
+      - .github/workflows/order9-case3-root-smoke-2026-08-29.yml
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  RUN_DIR: Experiments/2026-08-29-order9-case3-root
+
+jobs:
+  scan:
+    name: "${{ matrix.solver }} · six canonical outcomes"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - solver: cadical195
+            seconds: "5"
+            conflicts: "5000"
+          - solver: glucose42
+            seconds: "5"
+            conflicts: "5000"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tools/requirements-e677-sat.txt
+
+      - name: Install exact SAT dependency
+        run: python -m pip install -r tools/requirements-e677-sat.txt
+
+      - name: Static and source-integrity checks
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            tools/e677_order9_no_hit_bad_count_sat.py \
+            "$RUN_DIR/summarize.py"
+          test "$(git hash-object tools/e677_order9_no_hit_bad_count_sat.py)" = \
+            "efe356acd0047eef8ae5645b2cb04ac2a493632d"
+
+      - name: Scan the six exact canonical root outcomes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p output
+          set +e
+          python tools/e677_order9_no_hit_bad_count_sat.py \
+            --min-bad 3 --max-bad 3 \
+            --scan-bad3-structural \
+            --bad3-frontier-only \
+            --bad3-case 3 \
+            --bad3-canonical-root-outcomes \
+            --solver "${{ matrix.solver }}" \
+            --per-count-seconds "${{ matrix.seconds }}" \
+            --conflict-budget "${{ matrix.conflicts }}" \
+            2>&1 | tee output/solver.log
+          status=${PIPESTATUS[0]}
+          set -e
+          case "$status" in
+            0|2|3) ;;
+            *) echo "unexpected checker exit code: $status" >&2; exit "$status" ;;
+          esac
+          printf '%s\n' "$status" > output/checker-exit-code.txt
+          python "$RUN_DIR/summarize.py" \
+            --solver "${{ matrix.solver }}" \
+            --log output/solver.log \
+            --exit-code "$status" \
+            --output output/summary.json
+
+      - name: Upload exact record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "order9-case3-root-smoke-${{ matrix.solver }}"
+          path: output/
+          if-no-files-found: error
+          retention-days: 30
