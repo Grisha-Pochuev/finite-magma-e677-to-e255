@@ -49,28 +49,96 @@ References:
 
 ## Current status
 
-This is active research, not a finished proof or a counterexample.  The final
-certificate is therefore still `0%`: no size-independent proof and no complete
-finite Bad table has been obtained.
+This is active research.  There is currently neither a proof of the finite
+implication nor a complete finite counterexample.
 
-The current direct-proof route has completely resolved the periodic-reuse
-subgate inside the CYCLE branch.  At the remaining terminal ZERO-root boundary,
-two of three structural gates are proved:
+To state the present reduction, define
 
-- exact root equality produces an idempotent Latin E677 shadow on the Bad set;
-- every canonical Bad `D`-cell routes to exactly `ZIPPER` or a marked
-  Good-row `G-CROSS`;
-- the global simultaneous `G-CROSS` network is still open.
+```text
+sigma(x) = (x*x)*x,
+D(x)     = sigma(x)*x.
+```
 
-Thus the scoped ZERO-reuse gate is `2/3 (67%)`, not an estimate that the whole
-theorem is 67% solved.  The smallest symmetric pure-ZIPPER K5 shell is excluded
-exactly at order 15, with a satisfiable control shell when E677 is disabled.
-This is a bounded diagnostic, not a general proof.
+Call `x` **Good** if `D(x)=x`, and **Bad** otherwise.  Proving E255 is exactly
+the same as proving that there are no Bad elements.  Starting from a Bad
+element and repeatedly applying `D` has only two possible behaviours in a
+finite magma: it eventually reaches a Good element, or it remains Bad and
+eventually enters a cycle.
 
-Start with `docs/ACTIVE_FRONTIER_MIN.md`.  The exact ZERO-root argument and its
-bounded computational boundary are in
-`lemmas/e677_zero_root_reuse_shadow_quasigroup_boundary.md`; the reproducibility
-audit is in `lemmas/e677_zero_root_reuse_computational_certificate.md`.
+The current size-independent argument proves the following.
+
+1. A completely closed periodic configuration cannot keep reusing all of its
+   predecessor cells internally: it must produce a boundary cell outside the
+   periodic part.
+2. In the remaining equality case, the Bad set `B` carries an auxiliary
+   operation
+
+   ```text
+   r o u = r*u  if r != u,
+   r o r = r,
+   ```
+
+   and `(B,o)` is proved to be an idempotent Latin quasigroup satisfying E677.
+   This auxiliary operation is called the **Bad shadow** in the working notes;
+   it is not asserted to be a submagma of the original magma.
+3. For each Bad `q`, put
+
+   ```text
+   e = D(q),  t = sigma(q),  h = e\q,  z = t*e,
+   ```
+
+   where `a\b` denotes the unique input sent to `b` by the row of `a`.  The
+   companion equations force exactly one of two explicit alternatives:
+
+   ```text
+   z=h and t=h\h;                 or
+   z is Good and z*t=h is Bad.
+   ```
+
+The unresolved step is global: prove that all cells of the second kind, taken
+together, force a shorter Bad orbit or a Good element, or else use them to
+construct a complete counterexample.  The local counting argument alone is not
+enough.
+
+The smallest symmetric completion test for the first alternative is UNSAT at
+order 15 in two independent SAT engines.  The identical partial shell is SAT
+when E677 is disabled, so the contradiction genuinely uses the mixed E677
+equations.  This is a bounded computational result, not a general theorem.
+
+Progress numbers are deliberately scoped:
+
+```text
+complete proof or checked counterexample:              no (0%)
+periodic-reuse subproblem:                         1/1 (100%)
+terminal Bad-set structural reduction:              2/3 (67%)
+global crossing-network outcomes proved:              0/3 (0%)
+```
+
+The `67%` figure refers only to this last three-part reduction.  It is not an
+estimate that the original open problem is 67% solved.
+
+## Terminology used in the working notes
+
+Several capitalized words in the research files are short search labels, not
+standard mathematical terminology and not claims that new kinds of objects
+have been discovered.  They can always be replaced by the stated equations or
+orbit behaviour.
+
+| Working label | Meaning |
+| --- | --- |
+| `HIT` | a Bad `D`-orbit reaches a Good element |
+| `CYCLE` | a `D`-orbit remains Bad and enters a cycle |
+| `ZERO root` | a state with no predecessor in a particular transport graph; it is not a zero element of the magma |
+| `SHORT` | a Bad segment of length one in a multiplication row |
+| `ZIPPER` | the first displayed alternative: `t*e=h` and `t=h\h` |
+| `G-CROSS` | the second alternative: a Good row and Good input produce the Bad value `h` |
+| `K5 shell` | a symmetric five-Bad-point partial multiplication pattern used in a bounded completion test |
+
+For a first mathematical audit, read the
+[ZERO-root reduction](lemmas/e677_zero_root_reuse_shadow_quasigroup_boundary.md),
+then its [computational certificate](lemmas/e677_zero_root_reuse_computational_certificate.md).
+The [active frontier](docs/ACTIVE_FRONTIER_MIN.md) is a dense continuation
+record for contributors, not the recommended introduction for a new reader.
 
 ## What is in this repository
 
@@ -170,3 +238,8 @@ See:
 
 - `CONTRIBUTING.md`
 - `CITATION.cff`
+
+## Follow the project
+
+Research updates and discussion are published on the
+[project author's Telegram channel](https://t.me/let_people_dance).
