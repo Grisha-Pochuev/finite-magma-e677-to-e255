@@ -1,0 +1,11 @@
+base-checker-git-blob: efe356acd0047eef8ae5645b2cb04ac2a493632d
+paused-leaves: (a,k)=(0,1),(2,1),(4,1),(4,3),(4,4),(4,5)
+forwarded: --min-bad 3 --max-bad 3 --scan-bad3-structural --bad3-frontier-only --bad3-case 2 --bad3-case2-paused-continuation --solver glucose42 --per-count-seconds 900 --conflict-budget 1000
+encoding: order=9; variables=3151; clauses=55911; solver=glucose42; no-HIT=True; bad-counts=3..3; bad2-structural=False; bad3-structural=True
+bad3 case 02/24 split 1/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=0,k=1: UNSAT; elapsed=3.391s; conflicts=62888
+bad3 case 02/24 split 2/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=2,k=1: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 3/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=1: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 4/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=3: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 5/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=4: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 6/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=5: UNSAT; elapsed=0.000s; conflicts=0
+bad3 summary: unsat=6/6; unknown=[]; elapsed=3.413s

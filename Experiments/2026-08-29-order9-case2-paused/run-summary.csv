@@ -1,0 +1,3 @@
+phase,solver,normalized_result,raw_exit_code,leaf_count,sat_count,unsat_count,unknown_count,base_checker_git_blob,commit_sha,cpu,hard_leaf,hard_leaf_elapsed_seconds,hard_leaf_conflicts,artifact_sha256
+full,cadical195,ALL_SIX_UNSAT,2,6,0,6,0,efe356acd0047eef8ae5645b2cb04ac2a493632d,fa1d990ff1e499e279bd32cb4fe953854dc837d5,"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz","(a,k)=(0,1)",3.501,63138,9276a1ec60a40be07b4a9314508b70728dbd8226c5a54fb0ab9eda288134078b
+full,glucose42,ALL_SIX_UNSAT,2,6,0,6,0,efe356acd0047eef8ae5645b2cb04ac2a493632d,fa1d990ff1e499e279bd32cb4fe953854dc837d5,"AMD EPYC 7763 64-Core Processor","(a,k)=(0,1)",3.391,62888,736e1d0ee73802ad0b78b208a7ed101ce4c0882280347a612c19113b70c0d205

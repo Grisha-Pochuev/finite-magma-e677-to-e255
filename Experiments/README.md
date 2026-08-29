@@ -9,13 +9,20 @@
 
 ## Последний завершенный прогон
 
-- `2026-07-13-fixed-eta-zba-bridge/` — 20 заданий по пяти целям fixed-eta; все завершились по тайм-ауту без доказательства или модели. Итоговый commit: `9a02d03c0603cd40b9dc0ba54593bad64d58b0c5`.
+- `2026-08-29-order9-case2-paused/` — exact order-9 three-Bad form-2
+  continuation.  Six of six paused leaves are UNSAT in both CaDiCaL195 and
+  Glucose42; form 2 is fully excluded and the top-form count is `16/24`.
+  Runs: smoke `33267460851`, full `33267614227`.
 
-Предыдущая серия:
+Previous completed runs:
 
-- `2026-07-11-fixed-eta/` — первый большой fixed-eta прогон и диагностика машин, памяти и доказателей.
+- `2026-07-13-fixed-eta-zba-bridge/` — 20 jobs on five fixed-eta targets;
+  all ended by timeout without a proof or model.  Final commit:
+  `9a02d03c0603cd40b9dc0ba54593bad64d58b0c5`.
+- `2026-07-11-fixed-eta/` — first large fixed-eta run and runner/memory
+  diagnostics.
 
-Активного полного прогона сейчас нет.
+There is no active full run.
 
 ## Главное правило структуры
 

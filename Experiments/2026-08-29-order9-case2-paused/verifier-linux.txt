@@ -1,0 +1,50 @@
+Python: /opt/hostedtoolcache/Python/3.11.16/x64/bin/python
+Base checker SHA256: 29CDD3BDF4A6F7437EF58781B955724B1F949A1DD9612558335B81A40752E7E6
+Paused wrapper SHA256: DB93FB7DF225602A41AE77482DE4540C997BD6F462242DC95B9F44110348BD96
+[case 2 root reduction / CaDiCaL195]
+encoding: order=9; variables=3151; clauses=55911; solver=cadical195; no-HIT=True; bad-counts=3..3; bad2-structural=False; bad3-structural=True
+bad3 case 02/24 split 1/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),product=row=0: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 2/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),product=third=2: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 3/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),product=row=0: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 4/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),product=third=1: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 5/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),u=3,a=4,k=2: UNSAT; elapsed=0.263s; conflicts=5656
+bad3 case 02/24 split 6/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),u=3,a=4,k=3: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 7/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),u=3,a=4,k=4: UNSAT; elapsed=0.496s; conflicts=9366
+bad3 case 02/24 split 8/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),u=3,a=4,k=5: UNSAT; elapsed=0.413s; conflicts=8533
+bad3 summary: unsat=8/8; unknown=[]; elapsed=1.202s
+[case 2 root reduction / Glucose42]
+encoding: order=9; variables=3151; clauses=55911; solver=glucose42; no-HIT=True; bad-counts=3..3; bad2-structural=False; bad3-structural=True
+bad3 case 02/24 split 1/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),product=row=0: UNSAT; elapsed=0.001s; conflicts=0
+bad3 case 02/24 split 2/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),product=third=2: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 3/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),product=row=0: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 4/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),product=third=1: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 5/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),u=3,a=4,k=2: UNSAT; elapsed=0.202s; conflicts=5631
+bad3 case 02/24 split 6/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),u=3,a=4,k=3: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 7/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),u=3,a=4,k=4: UNSAT; elapsed=0.619s; conflicts=14182
+bad3 case 02/24 split 8/8 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,1),u=3,a=4,k=5: UNSAT; elapsed=0.424s; conflicts=9096
+bad3 summary: unsat=8/8; unknown=[]; elapsed=1.269s
+[case 2 paused continuation / CaDiCaL195]
+base-checker-git-blob: efe356acd0047eef8ae5645b2cb04ac2a493632d
+paused-leaves: (a,k)=(0,1),(2,1),(4,1),(4,3),(4,4),(4,5)
+forwarded: --min-bad 3 --max-bad 3 --scan-bad3-structural --bad3-frontier-only --bad3-case 2 --bad3-case2-paused-continuation --solver cadical195 --per-count-seconds 30 --conflict-budget 100000
+encoding: order=9; variables=3151; clauses=55911; solver=cadical195; no-HIT=True; bad-counts=3..3; bad2-structural=False; bad3-structural=True
+bad3 case 02/24 split 1/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=0,k=1: UNSAT; elapsed=3.604s; conflicts=63138
+bad3 case 02/24 split 2/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=2,k=1: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 3/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=1: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 4/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=3: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 5/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=4: UNSAT; elapsed=0.000s; conflicts=1
+bad3 case 02/24 split 6/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=5: UNSAT; elapsed=0.000s; conflicts=1
+bad3 summary: unsat=6/6; unknown=[]; elapsed=3.633s
+[case 2 paused continuation / Glucose42]
+base-checker-git-blob: efe356acd0047eef8ae5645b2cb04ac2a493632d
+paused-leaves: (a,k)=(0,1),(2,1),(4,1),(4,3),(4,4),(4,5)
+forwarded: --min-bad 3 --max-bad 3 --scan-bad3-structural --bad3-frontier-only --bad3-case 2 --bad3-case2-paused-continuation --solver glucose42 --per-count-seconds 30 --conflict-budget 50000
+encoding: order=9; variables=3151; clauses=55911; solver=glucose42; no-HIT=True; bad-counts=3..3; bad2-structural=False; bad3-structural=True
+bad3 case 02/24 split 1/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=0,k=1: UNSAT; elapsed=3.425s; conflicts=62888
+bad3 case 02/24 split 2/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=2,k=1: UNSAT; elapsed=0.001s; conflicts=0
+bad3 case 02/24 split 3/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=1: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 4/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=3: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 5/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=4: UNSAT; elapsed=0.000s; conflicts=0
+bad3 case 02/24 split 6/6 A:square-Bad,D0=1; D-3cycle; f1=2,f2=1; root=(0,2),u=3,a=4,k=5: UNSAT; elapsed=0.000s; conflicts=0
+bad3 summary: unsat=6/6; unknown=[]; elapsed=3.448s
+PASS: order-9 three-Bad top form 2 is fully excluded in both engines.

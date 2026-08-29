@@ -859,45 +859,61 @@ family C (square Good,D(0)=2): 3 D-types * 3 f-chains = 9.
 ```
 
 The first exact CaDiCaL scan closed `15/24`; the nine bounded UNKNOWN forms
-are indices `2,3,11,15,16,18,21,23,24`.  Fixing only the root position gave
+were indices `2,3,11,15,16,18,21,23,24`.  Fixing only the root position gave
 `15/15 UNKNOWN` before an intentional stop and is retired.  Splitting the
 canonical root by Good/row/third-Bad product closed `23/66` small cubes;
 naming the Good product up to residual symmetry closed `6/37` further cubes.
 These counts locate the boundary and do not close all three-Bad models.
 
-One full top-form reduction is certified independently.  In form `2`,
+Top form `2` is now completely certified.  It has
 
 ```text
 B={0,1,2}; D: 0->1->2->0;
-0*0=1; 1*0=2; 2*0=1,
+0*0=1; 1*0=2; 2*0=1.
 ```
 
-all four Bad-product extra roots and all four companion cases for a Good
-root `(0,1)` are `8/8 UNSAT` in both CaDiCaL195 and Glucose42.  Therefore
-the selected extra root must be exactly
+The first reduction excludes eight canonical root/companion outcomes in both
+CaDiCaL195 and Glucose42 and forces the selected extra root to be
 
 ```text
 (0,2), with 0*2=3 Good.
 ```
 
-For this sole form-2 residue, put `a=0*3`, `k=a*0`; E677 forces `3*k=2` and
-the exact paused split is
+Put `a=0*3`, `k=a*0`; E677 forces `3*k=2`.  Row injectivity and residual
+relabelling leave exactly
 
 ```text
-a in {0,2,4};
-a in {0,2} -> k=1;
-a=4       -> k in {1,3,4,5}.
+(a,k)=(0,1),(2,1),(4,1),(4,3),(4,4),(4,5).
 ```
 
-No calculation of that split has been started.  Exact proof, checker, log,
-and wrapper are
+All six leaves are independently UNSAT in both engines.  The sole nontrivial
+leaf `(a,k)=(0,1)` was closed in `3.501s / 63138` conflicts by CaDiCaL195 and
+`3.391s / 62888` conflicts by Glucose42.  There was no SAT model, UNKNOWN, or
+technical failure.  Hence form `2` is UNSAT and the total closed count is now
+
+```text
+16/24.
+```
+
+The remaining three-Bad forms are exactly
+
+```text
+3,11,15,16,18,21,23,24.
+```
+
+Exact proof, base checker, pinned continuation wrapper, record, and verifier:
 
 ```text
 lemmas/e677_order9_three_bad_root_and_case2_reduction.md;
 tools/e677_order9_no_hit_bad_count_sat.py;
-logs/e677_order9_three_bad_case2_2026-08-29.txt;
+Experiments/2026-08-29-order9-case2-paused/run_case2_paused.py;
+logs/e677_order9_three_bad_case2_complete_2026-08-29.txt;
 verify_order9_three_bad_case2.ps1.
 ```
+
+The next finite question is form `3`, which keeps the same three-cycle
+D-pattern and replaces the first-column chain by `1*0=3, 3*0=1`.  Reuse the
+canonical-root split and companion word; do not rerun the unsplit cube.
 
 The size-free active structural question remains the simultaneous G-CROSS
 network.
@@ -951,8 +967,10 @@ completed cover Bad-target tests:                 99/99 (100%).
 completed nontrivial row-label orbit formulas:     80/80 (100%).
 order-9 terminal ZERO equality/no-HIT subgate:        1/1 (100%).
 order-9 |Bad|=2 no-HIT subgate:                       1/1 (100%).
-order-9 |Bad|=3 top forms initially closed:          15/24 (62.5%).
-order-9 |Bad|=3 form-2 root outcomes excluded:         8/9 (88.9%).
+order-9 |Bad|=3 initial exact scan:                 15/24 (62.5%).
+order-9 |Bad|=3 subsequent form-2 closure:              1/9 (11.1%).
+order-9 |Bad|=3 total top forms closed:                16/24 (66.7%).
+order-9 |Bad|=3 form-2 root outcomes excluded:           9/9 (100%).
 order-9 remaining no-HIT Bad cardinalities:             0/7 (0%).
 full order-9 implication certificate:                  0/1 (0%).
 ```
