@@ -276,5 +276,5 @@ See:
 
 ## Follow the project
 
-Research updates and discussion are published on the
+My personal Telegram channel about psychology and everything around us
 [project author's Telegram channel](https://t.me/let_people_dance).
