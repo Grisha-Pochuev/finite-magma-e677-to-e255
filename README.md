@@ -278,3 +278,5 @@ See:
 
 My personal Telegram channel about psychology and everything around us
 [project author's Telegram channel](https://t.me/let_people_dance).
+
+Subscribe to my Telegram blog, where I write about psychology and much more: https://t.me/let_people_dance
